@@ -70,6 +70,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     /**
      * 数据源
      */
+    @Bean
     public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass(environment.getProperty("db.driver.class"));
@@ -89,9 +90,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
      * 数据连接会话
      */
     @Bean
-    public LocalSessionFactoryBean sessionFactory() throws Exception {
+    @Autowired
+    public LocalSessionFactoryBean sessionFactory(DataSource dataSource) throws Exception {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
+        sessionFactory.setDataSource(dataSource);
         sessionFactory.setPackagesToScan(MODEL_PACKAGES);
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
@@ -106,6 +108,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.connection.username", environment.getProperty("db.username"));
+        properties.put("hibernate.connection.password", environment.getProperty("db.password"));
         return properties;
     }
 

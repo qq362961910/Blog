@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>blog-web</artifactId>
-
+    <packaging>war</packaging>
     <properties>
         <build.final.name>blog</build.final.name>
     </properties>
@@ -20,9 +20,34 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.4</version>
+        </dependency>
+        <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
         </dependency>
     </dependencies>
 
@@ -75,10 +100,10 @@
             </activation>
             <properties>
                 <!-- jdbc -->
-                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
-                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
-                <db.username>menke_prod</db.username>
-                <db.password>qSyU1upKKcwa</db.password>
+                <db.driver.class>com.mysql.cj.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://127.0.0.1:3306/blog?useSSL=false</db.url>
+                <db.username>vr</db.username>
+                <db.password>123456</db.password>
                 <db.initialPoolSize>5</db.initialPoolSize>
                 <db.minPoolSize>10</db.minPoolSize>
                 <db.maxPoolSize>30</db.maxPoolSize>
@@ -100,10 +125,10 @@
             <id>test</id>
             <properties>
                 <!-- jdbc -->
-                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
-                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
-                <db.username>menke_prod</db.username>
-                <db.password>qSyU1upKKcwa</db.password>
+                <db.driver.class>com.mysql.cj.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&amp;useSSL=true</db.url>
+                <db.username>vr</db.username>
+                <db.password>123456</db.password>
                 <db.initialPoolSize>5</db.initialPoolSize>
                 <db.minPoolSize>10</db.minPoolSize>
                 <db.maxPoolSize>30</db.maxPoolSize>
@@ -125,10 +150,10 @@
             <id>prod</id>
             <properties>
                 <!-- jdbc -->
-                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
-                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
-                <db.username>menke_prod</db.username>
-                <db.password>qSyU1upKKcwa</db.password>
+                <db.driver.class>com.mysql.cj.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&amp;useSSL=true</db.url>
+                <db.username>vr</db.username>
+                <db.password>123456</db.password>
                 <db.initialPoolSize>5</db.initialPoolSize>
                 <db.minPoolSize>10</db.minPoolSize>
                 <db.maxPoolSize>30</db.maxPoolSize>

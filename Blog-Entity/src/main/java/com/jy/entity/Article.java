@@ -25,37 +25,37 @@ public class Article extends BaseEntity{
     /**
      * 阅读量
      * */
-    @Column(name = "")
+    @Column(name = "count")
     private int count;
 
     /**
      * 点赞数量
      * */
-    @Column(name = "")
+    @Column(name = "like_count")
     private int likeCount;
 
     /**
      * 摘要
      * */
-    @Column(name = "")
+    @Column(name = "summary")
     private String summary;
 
     /**
      * 内容
      * */
-    @Column(name = "")
+    @Column(name = "content")
     private String content;
 
     /**
      * 关键字
      * */
-    @Column(name = "")
+    @Column(name = "keyworks")
     private String keyworks;
 
     /**
      * 删除状态
      * */
-    @Column(name = "")
+    @Column(name = "deleted")
     private boolean deleted;
 
     public String getTitle() {

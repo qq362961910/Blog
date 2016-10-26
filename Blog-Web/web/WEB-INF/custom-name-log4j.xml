@@ -1,0 +1,15 @@
+<Configuration status="WARN" name="ServletTest">
+
+    <Appenders>
+        <Servlet name="Servlet">
+            <PatternLayout pattern="%m%n%ex{none}"/>
+        </Servlet>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Servlet"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

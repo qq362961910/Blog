@@ -15,7 +15,7 @@ public class BaseEntity {
     private Date createTime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_time")
+    @Column(name = "update_time")
     private Date updateTime;
 
     public Long getId() {
