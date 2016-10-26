@@ -11,9 +11,7 @@
     <artifactId>blog-web</artifactId>
 
     <properties>
-        <servlet-api.version>3.1.0</servlet-api.version>
-        <jsp-api.version>2.3.1</jsp-api.version>
-        <jstl.version>1.2</jstl.version>
+        <build.final.name>blog</build.final.name>
     </properties>
     <dependencies>
         <dependency>
@@ -21,9 +19,15 @@
             <artifactId>blog-service</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>${build.final.name}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources/</directory>
@@ -50,6 +54,95 @@
                     </includes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warName>${build.final.name}</warName>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- dev -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- jdbc -->
+                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
+                <db.username>menke_prod</db.username>
+                <db.password>qSyU1upKKcwa</db.password>
+                <db.initialPoolSize>5</db.initialPoolSize>
+                <db.minPoolSize>10</db.minPoolSize>
+                <db.maxPoolSize>30</db.maxPoolSize>
+                <db.maxIdleTime>180</db.maxIdleTime>
+                <db.maxConnectionAge>10</db.maxConnectionAge>
+                <db.idleConnectionTestPeriod>60</db.idleConnectionTestPeriod>
+                <!-- hibernate -->
+                <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+                <hibernate.show_sql>false</hibernate.show_sql>
+                <hibernate.format_sql>false</hibernate.format_sql>
+                <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+                <!-- logging -->
+                <logging.level>ERROR</logging.level>
+            </properties>
+        </profile>
+
+        <!-- test -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <!-- jdbc -->
+                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
+                <db.username>menke_prod</db.username>
+                <db.password>qSyU1upKKcwa</db.password>
+                <db.initialPoolSize>5</db.initialPoolSize>
+                <db.minPoolSize>10</db.minPoolSize>
+                <db.maxPoolSize>30</db.maxPoolSize>
+                <db.maxIdleTime>180</db.maxIdleTime>
+                <db.maxConnectionAge>10</db.maxConnectionAge>
+                <db.idleConnectionTestPeriod>60</db.idleConnectionTestPeriod>
+                <!-- hibernate -->
+                <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+                <hibernate.show_sql>false</hibernate.show_sql>
+                <hibernate.format_sql>false</hibernate.format_sql>
+                <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+                <!-- logging -->
+                <logging.level>ERROR</logging.level>
+            </properties>
+        </profile>
+
+        <!-- prod -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <!-- jdbc -->
+                <db.driver.class>com.mysql.jdbc.Driver</db.driver.class>
+                <db.url>jdbc:mysql://rm-2ze855348c7690g2c.mysql.rds.aliyuncs.com:3306/menke_prod</db.url>
+                <db.username>menke_prod</db.username>
+                <db.password>qSyU1upKKcwa</db.password>
+                <db.initialPoolSize>5</db.initialPoolSize>
+                <db.minPoolSize>10</db.minPoolSize>
+                <db.maxPoolSize>30</db.maxPoolSize>
+                <db.maxIdleTime>180</db.maxIdleTime>
+                <db.maxConnectionAge>10</db.maxConnectionAge>
+                <db.idleConnectionTestPeriod>60</db.idleConnectionTestPeriod>
+                <!-- hibernate -->
+                <hibernate.dialect>org.hibernate.dialect.MySQLDialect</hibernate.dialect>
+                <hibernate.show_sql>false</hibernate.show_sql>
+                <hibernate.format_sql>false</hibernate.format_sql>
+                <hibernate.hbm2ddl.auto>update</hibernate.hbm2ddl.auto>
+                <!-- logging -->
+                <logging.level>ERROR</logging.level>
+            </properties>
+        </profile>
+    </profiles>
 </project>
