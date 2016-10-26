@@ -1,4 +1,4 @@
-package util;
+package com.jy.util;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;

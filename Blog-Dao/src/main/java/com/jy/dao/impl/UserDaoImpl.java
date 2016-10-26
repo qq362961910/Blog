@@ -1,7 +1,7 @@
-package dao.impl;
+package com.jy.dao.impl;
 
-import dao.UserDao;
-import entity.User;
+import com.jy.dao.UserDao;
+import com.jy.entity.User;
 import org.springframework.stereotype.Repository;
 
 @Repository

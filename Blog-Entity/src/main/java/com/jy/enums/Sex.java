@@ -1,4 +1,4 @@
-package enums;
+package com.jy.enums;
 /**
  * 性别
  * */

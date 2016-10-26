@@ -1,6 +1,6 @@
-package dao.impl;
+package com.jy.dao.impl;
 
-import dao.BaseDao;
+import com.jy.dao.BaseDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

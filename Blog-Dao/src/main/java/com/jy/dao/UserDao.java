@@ -1,6 +1,6 @@
-package dao;
+package com.jy.dao;
 
-import entity.User;
+import com.jy.entity.User;
 
 /**
  * User Dao

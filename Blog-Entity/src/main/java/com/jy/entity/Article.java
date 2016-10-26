@@ -1,4 +1,4 @@
-package entity;
+package com.jy.entity;
 
 import javax.persistence.*;
 

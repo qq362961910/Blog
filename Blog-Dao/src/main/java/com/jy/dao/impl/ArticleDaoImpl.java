@@ -1,7 +1,7 @@
-package dao.impl;
+package com.jy.dao.impl;
 
-import dao.ArticleDao;
-import entity.Article;
+import com.jy.dao.ArticleDao;
+import com.jy.entity.Article;
 import org.springframework.stereotype.Repository;
 
 @Repository
