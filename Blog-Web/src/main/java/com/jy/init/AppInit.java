@@ -8,12 +8,10 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
+import java.util.Set;
 
-public class AppInit implements WebApplicationInitializer/*,ServletContainerInitializer*/ {
+public class AppInit implements WebApplicationInitializer,ServletContainerInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
@@ -42,8 +40,8 @@ public class AppInit implements WebApplicationInitializer/*,ServletContainerInit
         encodingFilter.addMappingForUrlPatterns(null, true, "/*");
     }
 
-    /*@Override
+    @Override
     public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
         servletContext.setInitParameter("log4jConfiguration", "/WEB-INF/custom-name-log4j.xml");
-    }*/
+    }
 }

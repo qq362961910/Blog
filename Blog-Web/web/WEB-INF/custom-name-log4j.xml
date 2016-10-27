@@ -1,4 +1,4 @@
-<Configuration status="WARN" name="ServletTest">
+<Configuration status="DEBUG" name="ServletTest">
 
     <Appenders>
         <Servlet name="Servlet">

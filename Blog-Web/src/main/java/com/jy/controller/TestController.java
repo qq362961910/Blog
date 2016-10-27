@@ -1,5 +1,6 @@
 package com.jy.controller;
 
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,13 +11,13 @@ import java.util.HashMap;
 @RestController
 public class TestController {
 
-    private static final Logger logger = Logger.getLogger(TestController.class);
+    private final Logger logger = LogManager.getLogger(TestController.class);
 
     @RequestMapping("/json")
     public Object testJson() {
 
         if (logger.isDebugEnabled()) {
-            logger.debug("this is a debug message");
+            logger.info("this is a debug message");
         }
 
         return new HashMap<String, Object>(){{
