@@ -24,9 +24,4 @@ public class TestController {
         }};
 
     }
-
-    public TestController () {
-        System.out.println("aaaaa");
-    }
-
 }

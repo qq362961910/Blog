@@ -6,8 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
-
 @Repository
 public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
 
@@ -26,7 +24,7 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
         }
     }
 
-    public void deleteById(Class<Entity> clazz, Serializable id) {
+    public void deleteById(Class<Entity> clazz, Long id) {
         if (id != null) {
             Entity entity = queryById(clazz, id);
             if (entity != null) {
@@ -35,8 +33,8 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
         }
     }
 
-    public Entity queryById(Class<Entity> clazz, Serializable id) {
-        return (Entity) sessionFactory.getCurrentSession().get(clazz, id);
+    public Entity queryById(Class<Entity> clazz, Long id) {
+        return  sessionFactory.getCurrentSession().get(clazz, id);
     }
 
     public Session getCurrentSession() {

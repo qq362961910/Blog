@@ -17,6 +17,11 @@
             <artifactId>blog-dao</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.jy</groupId>
+            <artifactId>blog-common</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

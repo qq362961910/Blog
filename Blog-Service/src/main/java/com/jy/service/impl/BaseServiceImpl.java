@@ -1,12 +1,13 @@
 package com.jy.service.impl;
 
 import com.jy.dao.impl.BaseDaoImpl;
-import org.springframework.stereotype.Service;
 import com.jy.service.BaseService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 
+@Transactional(rollbackFor = Exception.class)
 @Service
 public class BaseServiceImpl<Entity> implements BaseService <Entity>{
 
@@ -21,11 +22,11 @@ public class BaseServiceImpl<Entity> implements BaseService <Entity>{
         baseDaoImpl.update(entity);
     }
 
-    public void deleteById(Class<Entity> clazz, Serializable id) {
+    public void deleteById(Class<Entity> clazz, Long id) {
         baseDaoImpl.deleteById(clazz, id);
     }
 
-    public Entity queryById(Class<Entity> clazz, Serializable id) {
+    public Entity queryById(Class<Entity> clazz, Long id) {
         return baseDaoImpl.queryById(clazz, id);
     }
 }

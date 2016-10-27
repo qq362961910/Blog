@@ -2,8 +2,6 @@ package com.jy.dao;
 
 import org.hibernate.Session;
 
-import java.io.Serializable;
-
 public interface BaseDao<Entity> {
 
     /**
@@ -19,12 +17,12 @@ public interface BaseDao<Entity> {
     /**
      * delte by ID
      * */
-    void deleteById(Class<Entity> clazz, Serializable id);
+    void deleteById(Class<Entity> clazz, Long id);
 
     /**
      * query by ID
      * */
-    Entity queryById(Class<Entity> clazz, Serializable id);
+    Entity queryById(Class<Entity> clazz, Long id);
 
     /**
      * 获取当前Session

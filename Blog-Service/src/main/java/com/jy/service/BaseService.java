@@ -1,7 +1,5 @@
 package com.jy.service;
 
-import java.io.Serializable;
-
 public interface BaseService<Entity> {
 
     /**
@@ -17,10 +15,10 @@ public interface BaseService<Entity> {
     /**
      * delte by ID
      * */
-    void deleteById(Class<Entity> clazz, Serializable id);
+    void deleteById(Class<Entity> clazz, Long id);
 
     /**
      * query by ID
      * */
-    Entity queryById(Class<Entity> clazz, Serializable id);
+    Entity queryById(Class<Entity> clazz, Long id);
 }
