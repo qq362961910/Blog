@@ -11,21 +11,21 @@ import java.io.Serializable;
 public class BaseServiceImpl<Entity> implements BaseService <Entity>{
 
     @Resource
-    private BaseDaoImpl<Entity> baseDao;
+    private BaseDaoImpl<Entity> baseDaoImpl;
 
     public void save(Entity entity) {
-        baseDao.save(entity);
+        baseDaoImpl.save(entity);
     }
 
     public void update(Entity entity) {
-        baseDao.update(entity);
+        baseDaoImpl.update(entity);
     }
 
     public void deleteById(Class<Entity> clazz, Serializable id) {
-        baseDao.deleteById(clazz, id);
+        baseDaoImpl.deleteById(clazz, id);
     }
 
     public Entity queryById(Class<Entity> clazz, Serializable id) {
-        return baseDao.queryById(clazz, id);
+        return baseDaoImpl.queryById(clazz, id);
     }
 }
