@@ -9,9 +9,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.*;
-import java.util.Set;
 
-public class AppInit implements WebApplicationInitializer,ServletContainerInitializer {
+public class AppInit implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
@@ -40,8 +39,4 @@ public class AppInit implements WebApplicationInitializer,ServletContainerInitia
         encodingFilter.addMappingForUrlPatterns(null, true, "/*");
     }
 
-    @Override
-    public void onStartup(Set<Class<?>> set, ServletContext servletContext) throws ServletException {
-        servletContext.setInitParameter("log4jConfiguration", "/WEB-INF/custom-name-log4j.xml");
-    }
 }

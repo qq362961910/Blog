@@ -39,7 +39,7 @@
 
             <p><img src="<%=static_file_path%>images/5416dd08017075c692766f67049890d4.jpg" alt="仿新浪博客风格・梅――古典个人博客模板"></p>
 
-            <p><a href="/web/23/" target="_blank"><span style="color: rgb(0, 0, 0);"><strong>演示地址</strong></span></a>
+            <p><a href="/webapp/23/" target="_blank"><span style="color: rgb(0, 0, 0);"><strong>演示地址</strong></span></a>
             </p>
         </ul>
         <div class="infops">

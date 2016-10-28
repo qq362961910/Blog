@@ -82,7 +82,7 @@
             <ul>
                 <li class="rnav1"><a href="/download/" target="_blank">日记</a></li>
                 <li class="rnav2"><a href="/newsfree/" target="_blank">程序人生</a></li>
-                <li class="rnav3"><a href="/web/" target="_blank">欣赏</a></li>
+                <li class="rnav3"><a href="/webapp/" target="_blank">欣赏</a></li>
                 <li class="rnav4"><a href="/newshtml5/" target="_blank">短信祝福</a></li>
             </ul>
         </div>
