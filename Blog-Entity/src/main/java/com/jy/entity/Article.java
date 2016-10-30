@@ -25,8 +25,8 @@ public class Article extends BaseEntity{
     /**
      * 阅读量
      * */
-    @Column(name = "count")
-    private int count;
+    @Column(name = "read_count")
+    private int readCount;
 
     /**
      * 点赞数量
@@ -76,12 +76,12 @@ public class Article extends BaseEntity{
         return this;
     }
 
-    public int getCount() {
-        return count;
+    public int getReadCount() {
+        return readCount;
     }
 
-    public Article setCount(int count) {
-        this.count = count;
+    public Article setReadCount(int readCount) {
+        this.readCount = readCount;
         return this;
     }
 
@@ -135,7 +135,7 @@ public class Article extends BaseEntity{
         return "Article{" +
                 "title='" + title + '\'' +
                 ", owner=" + owner +
-                ", count=" + count +
+                ", readCount=" + readCount +
                 ", likeCount=" + likeCount +
                 ", summary='" + summary + '\'' +
                 ", content='" + content + '\'' +

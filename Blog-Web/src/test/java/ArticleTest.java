@@ -35,7 +35,7 @@ public class ArticleTest {
         article.setCreateTime(new Date());
         article.setContent("this is the article content");
         article.setTitle("article title");
-        article.setCount(0);
+        article.setReadCount(0);
         article.setDeleted(false);
         article.setKeyworks("test");
         article.setLikeCount(0);
