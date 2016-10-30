@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class UserProfile extends BaseEntity{
 
     @Column(name = "owner_id", unique = true)
-    private int userId;
+    private long userId;
 
     /**
      * 身份证号码
@@ -29,11 +29,11 @@ public class UserProfile extends BaseEntity{
     @Column(name = "position")
     private String position;
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public UserProfile setUserId(int userId) {
+    public UserProfile setUserId(long userId) {
         this.userId = userId;
         return this;
     }
@@ -63,5 +63,15 @@ public class UserProfile extends BaseEntity{
     public UserProfile setPosition(String position) {
         this.position = position;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+                "userId=" + userId +
+                ", idCardNo='" + idCardNo + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", position='" + position + '\'' +
+                '}';
     }
 }

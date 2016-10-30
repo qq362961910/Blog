@@ -6,4 +6,6 @@ import com.jy.entity.User;
  * User Interfacve
  * */
 public interface UserService extends BaseService<User>{
+
+    User findUserByUsername(String username);
 }

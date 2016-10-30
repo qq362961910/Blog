@@ -44,4 +44,13 @@ public class BaseEntity {
         this.updateTime = updateTime;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }

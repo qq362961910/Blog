@@ -1,3 +1,5 @@
+package init;
+
 import com.jy.config.AppConfig;
 import com.jy.entity.User;
 import com.jy.entity.UserProfile;
@@ -15,28 +17,28 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.Date;
 
 /**
- * 用户测试类
- */
+ * 初始化用户数据
+ * */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-//@Commit
-//@Rollback
 @ContextConfiguration(classes = AppConfig.class)
-public class UserTest {
+public class InitUser {
 
     @Autowired
     private UserService userService;
     @Autowired
     private UserProfileService userProfileService;
 
+    private static final String username = "362961910";
+
     @Test
-    public void saveUserTest() throws Exception{
+    public void initUserTable() throws Exception{
         User user = new User();
         user.setSex(Sex.M);
         user.setAvatar("htttp://www.baidu.com/aaaa.jpg");
         user.setEmail("362961910@qq.com");
         user.setPassword(PasswordUtil.createPassword("123456"));
-        user.setUsername("362961910");
+        user.setUsername(username);
         user.setPhone("18713538092");
         user.setNickname("阿门");
         user.setCreateTime(new Date());
@@ -44,14 +46,14 @@ public class UserTest {
     }
 
     @Test
-    public void saveUserProfileTest() {
+    public void initUserProfile() {
+        User user = userService.findUserByUsername(username);
         UserProfile profile = new UserProfile();
         profile.setCreateTime(new Date());
         profile.setCompanyName("Join Mind");
         profile.setIdCardNo("130838166110052656");
         profile.setPosition("java engineer");
-        profile.setUserId(3);
+        profile.setUserId(user.getId());
         userProfileService.save(profile);
     }
-
 }

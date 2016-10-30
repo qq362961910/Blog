@@ -18,6 +18,12 @@ public class User extends BaseEntity{
     private String username;
 
     /**
+     * 昵称
+     * */
+    @Column(name = "nickname")
+    private String nickname;
+
+    /**
      * email
      * */
     @Column(name = "email")
@@ -53,6 +59,15 @@ public class User extends BaseEntity{
 
     public User setUsername(String username) {
         this.username = username;
+        return this;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public User setNickname(String nickname) {
+        this.nickname = nickname;
         return this;
     }
 
@@ -99,5 +114,18 @@ public class User extends BaseEntity{
     public User setAvatar(String avatar) {
         this.avatar = avatar;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", sex=" + sex +
+                ", password='" + password + '\'' +
+                ", avatar='" + avatar + '\'' +
+                '}';
     }
 }

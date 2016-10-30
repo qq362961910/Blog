@@ -1,4 +1,5 @@
 import com.jy.config.AppConfig;
+import com.jy.dao.ArticleDao;
 import com.jy.entity.Article;
 import com.jy.entity.User;
 import com.jy.service.ArticleService;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -42,5 +44,13 @@ public class ArticleTest {
 
         articleService.save(article);
 
+    }
+
+    @Test
+    public void queryArticleByParamTest() {
+        ArticleDao.ArticleParam param = new ArticleDao.ArticleParam();
+        param.setId(1L);
+        List<Article> articleList = articleService.findArticleByArticleParam(param);
+        System.out.println(articleList);
     }
 }

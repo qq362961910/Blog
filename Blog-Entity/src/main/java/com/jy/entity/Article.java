@@ -43,7 +43,7 @@ public class Article extends BaseEntity{
     /**
      * 内容
      * */
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     /**
@@ -128,5 +128,19 @@ public class Article extends BaseEntity{
     public Article setDeleted(boolean deleted) {
         this.deleted = deleted;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", owner=" + owner +
+                ", count=" + count +
+                ", likeCount=" + likeCount +
+                ", summary='" + summary + '\'' +
+                ", content='" + content + '\'' +
+                ", keyworks='" + keyworks + '\'' +
+                ", deleted=" + deleted +
+                '}';
     }
 }
