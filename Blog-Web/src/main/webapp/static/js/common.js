@@ -11,6 +11,9 @@ POST = "POST";
 PUT = "PUT";
 DELETE = "DELETE";
 
+//对象
+var xmlHttp;
+
 //选择器
 function $(id) {
     if (typeof id == UNDEFINED || typeof id != STRING || id == null) {
@@ -29,26 +32,6 @@ function $(id) {
 
 
 //函数
-
-function executeRequest(url, param, method, callback) {
-    if (!xmlHttp) {
-        xmlHttp = createXmlHttpRequest()
-    }
-    xmlHttp.open(method, url, true);
-
-    xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlHttp.setRequestHeader("x-requested-with", "XMLHttpRequest");
-
-    xmlHttp.send(JSON.stringify(param));
-
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4)
-            if (xmlHttp.status == 200) {
-                callback(xmlHttp.responseText);
-            }
-    };
-}
-
 if (!JSON) {
     JSON = {};
 }
@@ -200,4 +183,20 @@ function createXmlHttpRequest() {
         window.alert("你的浏览器不支持创建XMLhttpRequest对象");
     }
     return xmlHttp;
+}
+
+function executeRequest(url, param, method, callback) {
+    if (!xmlHttp) {
+        xmlHttp = createXmlHttpRequest()
+    }
+    xmlHttp.open(method, url, true);
+    xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlHttp.setRequestHeader("x-requested-with", "XMLHttpRequest");
+    xmlHttp.send(JSON.stringify(param));
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState == 4)
+            if (xmlHttp.status == 200) {
+                callback(xmlHttp.responseText);
+            }
+    };
 }
