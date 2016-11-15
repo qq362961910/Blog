@@ -63,7 +63,7 @@
     <h2 class="title_tj">
         <p>文章<span>推荐</span></p>
     </h2>
-    <div class="bloglist left">
+    <div id="article_div" class="bloglist left">
         <%-- <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
          <figure><img src="<%=static_file_path%>images/001.png"></figure>
          <ul>
@@ -166,13 +166,30 @@
 </footer>
 <script src="<%=static_file_path%>js/silder.js"></script>
 <script src="<%=static_file_path%>js/common.js"></script>
+<script src="<%=static_file_path%>js/entity/article.js"></script>
 <script type="text/javascript">
     //请求文章
     var queryUrl = "/article/list";
     var param = {};
     var method = POST;
     var queryCallback = function (result) {
-        alert(result);
+        if (result.success) {
+            var articleList = result.data;
+            var div = $("#article_div");
+            for (var i=0; i<articleList.length; i++) {
+                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
+                var html = item.getHtmlContent();
+                div.innerHTML = div.innerHTML + html;
+            }
+        }
+        else {
+            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
+                alert("服务器内部异常");
+            }
+            else {
+                alert(result.msg);
+            }
+        }
     }
     executeRequest(queryUrl, param, method, queryCallback);
 </script>

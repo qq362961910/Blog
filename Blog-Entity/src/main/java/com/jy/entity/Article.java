@@ -16,6 +16,11 @@ public class Article extends BaseEntity{
     private String title;
 
     /**
+     * 封面
+     * */
+    private String coverImage;
+
+    /**
      * 发布者
      * */
     @ManyToOne
@@ -64,6 +69,15 @@ public class Article extends BaseEntity{
 
     public Article setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public Article setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
         return this;
     }
 
@@ -134,6 +148,7 @@ public class Article extends BaseEntity{
     public String toString() {
         return "Article{" +
                 "title='" + title + '\'' +
+                ", coverImage='" + coverImage + '\'' +
                 ", owner=" + owner +
                 ", readCount=" + readCount +
                 ", likeCount=" + likeCount +

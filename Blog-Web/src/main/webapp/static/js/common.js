@@ -2,14 +2,18 @@
  * Created by wxsk100 on 2016/11/15.
  */
 //常量
-UNDEFINED = 'undefined';
-STRING = 'string';
+var UNDEFINED = 'undefined';
+var STRING = 'string';
 
 //请求类型
-GET = "GET";
-POST = "POST";
-PUT = "PUT";
-DELETE = "DELETE";
+var GET = "GET";
+var POST = "POST";
+var PUT = "PUT";
+var DELETE = "DELETE";
+
+//code
+//服务器内部异常
+var SERVER_INTERNAL_EXCEPTION_CODE = "500";
 
 //对象
 var xmlHttp;
@@ -64,6 +68,18 @@ if (!typeof String.prototype.startwith) {
     }
 }
 
+String.prototype.startwith = function(prefix){
+    if(this == prefix){
+        return true;
+    }
+    if(typeof prefix != STRING){
+        return false;
+    }
+    if(this.length < prefix.length){
+        return false;
+    }
+    return this.substring(0,prefix.length) === prefix;
+}
 
 if (!typeof String.prototype.trim) {
     String.prototype.trim = function (str) {
@@ -196,7 +212,7 @@ function executeRequest(url, param, method, callback) {
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState == 4)
             if (xmlHttp.status == 200) {
-                callback(xmlHttp.responseText);
+                callback(eval("(" + xmlHttp.responseText +")"));
             }
     };
 }

@@ -54,7 +54,7 @@ public class BaseController {
             errorCode = ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue();
         }
         result.put("code", errorCode);
-        result.put("description", description);
+        result.put("msg", description);
         result.put("data", data);
         return result;
     }

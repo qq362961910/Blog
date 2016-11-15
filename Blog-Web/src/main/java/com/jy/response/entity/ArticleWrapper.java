@@ -15,6 +15,12 @@ public class ArticleWrapper extends BaseWrapper{
     private String title;
 
     /**
+     * 封面
+     * */
+    @JsonProperty("coverImage")
+    private String coverImage;
+
+    /**
      * 发布者
      * */
     @JsonProperty("owner")
@@ -125,6 +131,15 @@ public class ArticleWrapper extends BaseWrapper{
 
     public ArticleWrapper setKeyworks(String keyworks) {
         this.keyworks = keyworks;
+        return this;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public ArticleWrapper setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
         return this;
     }
 }
