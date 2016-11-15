@@ -134,7 +134,9 @@
                 <!-- QiNiu -->
                 <qiniu.access.key>kaPB57L8LyggX6ozLRE5jIwm3RZnjc7biQxHvkhT</qiniu.access.key>
                 <qiniu.secret.key>bea4oP_zw6MDv9Bn8y1uT7nwQZOL0ZFxRwV4ck7N</qiniu.secret.key>
-                <qiniu.img.404>http://7xs71h.com1.z0.glb.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.public.img.bucket>public-image</qiniu.public.img.bucket>
+                <qiniu.img.404>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.base.url>http://ogoysg5ko.bkt.clouddn.com/</qiniu.base.url>
                 <!-- logging -->
                 <logging.level>ERROR</logging.level>
             </properties>
@@ -163,7 +165,9 @@
                 <!-- QiNiu -->
                 <qiniu.access.key>kaPB57L8LyggX6ozLRE5jIwm3RZnjc7biQxHvkhT</qiniu.access.key>
                 <qiniu.secret.key>bea4oP_zw6MDv9Bn8y1uT7nwQZOL0ZFxRwV4ck7N</qiniu.secret.key>
-                <qiniu.img.404>http://7xs71h.com1.z0.glb.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.public.img.bucket>public-image</qiniu.public.img.bucket>
+                <qiniu.img.404>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.base.url>http://ogoysg5ko.bkt.clouddn.com/</qiniu.base.url>
                 <!-- logging -->
                 <logging.level>ERROR</logging.level>
             </properties>
@@ -192,7 +196,9 @@
                 <!-- QiNiu -->
                 <qiniu.access.key>kaPB57L8LyggX6ozLRE5jIwm3RZnjc7biQxHvkhT</qiniu.access.key>
                 <qiniu.secret.key>bea4oP_zw6MDv9Bn8y1uT7nwQZOL0ZFxRwV4ck7N</qiniu.secret.key>
-                <qiniu.img.404>http://7xs71h.com1.z0.glb.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.public.img.bucket>public-image</qiniu.public.img.bucket>
+                <qiniu.img.404>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.base.url>http://ogoysg5ko.bkt.clouddn.com/</qiniu.base.url>
                 <!-- logging -->
                 <logging.level>ERROR</logging.level>
             </properties>

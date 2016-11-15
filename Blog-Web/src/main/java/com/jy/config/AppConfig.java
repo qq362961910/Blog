@@ -1,5 +1,6 @@
 package com.jy.config;
 
+import com.jy.helper.QiNiuHelper;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,6 +123,21 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
         return txManager;
+    }
+
+    /**
+     * QiNiuHelper
+     * */
+    @Bean
+    public QiNiuHelper qiNiuHelper() {
+        QiNiuHelper qiNiuHelper = new QiNiuHelper();
+        qiNiuHelper.setAccessKey(environment.getProperty("qiniu.access.key"));
+        qiNiuHelper.setSecretKey(environment.getProperty("qiniu.secret.key"));
+        qiNiuHelper.setBaseUrl(environment.getProperty("qiniu.base.url"));
+        qiNiuHelper.setImg404(environment.getProperty("qiniu.img.404"));
+        qiNiuHelper.setPublicImgBucket(environment.getProperty("qiniu.public.img.bucket"));
+        qiNiuHelper.init();
+        return qiNiuHelper;
     }
 
 }
