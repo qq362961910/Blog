@@ -29,7 +29,9 @@ import java.util.Properties;
 @ComponentScan(
         basePackages = "com.jy"
 )
-@PropertySource(value = {"classpath:props/db.properties", "classpath:props/hibernate.properties"})
+@PropertySource({"classpath:props/db.properties",
+        "classpath:props/hibernate.properties",
+        "classpath:props/qiniu.properties"})
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
