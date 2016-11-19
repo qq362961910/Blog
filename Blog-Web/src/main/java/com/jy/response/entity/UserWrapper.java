@@ -12,6 +12,21 @@ public class UserWrapper extends BaseWrapper{
     @JsonProperty("username")
     private String username;
 
+    /**
+     * 头像
+     * */
+    @JsonProperty("avatar")
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public UserWrapper setAvatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
     public String getUsername() {
         return username;
     }

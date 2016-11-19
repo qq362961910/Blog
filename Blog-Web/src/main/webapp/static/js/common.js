@@ -31,6 +31,9 @@ function $(id) {
     }
 }
 
+$.getUri = function() {
+    return document.location.pathname;
+}
 
 //函数
 if (!JSON) {

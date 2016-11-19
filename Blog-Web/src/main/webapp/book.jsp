@@ -27,15 +27,7 @@
 </div>
 <header>
     <div id="logo"><a href="http://www.yangqq.com/"></a></div>
-    <nav class="topnav" id="topnav"><a href="http://www.yangqq.com/"><span>首页</span><span class="en">Protal</span></a><a
-            href="http://www.yangqq.com/about.html"><span>关于我</span><span class="en">About</span></a><a
-            href="http://www.yangqq.com/news/"><span>慢生活</span><span class="en">Life</span></a><a
-            href="http://www.yangqq.com/newstalk/"><span>碎言碎语</span><span class="en">Doing</span></a><a
-            href="http://www.yangqq.com/download/"><span>模板分享</span><span class="en">Share</span></a><a
-            href="http://www.yangqq.com/jstt/"><span>学无止境</span><span class="en">Learn</span></a><a
-            href="http://www.yangqq.com/e/tool/gbook/?bid=1" id="topnav_current"><span>留言版</span><span class="en">Guestbook</span></a>
-    </nav>
-
+    <%@include file="/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">
     <h1 class="t_nav"><span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span><a href="http://www.yangqq.com/" class="n1">网站首页</a><a

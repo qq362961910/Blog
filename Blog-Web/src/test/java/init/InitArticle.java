@@ -54,7 +54,7 @@ public class InitArticle {
         article.setLikeCount(0);
         article.setSummary("博客从最初的域名购买，到上线已经有四年的时间了，这四年的时间，有笑过，有怨过，有悔过，有执着过，也有放弃过…但最后还是坚持了下来");
         article.setOwner(user);
-        article.setRecommended(true);
+        article.setRecommended(false);
         article.setType(ArticleType.COMMON.getValue());
         articleService.save(article);
 
@@ -118,7 +118,7 @@ public class InitArticle {
         article.setLikeCount(0);
         article.setSummary("博客从最初的域名购买，到上线已经有四年的时间了，这四年的时间，有笑过，有怨过，有悔过，有执着过，也有放弃过…但最后还是坚持了下来");
         article.setOwner(user);
-        article.setRecommended(true);
+        article.setRecommended(false);
         article.setType(ArticleType.HTML_TEMPLATE.getValue());
         articleService.save(article);
 

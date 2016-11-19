@@ -2,61 +2,52 @@ package com.jy.controller;
 
 import com.jy.dao.ArticleDao;
 import com.jy.entity.Article;
+import com.jy.entity.User;
 import com.jy.response.entity.ArticleWrapper;
+import com.jy.response.entity.UserWrapper;
 import com.jy.response.service.ArticleWrapperService;
+import com.jy.response.service.UserWrapperService;
 import com.jy.service.ArticleService;
+import com.jy.service.UserService;
 import constants.ArticleType;
 import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 文章
+ * 用户
  * */
-@RequestMapping("/article")
+@RequestMapping("user/{username}")
 @RestController
-public class ArticleController extends BaseController{
+public class UserController extends BaseController{
 
     @Autowired
     private ArticleService articleService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private ArticleWrapperService articleWrapperService;
-    /**
-     *
-     * 文章列表查詢（json）
-     *
-     * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     * */
-    @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Map<String, Object> articleList(@PathVariable("username") String username, @RequestBody Map<String, Object> param){
-        Integer pageSize =  (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
+    @Autowired
+    private UserWrapperService userWrapperService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView indexPage() {
+        return new ModelAndView("index");
+    }
+
+    @RequestMapping(value = "userinfo", method = RequestMethod.GET)
+    public Map<String, Object> getUserInfo(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null) {
+            user = new User();
         }
-        else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
-        }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach( article ->articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
+        UserWrapper userWrapper = userWrapperService.buildUserWrapper(user);
+        return success(userWrapper);
     }
 
     /**
@@ -68,7 +59,7 @@ public class ArticleController extends BaseController{
      * currentPage int optional default: 1 description: 當前頁面
      * */
     @RequestMapping(value = "recommendArticle", method = RequestMethod.POST)
-    public Map<String, Object> recommendArticle(@PathVariable("username") String username,@RequestBody Map<String, Object> param){
+    public Map<String, Object> recommendArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param){
         Integer pageSize =  (Integer) param.get(pageSizeKey);
         Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
@@ -119,7 +110,7 @@ public class ArticleController extends BaseController{
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("create_time", "desc"));
+        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);

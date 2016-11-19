@@ -17,6 +17,8 @@ public interface ArticleDao extends BaseDao<Article>{
 
         private ArticleType articleType;
 
+        private String username;
+
         public Boolean getRecommended() {
             return recommended;
         }
@@ -41,6 +43,15 @@ public interface ArticleDao extends BaseDao<Article>{
 
         public ArticleParam setArticleType(ArticleType articleType) {
             this.articleType = articleType;
+            return this;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public ArticleParam setUsername(String username) {
+            this.username = username;
             return this;
         }
     }

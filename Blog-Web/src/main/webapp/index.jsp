@@ -16,15 +16,7 @@
 <body>
 <header>
     <div id="logo"><a href="/"></a></div>
-    <nav class="topnav" id="topnav"><a href="index.jsp"><span>首页</span><span class="en">Protal</span></a><a
-            href="about.jsp"><span>关于我</span><span class="en">About</span></a><a
-            href="newlist.jsp"><span>慢生活</span><span class="en">Life</span></a><a
-            href="moodlist.jsp"><span>碎言碎语</span><span class="en">Doing</span></a><a
-            href="share.jsp"><span>模板分享</span><span class="en">Share</span></a><a
-            href="knowledge.jsp"><span>学无止境</span><span class="en">Learn</span></a><a
-            href="book.jsp"><span>留言版</span><span
-            class="en">Gustbook</span></a></nav>
-    </nav>
+    <%@include file="/base-page/navigation.jsp" %>
 </header>
 <div class="banner">
     <section class="box">
@@ -35,7 +27,7 @@
 
             <p>加了锁的青春，不会再因谁而推开心门。</p>
         </ul>
-        <div class="avatar"><a href="#"><span>杨青</span></a></div>
+        <div class="avatar"><a id="avatar" href="#"><span>杨青</span></a></div>
     </section>
 </div>
 <div class="template">
@@ -167,111 +159,9 @@
 <script src="<%=static_file_path%>js/silder.js"></script>
 <script src="<%=static_file_path%>js/common.js"></script>
 <script src="<%=static_file_path%>js/entity/article.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>js/index.js"></script>
 <script type="text/javascript">
-    //推荐文章
-    var queryUrl = "/article/recommendArticle";
-    var param = {};
-    var method = POST;
-    var queryRecommendCallback = function (result) {
-        if (result.success) {
-            var articleList = result.data;
-            var div = $("#article_div");
-            for (var i=0; i<articleList.length; i++) {
-                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
-                var html = item.getHtmlContent();
-                div.innerHTML = div.innerHTML + html;
-            }
-        }
-        else {
-            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
-                alert("服务器内部异常");
-            }
-            else {
-                alert(result.msg);
-            }
-        }
-    }
-    executeRequest(queryUrl, param, method, queryRecommendCallback);
-
-</script>
-<script type="text/javascript">
-    //最新文章
-    var queryUrl = "/article/latestArticle";
-    var param = {pageSize: 11, currentPage:1};
-    var method = POST;
-    var queryLatestArticleCallback = function (result) {
-        if (result.success) {
-            var articleList = result.data;
-            var div = $("#latestArticle");
-            for (var i=0; i<articleList.length; i++) {
-                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
-                var html = "<li><a href=\"/\" title=\""+ item.title +"\" target=\"_blank\">"+ item.title +"</a></li>";
-                div.innerHTML = div.innerHTML + html;
-            }
-        }
-        else {
-            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
-                alert("服务器内部异常");
-            }
-            else {
-                alert(result.msg);
-            }
-        }
-    }
-    executeRequest(queryUrl, param, method, queryLatestArticleCallback);
-</script>
-
-<script type="text/javascript">
-    //查看排行
-    var queryUrl = "/article/readCountRankArticle";
-    var param = {pageSize: 9, currentPage:1};
-    var method = POST;
-    var queryReadCountArticleCallback = function (result) {
-        if (result.success) {
-            var articleList = result.data;
-            var div = $("#readCountRankArticle");
-            for (var i=0; i<articleList.length; i++) {
-                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
-                var html = "<li><a href=\"/\" title=\"" + item.title +"\" target=\"_blank\">" + item.title +"</a></li>";
-                div.innerHTML = div.innerHTML + html;
-            }
-        }
-        else {
-            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
-                alert("服务器内部异常");
-            }
-            else {
-                alert(result.msg);
-            }
-        }
-    }
-    executeRequest(queryUrl, param, method, queryReadCountArticleCallback);
-</script>
-<script type="text/javascript">
-    //个人模板
-    var queryUrl = "/article/htmlTemplateList";
-    var param = {pageSize: 6, currentPage:1};
-    var method = POST;
-    var queryPersonHtmlTemplateCallback = function (result) {
-        if (result.success) {
-            var articleList = result.data;
-            var div = $("#personal_html_template");
-            for (var i=0; i<articleList.length; i++) {
-                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
-                var html = "<li><a href=\"/\" target=\"_blank\"><img src=\"" + item.coverImage +"\"></a><span>"+ item.title +"</span></li>";
-                div.innerHTML = div.innerHTML + html;
-            }
-        }
-        else {
-            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
-                alert("服务器内部异常");
-            }
-            else {
-                alert(result.msg);
-            }
-        }
-    }
-    executeRequest(queryUrl, param, method, queryPersonHtmlTemplateCallback);
+    indexInit();
 </script>
 </body>
 </html>

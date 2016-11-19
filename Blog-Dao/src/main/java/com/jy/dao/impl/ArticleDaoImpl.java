@@ -26,6 +26,11 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
                 hqlBuilder.append(" and article.id = :id");
                 sqlParam.put("id", param.getId());
             }
+            //Username
+            if (param.getUsername() != null) {
+                hqlBuilder.append(" and article.owner.username = :username");
+                sqlParam.put("username", param.getUsername());
+            }
             //Title
             if (StringUtils.hasText(param.getTitle())) {
                 hqlBuilder.append(" and article.title like :title");

@@ -24,7 +24,7 @@ public class Article extends BaseEntity{
      * 发布者
      * */
     @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @JoinColumn(name = "owner", referencedColumnName = "username")
     private User owner;
 
     /**
