@@ -118,25 +118,25 @@
             <h3>
                 <p>最新<span>文章</span></p>
             </h3>
-            <ul class="rank">
-                <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
+            <ul class="rank" id="latestArticle">
+                <%--<li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
                 <li><a href="/" title="with love for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
                 <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
                 <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
                 <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
                 <li><a href="/" title="建站流程篇――教你如何快速学会做网站" target="_blank">建站流程篇――教你如何快速学会做网站</a></li>
                 <li><a href="/" title="box-shadow 阴影右下脚折边效果" target="_blank">box-shadow 阴影右下脚折边效果</a></li>
-                <li><a href="/" title="打雷时室内、户外应该需要注意什么" target="_blank">打雷时室内、户外应该需要注意什么</a></li>
+                <li><a href="/" title="打雷时室内、户外应该需要注意什么" target="_blank">打雷时室内、户外应该需要注意什么</a></li>--%>
             </ul>
             <h3 class="ph">
                 <p>点击<span>排行</span></p>
             </h3>
-            <ul class="paih">
-                <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
+            <ul class="paih" id="readCountRankArticle">
+                <%--<li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
                 <li><a href="/" title="withlove for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
                 <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
                 <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
-                <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
+                <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>--%>
             </ul>
             <h3 class="links">
                 <p>友情<span>链接</span></p>
@@ -168,11 +168,11 @@
 <script src="<%=static_file_path%>js/common.js"></script>
 <script src="<%=static_file_path%>js/entity/article.js"></script>
 <script type="text/javascript">
-    //请求文章
+    //推荐文章
     var queryUrl = "/article/recommendArticle";
     var param = {};
     var method = POST;
-    var queryCallback = function (result) {
+    var queryRecommendCallback = function (result) {
         if (result.success) {
             var articleList = result.data;
             var div = $("#article_div");
@@ -191,7 +191,60 @@
             }
         }
     }
-    executeRequest(queryUrl, param, method, queryCallback);
+    executeRequest(queryUrl, param, method, queryRecommendCallback);
+
 </script>
+<script type="text/javascript">
+    //最新文章
+    var queryUrl = "/article/latestArticle";
+    var method = GET;
+    var queryLatestArticleCallback = function (result) {
+        if (result.success) {
+            var articleList = result.data;
+            var div = $("#latestArticle");
+            for (var i=0; i<articleList.length; i++) {
+                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
+                var html = "<li><a href=\"/\" title=\""+ item.title +"\" target=\"_blank\">"+ item.title +"</a></li>";
+                div.innerHTML = div.innerHTML + html;
+            }
+        }
+        else {
+            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
+                alert("服务器内部异常");
+            }
+            else {
+                alert(result.msg);
+            }
+        }
+    }
+    executeRequest(queryUrl, null, method, queryLatestArticleCallback);
+</script>
+
+<script type="text/javascript">
+    //查看排行
+    var queryUrl = "/article/readCountRankArticle";
+    var method = GET;
+    var queryReadCountArticleCallback = function (result) {
+        if (result.success) {
+            var articleList = result.data;
+            var div = $("#readCountRankArticle");
+            for (var i=0; i<articleList.length; i++) {
+                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
+                var html = "<li><a href=\"/\" title=\"" + item.title +"\" target=\"_blank\">" + item.title +"</a></li>";
+                div.innerHTML = div.innerHTML + html;
+            }
+        }
+        else {
+            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
+                alert("服务器内部异常");
+            }
+            else {
+                alert(result.msg);
+            }
+        }
+    }
+    executeRequest(queryUrl, null, method, queryReadCountArticleCallback);
+</script>
+
 </body>
 </html>

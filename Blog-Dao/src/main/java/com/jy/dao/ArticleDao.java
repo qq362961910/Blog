@@ -1,6 +1,7 @@
 package com.jy.dao;
 
 import com.jy.entity.Article;
+import constants.ArticleType;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public interface ArticleDao extends BaseDao<Article>{
         private String title;
 
         private Boolean recommended;
+
+        private ArticleType articleType;
 
         public Boolean getRecommended() {
             return recommended;
@@ -29,6 +32,15 @@ public interface ArticleDao extends BaseDao<Article>{
 
         public ArticleParam setTitle(String title) {
             this.title = title;
+            return this;
+        }
+
+        public ArticleType getArticleType() {
+            return articleType;
+        }
+
+        public ArticleParam setArticleType(ArticleType articleType) {
+            this.articleType = articleType;
             return this;
         }
     }

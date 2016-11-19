@@ -58,6 +58,12 @@ public class Article extends BaseEntity{
     private String keyworks;
 
     /**
+     * 文章类型
+     * */
+    @Column(name = "type")
+    private Integer type;
+
+    /**
      * 推荐
      * */
     @Column(name = "recommended", columnDefinition = "BIT")
@@ -141,6 +147,15 @@ public class Article extends BaseEntity{
         return this;
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public Article setType(Integer type) {
+        this.type = type;
+        return this;
+    }
+
     public Boolean getRecommended() {
         return recommended;
     }
@@ -150,7 +165,7 @@ public class Article extends BaseEntity{
         return this;
     }
 
-    public Boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
@@ -170,6 +185,7 @@ public class Article extends BaseEntity{
                 ", summary='" + summary + '\'' +
                 ", content='" + content + '\'' +
                 ", keyworks='" + keyworks + '\'' +
+                ", type=" + type +
                 ", recommended=" + recommended +
                 ", deleted=" + deleted +
                 '}';

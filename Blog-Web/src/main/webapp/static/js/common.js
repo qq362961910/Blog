@@ -15,9 +15,6 @@ var DELETE = "DELETE";
 //服务器内部异常
 var SERVER_INTERNAL_EXCEPTION_CODE = "500";
 
-//对象
-var xmlHttp;
-
 //选择器
 function $(id) {
     if (typeof id == UNDEFINED || typeof id != STRING || id == null) {
@@ -202,9 +199,8 @@ function createXmlHttpRequest() {
 }
 
 function executeRequest(url, param, method, callback) {
-    if (!xmlHttp) {
-        xmlHttp = createXmlHttpRequest()
-    }
+
+    var xmlHttp = createXmlHttpRequest();
     xmlHttp.open(method, url, true);
     xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlHttp.setRequestHeader("x-requested-with", "XMLHttpRequest");

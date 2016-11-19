@@ -21,17 +21,25 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
         Map<String, Object> sqlParam = new HashMap<>();
         sqlParam.put("deleted", false);
         if (param != null) {
+            //ID
             if (param.getId() != null) {
                 hqlBuilder.append(" and article.id = :id");
                 sqlParam.put("id", param.getId());
             }
+            //Title
             if (StringUtils.hasText(param.getTitle())) {
                 hqlBuilder.append(" and article.title like :title");
                 sqlParam.put("title", "%" + param.getTitle() + "%");
             }
+            //recommend
             if (param.getRecommended() != null) {
                 hqlBuilder.append(" and article.recommended = :recommended");
                 sqlParam.put("recommended", param.getRecommended());
+            }
+            //type
+            if (param.getArticleType() != null) {
+                hqlBuilder.append(" and article.type = :type");
+                sqlParam.put("type", param.getArticleType().getValue());
             }
             if (param.getOrderBy() != null && param.getOrderBy().size() > 0) {
                 hqlBuilder.append(" order by ");

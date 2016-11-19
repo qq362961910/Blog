@@ -17,6 +17,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.3.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.jy</groupId>
+            <artifactId>blog-common</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>
