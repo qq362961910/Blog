@@ -58,6 +58,12 @@ public class Article extends BaseEntity{
     private String keyworks;
 
     /**
+     * 推荐
+     * */
+    @Column(name = "recommended", columnDefinition = "BIT")
+    private boolean recommended;
+
+    /**
      * 删除状态
      * */
     @Column(name = "deleted")
@@ -135,6 +141,15 @@ public class Article extends BaseEntity{
         return this;
     }
 
+    public boolean isRecommended() {
+        return recommended;
+    }
+
+    public Article setRecommended(boolean recommended) {
+        this.recommended = recommended;
+        return this;
+    }
+
     public boolean isDeleted() {
         return deleted;
     }
@@ -155,6 +170,7 @@ public class Article extends BaseEntity{
                 ", summary='" + summary + '\'' +
                 ", content='" + content + '\'' +
                 ", keyworks='" + keyworks + '\'' +
+                ", recommended=" + recommended +
                 ", deleted=" + deleted +
                 '}';
     }

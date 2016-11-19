@@ -36,8 +36,8 @@ public class ArticleController extends BaseController{
      * */
     @RequestMapping(value = "list", method = RequestMethod.POST)
     public Map<String, Object> articleList(@RequestBody Map<String, Object> param){
-        Integer pageSize =  (Integer) param.get("pageSize");
-        Integer currentPage = (Integer) param.get("currentPage");
+        Integer pageSize =  (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
             pageSize = pageSizeDefault;
         }
@@ -54,9 +54,40 @@ public class ArticleController extends BaseController{
         serviceParam.setCurrentPage(currentPage);
         List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);
         List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach( article -> {
-            articleWrappers.add(articleWrapperService.buildArticleWrapper(article));
-        });
+        articles.forEach( article ->articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        return success(articleWrappers);
+    }
+
+    /**
+     *
+     * 推荐文章（json）
+     *
+     * optional params:
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     * */
+    @RequestMapping(value = "recommendArticle", method = RequestMethod.POST)
+    public Map<String, Object> recommendArticle(@RequestBody Map<String, Object> param){
+        Integer pageSize =  (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        }
+        else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        serviceParam.setRecommended(true);
+        List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
         return success(articleWrappers);
     }
 }

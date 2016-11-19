@@ -169,7 +169,7 @@
 <script src="<%=static_file_path%>js/entity/article.js"></script>
 <script type="text/javascript">
     //请求文章
-    var queryUrl = "/article/list";
+    var queryUrl = "/article/recommendArticle";
     var param = {};
     var method = POST;
     var queryCallback = function (result) {

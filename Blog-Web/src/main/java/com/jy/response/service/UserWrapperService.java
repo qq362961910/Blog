@@ -5,7 +5,7 @@ import com.jy.response.entity.UserWrapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserWrapperService {
+public class UserWrapperService extends ResponseBaseService{
 
     private static final UserWrapper empty = new UserWrapper();
 

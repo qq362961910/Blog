@@ -12,6 +12,17 @@ public interface ArticleDao extends BaseDao<Article>{
 
         private String title;
 
+        private Boolean recommended;
+
+        public Boolean getRecommended() {
+            return recommended;
+        }
+
+        public ArticleParam setRecommended(Boolean recommended) {
+            this.recommended = recommended;
+            return this;
+        }
+
         public String getTitle() {
             return title;
         }

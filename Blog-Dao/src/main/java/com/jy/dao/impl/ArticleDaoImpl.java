@@ -29,6 +29,10 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
                 hqlBuilder.append(" and article.title like :title");
                 sqlParam.put("title", "%" + param.getTitle() + "%");
             }
+            if (param.getRecommended() != null) {
+                hqlBuilder.append(" and article.recommended = :recommended");
+                sqlParam.put("recommended", param.getRecommended());
+            }
             if (param.getOrderBy() != null && param.getOrderBy().size() > 0) {
                 hqlBuilder.append(" order by");
                 param.getOrderBy().forEach(column -> {

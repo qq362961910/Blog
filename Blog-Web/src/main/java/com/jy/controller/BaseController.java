@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class BaseController {
 
+    protected String pageSizeKey = "pageSize";
+    protected String currentPageKey = "currentPageKey";
     protected int pageSizeDefault = 10;
     protected int currentPageDefault = 1;
 
