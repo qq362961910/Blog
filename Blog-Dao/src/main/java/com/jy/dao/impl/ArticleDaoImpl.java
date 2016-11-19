@@ -34,7 +34,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
                 sqlParam.put("recommended", param.getRecommended());
             }
             if (param.getOrderBy() != null && param.getOrderBy().size() > 0) {
-                hqlBuilder.append(" order by");
+                hqlBuilder.append(" order by ");
                 param.getOrderBy().forEach(column -> {
                     hqlBuilder.append(column.getKey());
                     hqlBuilder.append(" ");
@@ -42,7 +42,6 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
                     hqlBuilder.append(",");
                 });
                 hqlBuilder.deleteCharAt(hqlBuilder.length() - 1);
-                hqlBuilder.append(StringUtils.hasText(param.getDiection()) ? param.getDiection() : ArticleParam.ASC);
             }
         }
         Query query = getCurrentSession().createQuery(hqlBuilder.toString());

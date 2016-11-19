@@ -4,6 +4,7 @@ import javafx.util.Pair;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface BaseDao<Entity> {
@@ -63,9 +64,9 @@ public interface BaseDao<Entity> {
 
         private int currentPage = 1;
 
-        private List<Pair<String, String>> orderBy;
+        private List<Pair<String, String>> orderBy = new ArrayList<>();
 
-        private String diection = ASC;
+        private String direction = ASC;
 
         public Long getId() {
             return id;
@@ -99,16 +100,22 @@ public interface BaseDao<Entity> {
         }
 
         public BaseParam setOrderBy(List<Pair<String, String>> orderBy) {
-            this.orderBy = orderBy;
+            if (orderBy != null) {
+                this.orderBy.addAll(orderBy);
+            }
+            return this;
+        }
+        public BaseParam setOrderBy(Pair<String, String> orderby) {
+            this.orderBy.add(orderby);
             return this;
         }
 
-        public String getDiection() {
-            return diection;
+        public String getDirection() {
+            return direction;
         }
 
-        public BaseParam setDiection(String diection) {
-            this.diection = diection;
+        public BaseParam setDirection(String direction) {
+            this.direction = direction;
             return this;
         }
     }

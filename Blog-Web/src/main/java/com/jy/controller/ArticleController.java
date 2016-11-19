@@ -5,6 +5,7 @@ import com.jy.entity.Article;
 import com.jy.response.entity.ArticleWrapper;
 import com.jy.response.service.ArticleWrapperService;
 import com.jy.service.ArticleService;
+import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,6 +86,24 @@ public class ArticleController extends BaseController{
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         serviceParam.setRecommended(true);
+        List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        return success(articleWrappers);
+    }
+
+    /**
+     *
+     * 最新文章（json）
+     * */
+    @RequestMapping(value = "latestArticle", method = RequestMethod.GET)
+    public Map<String, Object> latestArticle(){
+        Integer pageSize =  8;
+        Integer currentPage = 1;
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setOrderBy(new Pair<>("create_time", "desc"));
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
         List<Article> articles =  articleService.findArticleByArticleParam(serviceParam);
         List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
         articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));

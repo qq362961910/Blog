@@ -31,13 +31,13 @@ public class Article extends BaseEntity{
      * 阅读量
      * */
     @Column(name = "read_count")
-    private int readCount;
+    private Integer readCount;
 
     /**
      * 点赞数量
      * */
     @Column(name = "like_count")
-    private int likeCount;
+    private Integer likeCount;
 
     /**
      * 摘要
@@ -61,13 +61,13 @@ public class Article extends BaseEntity{
      * 推荐
      * */
     @Column(name = "recommended", columnDefinition = "BIT")
-    private boolean recommended;
+    private Boolean recommended;
 
     /**
      * 删除状态
      * */
     @Column(name = "deleted")
-    private boolean deleted;
+    private Boolean deleted;
 
     public String getTitle() {
         return title;
@@ -96,20 +96,20 @@ public class Article extends BaseEntity{
         return this;
     }
 
-    public int getReadCount() {
+    public Integer getReadCount() {
         return readCount;
     }
 
-    public Article setReadCount(int readCount) {
+    public Article setReadCount(Integer readCount) {
         this.readCount = readCount;
         return this;
     }
 
-    public int getLikeCount() {
+    public Integer getLikeCount() {
         return likeCount;
     }
 
-    public Article setLikeCount(int likeCount) {
+    public Article setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
         return this;
     }
@@ -141,20 +141,20 @@ public class Article extends BaseEntity{
         return this;
     }
 
-    public boolean isRecommended() {
+    public Boolean getRecommended() {
         return recommended;
     }
 
-    public Article setRecommended(boolean recommended) {
+    public Article setRecommended(Boolean recommended) {
         this.recommended = recommended;
         return this;
     }
 
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return deleted;
     }
 
-    public Article setDeleted(boolean deleted) {
+    public Article setDeleted(Boolean deleted) {
         this.deleted = deleted;
         return this;
     }
