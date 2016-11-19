@@ -43,8 +43,8 @@
         <h3>
             <p><span>个人博客</span>模板 Templates</p>
         </h3>
-        <ul>
-            <li><a href="/" target="_blank"><img
+        <ul id="personal_html_template">
+            <%--<li><a href="/" target="_blank"><img
                     src="<%=static_file_path%>images/01.jpg"></a><span>仿新浪博客风格・梅――古典个人博客模板</span></li>
             <li><a href="/" target="_blank"><img
                     src="<%=static_file_path%>images/02.jpg"></a><span>黑色质感时间轴html5个人博客模板</span></li>
@@ -55,7 +55,7 @@
             <li><a href="/" target="_blank"><img
                     src="<%=static_file_path%>images/02.jpg"></a><span>黑色质感时间轴html5个人博客模板</span></li>
             <li><a href="/" target="_blank"><img
-                    src="<%=static_file_path%>images/03.jpg"></a><span>Green绿色小清新的夏天-个人博客模板</span></li>
+                    src="<%=static_file_path%>images/03.jpg"></a><span>Green绿色小清新的夏天-个人博客模板</span></li>--%>
         </ul>
     </div>
 </div>
@@ -197,7 +197,8 @@
 <script type="text/javascript">
     //最新文章
     var queryUrl = "/article/latestArticle";
-    var method = GET;
+    var param = {pageSize: 11, currentPage:1};
+    var method = POST;
     var queryLatestArticleCallback = function (result) {
         if (result.success) {
             var articleList = result.data;
@@ -217,13 +218,14 @@
             }
         }
     }
-    executeRequest(queryUrl, null, method, queryLatestArticleCallback);
+    executeRequest(queryUrl, param, method, queryLatestArticleCallback);
 </script>
 
 <script type="text/javascript">
     //查看排行
     var queryUrl = "/article/readCountRankArticle";
-    var method = GET;
+    var param = {pageSize: 9, currentPage:1};
+    var method = POST;
     var queryReadCountArticleCallback = function (result) {
         if (result.success) {
             var articleList = result.data;
@@ -243,8 +245,33 @@
             }
         }
     }
-    executeRequest(queryUrl, null, method, queryReadCountArticleCallback);
+    executeRequest(queryUrl, param, method, queryReadCountArticleCallback);
 </script>
-
+<script type="text/javascript">
+    //个人模板
+    var queryUrl = "/article/htmlTemplateList";
+    var param = {pageSize: 6, currentPage:1};
+    var method = POST;
+    var queryPersonHtmlTemplateCallback = function (result) {
+        if (result.success) {
+            var articleList = result.data;
+            var div = $("#personal_html_template");
+            for (var i=0; i<articleList.length; i++) {
+                var item = new Article(articleList[i].id, articleList[i].createTime,articleList[i].content,articleList[i].keyworks,articleList[i].likeCount,articleList[i].readCount,articleList[i].summary,articleList[i].title,articleList[i].coverImage,articleList[i].owner);
+                var html = "<li><a href=\"/\" target=\"_blank\"><img src=\"" + item.coverImage +"\"></a><span>"+ item.title +"</span></li>";
+                div.innerHTML = div.innerHTML + html;
+            }
+        }
+        else {
+            if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
+                alert("服务器内部异常");
+            }
+            else {
+                alert(result.msg);
+            }
+        }
+    }
+    executeRequest(queryUrl, param, method, queryPersonHtmlTemplateCallback);
+</script>
 </body>
 </html>

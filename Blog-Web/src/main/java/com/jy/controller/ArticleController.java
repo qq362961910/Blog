@@ -97,11 +97,26 @@ public class ArticleController extends BaseController{
 
     /**
      * 最新文章
+     *
+     * optional params:
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
      * */
-    @RequestMapping(value = "latestArticle", method = RequestMethod.GET)
-    public Map<String, Object> latestArticle(){
-        Integer pageSize =  8;
-        Integer currentPage = 1;
+    @RequestMapping(value = "latestArticle", method = RequestMethod.POST)
+    public Map<String, Object> latestArticle(@RequestBody Map<String, Object> param){
+        Integer pageSize =  (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        }
+        else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setOrderBy(new Pair<>("create_time", "desc"));
@@ -115,11 +130,26 @@ public class ArticleController extends BaseController{
 
     /**
      * 查看排行文章
+     *
+     * optional params:
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
      * */
-    @RequestMapping(value = "readCountRankArticle", method = RequestMethod.GET)
-    public Map<String, Object> readCountRankArticle(){
-        Integer pageSize =  5;
-        Integer currentPage = 1;
+    @RequestMapping(value = "readCountRankArticle", method = RequestMethod.POST)
+    public Map<String, Object> readCountRankArticle(@RequestBody Map<String, Object> param){
+        Integer pageSize =  (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        }
+        else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setOrderBy(new Pair<>("readCount", "desc"));
