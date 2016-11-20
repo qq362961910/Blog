@@ -24,52 +24,61 @@
     </h1>
 
     <div class="newblog left">
-        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+        <div id="articleDiv">
+            <%--<h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">程序人生</a>]</span></p>
-        <figure><img src="<%=static_file_path%>images/001.png"></figure>
-        <ul class="nlist">
-            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-        </ul>
-        <div class="line"></div>
-        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+            <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                    href="/news/life/">程序人生</a>]</span></p>
+            <figure><img src="<%=static_file_path%>images/001.png"></figure>
+            <ul class="nlist">
+                <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+                <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+            </ul>
+            <div class="line"></div>
+            <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">程序人生</a>]</span></p>
-        <figure><img src="<%=static_file_path%>images/001.png"></figure>
-        <ul class="nlist">
-            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-        </ul>
-        <div class="line"></div>
-        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+            <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                    href="/news/life/">程序人生</a>]</span></p>
+            <figure><img src="<%=static_file_path%>images/001.png"></figure>
+            <ul class="nlist">
+                <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+                <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+            </ul>
+            <div class="line"></div>
+            <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">程序人生</a>]</span></p>
-        <figure><img src="<%=static_file_path%>images/001.png"></figure>
-        <ul class="nlist">
-            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-        </ul>
-        <div class="line"></div>
-        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+            <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                    href="/news/life/">程序人生</a>]</span></p>
+            <figure><img src="<%=static_file_path%>images/001.png"></figure>
+            <ul class="nlist">
+                <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+                <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+            </ul>
+            <div class="line"></div>
+            <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">程序人生</a>]</span></p>
-        <figure><img src="<%=static_file_path%>images/001.png"></figure>
-        <ul class="nlist">
-            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-        </ul>
-        <div class="line"></div>
+            <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                    href="/news/life/">程序人生</a>]</span></p>
+            <figure><img src="<%=static_file_path%>images/001.png"></figure>
+            <ul class="nlist">
+                <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+                <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+            </ul>
+            <div class="line"></div>--%>
+        </div>
         <div class="blank"></div>
         <div class="ad">
             <img src="<%=static_file_path%>images/ad.png">
         </div>
-        <div class="page"><a title="Total record"><b>41</b></a><b>1</b><a href="/news/s/index_2.html">2</a><a
-                href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
+        <div class="page" id="pageBar">
+            <%--<a title="Total record">
+                <b id="total">41</b>
+            </a>
+                <b>1</b>
+                <a href="/news/s/index_2.html">2</a>
+                <a href="/news/s/index_2.html">&gt;</a>
+                <a href="/news/s/index_2.html">&gt;&gt;</a>--%>
+        </div>
     </div>
     <aside class="right">
         <div class="rnav">
@@ -127,6 +136,11 @@
     <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
     </p>
 </footer>
-<script src="<%=static_file_path%>js/silder.js"></script>
+<script  src="<%=static_file_path%>js/silder.js"></script>
+<script src="<%=static_file_path%>js/common.js"></script>
+<script src="<%=static_file_path%>js/articles.js"></script>
+<script type="text/javascript">
+    init();
+</script>
 </body>
 </html>

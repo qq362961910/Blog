@@ -33,6 +33,7 @@ public class QiNiuHelper {
     private String secretKey;
     private String baseUrl;
     private String img404;
+    private String articleDefaultImg;
     private String publicImgBucket;
 
     public String getAccessKey() {
@@ -68,6 +69,15 @@ public class QiNiuHelper {
 
     public QiNiuHelper setImg404(String img404) {
         this.img404 = img404;
+        return this;
+    }
+
+    public String getArticleDefaultImg() {
+        return articleDefaultImg;
+    }
+
+    public QiNiuHelper setArticleDefaultImg(String articleDefaultImg) {
+        this.articleDefaultImg = articleDefaultImg;
         return this;
     }
 

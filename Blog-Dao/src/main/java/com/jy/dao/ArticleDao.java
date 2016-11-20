@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ArticleDao extends BaseDao<Article> {
 
+    int countArticleByArticleParam(ArticleParam param);
+
     List<Article> selectArticleByArticleParam(ArticleParam param);
 
     class ArticleParam extends BaseParam {
@@ -54,5 +56,6 @@ public interface ArticleDao extends BaseDao<Article> {
             this.username = username;
             return this;
         }
+
     }
 }

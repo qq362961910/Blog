@@ -71,7 +71,7 @@ function indexInit() {
 
     //查看排行
     var queryUrl = "/user/" + username + "/readCountRankArticle";
-    var param = {pageSize: 9, currentPage: 1};
+    var param = {pageSize: 5, currentPage: 1};
     var method = POST;
     var queryReadCountArticleCallback = function (result) {
         if (result.success) {

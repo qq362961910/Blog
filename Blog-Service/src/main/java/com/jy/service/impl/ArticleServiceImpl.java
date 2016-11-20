@@ -17,6 +17,11 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
     private ArticleDao articleDao;
 
     @Override
+    public int countArticleByArticleParam(ArticleDao.ArticleParam param) {
+        return articleDao.countArticleByArticleParam(param);
+    }
+
+    @Override
     public List<Article> findArticleByArticleParam(ArticleDao.ArticleParam param) {
         return articleDao.selectArticleByArticleParam(param);
     }

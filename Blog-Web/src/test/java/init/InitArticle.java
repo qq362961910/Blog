@@ -56,7 +56,10 @@ public class InitArticle {
         article.setOwner(user);
         article.setRecommended(false);
         article.setType(ArticleType.COMMON.getValue());
-        articleService.save(article);
+
+        for (int i=0; i< 500; i++) {
+            articleService.save(article);
+        }
 
         article = new Article();
         article.setTitle("分享我的个人博客访问量如何做到IP从10到600的(图文)");
@@ -94,6 +97,10 @@ public class InitArticle {
         article.setType(ArticleType.COMMON.getValue());
         articleService.save(article);
 
+        for (int i=0; i< 60; i++) {
+            articleService.save(article);
+        }
+
 
         article = new Article();
         article.setTitle("【匆匆那些年】总结个人博客经历的这四年…");
@@ -120,6 +127,10 @@ public class InitArticle {
         article.setRecommended(false);
         article.setType(ArticleType.HTML_TEMPLATE.getValue());
         articleService.save(article);
+
+        for (int i=0; i< 60; i++) {
+            articleService.save(article);
+        }
 
         article = new Article();
         article.setTitle("分享我的个人博客访问量如何做到IP从10到600的(图文)");
@@ -156,5 +167,9 @@ public class InitArticle {
         article.setRecommended(true);
         article.setType(ArticleType.HTML_TEMPLATE.getValue());
         articleService.save(article);
+
+        for (int i=0; i< 60; i++) {
+            articleService.save(article);
+        }
     }
 }

@@ -18,6 +18,7 @@ public class Article extends BaseEntity {
     /**
      * 封面
      */
+    @Column(name = "cover_image")
     private String coverImage;
 
     /**

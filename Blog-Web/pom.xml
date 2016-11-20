@@ -136,6 +136,7 @@
                 <qiniu.secret.key>bea4oP_zw6MDv9Bn8y1uT7nwQZOL0ZFxRwV4ck7N</qiniu.secret.key>
                 <qiniu.public.img.bucket>public-image</qiniu.public.img.bucket>
                 <qiniu.img.404>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.img.404>
+                <qiniu.article.coverImg>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.article.coverImg>
                 <qiniu.base.url>http://ogoysg5ko.bkt.clouddn.com/</qiniu.base.url>
                 <!-- logging -->
                 <logging.level>ERROR</logging.level>

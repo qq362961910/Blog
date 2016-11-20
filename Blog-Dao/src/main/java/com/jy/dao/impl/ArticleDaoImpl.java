@@ -13,6 +13,46 @@ import java.util.Map;
 @Repository
 public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao {
 
+    @Override
+    public int countArticleByArticleParam(ArticleParam param) {
+        StringBuilder hqlBuilder = new StringBuilder("select count(article) from Article article where article.deleted = :deleted");
+        Map<String, Object> sqlParam = new HashMap<>();
+        sqlParam.put("deleted", false);
+        if (param != null) {
+            //ID
+            if (param.getId() != null) {
+                hqlBuilder.append(" and article.id = :id");
+                sqlParam.put("id", param.getId());
+            }
+            //Username
+            if (param.getUsername() != null) {
+                hqlBuilder.append(" and article.owner.username = :username");
+                sqlParam.put("username", param.getUsername());
+            }
+            //Title
+            if (StringUtils.hasText(param.getTitle())) {
+                hqlBuilder.append(" and article.title like :title");
+                sqlParam.put("title", "%" + param.getTitle() + "%");
+            }
+            //recommend
+            if (param.getRecommended() != null) {
+                hqlBuilder.append(" and article.recommended = :recommended");
+                sqlParam.put("recommended", param.getRecommended());
+            }
+            //type
+            if (param.getArticleType() != null) {
+                hqlBuilder.append(" and article.type = :type");
+                sqlParam.put("type", param.getArticleType().getValue());
+            }
+        }
+        Query query = getCurrentSession().createQuery(hqlBuilder.toString());
+        for (Map.Entry<String, Object> entry : sqlParam.entrySet()) {
+            setHqlParam(query, entry.getKey(), entry.getValue());
+        }
+
+        return ((Long)query.uniqueResult()).intValue();
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Article> selectArticleByArticleParam(ArticleParam param) {

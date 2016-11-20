@@ -135,6 +135,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         qiNiuHelper.setSecretKey(environment.getProperty("qiniu.secret.key"));
         qiNiuHelper.setBaseUrl(environment.getProperty("qiniu.base.url"));
         qiNiuHelper.setImg404(environment.getProperty("qiniu.img.404"));
+        qiNiuHelper.setArticleDefaultImg(environment.getProperty("qiniu.article.coverImg"));
         qiNiuHelper.setPublicImgBucket(environment.getProperty("qiniu.public.img.bucket"));
         qiNiuHelper.init();
         return qiNiuHelper;

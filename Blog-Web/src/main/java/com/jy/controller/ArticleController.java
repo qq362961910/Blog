@@ -30,11 +30,14 @@ public class ArticleController extends BaseController {
      * 文章列表查詢（json）
      * <p>
      * optional params:
+     * username string optional 用户名
      * pageSize int optional default: 10 description: 分頁大小
      * currentPage int optional default: 1 description: 當前頁面
      */
     @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Map<String, Object> articleList(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
+    public Map<String, Object> articleList(@RequestBody Map<String, Object> param) {
+
+        String username = (String)param.get("username");
         Integer pageSize = (Integer) param.get(pageSizeKey);
         Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
@@ -52,6 +55,7 @@ public class ArticleController extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
+        serviceParam.setOrderBy(new Pair<String, String>("article.createTime","desc"));
         List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
         List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
         articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));

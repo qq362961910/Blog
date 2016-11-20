@@ -15,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 用户
@@ -272,6 +269,54 @@ public class UserController extends BaseController {
         List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
         articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
         return success(articleWrappers);
+    }
+
+    /**
+     * 用户文章查詢（json）
+     * <p>
+     * optional params:
+     * username string optional 用户名
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "article/list", method = RequestMethod.POST)
+    public Map<String, Object> articleList(@PathVariable("username") String username,@RequestBody Map<String, Object> param) {
+
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.COMMON);
+        serviceParam.setUsername(username);
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        serviceParam.setOrderBy(new Pair<String, String>("article.createTime","desc"));
+        int count = articleService.countArticleByArticleParam(serviceParam);
+        List<Article> articles;
+        if (count == 0) {
+            articles = Collections.emptyList();
+        }
+        else {
+            articles = articleService.findArticleByArticleParam(serviceParam);
+        }
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        Map<String,Object> result = new HashMap<>();
+        result.put("size", count);
+        result.put("articles", articleWrappers);
+        result.put(totalPageKey, (count + pageSize -1)/pageSize);
+        result.put(pageSizeKey, pageSize);
+        result.put(currentPageKey, currentPage);
+        return success(result);
     }
 
 }
