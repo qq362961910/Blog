@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@include file="/base-page/header.jsp" %>
+<%@include file="/WEB-INF/base-page/header.jsp" %>
 <!doctype html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 <body>
 <header>
     <div id="logo"><a href="/"></a></div>
-    <%@include file="/base-page/navigation.jsp" %>
+    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">
     <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">关于我</a>

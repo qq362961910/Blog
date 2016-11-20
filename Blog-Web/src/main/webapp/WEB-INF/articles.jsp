@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@include file="/base-page/header.jsp" %>
+<%@include file="/WEB-INF/base-page/header.jsp" %>
 <!doctype html>
 <html>
 <head>
@@ -8,7 +8,7 @@
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
-    <link href="<%=static_file_path%>css/case.css" rel="stylesheet">
+    <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="<%=static_file_path%>js/modernizr.js"></script>
     <![endif]-->
@@ -16,52 +16,73 @@
 <body>
 <header>
     <div id="logo"><a href="/"></a></div>
-    <%@include file="/base-page/navigation.jsp" %>
+    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>好咖啡要和朋友一起品尝，好“模板”也要和同样喜欢它的人一起分享。 </span><a href="/" class="n1">网站首页</a><a href="/"
-                                                                                                      class="n2">作品展示</a>
+    <h1 class="t_nav"><span>“慢生活”不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。</span><a href="/" class="n1">网站首页</a><a href="/"
+                                                                                                         class="n2">慢生活</a>
     </h1>
 
-    <div class="caselist left">
-        <ul>
-            <li><a href="/"><img src="<%=static_file_path%>images/01.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/02.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/03.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/04.jpg"></a></li>
+    <div class="newblog left">
+        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
-            <li><a href="/"><img src="<%=static_file_path%>images/03.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/04.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/01.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/02.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/01.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/02.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/03.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/04.jpg"></a></li>
-
-            <li><a href="/"><img src="<%=static_file_path%>images/03.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/04.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/01.jpg"></a></li>
-            <li><a href="/"><img src="<%=static_file_path%>images/02.jpg"></a></li>
+        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                href="/news/life/">程序人生</a>]</span></p>
+        <figure><img src="<%=static_file_path%>images/001.png"></figure>
+        <ul class="nlist">
+            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
         </ul>
-        <div class="blank"></div>
+        <div class="line"></div>
+        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
 
+        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                href="/news/life/">程序人生</a>]</span></p>
+        <figure><img src="<%=static_file_path%>images/001.png"></figure>
+        <ul class="nlist">
+            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+        </ul>
+        <div class="line"></div>
+        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+
+        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                href="/news/life/">程序人生</a>]</span></p>
+        <figure><img src="<%=static_file_path%>images/001.png"></figure>
+        <ul class="nlist">
+            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+        </ul>
+        <div class="line"></div>
+        <h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>
+
+        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
+                href="/news/life/">程序人生</a>]</span></p>
+        <figure><img src="<%=static_file_path%>images/001.png"></figure>
+        <ul class="nlist">
+            <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
+            <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
+        </ul>
+        <div class="line"></div>
+        <div class="blank"></div>
+        <div class="ad">
+            <img src="<%=static_file_path%>images/ad.png">
+        </div>
         <div class="page"><a title="Total record"><b>41</b></a><b>1</b><a href="/news/s/index_2.html">2</a><a
                 href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
     </div>
     <aside class="right">
         <div class="rnav">
-            <h2>栏目导航</h2>
             <ul>
-                <li><a href="/download/" target="_blank">个人博客模板</a></li>
-                <li><a href="/newsfree/" target="_blank">国外Html5模板</a></li>
-                <li><a href="/download/" target="_blank">企业网站模板</a></li>
-                <li><a href="/newsfree/" target="_blank">作品展示</a></li>
+                <li class="rnav1"><a href="/download/" target="_blank">日记</a></li>
+                <li class="rnav2"><a href="/newsfree/" target="_blank">程序人生</a></li>
+                <li class="rnav3"><a href="/webapp/" target="_blank">欣赏</a></li>
+                <li class="rnav4"><a href="/newshtml5/" target="_blank">短信祝福</a></li>
             </ul>
         </div>
         <div class="news">
             <h3>
-                <p>最新<span>模板</span></p>
+                <p>最新<span>文章</span></p>
             </h3>
             <ul class="rank">
                 <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>

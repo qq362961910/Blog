@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@include file="/base-page/header.jsp" %>
+<%@include file="/WEB-INF/base-page/header.jsp" %>
 <!doctype html>
 <html>
 <head>
@@ -16,10 +16,10 @@
 <body>
 <header>
     <div id="logo"><a href="/"></a></div>
-    <%@include file="/base-page/navigation.jsp" %>
+    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>您当前的位置：<a href="/index.jsp">首页</a>&nbsp;&gt;&nbsp;<a href="/news/s/">慢生活</a>&nbsp;&gt;&nbsp;<a
+    <h1 class="t_nav"><span>您当前的位置：<a href="/WEB-INF/index.jsp">首页</a>&nbsp;&gt;&nbsp;<a href="/news/s/">慢生活</a>&nbsp;&gt;&nbsp;<a
             href="/news/s/">日记</a></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">日记</a></h1>
 
     <div class="index_about">

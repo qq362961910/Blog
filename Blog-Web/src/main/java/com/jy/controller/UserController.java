@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,11 +36,110 @@ public class UserController extends BaseController{
     @Autowired
     private UserWrapperService userWrapperService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView indexPage() {
-        return new ModelAndView("index");
+    /**
+     * 用户首页
+     * */
+    @RequestMapping(value = {"", "index"}, method = RequestMethod.GET)
+    public ModelAndView userIndex(@PathVariable("username") String username){
+
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("index", param);
+    }
+    /**
+     * 用户关于
+     * */
+    @RequestMapping(value = {"about"}, method = RequestMethod.GET)
+    public ModelAndView userAbout(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("about", param);
     }
 
+    /**
+     * 用户文章
+     * */
+    @RequestMapping(value = {"articles"}, method = RequestMethod.GET)
+    public ModelAndView userArticle(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("articles", param);
+    }
+
+    /**
+     * 闲言碎语
+     * mood list
+     * */
+    @RequestMapping(value = {"moodlist"}, method = RequestMethod.GET)
+    public ModelAndView userMoodList(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("moodlist", param);
+    }
+
+    /**
+     * 分享
+     * share
+     * */
+    @RequestMapping(value = {"share"}, method = RequestMethod.GET)
+    public ModelAndView userShare(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("share", param);
+    }
+    /**
+     * 学无止境
+     * knowledge
+     * */
+    @RequestMapping(value = {"knowledge"}, method = RequestMethod.GET)
+    public ModelAndView userKnowledge(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("knowledge", param);
+    }
+    /**
+     * 留言
+     * book
+     * */
+    @RequestMapping(value = {"book"}, method = RequestMethod.GET)
+    public ModelAndView userBook(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null){
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("book", param);
+    }
+
+
+    /**
+     * 用户信息
+     * */
     @RequestMapping(value = "userinfo", method = RequestMethod.GET)
     public Map<String, Object> getUserInfo(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);

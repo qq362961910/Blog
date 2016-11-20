@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@include file="/base-page/header.jsp" %>
+<%@include file="/WEB-INF/base-page/header.jsp" %>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <body>
 <header>
     <div id="logo"><a href="/"></a></div>
-    <%@include file="/base-page/navigation.jsp" %>
+    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <div class="banner">
     <section class="box">

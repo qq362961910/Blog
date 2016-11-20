@@ -24,9 +24,10 @@ public class AppInit implements WebApplicationInitializer {
         servletContext.addListener(new ContextLoaderListener(ctx));
 
         /* Dispatcher Servlet */
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
+        dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
         ServletRegistration.Dynamic servlet = servletContext.addServlet(
-                "dispatcherServlet", new DispatcherServlet(ctx));
-
+                "dispatcherServlet", dispatcherServlet);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 

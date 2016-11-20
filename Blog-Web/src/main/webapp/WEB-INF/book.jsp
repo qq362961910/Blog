@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<%@include file="/base-page/header.jsp" %>
+<%@include file="/WEB-INF/base-page/header.jsp" %>
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://www.yangqq.com/e/tool/gbook/?bid=1 -->
 <html>
@@ -27,7 +27,7 @@
 </div>
 <header>
     <div id="logo"><a href="http://www.yangqq.com/"></a></div>
-    <%@include file="/base-page/navigation.jsp" %>
+    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">
     <h1 class="t_nav"><span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span><a href="http://www.yangqq.com/" class="n1">网站首页</a><a
