@@ -2,15 +2,12 @@ package com.jy.controller;
 
 
 import com.jy.exception.ExceptionCode;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
+
 public class BaseController {
 
     protected String pageSizeKey = "pageSize";
@@ -66,22 +63,9 @@ public class BaseController {
         return result;
     }
 
-    /**
-     * 404
-     * 只能拦截在controller内抛出的一场
-     * */
-    @ExceptionHandler(NoHandlerFoundException.class)
-    public ModelAndView noHandlerFound(NoHandlerFoundException e) {
-        return new ModelAndView("404");
-    }
-
-    /**
-     * 500
-     * 只能拦截在controller内抛出的一场
-     * */
     @ExceptionHandler(Exception.class)
-    public ModelAndView exception(Exception e) {
-        return new ModelAndView("500");
+    public Map<String, Object> exception(Exception e) {
+        return fail();
     }
 
 }
