@@ -18,7 +18,7 @@ import java.util.Date;
 
 /**
  * 初始化用户数据
- * */
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = AppConfig.class)
@@ -32,7 +32,7 @@ public class InitUser {
     private static final String username = "362961910";
 
     @Test
-    public void initUserTable() throws Exception{
+    public void initUserTable() throws Exception {
         User user = new User();
         user.setSex(Sex.M);
         user.setAvatar("htttp://www.baidu.com/aaaa.jpg");

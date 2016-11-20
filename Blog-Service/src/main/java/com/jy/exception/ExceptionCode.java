@@ -4,11 +4,11 @@ public enum ExceptionCode {
 
     /**
      * 服务器内部异常
-     * */
+     */
     SERVER_INTERNAL_EXCEPTION("500");
 
     public static ExceptionCode getExceptionCode(String value) {
-        for (ExceptionCode code: values()) {
+        for (ExceptionCode code : values()) {
             if (code.value.equals(value)) {
                 return code;
             }

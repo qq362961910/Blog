@@ -9,47 +9,47 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "blog_user")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     /**
      * 用户名
-     * */
+     */
     @Column(name = "username")
     private String username;
 
     /**
      * 昵称
-     * */
+     */
     @Column(name = "nickname")
     private String nickname;
 
     /**
      * email
-     * */
+     */
     @Column(name = "email")
     private String email;
 
     /**
      * phone
-     * */
+     */
     @Column(name = "phone")
     private String phone;
 
     /**
      * 性别
-     * */
+     */
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
     /**
      * 密码
-     * */
+     */
     @Column(name = "passwd")
     private String password;
 
     /**
      * 头像
-     * */
+     */
     @Column(name = "avatar")
     private String avatar;
 

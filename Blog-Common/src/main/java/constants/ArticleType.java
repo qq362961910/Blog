@@ -6,7 +6,7 @@ public enum ArticleType {
     HTML_TEMPLATE("HTML模板", 2);
 
     public static ArticleType getArticleType(int value) {
-        for (ArticleType type: values()) {
+        for (ArticleType type : values()) {
             if (type.value == value) {
                 return type;
             }

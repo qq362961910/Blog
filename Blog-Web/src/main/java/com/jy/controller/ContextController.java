@@ -11,7 +11,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class ContextController {
     /**
      * 404
-     * */
+     */
     @ExceptionHandler(NoHandlerFoundException.class)
     public ModelAndView noHandlerFound(NoHandlerFoundException e) {
         return new ModelAndView("404");
@@ -20,12 +20,11 @@ public class ContextController {
     @RequestMapping(value = {"/404"}, method = RequestMethod.GET)
     public String NotFoudPage() {
         return "404";
-
     }
 
     /**
      * 500
-     * */
+     */
     @ExceptionHandler(Exception.class)
     public ModelAndView exception(Exception e) {
         return new ModelAndView("500");

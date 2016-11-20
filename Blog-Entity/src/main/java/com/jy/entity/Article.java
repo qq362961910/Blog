@@ -4,74 +4,74 @@ import javax.persistence.*;
 
 /**
  * 文章
- * */
+ */
 @Entity
 @Table(name = "blog_article")
-public class Article extends BaseEntity{
+public class Article extends BaseEntity {
 
     /**
      * 标题
-     * */
+     */
     @Column(name = "title")
     private String title;
 
     /**
      * 封面
-     * */
+     */
     private String coverImage;
 
     /**
      * 发布者
-     * */
+     */
     @ManyToOne
     @JoinColumn(name = "owner", referencedColumnName = "username")
     private User owner;
 
     /**
      * 阅读量
-     * */
+     */
     @Column(name = "read_count")
     private Integer readCount;
 
     /**
      * 点赞数量
-     * */
+     */
     @Column(name = "like_count")
     private Integer likeCount;
 
     /**
      * 摘要
-     * */
+     */
     @Column(name = "summary")
     private String summary;
 
     /**
      * 内容
-     * */
+     */
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     /**
      * 关键字
-     * */
+     */
     @Column(name = "keyworks")
     private String keyworks;
 
     /**
      * 文章类型
-     * */
+     */
     @Column(name = "type")
     private Integer type;
 
     /**
      * 推荐
-     * */
+     */
     @Column(name = "recommended", columnDefinition = "BIT")
     private Boolean recommended;
 
     /**
      * 删除状态
-     * */
+     */
     @Column(name = "deleted")
     private Boolean deleted;
 

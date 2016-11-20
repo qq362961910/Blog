@@ -11,53 +11,53 @@ public interface BaseDao<Entity> {
 
     /**
      * save
-     * */
+     */
     void save(Entity entity);
 
     /**
      * update
-     * */
+     */
     void update(Entity entity);
 
     /**
      * delte by ID
-     * */
+     */
     void deleteById(Class<Entity> clazz, Long id);
 
     /**
      * query by ID
-     * */
+     */
     Entity queryById(Class<Entity> clazz, Long id);
 
     /**
      * 获取当前Session
-     * */
+     */
     Session getCurrentSession();
 
     /**
      * 设置HQL参数
-     * */
+     */
     Query setHqlParam(Query query, String key, Object value);
 
     /**
      * flush session
-     * */
+     */
     void flushCurrentSession();
 
     class BaseParam {
 
         /**
          * 正排序
-         * */
+         */
         public static final String ASC = "ASC";
         /**
          * 到排序
-         * */
+         */
         public static final String DESC = "DESC";
 
         /**
          * id
-         * */
+         */
         private Long id;
 
         private int pageSize = 10;
@@ -105,6 +105,7 @@ public interface BaseDao<Entity> {
             }
             return this;
         }
+
         public BaseParam setOrderBy(Pair<String, String> orderby) {
             this.orderBy.add(orderby);
             return this;

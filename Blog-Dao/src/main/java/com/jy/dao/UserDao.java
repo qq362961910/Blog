@@ -5,7 +5,7 @@ import com.jy.entity.User;
 /**
  * User Dao
  */
-public interface UserDao extends BaseDao<User>{
+public interface UserDao extends BaseDao<User> {
 
     User selectUserByUsername(String username);
 }

@@ -80,19 +80,20 @@ public class QiNiuHelper {
         return this;
     }
 
-    public enum FileType{
+    public enum FileType {
 
         PUBLIC_IMAGE("public-image"),
         PRIVATE_IMAGE("private-image");
 
         public static FileType getFileType(String value) {
-            for (FileType type: values()) {
+            for (FileType type : values()) {
                 if (type.value.equals(value)) {
                     return type;
                 }
             }
             return null;
         }
+
         private String value;
 
         public String getValue() {

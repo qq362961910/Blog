@@ -127,7 +127,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     /**
      * QiNiuHelper
-     * */
+     */
     @Bean
     public QiNiuHelper qiNiuHelper() {
         QiNiuHelper qiNiuHelper = new QiNiuHelper();

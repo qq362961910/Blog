@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserWrapper extends BaseWrapper{
+public class UserWrapper extends BaseWrapper {
 
     /**
      * 用戶名
-     * */
+     */
     @JsonProperty("username")
     private String username;
 
     /**
      * 头像
-     * */
+     */
     @JsonProperty("avatar")
     private String avatar;
 

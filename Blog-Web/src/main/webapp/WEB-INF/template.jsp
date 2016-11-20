@@ -31,7 +31,8 @@
         <ul class="infos">
             <p>界面设计非原创，出自新浪博客风格・梅作者水云心。在原来的设计上增加了梅花飘落的flash动画。原设计的边界阴影部分用图片实现，本例采用css3新的规则属性，box-shadow。</p>
 
-            <p><img src="<%=static_file_path%>images/5416dd08017075c692766f67049890d4.jpg" alt="仿新浪博客风格・梅――古典个人博客模板"></p>
+            <p><img src="<%=static_file_path%>images/5416dd08017075c692766f67049890d4.jpg" alt="仿新浪博客风格・梅――古典个人博客模板">
+            </p>
 
             <p><a href="/webapp/23/" target="_blank"><span style="color: rgb(0, 0, 0);"><strong>演示地址</strong></span></a>
             </p>

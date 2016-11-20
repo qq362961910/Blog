@@ -95,7 +95,6 @@ public class InitArticle {
         articleService.save(article);
 
 
-
         article = new Article();
         article.setTitle("【匆匆那些年】总结个人博客经历的这四年…");
         article.setCreateTime(new Date());

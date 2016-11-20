@@ -23,7 +23,7 @@ public class TestController {
         logger.warn("this is a warn message");
         logger.error("this is a error message");
 
-        return new HashMap<String, Object>(){{
+        return new HashMap<String, Object>() {{
             put("success", true);
         }};
 

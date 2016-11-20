@@ -6,26 +6,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "blog_user_profile")
-public class UserProfile extends BaseEntity{
+public class UserProfile extends BaseEntity {
 
     @Column(name = "owner_id", unique = true)
     private long userId;
 
     /**
      * 身份证号码
-     * */
+     */
     @Column(name = "id_card_no", unique = true)
     private String idCardNo;
 
     /**
      * 公司名称
-     * */
+     */
     @Column(name = "company_name")
     private String companyName;
 
     /**
      * 职位
-     * */
+     */
     @Column(name = "position")
     private String position;
 

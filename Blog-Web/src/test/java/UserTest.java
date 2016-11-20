@@ -30,7 +30,7 @@ public class UserTest {
     private UserProfileService userProfileService;
 
     @Test
-    public void saveUserTest() throws Exception{
+    public void saveUserTest() throws Exception {
         User user = new User();
         user.setSex(Sex.M);
         user.setAvatar("htttp://www.baidu.com/aaaa.jpg");

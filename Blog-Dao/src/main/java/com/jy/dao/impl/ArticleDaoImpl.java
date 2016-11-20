@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
+public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -58,7 +58,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao{
             }
         }
         Query query = getCurrentSession().createQuery(hqlBuilder.toString());
-        for (Map.Entry<String,Object> entry: sqlParam.entrySet()) {
+        for (Map.Entry<String, Object> entry : sqlParam.entrySet()) {
             setHqlParam(query, entry.getKey(), entry.getValue());
         }
 

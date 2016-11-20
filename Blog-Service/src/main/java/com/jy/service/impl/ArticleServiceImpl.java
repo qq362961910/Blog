@@ -11,7 +11,7 @@ import java.util.List;
 
 @Transactional(rollbackFor = Exception.class)
 @Service
-public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService{
+public class ArticleServiceImpl extends BaseServiceImpl<Article> implements ArticleService {
 
     @Autowired
     private ArticleDao articleDao;

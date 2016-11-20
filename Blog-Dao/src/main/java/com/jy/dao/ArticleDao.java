@@ -5,11 +5,11 @@ import constants.ArticleType;
 
 import java.util.List;
 
-public interface ArticleDao extends BaseDao<Article>{
+public interface ArticleDao extends BaseDao<Article> {
 
     List<Article> selectArticleByArticleParam(ArticleParam param);
 
-    class ArticleParam extends BaseParam{
+    class ArticleParam extends BaseParam {
 
         private String title;
 

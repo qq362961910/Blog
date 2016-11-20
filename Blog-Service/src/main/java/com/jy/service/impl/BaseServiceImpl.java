@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 @Transactional(rollbackFor = Exception.class)
 @Service
-public class BaseServiceImpl<Entity> implements BaseService <Entity>{
+public class BaseServiceImpl<Entity> implements BaseService<Entity> {
 
     @Resource
     private BaseDaoImpl<Entity> baseDaoImpl;

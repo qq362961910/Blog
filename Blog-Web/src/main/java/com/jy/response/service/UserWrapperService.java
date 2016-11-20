@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Component
-public class UserWrapperService extends ResponseBaseService{
+public class UserWrapperService extends ResponseBaseService {
 
     private static final UserWrapper empty = new UserWrapper();
     @Autowired

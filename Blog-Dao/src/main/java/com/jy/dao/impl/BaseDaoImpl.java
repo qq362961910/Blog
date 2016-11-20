@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 @Repository
-public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
+public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
 
     private final Logger logger = LogManager.getLogger(BaseDaoImpl.class);
 
@@ -43,7 +43,7 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
     }
 
     public Entity queryById(Class<Entity> clazz, Long id) {
-        return  sessionFactory.getCurrentSession().get(clazz, id);
+        return sessionFactory.getCurrentSession().get(clazz, id);
     }
 
     public Session getCurrentSession() {
@@ -60,44 +60,31 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity>{
         if (query != null) {
             if (value == null) {
                 query.setParameter(key, value);
-            }
-            else if (value instanceof String) {
+            } else if (value instanceof String) {
                 query.setParameter(key, value, StringType.INSTANCE);
-            }
-            else if (value instanceof Byte) {
+            } else if (value instanceof Byte) {
                 query.setParameter(key, value, ByteType.INSTANCE);
-            }
-            else if (value instanceof Short) {
+            } else if (value instanceof Short) {
                 query.setParameter(key, value, ShortType.INSTANCE);
-            }
-            else if (value instanceof Character) {
+            } else if (value instanceof Character) {
                 query.setParameter(key, value, CharacterType.INSTANCE);
-            }
-            else if (value instanceof Integer) {
+            } else if (value instanceof Integer) {
                 query.setParameter(key, value, IntegerType.INSTANCE);
-            }
-            else if (value instanceof Float) {
+            } else if (value instanceof Float) {
                 query.setParameter(key, value, FloatType.INSTANCE);
-            }
-            else if (value instanceof Double) {
+            } else if (value instanceof Double) {
                 query.setParameter(key, value, DoubleType.INSTANCE);
-            }
-            else if (value instanceof Long) {
+            } else if (value instanceof Long) {
                 query.setParameter(key, value, LongType.INSTANCE);
-            }
-            else if (value instanceof Boolean) {
+            } else if (value instanceof Boolean) {
                 query.setParameter(key, value, BooleanType.INSTANCE);
-            }
-            else if (value instanceof java.util.Date) {
+            } else if (value instanceof java.util.Date) {
                 query.setParameter(key, value, DateType.INSTANCE);
-            }
-            else if (value instanceof Calendar) {
+            } else if (value instanceof Calendar) {
                 query.setParameter(key, value, CalendarType.INSTANCE);
-            }
-            else if (value instanceof BigDecimal) {
+            } else if (value instanceof BigDecimal) {
                 query.setParameter(key, value, BigDecimalType.INSTANCE);
-            }
-            else {
+            } else {
                 logger.warn("meet a unexpected param type: " + value.getClass() + ", value: " + value.toString());
                 query.setParameter(key, value);
             }

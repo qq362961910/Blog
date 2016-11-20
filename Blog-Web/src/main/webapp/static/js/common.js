@@ -31,7 +31,7 @@ function $(id) {
     }
 }
 
-$.getUri = function() {
+$.getUri = function () {
     return document.location.pathname;
 }
 
@@ -68,17 +68,17 @@ if (!typeof String.prototype.startwith) {
     }
 }
 
-String.prototype.startwith = function(prefix){
-    if(this == prefix){
+String.prototype.startwith = function (prefix) {
+    if (this == prefix) {
         return true;
     }
-    if(typeof prefix != STRING){
+    if (typeof prefix != STRING) {
         return false;
     }
-    if(this.length < prefix.length){
+    if (this.length < prefix.length) {
         return false;
     }
-    return this.substring(0,prefix.length) === prefix;
+    return this.substring(0, prefix.length) === prefix;
 }
 
 if (!typeof String.prototype.trim) {
@@ -211,7 +211,7 @@ function executeRequest(url, param, method, callback) {
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState == 4)
             if (xmlHttp.status == 200) {
-                callback(eval("(" + xmlHttp.responseText +")"));
+                callback(eval("(" + xmlHttp.responseText + ")"));
             }
     };
 }

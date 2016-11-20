@@ -5,7 +5,7 @@ import com.jy.entity.Article;
 
 import java.util.List;
 
-public interface ArticleService extends BaseService<Article>{
+public interface ArticleService extends BaseService<Article> {
 
     List<Article> findArticleByArticleParam(ArticleDao.ArticleParam param);
 }
