@@ -14,15 +14,52 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     this.coverImage = coverImage;
     this.owner = owner;
 
-    this.getHtmlContent = function () {
+    /**
+     * 首页文章推荐
+     * */
+    this.getIndexRecommendHtmlContent = function () {
         var content = "<h3>" + this.title + "</h3>" +
             "<figure><img src=\"" + this.coverImage + "\"></figure>" +
             "<ul>" +
             "<p>" + this.summary + "</p>" +
-            "<a title=\"/\" href=\"/\" target=\"_blank\" class=\"readmore\">阅读全文>></a>" +
+            "<a title=\"" + this.title + "\"" +
+            "href=\"/user/" + this.owner.username + "/article/" + this.id + "\" " +
+            "target=\"_blank\" class=\"readmore\">阅读全文>></a>" +
             "</ul>" +
             "<p class=\"dateview\"><span>" + this.createTime + "</span><span>作者：" + this.owner.name + "</span><span>个人博客：[<a href=\"\">程序人生</a>]</span>" +
             "</p>";
         return content;
+    }
+
+    /**
+     * 文章模块列表Item
+     * */
+    this.getArticlesItemHtml = function() {
+        var html = "<h2>" + this.title +"</h2>" +
+            "<p class=\"dateview\"><span>发布时间："+ this.createTime +"</span><span>作者：" + this.owner.username +"</span><span>分类：[<ahref=\"/news/life/\">程序人生</a>]</span></p>" +
+            "<figure><img src=\""+ this.coverImage +"\"></figure>" +
+            "<ul class=\"nlist\">" +
+            "<p>"+ this.summary +"</p>" +
+            "<a title=\"" + this.title + "\"" +
+            "href=\"/user/" + this.owner.username + "/article/" + this.id + "\" " +
+            "target=\"_blank\" class=\"readmore\">阅读全文>></a>" +
+            "</ul>" +
+            "<div class=\"line\"></div>";
+        return html;
+    }
+
+
+    /**
+     * 绑定html
+     * */
+    this.bindHtml = function(bindParam) {
+        for (var key in bindParam) {
+            var fieldName = bindParam[key].split(".");
+            var showItem = this;
+            for (var i=0; i<fieldName.length; i++){
+                showItem = showItem[fieldName[i]];
+            }
+            $("#" + key).innerHTML = showItem;
+        }
     }
 }

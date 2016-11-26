@@ -3,6 +3,11 @@ package com.jy.exception;
 public enum ExceptionCode {
 
     /**
+     * 404
+     * */
+    SOURCE_NOT_FOUND_EXCEPTION("404"),
+
+    /**
      * 服务器内部异常
      */
     SERVER_INTERNAL_EXCEPTION("500");

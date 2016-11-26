@@ -15,17 +15,18 @@ public class BaseController {
     protected String totalPageKey = "totalPageKey";
     protected int pageSizeDefault = 10;
     protected int currentPageDefault = 1;
+    protected static final String SUCCESS_CODE = "200";
 
     public Map<String, Object> success() {
-        return result(true, null, null, null);
+        return result(true, SUCCESS_CODE, null, null);
     }
 
     public Map<String, Object> success(Object data) {
-        return result(true, null, null, data);
+        return result(true, SUCCESS_CODE, null, data);
     }
 
     public Map<String, Object> success(String description) {
-        return result(true, null, description, null);
+        return result(true, SUCCESS_CODE, description, null);
     }
 
     public Map<String, Object> success(String description, Object data) {
@@ -33,7 +34,7 @@ public class BaseController {
     }
 
     public Map<String, Object> fail() {
-        return result(false, null, null, null);
+        return result(false, ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue(), null, null);
     }
 
     public Map<String, Object> fail(String errorCode, Object data) {
@@ -41,11 +42,11 @@ public class BaseController {
     }
 
     public Map<String, Object> fail(String errorCode, String description) {
-        return result(false, null, description, null);
+        return result(false, errorCode, description, null);
     }
 
     public Map<String, Object> fail(String errorCode, String description, Object data) {
-        return result(false, null, description, data);
+        return result(false, ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue(), description, data);
     }
 
     public Map<String, Object> result(boolean success, String errorCode, String description, Object data) {
@@ -56,7 +57,7 @@ public class BaseController {
             result.put("success", Boolean.FALSE);
         }
         if (errorCode == null) {
-            errorCode = ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue();
+            errorCode = SUCCESS_CODE;
         }
         result.put("code", errorCode);
         result.put("msg", description);

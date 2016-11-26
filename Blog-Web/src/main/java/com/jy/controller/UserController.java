@@ -1,21 +1,20 @@
 package com.jy.controller;
 
-import com.jy.dao.ArticleDao;
-import com.jy.entity.Article;
 import com.jy.entity.User;
-import com.jy.response.entity.ArticleWrapper;
 import com.jy.response.entity.UserWrapper;
 import com.jy.response.service.ArticleWrapperService;
 import com.jy.response.service.UserWrapperService;
 import com.jy.service.ArticleService;
 import com.jy.service.UserService;
-import constants.ArticleType;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户
@@ -66,7 +65,7 @@ public class UserController extends BaseController {
      * 用户文章
      */
     @RequestMapping(value = {"articles"}, method = RequestMethod.GET)
-    public ModelAndView userArticle(@PathVariable("username") String username) {
+    public ModelAndView userArticles(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
         if (user == null) {
             return new ModelAndView("404");
@@ -136,6 +135,21 @@ public class UserController extends BaseController {
         return new ModelAndView("book", param);
     }
 
+    /**
+     * 文章详情
+     * book
+     */
+    @RequestMapping(value = {"article/{id}"}, method = RequestMethod.GET)
+    public ModelAndView userArticle(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        if (user == null) {
+            return new ModelAndView("404");
+        }
+        Map<String, String> param = new HashMap<>();
+        param.put("username", username);
+        return new ModelAndView("articleDetail", param);
+    }
+
 
     /**
      * 用户信息
@@ -150,173 +164,5 @@ public class UserController extends BaseController {
         return success(userWrapper);
     }
 
-    /**
-     * 推荐文章（json）
-     * <p>
-     * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "recommendArticle", method = RequestMethod.POST)
-    public Map<String, Object> recommendArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
-        Integer pageSize = (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
-        } else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
-        }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        serviceParam.setRecommended(true);
-        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
-    }
-
-    /**
-     * 最新文章
-     * <p>
-     * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "latestArticle", method = RequestMethod.POST)
-    public Map<String, Object> latestArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
-        Integer pageSize = (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
-        } else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
-        }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
-    }
-
-    /**
-     * 查看排行文章
-     * <p>
-     * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "readCountRankArticle", method = RequestMethod.POST)
-    public Map<String, Object> readCountRankArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
-        Integer pageSize = (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
-        } else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
-        }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("readCount", "desc"));
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
-    }
-
-    /**
-     * 个人模板（json）
-     * <p>
-     * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "htmlTemplateList", method = RequestMethod.POST)
-    public Map<String, Object> htmlTemplateList(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
-        Integer pageSize = 6;
-        Integer currentPage = 1;
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
-        serviceParam.setUsername(username);
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
-    }
-
-    /**
-     * 用户文章查詢（json）
-     * <p>
-     * optional params:
-     * username string optional 用户名
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "article/list", method = RequestMethod.POST)
-    public Map<String, Object> articleList(@PathVariable("username") String username,@RequestBody Map<String, Object> param) {
-
-        Integer pageSize = (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
-        } else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
-        }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<String, String>("article.createTime","desc"));
-        int count = articleService.countArticleByArticleParam(serviceParam);
-        List<Article> articles;
-        if (count == 0) {
-            articles = Collections.emptyList();
-        }
-        else {
-            articles = articleService.findArticleByArticleParam(serviceParam);
-        }
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        Map<String,Object> result = new HashMap<>();
-        result.put("size", count);
-        result.put("articles", articleWrappers);
-        result.put(totalPageKey, (count + pageSize -1)/pageSize);
-        result.put(pageSizeKey, pageSize);
-        result.put(currentPageKey, currentPage);
-        return success(result);
-    }
 
 }

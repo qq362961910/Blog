@@ -2,6 +2,7 @@ package com.jy.controller;
 
 import com.jy.dao.ArticleDao;
 import com.jy.entity.Article;
+import com.jy.exception.ExceptionCode;
 import com.jy.response.entity.ArticleWrapper;
 import com.jy.response.service.ArticleWrapperService;
 import com.jy.service.ArticleService;
@@ -10,14 +11,12 @@ import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 文章
  */
-@RequestMapping("/article")
+@RequestMapping("article")
 @RestController
 public class ArticleController extends BaseController {
 
@@ -27,39 +26,18 @@ public class ArticleController extends BaseController {
     private ArticleWrapperService articleWrapperService;
 
     /**
-     * 文章列表查詢（json）
-     * <p>
-     * optional params:
-     * username string optional 用户名
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
-     */
-    @RequestMapping(value = "list", method = RequestMethod.POST)
-    public Map<String, Object> articleList(@RequestBody Map<String, Object> param) {
-
-        String username = (String)param.get("username");
-        Integer pageSize = (Integer) param.get(pageSizeKey);
-        Integer currentPage = (Integer) param.get(currentPageKey);
-        if (pageSize == null) {
-            pageSize = pageSizeDefault;
-        } else {
-            if (pageSize > 30) {
-                pageSize = pageSizeDefault;
-            }
+     * 文章详情
+     * */
+    @RequestMapping(value = "{id}",method = RequestMethod.GET)
+    public Map<String, Object> articleDetail(@PathVariable("id") Long articleId) {
+        Article article = articleService.queryById(Article.class, articleId);
+        if (article == null) {
+            return fail(ExceptionCode.SOURCE_NOT_FOUND_EXCEPTION.getValue(), null);
         }
-        if (currentPage == null) {
-            currentPage = currentPageDefault;
-        }
-        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.COMMON);
-        serviceParam.setUsername(username);
-        serviceParam.setPageSize(pageSize);
-        serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<String, String>("article.createTime","desc"));
-        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        return success(articleWrappers);
+        ArticleWrapper articleWrapper = articleWrapperService.buildArticleWrapper(article);
+        Map<String, Object> data = new HashMap<>();
+        data.put("article", articleWrapper);
+        return success(data);
     }
 
     /**
@@ -70,7 +48,8 @@ public class ArticleController extends BaseController {
      * currentPage int optional default: 1 description: 當前頁面
      */
     @RequestMapping(value = "recommendArticle", method = RequestMethod.POST)
-    public Map<String, Object> recommendArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
+    public Map<String, Object> recommendArticle(@RequestBody Map<String, Object> param) {
+        String username = (String)param.get("username");
         Integer pageSize = (Integer) param.get(pageSizeKey);
         Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
@@ -103,7 +82,8 @@ public class ArticleController extends BaseController {
      * currentPage int optional default: 1 description: 當前頁面
      */
     @RequestMapping(value = "latestArticle", method = RequestMethod.POST)
-    public Map<String, Object> latestArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
+    public Map<String, Object> latestArticle(@RequestBody Map<String, Object> param) {
+        String username = (String)param.get("username");
         Integer pageSize = (Integer) param.get(pageSizeKey);
         Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
@@ -119,7 +99,7 @@ public class ArticleController extends BaseController {
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("create_time", "desc"));
+        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
@@ -136,7 +116,8 @@ public class ArticleController extends BaseController {
      * currentPage int optional default: 1 description: 當前頁面
      */
     @RequestMapping(value = "readCountRankArticle", method = RequestMethod.POST)
-    public Map<String, Object> readCountRankArticle(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
+    public Map<String, Object> readCountRankArticle(@RequestBody Map<String, Object> param) {
+        String username = (String)param.get("username");
         Integer pageSize = (Integer) param.get(pageSizeKey);
         Integer currentPage = (Integer) param.get(currentPageKey);
         if (pageSize == null) {
@@ -169,7 +150,8 @@ public class ArticleController extends BaseController {
      * currentPage int optional default: 1 description: 當前頁面
      */
     @RequestMapping(value = "htmlTemplateList", method = RequestMethod.POST)
-    public Map<String, Object> htmlTemplateList(@PathVariable("username") String username, @RequestBody Map<String, Object> param) {
+    public Map<String, Object> htmlTemplateList(@RequestBody Map<String, Object> param) {
+        String username = (String)param.get("username");
         Integer pageSize = 6;
         Integer currentPage = 1;
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
@@ -181,6 +163,54 @@ public class ArticleController extends BaseController {
         List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
         articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
         return success(articleWrappers);
+    }
+
+    /**
+     * 用户文章查詢（json）
+     * <p>
+     * optional params:
+     * username string optional 用户名
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "list", method = RequestMethod.POST)
+    public Map<String, Object> articleList(@RequestBody Map<String, Object> param) {
+        String username = (String)param.get("username");
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.COMMON);
+        serviceParam.setUsername(username);
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        serviceParam.setOrderBy(new Pair<String, String>("article.createTime","desc"));
+        int count = articleService.countArticleByArticleParam(serviceParam);
+        List<Article> articles;
+        if (count == 0) {
+            articles = Collections.emptyList();
+        }
+        else {
+            articles = articleService.findArticleByArticleParam(serviceParam);
+        }
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        Map<String,Object> result = new HashMap<>();
+        result.put("size", count);
+        result.put("articles", articleWrappers);
+        result.put(totalPageKey, (count + pageSize -1)/pageSize);
+        result.put(pageSizeKey, pageSize);
+        result.put(currentPageKey, currentPage);
+        return success(result);
     }
 
 }

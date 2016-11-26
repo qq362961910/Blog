@@ -10,4 +10,5 @@
 </nav>
 <script type="text/javascript">
     var username = ${username};
+    username = username.toString();
 </script>

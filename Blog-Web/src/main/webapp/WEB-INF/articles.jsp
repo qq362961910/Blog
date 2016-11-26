@@ -136,8 +136,8 @@
     <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
     </p>
 </footer>
-<script  src="<%=static_file_path%>js/silder.js"></script>
 <script src="<%=static_file_path%>js/common.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
 <script src="<%=static_file_path%>js/articles.js"></script>
 <script type="text/javascript">
     init();

@@ -20,8 +20,8 @@ function indexInit() {
     executeRequest(queryUrl, null, method, queryUserAvatarCallback);
 
     //推荐文章
-    var queryUrl = "/user/" + username + "/recommendArticle";
-    var param = {};
+    var queryUrl = "/article/recommendArticle";
+    var param = {username: username};
     var method = POST;
     var queryRecommendCallback = function (result) {
         if (result.success) {
@@ -29,7 +29,7 @@ function indexInit() {
             var div = $("#article_div");
             for (var i = 0; i < articleList.length; i++) {
                 var item = new Article(articleList[i].id, articleList[i].createTime, articleList[i].content, articleList[i].keyworks, articleList[i].likeCount, articleList[i].readCount, articleList[i].summary, articleList[i].title, articleList[i].coverImage, articleList[i].owner);
-                var html = item.getHtmlContent();
+                var html = item.getIndexRecommendHtmlContent();
                 div.innerHTML = div.innerHTML + html;
             }
         }
@@ -45,8 +45,8 @@ function indexInit() {
     executeRequest(queryUrl, param, method, queryRecommendCallback);
 
     //最新文章
-    var queryUrl = "/user/" + username + "/latestArticle";
-    var param = {pageSize: 11, currentPage: 1};
+    var queryUrl = "/article/latestArticle";
+    var param = {username: username,pageSize: 11, currentPage: 1};
     var method = POST;
     var queryLatestArticleCallback = function (result) {
         if (result.success) {
@@ -70,8 +70,8 @@ function indexInit() {
     executeRequest(queryUrl, param, method, queryLatestArticleCallback);
 
     //查看排行
-    var queryUrl = "/user/" + username + "/readCountRankArticle";
-    var param = {pageSize: 5, currentPage: 1};
+    var queryUrl = "/article/readCountRankArticle";
+    var param = {username: username, pageSize: 5, currentPage: 1};
     var method = POST;
     var queryReadCountArticleCallback = function (result) {
         if (result.success) {
@@ -95,8 +95,8 @@ function indexInit() {
     executeRequest(queryUrl, param, method, queryReadCountArticleCallback);
 
     //个人模板
-    var queryUrl = "/user/" + username + "/htmlTemplateList";
-    var param = {pageSize: 6, currentPage: 1};
+    var queryUrl = "/article/htmlTemplateList";
+    var param = {username: username,pageSize: 6, currentPage: 1};
     var method = POST;
     var queryPersonHtmlTemplateCallback = function (result) {
         if (result.success) {
