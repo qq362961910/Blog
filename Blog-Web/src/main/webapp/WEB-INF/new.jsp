@@ -12,6 +12,8 @@
     <!--[if lt IE 9]>
     <script src="<%=static_file_path%>js/modernizr.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
 </head>
 <body>
 <header>
@@ -19,9 +21,7 @@
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>您当前的位置：<a href="/WEB-INF/index.jsp">首页</a>&nbsp;&gt;&nbsp;<a href="/news/s/">慢生活</a>&nbsp;&gt;&nbsp;<a
-            href="/news/s/">日记</a></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">日记</a></h1>
-
+    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="index_about">
         <h2 class="c_titile">爱情不容有错，即使错了那就重来</h2>
 

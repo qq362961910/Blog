@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="gb2312">
-    <title>杨青个人博客网站―一个站在web前段设计之路的女技术员个人博客网站</title>
+    <title>杨青</title>
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
@@ -12,6 +12,8 @@
     <!--[if lt IE 9]>
     <script src="<%=static_file_path%>js/modernizr.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
 </head>
 <body>
 <header>
@@ -19,9 +21,7 @@
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>您当前的位置：<a href="/WEB-INF/index.jsp">首页</a>&nbsp;&gt;&nbsp;<a href="/news/s/">模板分享</a>&nbsp;&gt;&nbsp;<a
-            href="/news/s/">个人博客模板</a></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">个人博客模板</a></h1>
-
+    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="index_about">
         <h2 class="c_titile">仿新浪博客风格・梅――古典个人博客模板</h2>
 

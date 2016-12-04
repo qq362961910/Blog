@@ -59,7 +59,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     }
 
     /**
-     * 文章模块列表Item
+     * 文章列表页面
      * */
     this.getArticlesItemHtml = function() {
         var html = "<h2>" + this.title +"</h2>" +
@@ -69,7 +69,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<p>"+ this.summary +"</p>" +
             "<a title='" + this.title + "'" +
             "href=" + this.getArticleDetailUrl() +
-            "target='_blank' class='readmore'>阅读全文>></a>" +
+            " target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
             "<div class='line'></div>";
         return html;

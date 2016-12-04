@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>【匆匆那些年】总结个人博客经历的这四年… - 一个站在web前端设计之路的女技术员个人博客网站</title>
+    <title>文章详情</title>
     <meta name="keywords" content="个人博客"/>
     <meta name="description" content="【匆匆那些年】总结个人博客经历的这四年…"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
@@ -23,8 +23,7 @@
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;<a href="/jstt/">学无止境</a>&nbsp;>&nbsp;<a
-            href="/jstt/bj/">心得笔记</a></span><a href="/" class="n1">网站首页</a><a href="#" class="n2">心得笔记</a></h1>
+    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="index_about">
         <h2 class="c_titile" id="title"></h2>
         <p class="box_c">

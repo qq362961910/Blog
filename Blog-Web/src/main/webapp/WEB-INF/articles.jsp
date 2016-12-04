@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="gb2312">
-    <title>杨青个人博客网站―一个站在web前段设计之路的女技术员个人博客网站</title>
+    <title>文章笔记</title>
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
@@ -21,10 +21,7 @@
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="blogs">
-    <h1 class="t_nav"><span>“慢生活”不是懒惰，放慢速度不是拖延时间，而是让我们在生活中寻找到平衡。</span><a href="/" class="n1">网站首页</a><a href="/"
-                                                                                                         class="n2">慢生活</a>
-    </h1>
-
+    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="newblog left">
         <div id="articleDiv">
             <%--<h2>程序员请放下你的技术情节，与你的同伴一起进步</h2>

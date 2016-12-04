@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=GBK">
     <script type="text/javascript" async="" src="<%=static_file_path%>js/insideText.js"></script>
 
-    <title>杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站</title>
+    <title>留言</title>
     <meta name="keywords" content="yangqq留言板">
     <meta name="description" content="yangqq留言板">
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
@@ -18,6 +18,8 @@
     <script type="text/javascript" async="" src="<%=static_file_path%>js/embed.js"
             charset="UTF-8"></script>
     <link type="text/css" rel="stylesheet" href="<%=static_file_path%>css/embed.default.css">
+    <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
 </head>
 <body>
 <div id="BAIDU_DUP_fp_wrapper"
@@ -30,9 +32,7 @@
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">
-    <h1 class="t_nav"><span>你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span><a href="http://www.yangqq.com/" class="n1">网站首页</a><a
-            href="http://www.yangqq.com/e/tool/gbook/?bid=1#" class="n2">留言版</a></h1>
-
+    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="book left">
         <!-- Duoshuo Comment BEGIN -->
         <!-- 多说评论框 start -->
