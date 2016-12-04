@@ -19,16 +19,39 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * */
     this.getIndexRecommendHtmlContent = function () {
         var content = "<h3>" + this.title + "</h3>" +
-            "<figure><img src=\"" + this.coverImage + "\"></figure>" +
+            "<figure><img src='" + this.coverImage + "'></figure>" +
             "<ul>" +
             "<p>" + this.summary + "</p>" +
-            "<a title=\"" + this.title + "\"" +
-            "href=\"/user/" + this.owner.username + "/article/" + this.id + "\" " +
-            "target=\"_blank\" class=\"readmore\">阅读全文>></a>" +
+            "<a title='" + this.title + "' " +
+            "href='/user/" + this.owner.username + "/article/" + this.id + "' " +
+            "target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
-            "<p class=\"dateview\"><span>" + this.createTime + "</span><span>作者：" + this.owner.name + "</span><span>个人博客：[<a href=\"\">程序人生</a>]</span>" +
+            "<p class='dateview'><span>" + this.createTime + "</span><span>作者：" + this.owner.name + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
             "</p>";
         return content;
+    }
+    
+    /**
+     * 首页最新文章
+     * */
+    this.getIndexLatestArticleHtmlContent = function(){
+        var html = "<li><a href='/' title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
+        return html;
+    }
+
+    /**
+     * 首页文章排行
+     * */
+    this.getIndexRankedArticleHtml = function() {
+        var html = "<li><a href='/' title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
+        return html;
+    }
+    /**
+     * 首页个人模板
+     * */
+    this.getIndexPersonalTemplateHtml = function() {
+        var html = "<li><a href='/' target='_blank'><img src='" + this.coverImage + "'></a><span>" + this.title + "</span></li>";
+        return html;
     }
 
     /**
@@ -36,15 +59,15 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * */
     this.getArticlesItemHtml = function() {
         var html = "<h2>" + this.title +"</h2>" +
-            "<p class=\"dateview\"><span>发布时间："+ this.createTime +"</span><span>作者：" + this.owner.username +"</span><span>分类：[<ahref=\"/news/life/\">程序人生</a>]</span></p>" +
-            "<figure><img src=\""+ this.coverImage +"\"></figure>" +
-            "<ul class=\"nlist\">" +
+            "<p class='dateview'><span>发布时间："+ this.createTime +"</span><span>作者：" + this.owner.username +"</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
+            "<figure><img src='"+ this.coverImage +"'></figure>" +
+            "<ul class='nlist'>" +
             "<p>"+ this.summary +"</p>" +
-            "<a title=\"" + this.title + "\"" +
-            "href=\"/user/" + this.owner.username + "/article/" + this.id + "\" " +
-            "target=\"_blank\" class=\"readmore\">阅读全文>></a>" +
+            "<a title='" + this.title + "'" +
+            "href='/user/" + this.owner.username + "/article/" + this.id + "' " +
+            "target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
-            "<div class=\"line\"></div>";
+            "<div class='line'></div>";
         return html;
     }
 

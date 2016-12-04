@@ -54,7 +54,7 @@ function indexInit() {
             var div = $("#latestArticle");
             for (var i = 0; i < articleList.length; i++) {
                 var item = new Article(articleList[i].id, articleList[i].createTime, articleList[i].content, articleList[i].keyworks, articleList[i].likeCount, articleList[i].readCount, articleList[i].summary, articleList[i].title, articleList[i].coverImage, articleList[i].owner);
-                var html = "<li><a href=\"/\" title=\"" + item.title + "\" target=\"_blank\">" + item.title + "</a></li>";
+                var html = item.getIndexLatestArticleHtmlContent();
                 div.innerHTML = div.innerHTML + html;
             }
         }
@@ -79,13 +79,16 @@ function indexInit() {
             var div = $("#readCountRankArticle");
             for (var i = 0; i < articleList.length; i++) {
                 var item = new Article(articleList[i].id, articleList[i].createTime, articleList[i].content, articleList[i].keyworks, articleList[i].likeCount, articleList[i].readCount, articleList[i].summary, articleList[i].title, articleList[i].coverImage, articleList[i].owner);
-                var html = "<li><a href=\"/\" title=\"" + item.title + "\" target=\"_blank\">" + item.title + "</a></li>";
+                var html = item.getIndexRankedArticleHtml();
                 div.innerHTML = div.innerHTML + html;
             }
         }
         else {
             if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
-                alert("服务器内部异常");
+                $.redirect500();
+            }
+            else if (result.code == RESOURCE_NOT_FOUND_EXCEPTION_CODE) {
+                $.redirect404();
             }
             else {
                 alert(result.msg);
@@ -104,7 +107,7 @@ function indexInit() {
             var div = $("#personal_html_template");
             for (var i = 0; i < articleList.length; i++) {
                 var item = new Article(articleList[i].id, articleList[i].createTime, articleList[i].content, articleList[i].keyworks, articleList[i].likeCount, articleList[i].readCount, articleList[i].summary, articleList[i].title, articleList[i].coverImage, articleList[i].owner);
-                var html = "<li><a href=\"/\" target=\"_blank\"><img src=\"" + item.coverImage + "\"></a><span>" + item.title + "</span></li>";
+                var html = item.getIndexPersonalTemplateHtml();
                 div.innerHTML = div.innerHTML + html;
             }
         }

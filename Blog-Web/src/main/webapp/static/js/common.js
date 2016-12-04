@@ -14,6 +14,8 @@ var DELETE = "DELETE";
 //code
 //服务器内部异常
 var SERVER_INTERNAL_EXCEPTION_CODE = "500";
+//404
+var RESOURCE_NOT_FOUND_EXCEPTION_CODE = "404";
 
 //选择器
 function $(id) {
@@ -218,4 +220,8 @@ function executeRequest(url, param, method, callback) {
 
 $.redirect404 = function() {
     document.location.href = "/404";
+}
+
+$.redirect500 = function() {
+    document.location.href = "/500";
 }
