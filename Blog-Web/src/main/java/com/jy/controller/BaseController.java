@@ -49,6 +49,13 @@ public class BaseController {
         return result(false, ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue(), description, data);
     }
 
+    /**
+     * 404
+     * */
+    public Map<String, Object> fail404() {
+        return result(false, ExceptionCode.SOURCE_NOT_FOUND_EXCEPTION.getValue(), null, null);
+    }
+
     public Map<String, Object> result(boolean success, String errorCode, String description, Object data) {
         Map<String, Object> result = new HashMap<>();
         if (success) {

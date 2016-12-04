@@ -215,3 +215,7 @@ function executeRequest(url, param, method, callback) {
             }
     };
 }
+
+$.redirect404 = function() {
+    document.location.href = "/404";
+}

@@ -17,8 +17,7 @@ function queryArticle(id) {
             article.bindHtml(bindParam);
         }
         else {
-            var code = result.
-                console.log("code: " + code);
+            $.redirect404();;
         }
     }
     executeRequest(queryUrl, null, method, queryArticleCallback);

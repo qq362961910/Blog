@@ -32,7 +32,7 @@ public class ArticleController extends BaseController {
     public Map<String, Object> articleDetail(@PathVariable("id") Long articleId) {
         Article article = articleService.queryById(Article.class, articleId);
         if (article == null) {
-            return fail(ExceptionCode.SOURCE_NOT_FOUND_EXCEPTION.getValue(), null);
+            return fail404();
         }
         ArticleWrapper articleWrapper = articleWrapperService.buildArticleWrapper(article);
         Map<String, Object> data = new HashMap<>();
