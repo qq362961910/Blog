@@ -218,13 +218,13 @@ function executeRequest(url, param, method, callback) {
     };
 }
 
-$.redirect404 = function() {
+$.redirect404 = function () {
     document.location.href = "/404";
 }
 
-$.redirect500 = function() {
+$.redirect500 = function () {
     document.location.href = "/500";
 }
-$.getUserIndexUrl = function(){
+$.getUserIndexUrl = function () {
     return "/user/" + username;
 }

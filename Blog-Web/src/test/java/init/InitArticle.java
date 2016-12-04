@@ -57,7 +57,7 @@ public class InitArticle {
         article.setRecommended(false);
         article.setType(ArticleType.COMMON.getValue());
 
-        for (int i=0; i< 500; i++) {
+        for (int i = 0; i < 500; i++) {
             articleService.save(article);
         }
 
@@ -97,7 +97,7 @@ public class InitArticle {
         article.setType(ArticleType.COMMON.getValue());
         articleService.save(article);
 
-        for (int i=0; i< 60; i++) {
+        for (int i = 0; i < 60; i++) {
             articleService.save(article);
         }
 
@@ -128,7 +128,7 @@ public class InitArticle {
         article.setType(ArticleType.HTML_TEMPLATE.getValue());
         articleService.save(article);
 
-        for (int i=0; i< 60; i++) {
+        for (int i = 0; i < 60; i++) {
             articleService.save(article);
         }
 
@@ -168,7 +168,7 @@ public class InitArticle {
         article.setType(ArticleType.HTML_TEMPLATE.getValue());
         articleService.save(article);
 
-        for (int i=0; i< 60; i++) {
+        for (int i = 0; i < 60; i++) {
             articleService.save(article);
         }
     }

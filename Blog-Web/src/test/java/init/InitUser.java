@@ -53,7 +53,7 @@ public class InitUser {
         profile.setCompanyName("Join Mind");
         profile.setIdCardNo("130838166110052656");
         profile.setPosition("java engineer");
-        profile.setUserId(user.getId());
+        profile.setOwnerId(user.getId());
         userProfileService.save(profile);
     }
 }

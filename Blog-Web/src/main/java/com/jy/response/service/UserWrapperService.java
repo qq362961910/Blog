@@ -20,6 +20,7 @@ public class UserWrapperService extends ResponseBaseService {
         }
         UserWrapper userWrapper = new UserWrapper();
         userWrapper.setUsername(user.getUsername());
+        userWrapper.setNickname(user.getNickname());
         userWrapper.setAvatar(StringUtils.isEmpty(user.getAvatar()) ? qiNiuHelper.getImg404() : user.getAvatar());
         return userWrapper;
     }

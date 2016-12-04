@@ -7,6 +7,7 @@ function indexInit() {
         if (result.success) {
             $("#avatar").style.background = "url(" + result.data.avatar + ")  no-repeat";
             $("#avatar").style.backgroundSize = "130px 130px";
+            $("#nickname").innerText = result.data.nickname;
         }
         else {
             if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {
@@ -46,7 +47,7 @@ function indexInit() {
 
     //个人模板
     var queryUrl = "/article/htmlTemplateList";
-    var param = {username: username,pageSize: 6, currentPage: 1};
+    var param = {username: username, pageSize: 6, currentPage: 1};
     var method = POST;
     var queryPersonHtmlTemplateCallback = function (result) {
         if (result.success) {

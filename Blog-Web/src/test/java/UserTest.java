@@ -50,8 +50,14 @@ public class UserTest {
         profile.setCompanyName("Join Mind");
         profile.setIdCardNo("130838166110052656");
         profile.setPosition("java engineer");
-        profile.setUserId(3);
+        profile.setOwnerId(3);
         userProfileService.save(profile);
+    }
+
+    public void queryUserTest() {
+        String username = "362961910";
+        User user = userService.findUserByUsername(username);
+        System.out.println(user);
     }
 
 }

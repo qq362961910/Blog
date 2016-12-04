@@ -51,7 +51,7 @@ public class BaseController {
 
     /**
      * 404
-     * */
+     */
     public Map<String, Object> fail404() {
         return result(false, ExceptionCode.SOURCE_NOT_FOUND_EXCEPTION.getValue(), null, null);
     }

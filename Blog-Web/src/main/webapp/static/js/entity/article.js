@@ -14,7 +14,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     this.coverImage = coverImage;
     this.owner = owner;
 
-    this.getArticleDetailUrl = function() {
+    this.getArticleDetailUrl = function () {
         return "/user/" + this.owner.username + "/article/" + this.id;
     }
 
@@ -34,11 +34,11 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "</p>";
         return content;
     }
-    
+
     /**
      * 首页最新文章
      * */
-    this.getIndexLatestArticleHtmlContent = function(){
+    this.getIndexLatestArticleHtmlContent = function () {
         var html = "<li><a href=" + this.getArticleDetailUrl() + " title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
         return html;
     }
@@ -46,27 +46,27 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     /**
      * 首页文章排行
      * */
-    this.getIndexRankedArticleHtml = function() {
-        var html = "<li><a href="+ this.getArticleDetailUrl() +" title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
+    this.getIndexRankedArticleHtml = function () {
+        var html = "<li><a href=" + this.getArticleDetailUrl() + " title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
         return html;
     }
     /**
      * 首页个人模板
      * */
-    this.getIndexPersonalTemplateHtml = function() {
-        var html = "<li><a href="+ this.getArticleDetailUrl() +" target='_blank'><img src='" + this.coverImage + "'></a><span>" + this.title + "</span></li>";
+    this.getIndexPersonalTemplateHtml = function () {
+        var html = "<li><a href=" + this.getArticleDetailUrl() + " target='_blank'><img src='" + this.coverImage + "'></a><span>" + this.title + "</span></li>";
         return html;
     }
 
     /**
      * 文章列表页面
      * */
-    this.getArticlesItemHtml = function() {
-        var html = "<h2>" + this.title +"</h2>" +
-            "<p class='dateview'><span>发布时间："+ this.createTime +"</span><span>作者：" + this.owner.username +"</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
-            "<figure><img src='"+ this.coverImage +"'></figure>" +
+    this.getArticlesItemHtml = function () {
+        var html = "<h2>" + this.title + "</h2>" +
+            "<p class='dateview'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
+            "<figure><img src='" + this.coverImage + "'></figure>" +
             "<ul class='nlist'>" +
-            "<p>"+ this.summary +"</p>" +
+            "<p>" + this.summary + "</p>" +
             "<a title='" + this.title + "'" +
             "href=" + this.getArticleDetailUrl() +
             " target='_blank' class='readmore'>阅读全文>></a>" +
@@ -79,11 +79,11 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     /**
      * 绑定html
      * */
-    this.bindHtml = function(bindParam) {
+    this.bindHtml = function (bindParam) {
         for (var key in bindParam) {
             var fieldName = bindParam[key].split(".");
             var showItem = this;
-            for (var i=0; i<fieldName.length; i++){
+            for (var i = 0; i < fieldName.length; i++) {
                 showItem = showItem[fieldName[i]];
             }
             $("#" + key).innerHTML = showItem;

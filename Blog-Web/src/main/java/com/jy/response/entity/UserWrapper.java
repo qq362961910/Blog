@@ -13,6 +13,12 @@ public class UserWrapper extends BaseWrapper {
     private String username;
 
     /**
+     * 昵称
+     */
+    @JsonProperty("nickname")
+    private String nickname;
+
+    /**
      * 头像
      */
     @JsonProperty("avatar")
@@ -33,6 +39,15 @@ public class UserWrapper extends BaseWrapper {
 
     public UserWrapper setUsername(String username) {
         this.username = username;
+        return this;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public UserWrapper setNickname(String nickname) {
+        this.nickname = nickname;
         return this;
     }
 }

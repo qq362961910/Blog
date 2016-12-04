@@ -29,7 +29,7 @@
 
             <p>加了锁的青春，不会再因谁而推开心门。</p>
         </ul>
-        <div class="avatar"><a id="avatar" href="#"><span>杨青</span></a></div>
+        <div class="avatar"><a id="avatar" href="javascript:void(0);"><span id="nickname"></span></a></div>
     </section>
 </div>
 <div class="template">

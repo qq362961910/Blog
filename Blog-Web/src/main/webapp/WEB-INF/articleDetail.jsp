@@ -11,7 +11,7 @@
     <link href="<%=static_file_path%>css/new.css" rel="stylesheet">
     <!-- 返回顶部调用 begin -->
     <link href="<%=static_file_path%>css/lrtk.css" rel="stylesheet"/>
-    <link href="<%=static_file_path%>css/base.css" rel="stylesheet">`
+    <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
@@ -26,6 +26,7 @@
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="index_about">
         <h2 class="c_titile" id="title"></h2>
+
         <p class="box_c">
             <span class="d_time">发布时间：
                 <span id="publish_time"></span>

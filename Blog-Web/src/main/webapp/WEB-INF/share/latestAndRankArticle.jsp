@@ -10,7 +10,7 @@
 <script type="text/javascript">
     //最新文章
     var queryUrl = "/article/latestArticle";
-    var param = {username: username,pageSize: 11, currentPage: 1};
+    var param = {username: username, pageSize: 11, currentPage: 1};
     var method = POST;
     var queryLatestArticleCallback = function (result) {
         if (result.success) {

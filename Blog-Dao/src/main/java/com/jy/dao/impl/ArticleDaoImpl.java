@@ -50,7 +50,7 @@ public class ArticleDaoImpl extends BaseDaoImpl<Article> implements ArticleDao {
             setHqlParam(query, entry.getKey(), entry.getValue());
         }
 
-        return ((Long)query.uniqueResult()).intValue();
+        return ((Long) query.uniqueResult()).intValue();
     }
 
     @SuppressWarnings("unchecked")
