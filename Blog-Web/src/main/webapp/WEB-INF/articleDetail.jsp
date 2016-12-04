@@ -14,6 +14,8 @@
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">`
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
     <!-- 返回顶部调用 end-->
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 </head>
 <body>
 <header>
@@ -114,57 +116,17 @@
         <div class="rnavs">
             <h2>栏目导航</h2>
             <ul>
-
                 <li><a href="/jstt/bj/">心得笔记</a></li>
-
                 <li><a href="http://www.ip3q.com/">IP查询</a></li>
-
                 <li><a href="/jstt/css3/">CSS3|Html5</a></li>
-
                 <li><a href="/jstt/web/">网站建设</a></li>
-
                 <li><a href="/news/jsex/">JS经典实例</a></li>
-
                 <li><a href="/jstt/t/">推荐工具</a></li>
             </ul>
         </div>
         <div class="blank"></div>
         <div class="news">
-            <h3>
-                <p>栏目<span>最新</span></p>
-            </h3>
-            <ul class="rank">
-                <li><a href="/jstt/bj/2015-02-14/744.html" title="【郑重申明】本站只提供静态模板下载！"
-                       target="_blank">【郑重申明】本站只提供静态模板下载！</a></li>
-                <li><a href="/jstt/bj/2015-01-09/740.html" title="【匆匆那些年】总结个人博客经历的这四年…" target="_blank">【匆匆那些年】总结个人博客经历的这四年…</a>
-                </li>
-                <li><a href="/jstt/bj/2014-11-06/732.html" title="分享我的个人博客访问量如何做到IP从10到600的(图文)" target="_blank">分享我的个人博客访问量如何做到IP从10到600的(图文)</a>
-                </li>
-                <li><a href="/jstt/bj/2014-10-18/731.html" title="帝国cms常用标签调用方法总结（不得不收藏哦）" target="_blank">帝国cms常用标签调用方法总结（不得不收藏哦）</a>
-                </li>
-                <li><a href="/jstt/bj/2014-06-17/692.html" title="使用ASPCMS建站网站被黑" target="_blank">使用ASPCMS建站网站被黑</a>
-                </li>
-                <li><a href="/jstt/bj/2014-05-26/682.html" title="IE6到底哪里不好？你还继续用IE6吗？" target="_blank">IE6到底哪里不好？你还继续用IE6吗？</a>
-                </li>
-                <li><a href="/jstt/bj/2014-05-14/666.html" title="css技巧以及经验总结" target="_blank">css技巧以及经验总结</a></li>
-                <li><a href="/jstt/bj/2014-05-14/665.html" title="IE常见bugs以及解决方案列表" target="_blank">IE常见bugs以及解决方案列表</a>
-                </li>
-            </ul>
-            <h3 class="ph">
-                <p>点击<span>排行</span></p>
-            </h3>
-            <ul class="paih">
-                <li><a href="/jstt/bj/2013-07-28/530.html" title="如果要学习web前端开发，需要学习什么？" target="_blank">如果要学习web前端开发，需要学习什么？</a>
-                </li>
-                <li><a href="/jstt/bj/2015-01-09/740.html" title="【匆匆那些年】总结个人博客经历的这四年…" target="_blank">【匆匆那些年】总结个人博客经历的这四年…</a>
-                </li>
-                <li><a href="/jstt/bj/2014-11-06/732.html" title="分享我的个人博客访问量如何做到IP从10到600的(图文)" target="_blank">分享我的个人博客访问量如何做到IP从10到600的(图文)</a>
-                </li>
-                <li><a href="/jstt/bj/2014-10-18/731.html" title="帝国cms常用标签调用方法总结（不得不收藏哦）" target="_blank">帝国cms常用标签调用方法总结（不得不收藏哦）</a>
-                </li>
-                <li><a href="/jstt/bj/2015-02-14/744.html" title="【郑重申明】本站只提供静态模板下载！"
-                       target="_blank">【郑重申明】本站只提供静态模板下载！</a></li>
-            </ul>
+            <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
         </div>
         <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone"
                                                                                           data-cmd="qzone"
@@ -241,8 +203,6 @@
     <p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-<script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
-<script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/articleDetail.js"></script>
 <script type="text/javascript">
     init();

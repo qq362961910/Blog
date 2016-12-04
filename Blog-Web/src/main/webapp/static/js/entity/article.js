@@ -30,7 +30,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "href=" + this.getArticleDetailUrl() +
             " target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
-            "<p class='dateview'><span>" + this.createTime + "</span><span>作者：" + this.owner.name + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
+            "<p class='dateview'><span>" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
             "</p>";
         return content;
     }
