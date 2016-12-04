@@ -14,6 +14,10 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     this.coverImage = coverImage;
     this.owner = owner;
 
+    this.getArticleDetailUrl = function() {
+        return "/user/" + this.owner.username + "/article/" + this.id;
+    }
+
     /**
      * 首页文章推荐
      * */
@@ -23,8 +27,8 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<ul>" +
             "<p>" + this.summary + "</p>" +
             "<a title='" + this.title + "' " +
-            "href='/user/" + this.owner.username + "/article/" + this.id + "' " +
-            "target='_blank' class='readmore'>阅读全文>></a>" +
+            "href=" + this.getArticleDetailUrl() +
+            " target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
             "<p class='dateview'><span>" + this.createTime + "</span><span>作者：" + this.owner.name + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
             "</p>";
@@ -35,7 +39,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * 首页最新文章
      * */
     this.getIndexLatestArticleHtmlContent = function(){
-        var html = "<li><a href='/' title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
+        var html = "<li><a href=" + this.getArticleDetailUrl() + " title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
         return html;
     }
 
@@ -43,14 +47,14 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * 首页文章排行
      * */
     this.getIndexRankedArticleHtml = function() {
-        var html = "<li><a href='/' title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
+        var html = "<li><a href="+ this.getArticleDetailUrl() +" title='" + this.title + "' target='_blank'>" + this.title + "</a></li>";
         return html;
     }
     /**
      * 首页个人模板
      * */
     this.getIndexPersonalTemplateHtml = function() {
-        var html = "<li><a href='/' target='_blank'><img src='" + this.coverImage + "'></a><span>" + this.title + "</span></li>";
+        var html = "<li><a href="+ this.getArticleDetailUrl() +" target='_blank'><img src='" + this.coverImage + "'></a><span>" + this.title + "</span></li>";
         return html;
     }
 
@@ -64,7 +68,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<ul class='nlist'>" +
             "<p>"+ this.summary +"</p>" +
             "<a title='" + this.title + "'" +
-            "href='/user/" + this.owner.username + "/article/" + this.id + "' " +
+            "href=" + this.getArticleDetailUrl() +
             "target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
             "<div class='line'></div>";
