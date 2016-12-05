@@ -36,12 +36,6 @@ public class UserProfile extends BaseEntity {
     private String position;
 
     /**
-     * 网名
-     */
-    @Column(name = "online_name")
-    private String onlineName;
-
-    /**
      * 真实姓名
      */
     @Column(name = "real_name")
@@ -122,15 +116,6 @@ public class UserProfile extends BaseEntity {
         return this;
     }
 
-    public String getOnlineName() {
-        return onlineName;
-    }
-
-    public UserProfile setOnlineName(String onlineName) {
-        this.onlineName = onlineName;
-        return this;
-    }
-
     public String getRealName() {
         return realName;
     }
@@ -193,7 +178,6 @@ public class UserProfile extends BaseEntity {
                 ", companyName='" + companyName + '\'' +
                 ", occupation='" + occupation + '\'' +
                 ", position='" + position + '\'' +
-                ", onlineName='" + onlineName + '\'' +
                 ", realName='" + realName + '\'' +
                 ", birthday=" + birthday +
                 ", nativePlace='" + nativePlace + '\'' +
