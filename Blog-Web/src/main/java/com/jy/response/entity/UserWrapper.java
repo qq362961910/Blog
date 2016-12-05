@@ -24,14 +24,11 @@ public class UserWrapper extends BaseWrapper {
     @JsonProperty("avatar")
     private String avatar;
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public UserWrapper setAvatar(String avatar) {
-        this.avatar = avatar;
-        return this;
-    }
+    /**
+     * 详细资料信息
+     * */
+    @JsonProperty("profile")
+    private UserProfileWrapper userProfileWrapper;
 
     public String getUsername() {
         return username;
@@ -48,6 +45,24 @@ public class UserWrapper extends BaseWrapper {
 
     public UserWrapper setNickname(String nickname) {
         this.nickname = nickname;
+        return this;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public UserWrapper setAvatar(String avatar) {
+        this.avatar = avatar;
+        return this;
+    }
+
+    public UserProfileWrapper getUserProfileWrapper() {
+        return userProfileWrapper;
+    }
+
+    public UserWrapper setUserProfileWrapper(UserProfileWrapper userProfileWrapper) {
+        this.userProfileWrapper = userProfileWrapper;
         return this;
     }
 }

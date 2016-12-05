@@ -28,7 +28,7 @@ public class ArticleWrapperService extends ResponseBaseService {
         articleWrapper.setLikeCount(article.getLikeCount());
         articleWrapper.setCreateTime(TimeUtil.formatYYYYMMMDDHHMMSS(article.getCreateTime()));
         articleWrapper.setKeyworks(article.getKeyworks());
-        articleWrapper.setOwner(userWrapperService.buildUserWrapper(article.getOwner()));
+        articleWrapper.setOwner(userWrapperService.buildUserWrapper(article.getOwner(), false));
         articleWrapper.setCoverImage(StringUtils.hasText(article.getCoverImage()) ? article.getCoverImage() : qiNiuHelper.getImg404());
         return articleWrapper;
     }

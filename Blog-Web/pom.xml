@@ -140,7 +140,7 @@
                 <qiniu.article.coverImg>http://ogoysg5ko.bkt.clouddn.com/404.jpg</qiniu.article.coverImg>
                 <qiniu.base.url>http://ogoysg5ko.bkt.clouddn.com/</qiniu.base.url>
                 <!-- logging -->
-                <logging.level>ERROR</logging.level>
+                <logging.level>INFO</logging.level>
             </properties>
         </profile>
 

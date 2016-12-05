@@ -1,5 +1,6 @@
 package com.jy.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jy.entity.User;
 import com.jy.response.entity.UserWrapper;
 import com.jy.response.service.ArticleWrapperService;
@@ -155,12 +156,12 @@ public class UserController extends BaseController {
      * 用户信息
      */
     @RequestMapping(value = "userinfo", method = RequestMethod.GET)
-    public Map<String, Object> getUserInfo(@PathVariable("username") String username) {
+    public Map<String, Object> getUserInfo(@PathVariable("username") String username) throws Exception{
         User user = userService.findUserByUsername(username);
         if (user == null) {
             user = new User();
         }
-        UserWrapper userWrapper = userWrapperService.buildUserWrapper(user);
+        UserWrapper userWrapper = userWrapperService.buildUserWrapper(user, true);
         return success(userWrapper);
     }
 

@@ -55,10 +55,10 @@ public class InitUser {
         profile.setCreateTime(new Date());
         profile.setCompanyName("Join Mind");
         profile.setIdCardNo("130838166110052656");
-        profile.setPosition("中级开发工程师");
+        profile.setPosition("中级");
         profile.setAddress("北京市昌平区沙河镇");
         profile.setNativePlace("河北秦皇岛");
-        profile.setOccupation("软件开发师");
+        profile.setOccupation("java软件开发师");
         profile.setBirthday(sdf.parse("1991-10-10 10:10:10"));
         profile.setRealName("杨建");
         profile.setSelfIntroduction("Just about me\n" +
