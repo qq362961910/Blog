@@ -4,6 +4,7 @@
 //常量
 var UNDEFINED = 'undefined';
 var STRING = 'string';
+var NUMBER_CHARS = ['1','2','3','4','5','6','7','8','9','0'];
 
 //请求类型
 var GET = "GET";
@@ -29,7 +30,11 @@ function $(id) {
         return document.getElementsByClassName(id.substring(1));
     }
     else {
-        return document.createElement(id);
+        var eles = document.getElementsByTagName(id);
+        if (eles.length > 0) {
+            return eles[0];
+        }
+        return null;
     }
 }
 
@@ -227,4 +232,14 @@ $.redirect500 = function () {
 }
 $.getUserIndexUrl = function () {
     return "/user/" + username;
+}
+$.randomNumberChars = function(len) {
+    if (typeof len == UNDEFINED || len == null) {
+        len = 8;
+    }
+    var result = '';
+    for (var i=0; i<len; i++) {
+        result += Math.floor(Math.random()*10);
+    }
+    return result;
 }

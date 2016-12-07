@@ -13,15 +13,15 @@ public class SessionUtils {
 
     public static Map<String, Session> clients = new ConcurrentHashMap<>();
 
-    public static void put(String relationId, int userCode, Session session){
+    public static void put(String relationId, String userCode, Session session){
         clients.put(getKey(relationId, userCode), session);
     }
 
-    public static Session get(String relationId, int userCode){
+    public static Session get(String relationId, String userCode){
         return clients.get(getKey(relationId, userCode));
     }
 
-    public static void remove(String relationId, int userCode){
+    public static void remove(String relationId, String userCode){
         clients.remove(getKey(relationId, userCode));
     }
 
@@ -31,7 +31,7 @@ public class SessionUtils {
      * @param userCode
      * @return
      */
-    public static boolean hasConnection(String relationId, int userCode) {
+    public static boolean hasConnection(String relationId, String userCode) {
         return clients.containsKey(getKey(relationId, userCode));
     }
 
@@ -41,7 +41,7 @@ public class SessionUtils {
      * @param userCode
      * @return
      */
-    public static String getKey(String relationId, int userCode) {
+    public static String getKey(String relationId, String userCode) {
         return relationId + "_" + userCode;
     }
 
