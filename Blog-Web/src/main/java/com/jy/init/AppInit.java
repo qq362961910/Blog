@@ -34,6 +34,9 @@ public class AppInit implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
+        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
+        defaultServlet.addMapping("*.html");
+
         /* Character Encoding Filter */
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setForceEncoding(true);
