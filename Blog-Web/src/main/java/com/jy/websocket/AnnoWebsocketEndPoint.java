@@ -16,9 +16,9 @@ import java.util.Map;
  */
 //relationId和userCode是我的业务标识参数,websocket.ws是连接的路径，可以自行定义
 @ServerEndpoint("/anno/websocket/{relationId}/{username}")
-public class WebsocketEndPoint {
+public class AnnoWebsocketEndPoint {
 
-    private static Log log = LogFactory.getLog(WebsocketEndPoint.class);
+    private static Log log = LogFactory.getLog(AnnoWebsocketEndPoint.class);
 
     @OnOpen
     public void onOpen (@PathParam("relationId") String relationId, @PathParam("username") String username, Session session) {
@@ -38,7 +38,7 @@ public class WebsocketEndPoint {
 
     @OnError
     public void onError(Throwable throwable, Session session) {
-        log.info(throwable.getMessage(), throwable);
+        throwable.printStackTrace();
     }
 
     @OnClose
