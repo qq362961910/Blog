@@ -7,7 +7,7 @@
     <link rel="Bookmark" href="/static/images/zbl.icon">
     <title>Websocket</title>
     <script type="text/javascript">
-        var wsUri = "ws://127.0.0.1:8091/websocket.ws/" + "a" + "/" + "b";
+        var wsUri = "ws://localhost:8091/websocket";
         var output;
 
         function init() {
@@ -42,7 +42,7 @@
 
         function onMessage(evt) {
             writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data + '</span>');
-            websocket.close();
+//            websocket.close();
         }
 
         function onError(evt) {

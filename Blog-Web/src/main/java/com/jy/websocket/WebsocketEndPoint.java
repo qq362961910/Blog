@@ -4,8 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import javax.websocket.*;
-import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.io.IOException;
 
 /**
  * 功能说明：websocket处理类, 使用J2EE7的标准
@@ -13,67 +13,50 @@ import javax.websocket.server.ServerEndpoint;
  * 作者：liuxing(2014-11-14 04:20)
  */
 //relationId和userCode是我的业务标识参数,websocket.ws是连接的路径，可以自行定义
-@ServerEndpoint("/websocket.ws/{relationId}/{userCode}")
+@ServerEndpoint("/websocket")
 public class WebsocketEndPoint {
 
     private static Log log = LogFactory.getLog(WebsocketEndPoint.class);
 
-    /**
-     * 打开连接时触发
-     * @param relationId
-     * @param userCode
-     * @param session
-     */
     @OnOpen
-    public void onOpen(@PathParam("relationId") String relationId,
-                       @PathParam("userCode") int userCode,
-                       Session session){
-        log.info("Websocket Start Connecting: " + SessionUtils.getKey(relationId, userCode));
-        SessionUtils.put(relationId, userCode, session);
+    public void onOpen (Session session) {
+        System.out.println("Client connected");
     }
 
-    /**
-     * 收到客户端消息时触发
-     * @param relationId
-     * @param userCode
-     * @param message
-     * @return
-     */
     @OnMessage
-    public String onMessage(@PathParam("relationId") String relationId,
-                            @PathParam("userCode") int userCode,
-                            String message) {
-        return "Got your message (" + message + ").Thanks !";
+    public void onMessage(String message, Session session)
+            throws IOException, InterruptedException {
+
+        // Print the client message for testing purposes
+        System.out.println("Received: " + message);
+
+        // Send the first message to the client
+        session.getBasicRemote().sendText("This is the first server message");
+
+        // Send 3 messages to the client every 5 seconds
+        int sentMessages = 0;
+        while(sentMessages < 3){
+            Thread.sleep(5000);
+            session.getBasicRemote().
+                    sendText("This is an intermediate server message. Count: "
+                            + sentMessages);
+            sentMessages++;
+        }
+
+        // Send a final message to the client
+        session.getBasicRemote().sendText("This is the last server message");
+
+        session.close();
     }
 
-    /**
-     * 异常时触发
-     * @param relationId
-     * @param userCode
-     * @param session
-     */
     @OnError
-    public void onError(@PathParam("relationId") String relationId,
-                        @PathParam("userCode") int userCode,
-                        Throwable throwable,
-                        Session session) {
-        log.info("Websocket Connection Exception: " + SessionUtils.getKey(relationId, userCode));
+    public void onError(Throwable throwable, Session session) {
         log.info(throwable.getMessage(), throwable);
-        SessionUtils.remove(relationId, userCode);
     }
 
-    /**
-     * 关闭连接时触发
-     * @param relationId
-     * @param userCode
-     * @param session
-     */
     @OnClose
-    public void onClose(@PathParam("relationId") String relationId,
-                        @PathParam("userCode") int userCode,
-                        Session session) {
-        log.info("Websocket Close Connection: " + SessionUtils.getKey(relationId, userCode));
-        SessionUtils.remove(relationId, userCode);
+    public void onClose (Session session) {
+        System.out.println("Connection closed");
     }
 
 }
