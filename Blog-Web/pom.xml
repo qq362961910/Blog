@@ -150,7 +150,7 @@
             <properties>
                 <!-- jdbc -->
                 <db.driver.class>com.mysql.cj.jdbc.Driver</db.driver.class>
-                <db.url>jdbc:mysql://192.168.14.227:3306/blog?useSSL=false&amp;characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</db.url>
+                <db.url>jdbc:mysql://localhost:3306/blog?useSSL=false&amp;characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</db.url>
                 <db.username>blog</db.username>
                 <db.password>blog</db.password>
                 <db.initialPoolSize>5</db.initialPoolSize>

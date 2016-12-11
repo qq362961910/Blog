@@ -44,6 +44,12 @@ public class UserProfileWrapper extends BaseWrapper{
     @JsonProperty("likeBooks")
     private List<BookWrapper> likeBooks;
 
+    /**
+     * 个人介绍
+     * */
+    @JsonProperty("selfIntroduction")
+    private String selfIntroduction;
+
     public String getRealName() {
         return realName;
     }
@@ -95,6 +101,15 @@ public class UserProfileWrapper extends BaseWrapper{
 
     public UserProfileWrapper setLikeBooks(List<BookWrapper> likeBooks) {
         this.likeBooks = likeBooks;
+        return this;
+    }
+
+    public String getSelfIntroduction() {
+        return selfIntroduction;
+    }
+
+    public UserProfileWrapper setSelfIntroduction(String selfIntroduction) {
+        this.selfIntroduction = selfIntroduction;
         return this;
     }
 }

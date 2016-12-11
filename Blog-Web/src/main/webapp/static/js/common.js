@@ -243,3 +243,12 @@ $.randomNumberChars = function(len) {
     }
     return result;
 }
+
+$.bindHtml = function (bindConfig) {
+    for (var key in bindConfig) {
+        var ele = $("#" + key);
+        if (typeof ele != 'undefined' && ele != null) {
+            ele.innerHTML = bindConfig[key];
+        }
+    }
+}

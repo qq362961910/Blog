@@ -33,6 +33,7 @@ public class UserProfileWrapperService extends ResponseBaseService{
         userProfileWrapper.setOccupation(userProfile.getOccupation());
         userProfileWrapper.setAddress(userProfile.getAddress());
         userProfileWrapper.setNativePlace(userProfile.getNativePlace());
+        userProfileWrapper.setSelfIntroduction(userProfile.getSelfIntroduction());
         if (userProfile.getBirthday() != null) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             userProfileWrapper.setBirthday(sdf.format(userProfile.getBirthday()));
