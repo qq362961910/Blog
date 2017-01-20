@@ -72,16 +72,18 @@ public class TokenHelper {
             public void run() {
                 while (!closed) {
                     try {
-                        long currentTimeMillis = System.currentTimeMillis();
-                        Set<Map.Entry<String, Long>> entries = tokenInUseMapping.entrySet();
-                        Iterator<Map.Entry<String, Long>> it = entries.iterator();
-                        while (it.hasNext()) {
-                            Map.Entry<String, Long> entry = it.next();
-                            //判断是否使用超时
-                            if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
-                                logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
-                                it.remove();
-                                tokenInUseCount.put(entry.getKey(), 0);
+                        synchronized (tokenInUseMapping) {
+                            long currentTimeMillis = System.currentTimeMillis();
+                            Set<Map.Entry<String, Long>> entries = tokenInUseMapping.entrySet();
+                            Iterator<Map.Entry<String, Long>> it = entries.iterator();
+                            while (it.hasNext()) {
+                                Map.Entry<String, Long> entry = it.next();
+                                //判断是否使用超时
+                                if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
+                                    logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
+                                    it.remove();
+                                    tokenInUseCount.put(entry.getKey(), 0);
+                                }
                             }
                         }
                         Thread.sleep(500);
@@ -111,8 +113,10 @@ public class TokenHelper {
                 }
             }
         }
-        //更新最后使用时间
-        tokenInUseMapping.put(key, System.currentTimeMillis());
+        synchronized (tokenInUseMapping) {
+            //更新最后使用时间
+            tokenInUseMapping.put(key, System.currentTimeMillis());
+        }
         //计数token使用量
         increaseTokenInUse(key, 1);
         return tokenMapping.get(key);
@@ -123,7 +127,9 @@ public class TokenHelper {
             int count = decreaseTokenInUse(key, 1);
             logger.info("release key: " +key + ", in using: " + count);
             if (count == 0) {
-                tokenInUseMapping.remove(key);
+                synchronized (tokenInUseMapping) {
+                    tokenInUseMapping.remove(key);
+                }
                 logger.info("key: " + key + " is not in using, remove it from KEY IN USING COUNTER");
             }
         }
