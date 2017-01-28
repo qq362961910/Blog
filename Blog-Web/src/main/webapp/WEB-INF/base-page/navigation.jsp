@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
+<div id="logo"><a href="javascript:void(0);"></a></div>
 <nav class="topnav" id="topnav"><a href="/user/${username}/index"><span>首页</span><span class="en">Protal</span></a><a
         href="/user/${username}/about"><span>关于我</span><span class="en">About</span></a><a
         href="/user/${username}/articles"><span>文章笔记</span><span class="en">Life</span></a><a

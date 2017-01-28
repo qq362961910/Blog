@@ -17,7 +17,6 @@
 </head>
 <body>
 <header>
-    <div id="logo"><a href="/"></a></div>
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">

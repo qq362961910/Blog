@@ -28,7 +28,6 @@
             style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
 </div>
 <header>
-    <div id="logo"><a href="http://www.yangqq.com/"></a></div>
     <%@include file="/WEB-INF/base-page/navigation.jsp" %>
 </header>
 <article class="aboutcon">
