@@ -1,5 +1,8 @@
 package com.jy.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -68,8 +71,16 @@ public class UserProfile extends BaseEntity {
     /**
      * 用户喜欢的书籍
      */
+    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userBookEmbedKey.ownerId")
     private List<UserBookLike> userBookLikeList;
+
+    /**
+     * 用户喜欢的音乐
+     * */
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userMusicEmbedKey.ownerId")
+    private List<UserMusicLike> userMusicLikeList;
 
     public long getOwnerId() {
         return ownerId;
@@ -170,6 +181,15 @@ public class UserProfile extends BaseEntity {
         return this;
     }
 
+    public List<UserMusicLike> getUserMusicLikeList() {
+        return userMusicLikeList;
+    }
+
+    public UserProfile setUserMusicLikeList(List<UserMusicLike> userMusicLikeList) {
+        this.userMusicLikeList = userMusicLikeList;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "UserProfile{" +
@@ -184,6 +204,7 @@ public class UserProfile extends BaseEntity {
                 ", address='" + address + '\'' +
                 ", selfIntroduction='" + selfIntroduction + '\'' +
                 ", userBookLikeList=" + userBookLikeList +
+                ", userMusicLikeList=" + userMusicLikeList +
                 '}';
     }
 }

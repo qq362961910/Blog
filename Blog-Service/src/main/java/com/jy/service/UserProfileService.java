@@ -12,6 +12,8 @@ public interface UserProfileService extends BaseService<UserProfile> {
 
     void saveUserBookLike(long ownerId, long bookId);
 
+    void saveUserMusicLike(long ownerId, long musicId);
+
     UserBookLike findUserBookLikeByOwnerIdAndBookId(Long ownerId, Long bookId);
 
     void removeUserBookLikeByOwnerIdAndBookId(Long ownerId, Long bookId);

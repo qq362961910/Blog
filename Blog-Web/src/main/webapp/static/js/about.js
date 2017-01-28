@@ -21,7 +21,16 @@ function queryUserInfo() {
                 }
             }
             bindParam["like_books"] = bookContent;
-            $.bindHtml(bindParam, bindParam);
+
+            var musics = userInfo.profile.likeMusics;
+            var musicContent = '';
+            if (typeof musics != UNDEFINED && musics != null) {
+                for (var i=0; i<musics.length; i++) {
+                    musicContent += "<<" + musics[i].name + ">> ";
+                }
+            }
+            bindParam["like_musics"] = musicContent;
+            $.bindHtml(bindParam);
         }
         else {
             if (result.code == SERVER_INTERNAL_EXCEPTION_CODE) {

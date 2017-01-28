@@ -1,11 +1,11 @@
 package com.jy.response.service;
 
-import com.jy.entity.Book;
-import com.jy.entity.UserBookLike;
-import com.jy.entity.UserProfile;
+import com.jy.entity.*;
 import com.jy.response.entity.BookWrapper;
+import com.jy.response.entity.MusicWrapper;
 import com.jy.response.entity.UserProfileWrapper;
 import com.jy.service.BookService;
+import com.jy.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,9 +21,13 @@ public class UserProfileWrapperService extends ResponseBaseService{
     @Autowired
     private BookWrapperService bookWrapperService;
     @Autowired
+    private MusicWrapperService musicWrapperService;
+    @Autowired
     private BookService bookService;
+    @Autowired
+    private MusicService musicService;
 
-    public UserProfileWrapper buildUserProfileWrapper(UserProfile userProfile, boolean needLikeBooks) {
+    public UserProfileWrapper buildUserProfileWrapper(UserProfile userProfile, boolean needLikeBooks, boolean needLikeMusic) {
         if (userProfile == null) {
             return empty;
         }
@@ -38,7 +42,7 @@ public class UserProfileWrapperService extends ResponseBaseService{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             userProfileWrapper.setBirthday(sdf.format(userProfile.getBirthday()));
         }
-        if (userProfile.getUserBookLikeList() != null && needLikeBooks) {
+        if (needLikeBooks && userProfile.getUserBookLikeList() != null ) {
             List<BookWrapper> bookWrapperServiceList = new ArrayList<>(userProfile.getUserBookLikeList() .size());
             for (UserBookLike userBookLike: userProfile.getUserBookLikeList()) {
                 Book book = bookService.queryById(Book.class, userBookLike.getUserBookEmbedKey().getBookId());
@@ -46,6 +50,15 @@ public class UserProfileWrapperService extends ResponseBaseService{
             }
             userProfileWrapper.setLikeBooks(bookWrapperServiceList);
         }
+        if (needLikeMusic && userProfile.getUserMusicLikeList() != null ) {
+            List<MusicWrapper> musicWrapperList = new ArrayList<>(userProfile.getUserMusicLikeList().size());
+            for (UserMusicLike userMusicLike: userProfile.getUserMusicLikeList()) {
+                Music music = musicService.queryById(Music.class, userMusicLike.getUserMusicEmbedKey().getMusicId());
+                musicWrapperList.add(musicWrapperService.buildMusicWrapper(music));
+            }
+            userProfileWrapper.setLikeMusics(musicWrapperList);
+        }
+
         return userProfileWrapper;
     }
 }

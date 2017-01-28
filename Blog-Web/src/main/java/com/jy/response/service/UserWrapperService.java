@@ -28,7 +28,7 @@ public class UserWrapperService extends ResponseBaseService {
         userWrapper.setAvatar(StringUtils.isEmpty(user.getAvatar()) ? qiNiuHelper.getImg404() : user.getAvatar());
         if (needProfile) {
             UserProfile userProfile = userProfileService.findByOwnerId(user.getId());
-            userWrapper.setUserProfileWrapper(userProfileWrapperService.buildUserProfileWrapper(userProfile, true));
+            userWrapper.setUserProfileWrapper(userProfileWrapperService.buildUserProfileWrapper(userProfile, true, true));
         }
         return userWrapper;
     }

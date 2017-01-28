@@ -1,8 +1,10 @@
 package com.jy.service.impl;
 
 import com.jy.dao.UserBookLikeDao;
+import com.jy.dao.UserMusicLikeDao;
 import com.jy.dao.UserProfileDao;
 import com.jy.entity.UserBookLike;
+import com.jy.entity.UserMusicLike;
 import com.jy.entity.UserProfile;
 import com.jy.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class UserProfileServiceImpl extends BaseServiceImpl<UserProfile> impleme
     private UserProfileDao userProfileDao;
     @Autowired
     private UserBookLikeDao userBookLikeDao;
+    @Autowired
+    private UserMusicLikeDao userMusicLikeDao;
 
     @Override
     public UserProfile findByUsername(String username) {
@@ -35,6 +39,14 @@ public class UserProfileServiceImpl extends BaseServiceImpl<UserProfile> impleme
         UserBookLike userBookLike = userBookLikeDao.selectUserBookLikeByOwnerIdAndBookId(ownerId, bookId);
         if (userBookLike == null) {
             userBookLikeDao.insertUserBookLike(ownerId, bookId);
+        }
+    }
+
+    @Override
+    public void saveUserMusicLike(long ownerId, long musicId) {
+        UserMusicLike userMusicLike = userMusicLikeDao.selectUserMusicLikeByOwnerIdAndMusicId(ownerId, musicId);
+        if (userMusicLike == null) {
+            userMusicLikeDao.insertUserMusicLike(ownerId, musicId);
         }
     }
 

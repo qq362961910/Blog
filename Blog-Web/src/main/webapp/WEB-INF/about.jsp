@@ -32,7 +32,7 @@
             <p>现居：<span id="address"></span></p>
             <p>职业：<span id="occupation"></span></p>
             <p>喜欢的书：<span id="like_books"></span></p>
-            <p>喜欢的音乐：《burning》《just one last dance》《相思引》</p>
+            <p>喜欢的音乐：<span id="like_musics"></span></p>
             <a target="_blank"
                href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">
                 <img src="http://pub.idqqimg.com/wpa/images/group.png" alt="杨青个人博客网站" title="杨青个人博客网站"></a>

@@ -45,6 +45,12 @@ public class UserProfileWrapper extends BaseWrapper{
     private List<BookWrapper> likeBooks;
 
     /**
+     * 喜欢的书籍
+     * */
+    @JsonProperty("likeMusics")
+    private List<MusicWrapper> likeMusics;
+
+    /**
      * 个人介绍
      * */
     @JsonProperty("selfIntroduction")
@@ -101,6 +107,15 @@ public class UserProfileWrapper extends BaseWrapper{
 
     public UserProfileWrapper setLikeBooks(List<BookWrapper> likeBooks) {
         this.likeBooks = likeBooks;
+        return this;
+    }
+
+    public List<MusicWrapper> getLikeMusics() {
+        return likeMusics;
+    }
+
+    public UserProfileWrapper setLikeMusics(List<MusicWrapper> likeMusics) {
+        this.likeMusics = likeMusics;
         return this;
     }
 
