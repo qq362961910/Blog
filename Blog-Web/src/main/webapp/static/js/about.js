@@ -17,7 +17,7 @@ function queryUserInfo() {
             var bookContent = '';
             if (typeof books != UNDEFINED && books != null) {
                 for (var i=0; i<books.length; i++) {
-                    bookContent += "<<" + books[i].name + ">> ";
+                    bookContent += "&lt;&lt;" + books[i].name + "&gt;&gt; ";
                 }
             }
             bindParam["like_books"] = bookContent;
@@ -26,7 +26,7 @@ function queryUserInfo() {
             var musicContent = '';
             if (typeof musics != UNDEFINED && musics != null) {
                 for (var i=0; i<musics.length; i++) {
-                    musicContent += "<<" + musics[i].name + ">> ";
+                    musicContent += "&lt;&lt;" + musics[i].name + "&gt;&gt; ";
                 }
             }
             bindParam["like_musics"] = musicContent;
