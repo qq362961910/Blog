@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="gb2312">
+    <meta charset="UTF-8">
     <title>模板分享</title>
     <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
     <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
@@ -21,9 +21,8 @@
 </header>
 <article class="blogs">
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
-    <div class="newblog left">
-        <h2>仿新浪博客风格・梅――古典个人博客模板</h2>
-
+    <div class="newblog left" id="shareHtmlTemplateDiv">
+        <%--<h2>仿新浪博客风格・梅――古典个人博客模板</h2>
         <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>模板分类：[<a href="/news/life/">个人博客模板</a>]</span>
         </p>
         <figure><img src="<%=static_file_path%>images/01.jpg"></figure>
@@ -31,46 +30,13 @@
             <p>界面设计非原创，出自新浪博客风格・梅作者水云心。在原来的设计上增加了梅花飘落的flash动画。原设计的边界阴影部分用图片实现，本例采用css3新的规则属性，box-shadow</p>
             <a title="/" href="/" target="_blank" class="readmore">详细信息>></a>
         </ul>
-        <div class="line"></div>
-        <h2>黑色质感时间轴html5个人博客模板</h2>
-
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>模板分类：[<a href="/news/life/">个人博客模板</a>]</span>
-        </p>
-        <figure><img src="<%=static_file_path%>images/02.jpg"></figure>
-        <ul class="nlist">
-            <p>
-                黑色时间轴html5个人博客模板颜色以黑色为主色，添加了彩色作为网页的一个亮点，导航高亮显示、banner图片鼠标划过，可以看到隐藏的文字。css3动画应用在banner和右边“我的名片”个人信息。重点在时间轴部分，三角形和圆形均是css代码写出来的，postion定位，增加页面返回到顶部的代码....</p>
-            <a title="/" href="/" target="_blank" class="readmore">详细信息>></a>
-        </ul>
-        <div class="line"></div>
-        <h2>Green绿色小清新的夏天-个人博客模板</h2>
-
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>模板分类：[<a href="/news/life/">个人博客模板</a>]</span>
-        </p>
-        <figure><img src="<%=static_file_path%>images/03.jpg"></figure>
-        <ul class="nlist">
-            <p>这是一个有关Green绿色小清新的夏天的css3 html5绿色个人博客网站模板，导航下面的效果使用了CSS3 Animation 实现对象从右到左渐变的动画效果。</p>
-            <a title="/" href="/" target="_blank" class="readmore">详细信息>></a>
-        </ul>
-        <div class="line"></div>
-        <h2>女生清新个人博客网站模板</h2>
-
-        <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>模板分类：[<a href="/news/life/">个人博客模板</a>]</span>
-        </p>
-        <figure><img src="<%=static_file_path%>images/04.jpg"></figure>
-        <ul class="nlist">
-            <p>
-                这是一个html5+css个人博客模板，顶部导航用了css3的gradient背景颜色渐变效果，结合js，对当前栏目高亮显示并且skew水平倾斜的效果。左侧头像也用了css3鼠标放上去滑动出文字的效果...</p>
-            <a title="/" href="/" target="_blank" class="readmore">详细信息>></a>
-        </ul>
-        <div class="line"></div>
-        <div class="blank"></div>
-        <div class="ad">
-            <img src="<%=static_file_path%>images/ad.png">
-        </div>
-        <div class="page"><a title="Total record"><b>41</b></a><b>1</b><a href="/news/s/index_2.html">2</a><a
-                href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
+        <div class="line"></div>--%>
     </div>
+    <div class="blank"></div>
+    <div class="ad">
+        <img src="<%=static_file_path%>images/ad.png">
+    </div>
+    <div class="page" id="pageBar"></div>
     <aside class="right">
         <div class="rnav">
             <h2>栏目导航</h2>
@@ -109,7 +75,6 @@
         <div class="visitors">
             <h3><p>最近访客</p></h3>
             <ul>
-
             </ul>
         </div>
         <!-- Baidu Button BEGIN -->
@@ -128,6 +93,9 @@
     <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
     </p>
 </footer>
-<script src="<%=static_file_path%>js/silder.js"></script>
 </body>
+<script type="text/javascript" src="<%=static_file_path%>js/share.js"></script>
+<script type="text/javascript">
+    initShareUserHtmlTemplate();
+</script>
 </html>

@@ -46,7 +46,7 @@ function indexInit() {
     executeRequest(queryUrl, param, method, queryRecommendCallback);
 
     //个人模板
-    var queryUrl = "/article/htmlTemplateList";
+    var queryUrl = "/article/indexHtmlTemplateList";
     var param = {username: username, pageSize: 6, currentPage: 1};
     var method = POST;
     var queryPersonHtmlTemplateCallback = function (result) {

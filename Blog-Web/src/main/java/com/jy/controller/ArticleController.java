@@ -142,14 +142,13 @@ public class ArticleController extends BaseController {
     }
 
     /**
-     * 个人模板（json）
+     * 首页个人模板（json）
      * <p>
      * optional params:
-     * pageSize int optional default: 10 description: 分頁大小
-     * currentPage int optional default: 1 description: 當前頁面
+     * username string optional 用户名
      */
-    @RequestMapping(value = "htmlTemplateList", method = RequestMethod.POST)
-    public Map<String, Object> htmlTemplateList(@RequestBody Map<String, Object> param) {
+    @RequestMapping(value = "indexHtmlTemplateList", method = RequestMethod.POST)
+    public Map<String, Object> indexHtmlTemplateList(@RequestBody Map<String, Object> param) {
         String username = (String) param.get("username");
         Integer pageSize = 6;
         Integer currentPage = 1;
@@ -163,6 +162,55 @@ public class ArticleController extends BaseController {
         articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
         return success(articleWrappers);
     }
+
+    /**
+     * 分享页面个人模板列表（json）
+     * <p>
+     * optional params:
+     * username string optional 用户名
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "htmlTemplateList", method = RequestMethod.POST)
+    public Map<String, Object> htmlTemplateList(@RequestBody Map<String, Object> param) {
+        String username = (String) param.get("username");
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setUsername(username);
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        serviceParam.setOrderBy(new Pair<String, String>("article.createTime", "desc"));
+        int count = articleService.countArticleByArticleParam(serviceParam);
+        List<Article> articles;
+        if (count == 0) {
+            articles = Collections.emptyList();
+        } else {
+            articles = articleService.findArticleByArticleParam(serviceParam);
+        }
+        List<ArticleWrapper> htmlTemplatesWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> htmlTemplatesWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        Map<String, Object> result = new HashMap<>();
+        result.put("size", count);
+        result.put("htmlTemplates", htmlTemplatesWrappers);
+        result.put(totalPageKey, (count + pageSize - 1) / pageSize);
+        result.put(pageSizeKey, pageSize);
+        result.put(currentPageKey, currentPage);
+        return success(result);
+    }
+
+
 
     /**
      * 用户文章查詢（json）

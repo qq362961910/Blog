@@ -3,7 +3,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>文章详情</title>
     <meta name="keywords" content="个人博客"/>
     <meta name="description" content="【匆匆那些年】总结个人博客经历的这四年…"/>

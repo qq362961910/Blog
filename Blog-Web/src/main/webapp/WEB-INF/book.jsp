@@ -4,7 +4,8 @@
 <!-- saved from url=(0041)http://www.yangqq.com/e/tool/gbook/?bid=1 -->
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; UTF-8">
     <script type="text/javascript" async="" src="<%=static_file_path%>js/insideText.js"></script>
 
     <title>留言</title>

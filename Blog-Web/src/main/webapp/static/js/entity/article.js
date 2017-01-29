@@ -75,6 +75,23 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
         return html;
     }
 
+    /**
+     * html模板分享页面item
+     * */
+    this.getShareHtmlTemplateListItem = function() {
+        var html = "<h2>" + this.title + "</h2>" +
+            "<p class='dateview'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
+            "<figure><img src='" + this.coverImage + "'></figure>" +
+            "<ul class='nlist'>" +
+            "<p>" + this.summary + "</p>" +
+            "<a title='" + this.title + "'" +
+            "href=" + this.getArticleDetailUrl() +
+            " target='_blank' class='readmore'>阅读全文>></a>" +
+            "</ul>" +
+            "<div class='line'></div>";
+        return html;
+    }
+
 
     /**
      * 绑定html
