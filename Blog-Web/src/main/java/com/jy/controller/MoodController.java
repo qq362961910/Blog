@@ -42,7 +42,7 @@ public class MoodController  extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<String, String>("mood.createTime", "desc"));
+        serviceParam.setOrderBy(new Pair<>("mood.createTime", "desc"));
         int count = moodService.countMoodByMoodParam(serviceParam);
         List<Mood> moods;
         if (count == 0) {
@@ -54,7 +54,7 @@ public class MoodController  extends BaseController {
         moods.forEach(mood -> moodWrapperList.add(moodWrapperService.buildMoodWrapper(mood)));
         Map<String, Object> result = new HashMap<>();
         result.put("size", count);
-        result.put("articles", moodWrapperList);
+        result.put("moods", moodWrapperList);
         result.put(totalPageKey, (count + pageSize - 1) / pageSize);
         result.put(pageSizeKey, pageSize);
         result.put(currentPageKey, currentPage);

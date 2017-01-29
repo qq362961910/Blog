@@ -230,6 +230,11 @@ $.redirect404 = function () {
 $.redirect500 = function () {
     document.location.href = "/500";
 }
+
+$.alertError = function(message) {
+    alert(message);
+}
+
 $.getUserIndexUrl = function () {
     return "/user/" + username;
 }
