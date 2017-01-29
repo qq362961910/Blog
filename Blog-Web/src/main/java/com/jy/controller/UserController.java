@@ -1,6 +1,5 @@
 package com.jy.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jy.entity.User;
 import com.jy.response.entity.UserWrapper;
 import com.jy.response.service.ArticleWrapperService;

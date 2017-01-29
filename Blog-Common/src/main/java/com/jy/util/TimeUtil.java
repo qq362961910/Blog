@@ -16,4 +16,11 @@ public class TimeUtil {
         return YYYYMMMDD_HHMMSS.format(date);
     }
 
+    public static synchronized String formatYYYYMMMDD(Date date) {
+        if (date == null) {
+            return "";
+        }
+        return YYYYMMMDD.format(date);
+    }
+
 }

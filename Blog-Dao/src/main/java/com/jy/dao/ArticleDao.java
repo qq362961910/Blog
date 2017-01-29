@@ -57,5 +57,14 @@ public interface ArticleDao extends BaseDao<Article> {
             return this;
         }
 
+        @Override
+        public String toString() {
+            return "ArticleParam{" +
+                    "title='" + title + '\'' +
+                    ", recommended=" + recommended +
+                    ", articleType=" + articleType +
+                    ", username='" + username + '\'' +
+                    '}';
+        }
     }
 }
