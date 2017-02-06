@@ -14,6 +14,9 @@ public class TokenHelper {
 
     private static final Logger logger = LogManager.getLogger(TokenHelper.class);
 
+    private final Object blockThreadCountLock = new Object();
+    private volatile int blockThreadCount = 0;
+
     /**
      * 默认110分钟更新一次token
      * */
@@ -83,7 +86,6 @@ public class TokenHelper {
                             if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
                                 logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
                                 tokenInUseMapping.remove(entry.getKey());
-                                tokenInUseCount.put(entry.getKey(), 0);
                                 logger.info("###########################################################################");
                                 logger.info("key in using reset to 0: " + entry.getKey());
                                 logger.info("###########################################################################");
@@ -153,7 +155,9 @@ public class TokenHelper {
                 String token = tokenLoader.loadToken(key);
                 tokenMapping.put(key, token);
                 tokenLastUpdateTimeMapping.put(key, System.currentTimeMillis());
-                tokenInUseCount.put(key, 0);
+                if (tokenInUseCount.get(key) == null) {
+                    tokenInUseCount.put(key, 0);
+                }
                 logger.info("key: " + key +", load token successfully, token: " + token);
 
             } catch (Exception e){
@@ -166,6 +170,7 @@ public class TokenHelper {
             finally {
                 synchronized (key.intern()) {
                     //Notify
+                    loadingTokenKeys.remove(key);
                     key.intern().notifyAll();
                 }
             }
@@ -178,8 +183,15 @@ public class TokenHelper {
     private boolean registerLoadingKey(String key) throws InterruptedException {
         synchronized (key.intern()) {
             if (loadingTokenKeys.contains(key)) {
-                logger.info("key: " + key + " is loading by other threads, wating......");
-                key.intern().wait(10000);
+                logger.info("key: " + key + " is loading by other threads, wating......, thread-name: " + Thread.currentThread().getName());
+                synchronized (blockThreadCountLock) {
+                    blockThreadCount++;
+                }
+                key.intern().wait(5000);
+                logger.info("thread-name: " + Thread.currentThread().getName() + " is waked by other thread");
+                synchronized (blockThreadCountLock) {
+                    blockThreadCount--;
+                }
                 return false;
             }
             else {
@@ -231,6 +243,13 @@ public class TokenHelper {
      * */
     public interface TokenLoader {
         String loadToken(String key);
+    }
+
+    /**
+     * 阻塞线程数统计
+     * */
+    public int getBlockThreadCount() {
+        return blockThreadCount;
     }
 
     public void close () {

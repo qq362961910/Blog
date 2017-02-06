@@ -19,14 +19,14 @@ public class TokenHelperTest {
     private static final String[] keys = {"AAA", "BBB", "CCC", "DDD"};
     private static final int MIN_WORK_TIME = 100;
     private static final int MAX_WORK_TIME = 10000;
-    private static ExecutorService ExecutorService = Executors.newFixedThreadPool(30);
+    private static ExecutorService ExecutorService = Executors.newFixedThreadPool(50);
 
 
     public static void main(String[] args) throws Exception{
 
         logger.info("test begin....");
         //prepare TokenHelper
-        TokenHelper tokenHelper = new TokenHelper(30000, 15000, new TokenHelper.TokenLoader() {
+        TokenHelper tokenHelper = new TokenHelper(3000, 1000, new TokenHelper.TokenLoader() {
             @Override
             public String loadToken(String key) {
                 return server.getToken(key);
@@ -40,7 +40,7 @@ public class TokenHelperTest {
         }
 
         //begin to work
-        for (int i=0; i<10; i++) {
+        for (int i=0; i<30; i++) {
             for (final Worker worker: workerList) {
                 final int worktime = RandonUtil.nextRandomPositiveInt(MIN_WORK_TIME, MAX_WORK_TIME);
                 ExecutorService.submit(new Runnable() {
@@ -62,6 +62,7 @@ public class TokenHelperTest {
         }
         tokenHelper.close();
         logger.info("tokenHelper close....");
+        logger.info("tokenHelper block thread count: " + tokenHelper.getBlockThreadCount());
         server.destroy();
         logger.info("server close....");
     }
@@ -143,7 +144,6 @@ class Server {
 
     private static final Object lock = new Object();
     private static final Logger logger = LogManager.getLogger(Server.class);
-
     private static final Map<String, String> CACHE_TOKEN = new HashMap<>();
     private static final Map<String, Long> TOKEN_MARK = new ConcurrentHashMap<>();
     private static volatile boolean close = false;
