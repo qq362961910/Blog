@@ -4,11 +4,15 @@ package com.jy.helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class TokenHelper {
 
-    private final Logger logger = LogManager.getLogger(TokenHelper.class);
+    private static final Logger logger = LogManager.getLogger(TokenHelper.class);
 
     /**
      * 默认110分钟更新一次token
@@ -17,7 +21,7 @@ public class TokenHelper {
     /**
      * 默认1分钟检查一次Token是否有效
      * */
-    private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 10;
+    private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 60;
     /**
      * token存活时间
      * */
@@ -37,7 +41,7 @@ public class TokenHelper {
     /**
      * token最近更新一次时间映射
      * */
-    private volatile Map<String, Long> tokenLastUpdateTimeMapping = new HashMap<>();
+    private volatile Map<String, Long> tokenLastUpdateTimeMapping = new HashMap();
     /**
      * 正在加载token的eky
      * */
@@ -45,7 +49,7 @@ public class TokenHelper {
     /**
      * 正在使用中的token
      * */
-    private volatile Map<String, Long> tokenInUseMapping = new HashMap();
+    private volatile Map<String, Long> tokenInUseMapping = new ConcurrentHashMap<>();
     /**
      * 正在使用的token数量
      * */
@@ -72,18 +76,17 @@ public class TokenHelper {
             public void run() {
                 while (!closed) {
                     try {
-                        synchronized (tokenInUseMapping) {
-                            long currentTimeMillis = System.currentTimeMillis();
-                            Set<Map.Entry<String, Long>> entries = tokenInUseMapping.entrySet();
-                            Iterator<Map.Entry<String, Long>> it = entries.iterator();
-                            while (it.hasNext()) {
-                                Map.Entry<String, Long> entry = it.next();
-                                //判断是否使用超时
-                                if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
-                                    logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
-                                    it.remove();
-                                    tokenInUseCount.put(entry.getKey(), 0);
-                                }
+                        long currentTimeMillis = System.currentTimeMillis();
+                        //遍历过期Token
+                        for (Map.Entry<String, Long> entry: tokenInUseMapping.entrySet() ) {
+                            //判断是否使用超时
+                            if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
+                                logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
+                                tokenInUseMapping.remove(entry.getKey());
+                                tokenInUseCount.put(entry.getKey(), 0);
+                                logger.info("###########################################################################");
+                                logger.info("key in using reset to 0: " + entry.getKey());
+                                logger.info("###########################################################################");
                             }
                         }
                         Thread.sleep(500);
@@ -113,10 +116,8 @@ public class TokenHelper {
                 }
             }
         }
-        synchronized (tokenInUseMapping) {
-            //更新最后使用时间
-            tokenInUseMapping.put(key, System.currentTimeMillis());
-        }
+        //更新最后使用时间
+        tokenInUseMapping.put(key, System.currentTimeMillis());
         //计数token使用量
         increaseTokenInUse(key, 1);
         return tokenMapping.get(key);
@@ -127,9 +128,7 @@ public class TokenHelper {
             int count = decreaseTokenInUse(key, 1);
             logger.info("release key: " +key + ", in using: " + count);
             if (count == 0) {
-                synchronized (tokenInUseMapping) {
-                    tokenInUseMapping.remove(key);
-                }
+                tokenInUseMapping.remove(key);
                 logger.info("key: " + key + " is not in using, remove it from KEY IN USING COUNTER");
             }
         }
@@ -192,13 +191,29 @@ public class TokenHelper {
     }
 
     /**
-     * Unsafe
+     * 添加token加载器
+     * */
+    public void addTokenLoader(String key, TokenLoader tokenLoader) {
+        tokenLoaderMapping.put(key, tokenLoader);
+    }
+
+    /**
+     * 查看对应key的TokenLoader是否存在
+     * */
+    public boolean tokenLoaderExist(String key) {
+        return tokenLoaderMapping.containsKey(key);
+    }
+
+    /**
+     * safe
      * 增加token使用计数
      * */
     private int increaseTokenInUse(String key, int count) {
-        int newCount = tokenInUseCount.get(key) + count;
-        tokenInUseCount.put(key, newCount);
-        return newCount;
+        synchronized (key.intern()) {
+            int newCount = tokenInUseCount.get(key) + count;
+            tokenInUseCount.put(key, newCount);
+            return newCount;
+        }
     }
 
     /**
