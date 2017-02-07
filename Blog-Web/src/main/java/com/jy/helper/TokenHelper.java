@@ -3,6 +3,7 @@ package com.jy.helper;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class TokenHelper {
 
     private static final Logger logger = LogManager.getLogger(TokenHelper.class);
@@ -24,7 +26,11 @@ public class TokenHelper {
     /**
      * 默认1分钟检查一次Token是否有效
      * */
-    private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 60;
+    private static final int DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS = 500;
+    /**
+     * 默认token服务生命时长
+     * */
+    private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 10;
     /**
      * token存活时间
      * */
@@ -66,6 +72,10 @@ public class TokenHelper {
      * */
     private volatile boolean closed = false;
 
+    public TokenHelper() {
+        this(null);
+    }
+
     public TokenHelper(TokenLoader tokenLoader) {
         this(DEFAULT_TOKEN_EXPIRE_TIIME_IN_MILLS, DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS, tokenLoader);
     }
@@ -87,11 +97,11 @@ public class TokenHelper {
                                 logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
                                 tokenInUseMapping.remove(entry.getKey());
                                 logger.info("###########################################################################");
-                                logger.info("key in using reset to 0: " + entry.getKey());
+                                logger.info("service life expired, key: " + entry.getKey());
                                 logger.info("###########################################################################");
                             }
                         }
-                        Thread.sleep(500);
+                        Thread.sleep(DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS);
                     } catch (Exception e) {
                         StackTraceElement[] stackTraceElements = e.getStackTrace();
                         for (StackTraceElement stackTraceElement: stackTraceElements) {
