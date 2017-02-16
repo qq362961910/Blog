@@ -257,3 +257,29 @@ $.bindHtml = function (bindConfig) {
         }
     }
 }
+
+$.registerVLCEvent = function(id, event, handler){
+    var dom = $(id);
+    if (dom) {
+        if (dom.attachEvent) {
+            // Microsoft
+            dom.attachEvent (event, handler);
+        } else if (dom.addEventListener) {
+            // Mozilla: DOM level 2
+            dom.addEventListener (event, handler, false);
+        }
+    }
+}
+// stop listening to event
+$.unregisterVLCEvent = function(id, event, handler) {
+    var dom = $(id);
+    if (dom) {
+        if (dom.detachEvent) {
+            // Microsoft
+            dom.detachEvent (event, handler);
+        } else if (vlc.removeEventListener) {
+            // Mozilla: DOM level 2
+            dom.removeEventListener (event, handler, false);
+        }
+    }
+}
