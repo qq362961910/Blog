@@ -1,6 +1,6 @@
-package token;
+package token.singlevm;
 
-import com.jy.helper.TokenHelper;
+import com.jy.helper.TokenHelperSingleVm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,9 +11,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 
-public class TokenHelperTest {
+public class TokenHelperSingleVmTest {
 
-    private static final Logger logger = LogManager.getLogger(TokenHelperTest.class);
+    private static final Logger logger = LogManager.getLogger(TokenHelperSingleVmTest.class);
     private static volatile Server server = new Server();
     private static final int TOTAL_WORKER = 20;
     private static final String[] keys = {"AAA", "BBB", "CCC", "DDD"};
@@ -26,7 +26,7 @@ public class TokenHelperTest {
 
         logger.info("test begin....");
         //prepare TokenHelper
-        TokenHelper tokenHelper = new TokenHelper(3000, 1000, new TokenHelper.TokenLoader() {
+        TokenHelperSingleVm tokenHelperSingleVm = new TokenHelperSingleVm(3000, 1000, new TokenHelperSingleVm.TokenLoader() {
             @Override
             public String loadToken(String key) {
                 return server.getToken(key);
@@ -36,7 +36,7 @@ public class TokenHelperTest {
         //prepare Worker List
         List<Worker> workerList = new ArrayList<>(TOTAL_WORKER);
         for (int i=0; i<TOTAL_WORKER; i++) {
-            workerList.add(WorkerFactory.newRandomWorker(keys[i%keys.length], tokenHelper, server));
+            workerList.add(WorkerFactory.newRandomWorker(keys[i%keys.length], tokenHelperSingleVm, server));
         }
 
         //begin to work
@@ -60,9 +60,9 @@ public class TokenHelperTest {
         else {
             logger.info("ExecutorService close fail");
         }
-        tokenHelper.close();
+        tokenHelperSingleVm.close();
         logger.info("tokenHelper close....");
-        logger.info("tokenHelper block thread count: " + tokenHelper.getBlockThreadCount());
+        logger.info("tokenHelper block thread count: " + tokenHelperSingleVm.getBlockThreadCount());
         server.destroy();
         logger.info("server close....");
     }
@@ -72,8 +72,8 @@ public class TokenHelperTest {
 class WorkerFactory {
     private static final String WORKER_NAME_PREFIX = "worker";
     private static int count = 0;
-    public static Worker newRandomWorker(String key, TokenHelper tokenHelper, Server server) {
-        return new Worker(WORKER_NAME_PREFIX + "-" + count++, key, tokenHelper, server);
+    public static Worker newRandomWorker(String key, TokenHelperSingleVm tokenHelperSingleVm, Server server) {
+        return new Worker(WORKER_NAME_PREFIX + "-" + count++, key, tokenHelperSingleVm, server);
     }
 }
 
@@ -81,11 +81,11 @@ class Worker {
     private static final Logger logger = LogManager.getLogger(Worker.class);
     private final String workerName;
     private final String key;
-    private final TokenHelper tokenHelper;
+    private final TokenHelperSingleVm tokenHelperSingleVm;
     private volatile Server server;
 
     public boolean work(int workTimeInMills) {
-        String token = tokenHelper.getToken(key);
+        String token = tokenHelperSingleVm.getToken(key);
         try {
             Thread.sleep(workTimeInMills);
             boolean success = server.service(token);
@@ -100,14 +100,14 @@ class Worker {
             e.printStackTrace();
             return false;
         }finally {
-            tokenHelper.releaseToken(key);
+            tokenHelperSingleVm.releaseToken(key);
         }
     }
 
-    public Worker(String workerName, String key, TokenHelper tokenHelper, Server server) {
+    public Worker(String workerName, String key, TokenHelperSingleVm tokenHelperSingleVm, Server server) {
         this.workerName = workerName;
         this.key = key;
-        this.tokenHelper = tokenHelper;
+        this.tokenHelperSingleVm = tokenHelperSingleVm;
         this.server = server;
     }
 

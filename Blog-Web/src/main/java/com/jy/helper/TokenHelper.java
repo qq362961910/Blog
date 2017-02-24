@@ -4,218 +4,96 @@ package com.jy.helper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
+import redis.clients.jedis.JedisCluster;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeoutException;
 
 @Component
 public class TokenHelper {
 
     private static final Logger logger = LogManager.getLogger(TokenHelper.class);
 
-    private final Object blockThreadCountLock = new Object();
-    private volatile int blockThreadCount = 0;
+    /**
+     * 默认token有效时长110分钟
+     * */
+    private static final int DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND = 60 * 110;
 
     /**
-     * 默认110分钟更新一次token
+     * 默认加载TOken超时时间
      * */
-    private static final int DEFAULT_TOKEN_EXPIRE_TIIME_IN_MILLS = 1000 * 60 * 110;
+    private static final int DEFAULT_LOAD_TOKEN_TIMEOUT_IN_MILLS = 1000 * 5;
+
     /**
-     * 默认1分钟检查一次Token是否有效
+     * 默认key锁超时时间
      * */
-    private static final int DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS = 500;
-    /**
-     * 默认token服务生命时长
-     * */
-    private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 10;
+    private static final int DEFAULT_KEY_LOCK_TIMEOUT_IN_MILLS = 1000 * 5;
+
     /**
      * token存活时间
      * */
     private final int tokenExpireTime;
+
     /**
-     * 使用token服务超时期限
+     * 默认TOken加载器需要redis支持
      * */
-    private final int serviceLifeTimeout;
+    private JedisCluster jedisCluster;
+
     /**
      * 默认token加载器
      * */
-    private final TokenLoader defaultTokenLoader;
-    /**
-     * token缓存容器
-     * */
-    private volatile Map<String, String> tokenMapping = new HashMap<>();
-    /**
-     * token最近更新一次时间映射
-     * */
-    private volatile Map<String, Long> tokenLastUpdateTimeMapping = new HashMap();
-    /**
-     * 正在加载token的eky
-     * */
-    private volatile List<String> loadingTokenKeys = new ArrayList<>();
-    /**
-     * 正在使用中的token
-     * */
-    private volatile Map<String, Long> tokenInUseMapping = new ConcurrentHashMap<>();
-    /**
-     * 正在使用的token数量
-     * */
-    private volatile Map<String, Integer> tokenInUseCount = new HashMap();
+    private TokenLoader defaultTokenLoader = null;
+
+
     /**
      * token加载器映射
      * */
-    private volatile Map<String, TokenLoader> tokenLoaderMapping = new HashMap();
-    /**
-     * 状态
-     * */
-    private volatile boolean closed = false;
+    private Map<String, TokenLoader> tokenLoaderMapping = new HashMap();
 
-    public TokenHelper() {
-        this(null);
+
+    public TokenHelper(JedisCluster jedisCluster) {
+        this(jedisCluster, DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND);
     }
 
-    public TokenHelper(TokenLoader tokenLoader) {
-        this(DEFAULT_TOKEN_EXPIRE_TIIME_IN_MILLS, DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS, tokenLoader);
+    public TokenHelper(JedisCluster jedisCluster, int tokenExpireTime) {
+        this(jedisCluster, tokenExpireTime, null);
     }
 
-    public TokenHelper(int tokenExpireTime, int serviceLifeTimeout, TokenLoader defaultTokenLoader) {
+    public TokenHelper(JedisCluster jedisCluster, TokenLoader defaultTokenLoader) {
+        this(jedisCluster, DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND, defaultTokenLoader);
+    }
+
+    public TokenHelper(JedisCluster jedisCluster, int tokenExpireTime, TokenLoader defaultTokenLoader) {
+        this.jedisCluster = jedisCluster;
         this.tokenExpireTime = tokenExpireTime;
-        this.serviceLifeTimeout = serviceLifeTimeout;
         this.defaultTokenLoader = defaultTokenLoader;
-        new Thread(){
-            @Override
-            public void run() {
-                while (!closed) {
-                    try {
-                        long currentTimeMillis = System.currentTimeMillis();
-                        //遍历过期Token
-                        for (Map.Entry<String, Long> entry: tokenInUseMapping.entrySet() ) {
-                            //判断是否使用超时
-                            if (currentTimeMillis - TokenHelper.this.serviceLifeTimeout > entry.getValue()) {
-                                logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
-                                tokenInUseMapping.remove(entry.getKey());
-                                logger.info("###########################################################################");
-                                logger.info("service life expired, key: " + entry.getKey());
-                                logger.info("###########################################################################");
-                            }
-                        }
-                        Thread.sleep(DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS);
-                    } catch (Exception e) {
-                        StackTraceElement[] stackTraceElements = e.getStackTrace();
-                        for (StackTraceElement stackTraceElement: stackTraceElements) {
-                            logger.error(stackTraceElement.toString());
-                        }
-                    }
-                }
-            }
-        }.start();
     }
 
-    public String getToken(String key) {
-        long currentTimeMillis = System.currentTimeMillis();
-        long lastUpdateTime = tokenLastUpdateTimeMapping.get(key) == null ? 0 : tokenLastUpdateTimeMapping.get(key);
-        //判断缓存token是否过期
-        if (lastUpdateTime <= currentTimeMillis - tokenExpireTime) {
-            try {
-                logger.info("find a expired key: " + key);
-                loadToken(key);
-            } catch (Exception e) {
-                StackTraceElement[] stackTraceElements = e.getStackTrace();
-                for (StackTraceElement stackTraceElement: stackTraceElements) {
-                    logger.error(stackTraceElement.toString());
-                }
-            }
+    public String getToken(String key, boolean nullable) throws TimeoutException {
+        String token = loadToken(key);
+        if (token == null && !nullable) {
+            throw new TimeoutException("get token timeout for key: " + key);
         }
-        //更新最后使用时间
-        tokenInUseMapping.put(key, System.currentTimeMillis());
-        //计数token使用量
-        increaseTokenInUse(key, 1);
-        return tokenMapping.get(key);
+        logger.info("return token, key: " + key + ", current token: " + token);
+        return token;
     }
 
-    public void releaseToken(String key) {
-        synchronized (key.intern()) {
-            int count = decreaseTokenInUse(key, 1);
-            logger.info("release key: " +key + ", in using: " + count);
-            if (count == 0) {
-                tokenInUseMapping.remove(key);
-                logger.info("key: " + key + " is not in using, remove it from KEY IN USING COUNTER");
-            }
+    public String loadToken(String key) {
+        TokenLoader tokenLoader = tokenLoaderMapping.get(key);
+        if (tokenLoader == null) {
+            tokenLoader = defaultTokenLoader;
         }
-    }
-
-    public void loadToken(String key) throws InterruptedException {
-        //register key
-        boolean isLoadingTokenThread = registerLoadingKey(key);
-        if (isLoadingTokenThread) {
-            try {
-                TokenLoader tokenLoader = tokenLoaderMapping.get(key);
-                if (tokenLoader == null) {
-                    tokenLoader = defaultTokenLoader;
-                }
-                if (tokenLoader == null) {
-                    throw new RuntimeException("No TokenLoader Instance found");
-                }
-                while (tokenInUseMapping.containsKey(key)) {
-                    Thread.sleep(500);
-                    logger.info("continue waiting, key: " + key);
-                }
-                String token = tokenLoader.loadToken(key);
-                tokenMapping.put(key, token);
-                tokenLastUpdateTimeMapping.put(key, System.currentTimeMillis());
-                if (tokenInUseCount.get(key) == null) {
-                    tokenInUseCount.put(key, 0);
-                }
-                logger.info("key: " + key +", load token successfully, token: " + token);
-
-            } catch (Exception e){
-                logger.error("load token error for key:" + key);
-                StackTraceElement[] stackTraceElements = e.getStackTrace();
-                for (StackTraceElement stackTraceElement: stackTraceElements) {
-                    logger.error(stackTraceElement.toString());
-                }
-            }
-            finally {
-                synchronized (key.intern()) {
-                    //Notify
-                    loadingTokenKeys.remove(key);
-                    key.intern().notifyAll();
-                }
-            }
+        if (tokenLoader == null) {
+            throw new RuntimeException("No TokenLoader Instance found");
         }
-    }
-
-    /**
-     * 注册正在加载中的key
-     * */
-    private boolean registerLoadingKey(String key) throws InterruptedException {
-        synchronized (key.intern()) {
-            if (loadingTokenKeys.contains(key)) {
-                logger.info("key: " + key + " is loading by other threads, wating......, thread-name: " + Thread.currentThread().getName());
-                synchronized (blockThreadCountLock) {
-                    blockThreadCount++;
-                }
-                key.intern().wait(5000);
-                logger.info("thread-name: " + Thread.currentThread().getName() + " is waked by other thread");
-                synchronized (blockThreadCountLock) {
-                    blockThreadCount--;
-                }
-                return false;
-            }
-            else {
-                loadingTokenKeys.add(key);
-                logger.info("register key successfully: " + key);
-                return true;
-            }
-        }
+        return tokenLoader.loadToken(key, tokenLoader.loadTokenTimeoutInMills());
     }
 
     /**
      * 添加token加载器
      * */
-    public void addTokenLoader(String key, TokenLoader tokenLoader) {
+    public synchronized void  addTokenLoader(String key, TokenLoader tokenLoader) {
         tokenLoaderMapping.put(key, tokenLoader);
     }
 
@@ -227,44 +105,134 @@ public class TokenHelper {
     }
 
     /**
-     * safe
-     * 增加token使用计数
-     * */
-    private int increaseTokenInUse(String key, int count) {
-        synchronized (key.intern()) {
-            int newCount = tokenInUseCount.get(key) + count;
-            tokenInUseCount.put(key, newCount);
-            return newCount;
-        }
-    }
-
-    /**
-     * Unsafe
-     * 减少token使用计数
-     * */
-    private int decreaseTokenInUse(String key, int count) {
-        int newCount = tokenInUseCount.get(key) - count;
-        tokenInUseCount.put(key, newCount);
-        return newCount;
-    }
-
-    /**
      * Token加载器
      * */
     public interface TokenLoader {
-        String loadToken(String key);
+        String loadToken(String key, long timeout);
+        long loadTokenTimeoutInMills();
+    }
+
+    public TokenHelper setDefaultTokenLoader(TokenLoader defaultTokenLoader) {
+        this.defaultTokenLoader = defaultTokenLoader;
+        return this;
     }
 
     /**
-     * 阻塞线程数统计
+     * Token加载器默认实现
      * */
-    public int getBlockThreadCount() {
-        return blockThreadCount;
-    }
+    public static abstract class AbstractTokenLoader implements TokenLoader {
 
-    public void close () {
-        closed = true;
-    }
+        private static final Logger logger = LogManager.getLogger(AbstractTokenLoader.class);
 
+        private static final ThreadLocal<String> threadLocalKeyLockValue = new ThreadLocal<String>();
+
+        private static final String KEY_LOCK_TAIL = "_lock";
+
+        private TokenHelper tokenHelper;
+
+        @Override
+        public String loadToken(String key, long timeout) {
+
+            String token = tokenHelper.jedisCluster.get(key);
+            //token失效
+            while (timeout > 0 && token == null) {
+                logger.info("empty token key: " + key);
+                String keyLock = key + KEY_LOCK_TAIL;
+                boolean acquireLockSuccess = acquireLock(keyLock);
+                if (acquireLockSuccess) {
+                    logger.info("acquire lock success for key: " + key);
+                    token = loadTokenImpl(key);
+                    String oldToken = tokenHelper.jedisCluster.getSet(key, token);
+                    boolean releaseLockSuccess = releaseLock(keyLock);
+                    if (releaseLockSuccess) {
+                        //设置超时
+                        tokenHelper.jedisCluster.expire(key, tokenExpireTime());
+                        logger.info("releaseLockSuccess! load new  token for key: " + key + ", token: " + token + ", expire time: " + tokenExpireTime());
+                    }
+                    else {
+                        logger.info("load token timeout for key: " + key);
+                        if (oldToken != null) {
+                            //还原token,忽略自己纠正token正确性的时间片段
+                            tokenHelper.jedisCluster.set(key, oldToken);
+                            logger.warn("load token timeout, reset the correct token: " + token);
+                        }
+                        //自己token已失效,休息一下,重新获取token
+                        try { Thread.sleep(200); } catch (InterruptedException e) { e.printStackTrace(); }
+                        token = loadToken(key, timeout-200);
+                    }
+                }
+                else {
+                    //休息一下
+                    try { Thread.sleep(200); } catch (InterruptedException e) { e.printStackTrace(); }
+                    timeout-=200;
+                    token = tokenHelper.jedisCluster.get(key);
+                }
+            }
+            return token;
+        }
+
+        public abstract String loadTokenImpl(String key);
+
+        public boolean acquireLock(String keyLock) {
+            long currentTime = System.currentTimeMillis();
+            String threadKeyLockValue = String.valueOf(currentTime + keyLockTimeoutInMills());
+            //抢锁
+            if (tokenHelper.jedisCluster.setnx(keyLock, threadKeyLockValue) == 1) {
+                threadLocalKeyLockValue.set(threadKeyLockValue);
+                logger.info("keyLock: " + keyLock + " acquire lock success");
+                return true;
+            }
+            //判断其他用户占用lock是否超时
+            String keyLockValue = tokenHelper.jedisCluster.get(keyLock);
+            //其他用户仍在占用锁
+            if (keyLockValue != null) {
+                //keyLock使用超时
+                if (Long.parseLong(keyLockValue) < currentTime) {
+                    logger.info("keyLock: " + keyLock + " timeout, try to race for it");
+                    //尝试抢占锁, 忽略抢占锁之间的时间误差
+                    String keyLockOldValue = tokenHelper.jedisCluster.getSet(keyLock, threadKeyLockValue);
+                    //抢占成功
+                    if (keyLockValue.equals(keyLockOldValue)) {
+                        threadLocalKeyLockValue.set(threadKeyLockValue);
+                        logger.info("acquire key lock success for a timeout usage, keyLock: " + keyLock);
+                        return true;
+                    }
+                }
+            }
+            logger.info("acquire lock failed for key lock: " + keyLock);
+            return false;
+        }
+
+        public boolean releaseLock(String keyLock) {
+            String nowValue = tokenHelper.jedisCluster.get(keyLock);
+            String threadkeyLockValue = threadLocalKeyLockValue.get();
+            if (threadkeyLockValue != null) {
+                //自己未超时
+                if (threadkeyLockValue.equals(nowValue)) {
+                    tokenHelper.jedisCluster.del(keyLock);
+                    threadLocalKeyLockValue.remove();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public long loadTokenTimeoutInMills() {
+            return DEFAULT_LOAD_TOKEN_TIMEOUT_IN_MILLS;
+        }
+
+        public long keyLockTimeoutInMills() {
+            return DEFAULT_KEY_LOCK_TIMEOUT_IN_MILLS;
+        }
+
+        public int tokenExpireTime(){
+            return DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND;
+        }
+
+        public AbstractTokenLoader(TokenHelper tokenHelper) {
+            this.tokenHelper = tokenHelper;
+        }
+    }
 
 }
