@@ -13,4 +13,8 @@ public class PasswordUtil {
         messageDigest.update(source.getBytes());
         return DatatypeConverter.printHexBinary(messageDigest.digest()).toLowerCase();
     }
+
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        System.out.println(createPassword("123456"));
+    }
 }

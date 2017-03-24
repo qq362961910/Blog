@@ -70,7 +70,7 @@ public class StringUtil {
     public static void main(String[] args) {
 //        String text = "撒大手\n大脚反馈\n\n\n";
 //        System.out.println(text);
-        String test = "a我i 是.ab一 个.人c";
+        String test = "�Ļ���-�Ļ���-�Զ��\uD8BA\uDFE3����ˣ�-δ��ע̽����(̽������ţ�00001119 ̽�������ͣ�)";
         StringPart stringPart = partUTF8String(test);
         System.out.println(String.format("latin: %s", new String(stringPart.getLatinCharacters())));
         System.out.println(String.format("other: %s", new String(stringPart.getOtherCharacters())));

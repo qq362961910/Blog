@@ -1,7 +1,8 @@
 package com.jy.websocket;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
@@ -18,7 +19,7 @@ import java.util.Map;
 @ServerEndpoint("/anno/websocket/{relationId}/{username}")
 public class AnnoWebsocketEndPoint {
 
-    private static Log log = LogFactory.getLog(AnnoWebsocketEndPoint.class);
+    private static Logger logger = LogManager.getLogger(AnnoWebsocketEndPoint.class);
 
     @OnOpen
     public void onOpen (@PathParam("relationId") String relationId, @PathParam("username") String username, Session session) {

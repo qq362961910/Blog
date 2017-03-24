@@ -114,6 +114,7 @@
             <version>2.7</version>
         </dependency>
 
+        <!-- tomcat 需要此jar 如果在非tomcat环境下可以去掉该依赖 -->
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
