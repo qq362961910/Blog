@@ -21,7 +21,7 @@ public class WxHelper {
     private ObjectMapper objectMapper;
 
     private static final Map<Class<?>, Map<Field, String>> CONFIGURE_FIELD_URLPARAM_MAPPING = new HashMap<>();
-    private static final Map<Class<?>, Map.Entry<RootTag, Map<Field, Object>>> CONFIGURE_FIELD_XML_MAPPING = new HashMap<>();
+    private static final Map<Class<?>, Map.Entry<RootTag, Map<Field, Entry<String, Boolean>>>> CONFIGURE_FIELD_XML_MAPPING = new HashMap<>();
     private static final List<ValueHandler> xmlElementHandlers = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
@@ -73,7 +73,7 @@ public class WxHelper {
         if (configure == null || configure.getClass() == null || CONFIGURE_FIELD_XML_MAPPING.get(configure.getClass()) == null) {
             return "";
         }
-        Map.Entry<RootTag, Map<Field, Object>> xmlFieldMapping = CONFIGURE_FIELD_XML_MAPPING.get(configure.getClass());
+        Map.Entry<RootTag, Map<Field, Entry<String, Boolean>>> xmlFieldMapping = CONFIGURE_FIELD_XML_MAPPING.get(configure.getClass());
         RootTag rootTag = xmlFieldMapping.getKey();
 
         StringBuilder sb = new StringBuilder();
@@ -81,11 +81,10 @@ public class WxHelper {
             sb.append(rootTag.getNamespace());
             appendTagBegin(sb, rootTag.getTagName());
         }
-        Map<Field, Object> fieldMapping = xmlFieldMapping.getValue();
-        for (Map.Entry<Field, Object> entry: fieldMapping.entrySet()) {
+        Map<Field, Entry<String, Boolean>> fieldMapping = xmlFieldMapping.getValue();
+        for (Map.Entry<Field, Entry<String, Boolean>> entry: fieldMapping.entrySet()) {
             Field f = entry.getKey();
-            Object value = entry.getValue();
-            Entry<String, Boolean> tagEntry = (Entry<String, Boolean>)value;
+            Entry<String, Boolean> tagEntry = entry.getValue();
             //tag head
             appendTagBegin(sb, tagEntry.getKey());
             ValueHandler valueHandler = getValueHandler(f.getType());
@@ -148,8 +147,7 @@ public class WxHelper {
         }
         String result = sb.toString();
         result += "key=" + "Configure.getKey()";
-        // TODO: 17-4-7
-        //result = MD5.MD5Encode(result).toUpperCase();
+        result = "MD5.MD5Encode(result).toUpperCase()";
         return result;
     }
 
@@ -196,22 +194,38 @@ public class WxHelper {
         analyseXmlConfigMapping(UnionPayRequestConfigure.class);
     }
 
+    /**
+     * 说明
+     * 功能: 解析XML实体类
+     * 参与注解: {@link XmlRootElement}, {@link XmlElement}
+     * 解析结果缓存结构:<Class<?>, Map.Entry<RootTag, Map<Field, Object>>>
+     *     key: bean 类名
+     *     value: Entry
+     *     -------------------------------------------------------------
+     *     value.Entry.key: 跟标签,包含标签名称和文档声明
+     *     value.Entry.value: 类属性与标签名称的映射
+     *          结构: Field <----> Entry<String, Boolean>, Entry.key表示标签名称, Entry.value 表示是否需要转义
+     *          1.当属性(Field)为简单类型时,标签名称取自{@link XmlElement#value()}
+     *          2.当属性(Field)为复杂类型时,去标签名称的优先级为: {@link XmlElement#value()} > {@link XmlRootElement#value()}
+     *
+     * 功能总结: 采集类的属性与标签的映射关系,以及标签是否余姚被转义
+     * */
     private static void analyseXmlConfigMapping(Class<?> clazz) {
         if (clazz == null || CONFIGURE_FIELD_XML_MAPPING.containsKey(clazz)) {
             return;
         }
         XmlRootElement xmlRootElement = clazz.getAnnotation(XmlRootElement.class);
         String rootTag;
-        String namespace = xmlRootElement.namespace();
+        String declaration = xmlRootElement.declaration();
         if (xmlRootElement == null) {
             rootTag = clazz.getSimpleName();
         }
         else {
             rootTag = xmlRootElement.value();
         }
-        Entry<RootTag, Map<Field, Object>> xmlConfigureMapping = new Entry<>(new RootTag(rootTag, namespace));
+        Entry<RootTag, Map<Field, Entry<String, Boolean>>> xmlConfigureMapping = new Entry<>(new RootTag(rootTag, declaration));
         CONFIGURE_FIELD_XML_MAPPING.put(clazz, xmlConfigureMapping);
-        Map<Field, Object> xmlFiledsConfigureMapping = new HashMap();
+        Map<Field, Entry<String, Boolean>> xmlFiledsConfigureMapping = new HashMap();
         xmlConfigureMapping.setValue(xmlFiledsConfigureMapping);
         Field[] unionPayRequestConfigureClassFields = clazz.getDeclaredFields();
         for (Field f: unionPayRequestConfigureClassFields) {
@@ -241,7 +255,6 @@ public class WxHelper {
                     escape = false;
                 }
                 else {
-                    //非静态变量
                     if (e != null) {
                         tagName = e.value();
                     }
