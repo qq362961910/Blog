@@ -1,7 +1,9 @@
 package helper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import http.AccessTokenRequestConfigure;
 import http.UrlParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xml.UnionPayRequestConfigure;
 import xml.XmlElement;
@@ -10,13 +12,13 @@ import xml.XmlRootElement;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class WxHelper {
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private static final Map<Class<?>, Map<Field, String>> CONFIGURE_FIELD_URLPARAM_MAPPING = new HashMap<>();
     private static final Map<Class<?>, Map.Entry<RootTag, Map<Field, Object>>> CONFIGURE_FIELD_XML_MAPPING = new HashMap<>();
@@ -24,10 +26,9 @@ public class WxHelper {
 
     @SuppressWarnings("unchecked")
     public Map<String, Object> requestAccessToken(AccessTokenRequestConfigure configure) throws IllegalAccessException, IOException {
-//        String queryUrl = Configure.ACCESS_TOKEN_URL + buildUrlSearch(configure);
-//        String result = HttpClient.get(queryUrl);
-//        return objectMapper.readValue(result, HashMap.class);
-        return null;
+        String queryUrl = "Configure.ACCESS_TOKEN_URL" + buildUrlSearch(configure);
+        String result = "HttpClient.get(queryUrl)";
+        return objectMapper.readValue(result, HashMap.class);
     }
 
     private static ValueHandler getValueHandler(Class clazz) {
@@ -99,7 +100,7 @@ public class WxHelper {
                 Object tagValue = f.get(configure);
                 //need to escape
                 if (tagEntry.getValue()) {
-                    escapeTagValue(sb, tagEntry.getKey());
+                    escapeTagValue(sb, (String)tagValue);
                 }
                 else {
                     sb.append(valueHandler.handle(tagValue));
@@ -112,6 +113,44 @@ public class WxHelper {
             appendTagEnd(sb, rootTag.getTagName());
         }
         return sb.toString();
+    }
+
+    public String getSign(Object o) throws IllegalAccessException {
+        ArrayList<String> list = new ArrayList<String>();
+        Class cls = o.getClass();
+        Field[] fields = cls.getDeclaredFields();
+        for (Field f : fields) {
+            f.setAccessible(true);
+            if (f.get(o) != null && f.get(o) != "") {
+                String tagName;
+                String value = f.get(o).toString();
+                XmlElement e = f.getAnnotation(XmlElement.class);
+                if (e!= null) {
+                    tagName = e.value();
+                    if (e.escape()) {
+                        if (value.contains("<![CDATA[")) {
+                            value = value.substring(9, value.length() - 3);
+                        }
+                    }
+                }
+                else {
+                    tagName = f.getName();
+                }
+                list.add(tagName + "=" + value + "&");
+            }
+        }
+        int size = list.size();
+        String [] arrayToSort = list.toArray(new String[size]);
+        Arrays.sort(arrayToSort, String.CASE_INSENSITIVE_ORDER);
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < size; i ++) {
+            sb.append(arrayToSort[i]);
+        }
+        String result = sb.toString();
+        result += "key=" + "Configure.getKey()";
+        // TODO: 17-4-7
+        //result = MD5.MD5Encode(result).toUpperCase();
+        return result;
     }
 
     private WxHelper appendTagBegin(StringBuilder sb, String tagName) {
