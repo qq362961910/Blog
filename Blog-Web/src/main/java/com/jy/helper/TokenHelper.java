@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
-@Component
 public class TokenHelper {
 
     private static final Logger logger = LogManager.getLogger(TokenHelper.class);
