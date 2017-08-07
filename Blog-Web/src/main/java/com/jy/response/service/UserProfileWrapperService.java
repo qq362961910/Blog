@@ -45,7 +45,7 @@ public class UserProfileWrapperService extends ResponseBaseService{
         if (needLikeBooks && userProfile.getUserBookLikeList() != null ) {
             List<BookWrapper> bookWrapperServiceList = new ArrayList<>(userProfile.getUserBookLikeList() .size());
             for (UserBookLike userBookLike: userProfile.getUserBookLikeList()) {
-                Book book = bookService.queryById(Book.class, userBookLike.getUserBookEmbedKey().getBookId());
+                Book book = bookService.queryById(userBookLike.getUserBookEmbedKey().getBookId());
                 bookWrapperServiceList.add(bookWrapperService.buildBookWrapper(book));
             }
             userProfileWrapper.setLikeBooks(bookWrapperServiceList);
@@ -53,7 +53,7 @@ public class UserProfileWrapperService extends ResponseBaseService{
         if (needLikeMusic && userProfile.getUserMusicLikeList() != null ) {
             List<MusicWrapper> musicWrapperList = new ArrayList<>(userProfile.getUserMusicLikeList().size());
             for (UserMusicLike userMusicLike: userProfile.getUserMusicLikeList()) {
-                Music music = musicService.queryById(Music.class, userMusicLike.getUserMusicEmbedKey().getMusicId());
+                Music music = musicService.queryById(userMusicLike.getUserMusicEmbedKey().getMusicId());
                 musicWrapperList.add(musicWrapperService.buildMusicWrapper(music));
             }
             userProfileWrapper.setLikeMusics(musicWrapperList);

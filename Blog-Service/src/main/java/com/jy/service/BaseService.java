@@ -15,10 +15,10 @@ public interface BaseService<Entity> {
     /**
      * delte by ID
      */
-    void deleteById(Class<Entity> clazz, Long id);
+    void deleteById(Long id);
 
     /**
      * query by ID
      */
-    Entity queryById(Class<Entity> clazz, Long id);
+    Entity queryById(Long id);
 }

@@ -29,7 +29,7 @@ public class ArticleTest {
     @Test
     public void saveArticleTest() {
 
-        User user = userService.queryById(User.class, 3L);
+        User user = userService.queryById(3L);
 
         Article article = new Article();
         article.setCreateTime(new Date());

@@ -29,7 +29,7 @@ public class ArticleController extends BaseController {
      */
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Map<String, Object> articleDetail(@PathVariable("id") Long articleId) {
-        Article article = articleService.queryById(Article.class, articleId);
+        Article article = articleService.queryById(articleId);
         if (article == null) {
             return fail404();
         }

@@ -2,14 +2,13 @@ package com.jy.service.impl;
 
 import com.jy.dao.impl.BaseDaoImpl;
 import com.jy.service.BaseService;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.jy.util.AppReflectUtil;
 
 import javax.annotation.Resource;
 
-@Transactional(rollbackFor = Exception.class)
-@Service
-public class BaseServiceImpl<Entity> implements BaseService<Entity> {
+public abstract class BaseServiceImpl<Entity> implements BaseService<Entity> {
+
+    private Class<Entity> clazz;
 
     @Resource
     private BaseDaoImpl<Entity> baseDaoImpl;
@@ -22,11 +21,16 @@ public class BaseServiceImpl<Entity> implements BaseService<Entity> {
         baseDaoImpl.update(entity);
     }
 
-    public void deleteById(Class<Entity> clazz, Long id) {
+    public void deleteById(Long id) {
         baseDaoImpl.deleteById(clazz, id);
     }
 
-    public Entity queryById(Class<Entity> clazz, Long id) {
+    public Entity queryById(Long id) {
         return baseDaoImpl.queryById(clazz, id);
     }
+
+    public BaseServiceImpl() {
+        clazz = AppReflectUtil.findTypeParam(this, BaseServiceImpl.class, "Entity");
+    }
+
 }
