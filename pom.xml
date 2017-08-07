@@ -11,6 +11,7 @@
     <modules>
         <module>Blog-Entity</module>
         <module>Blog-Service</module>
+        <module>Blog-Service-Remote</module>
         <module>Blog-Web</module>
         <module>Blog-Dao</module>
         <module>Blog-Common</module>
