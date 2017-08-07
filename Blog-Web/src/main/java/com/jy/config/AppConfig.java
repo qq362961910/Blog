@@ -1,7 +1,8 @@
 package com.jy.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jy.handler.MyResourceHttpRequestHandler;
 import com.jy.helper.QiNiuHelper;
+import com.jy.interceptor.ResourceInterceptor;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +11,24 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
-import java.util.Properties;
+import java.util.*;
 
 @Configuration
 @EnableWebMvc
@@ -50,6 +55,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+//        registry.addResourceHandler("/**/*.html").addResourceLocations("/");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new ResourceInterceptor());
     }
 
     @Bean
@@ -143,8 +154,39 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ObjectMapper objectMapper() {
-        return new ObjectMapper();
+    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+
+        DefaultResourceLoader loader = new DefaultResourceLoader();
+        MyResourceHttpRequestHandler handler = new MyResourceHttpRequestHandler();
+        List<Resource> locations = new ArrayList<>();
+        locations.add(loader.getResource("/"));
+        handler.setLocations(locations);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("/**/*.html", handler);
+
+        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+        simpleUrlHandlerMapping.setUrlMap(map);
+
+        return simpleUrlHandlerMapping;
     }
+
+//    @Bean
+//    public SimpleMappingExceptionResolver simpleMappingExceptionResolver(){
+//
+//        SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+//
+//        //page and statusCode pare
+//        //you also can use method setStatusCodes(properties)
+//        resolver.addStatusCode("404", 404);
+//
+//        //set views for exception
+//        Properties mapping = new Properties();
+//        mapping.put("ua.package.CustomException" , "page");
+//        resolver.setExceptionMappings(mapping);
+//
+//        return resolver;
+//    }
+
 
 }
