@@ -1,4 +1,4 @@
-import helper.WxHelper;
+import com.jy.helper.WxHelper;
 import xml.UnionPayRequestConfigure;
 
 public class WeixinHelperTest {

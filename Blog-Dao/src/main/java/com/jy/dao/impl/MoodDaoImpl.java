@@ -2,7 +2,7 @@ package com.jy.dao.impl;
 
 import com.jy.dao.MoodDao;
 import com.jy.entity.Mood;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 package com.jy.dao;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 public interface DaoHelper {
     /**

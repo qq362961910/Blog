@@ -2,7 +2,7 @@ package com.jy.dao.impl;
 
 import com.jy.dao.ArticleDao;
 import com.jy.entity.Article;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 

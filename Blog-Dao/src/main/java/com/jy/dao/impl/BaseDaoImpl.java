@@ -2,8 +2,8 @@ package com.jy.dao.impl;
 
 import com.jy.dao.BaseDao;
 import com.jy.dao.DaoHelper;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

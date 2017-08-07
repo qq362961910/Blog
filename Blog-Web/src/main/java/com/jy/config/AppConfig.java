@@ -1,5 +1,6 @@
 package com.jy.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jy.helper.QiNiuHelper;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
@@ -139,6 +140,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         qiNiuHelper.setPublicImgBucket(environment.getProperty("qiniu.public.img.bucket"));
         qiNiuHelper.init();
         return qiNiuHelper;
+    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 
 }

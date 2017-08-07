@@ -240,7 +240,7 @@ public class ArticleController extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<String, String>("article.createTime", "desc"));
+        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
         int count = articleService.countArticleByArticleParam(serviceParam);
         List<Article> articles;
         if (count == 0) {

@@ -1,4 +1,4 @@
-package helper;
+package com.jy.helper;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

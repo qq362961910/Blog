@@ -1,8 +1,8 @@
 package com.jy.dao;
 
 import javafx.util.Pair;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package helper;
+package com.jy.helper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import http.AccessTokenRequestConfigure;

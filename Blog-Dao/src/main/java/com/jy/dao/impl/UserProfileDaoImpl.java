@@ -4,7 +4,7 @@ import com.jy.dao.UserDao;
 import com.jy.dao.UserProfileDao;
 import com.jy.entity.User;
 import com.jy.entity.UserProfile;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

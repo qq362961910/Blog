@@ -4,7 +4,7 @@ import com.jy.dao.DaoHelper;
 import com.jy.dao.UserMusicLikeDao;
 import com.jy.embedkey.UserMusicEmbedKey;
 import com.jy.entity.UserMusicLike;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

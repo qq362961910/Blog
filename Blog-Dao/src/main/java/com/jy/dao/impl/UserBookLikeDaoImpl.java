@@ -4,7 +4,7 @@ import com.jy.dao.DaoHelper;
 import com.jy.dao.UserBookLikeDao;
 import com.jy.embedkey.UserBookEmbedKey;
 import com.jy.entity.UserBookLike;
-import org.hibernate.query.Query;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
