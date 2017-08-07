@@ -1,5 +1,6 @@
 package com.jy.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jy.handler.MyResourceHttpRequestHandler;
 import com.jy.helper.QiNiuHelper;
 import com.jy.interceptor.ResourceInterceptor;
@@ -187,6 +188,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 //
 //        return resolver;
 //    }
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
 
 
 }
