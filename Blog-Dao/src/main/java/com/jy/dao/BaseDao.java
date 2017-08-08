@@ -20,14 +20,14 @@ public interface BaseDao<Entity> {
     void update(Entity entity);
 
     /**
-     * delte by ID
+     * delete by ID
      */
-    void deleteById(Class<Entity> clazz, Long id);
+    void deleteById(Long id);
 
     /**
      * query by ID
      */
-    Entity queryById(Class<Entity> clazz, Long id);
+    Entity queryById(Long id);
 
     /**
      * 获取当前Session

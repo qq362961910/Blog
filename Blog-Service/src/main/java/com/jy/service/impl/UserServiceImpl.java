@@ -1,5 +1,6 @@
 package com.jy.service.impl;
 
+import com.jy.dao.BaseDao;
 import com.jy.dao.UserDao;
 import com.jy.entity.User;
 import com.jy.service.UserService;
@@ -17,5 +18,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public User findUserByUsername(String username) {
         return userDao.selectUserByUsername(username);
+    }
+
+    @Override
+    public BaseDao<User> getBaseDao() {
+        return userDao;
     }
 }

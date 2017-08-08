@@ -2,13 +2,14 @@ package com.jy.dao.impl;
 
 import com.jy.dao.BaseDao;
 import com.jy.dao.DaoHelper;
+import com.jy.util.AppReflectUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
+public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
+
+    private Class<Entity> clazz;
 
     @Autowired
     private DaoHelper daoHelper;
@@ -25,16 +26,16 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
         }
     }
 
-    public void deleteById(Class<Entity> clazz, Long id) {
+    public void deleteById(Long id) {
         if (id != null) {
-            Entity entity = queryById(clazz, id);
+            Entity entity = queryById(id);
             if (entity != null) {
                 daoHelper.getCurrentSession().delete(entity);
             }
         }
     }
 
-    public Entity queryById(Class<Entity> clazz, Long id) {
+    public Entity queryById(Long id) {
         return daoHelper.getCurrentSession().get(clazz, id);
     }
 
@@ -49,5 +50,9 @@ public class BaseDaoImpl<Entity> implements BaseDao<Entity> {
     @Override
     public Query setHqlParam(Query query, String key, Object value) {
         return daoHelper.setHqlParam(query, key, value);
+    }
+
+    public BaseDaoImpl() {
+        clazz = AppReflectUtil.findTypeParam(this, BaseDaoImpl.class, "Entity");
     }
 }

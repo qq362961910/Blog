@@ -1,5 +1,6 @@
 package com.jy.service.impl;
 
+import com.jy.dao.BaseDao;
 import com.jy.dao.MoodDao;
 import com.jy.entity.Mood;
 import com.jy.service.MoodService;
@@ -22,5 +23,10 @@ public class MoodServiceImpl extends BaseServiceImpl<Mood> implements MoodServic
     @Override
     public List<Mood> findMoodByMoodParam(MoodDao.MoodParam param) {
         return moodDao.selectMoodByMoodParam(param);
+    }
+
+    @Override
+    public BaseDao<Mood> getBaseDao() {
+        return moodDao;
     }
 }

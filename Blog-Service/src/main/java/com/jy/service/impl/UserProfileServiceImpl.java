@@ -1,5 +1,6 @@
 package com.jy.service.impl;
 
+import com.jy.dao.BaseDao;
 import com.jy.dao.UserBookLikeDao;
 import com.jy.dao.UserMusicLikeDao;
 import com.jy.dao.UserProfileDao;
@@ -68,5 +69,10 @@ public class UserProfileServiceImpl extends BaseServiceImpl<UserProfile> impleme
     @Override
     public List<UserBookLike> findUserBookLikeByOwnerId(Long ownerId) {
         return userBookLikeDao.selectByOwnerId(ownerId);
+    }
+
+    @Override
+    public BaseDao<UserProfile> getBaseDao() {
+        return userProfileDao;
     }
 }

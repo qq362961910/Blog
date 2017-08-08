@@ -1,6 +1,7 @@
 package com.jy.service.impl;
 
 import com.jy.dao.ArticleDao;
+import com.jy.dao.BaseDao;
 import com.jy.entity.Article;
 import com.jy.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,10 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article> implements Arti
     @Override
     public List<Article> findArticleByArticleParam(ArticleDao.ArticleParam param) {
         return articleDao.selectArticleByArticleParam(param);
+    }
+
+    @Override
+    public BaseDao<Article> getBaseDao() {
+        return articleDao;
     }
 }

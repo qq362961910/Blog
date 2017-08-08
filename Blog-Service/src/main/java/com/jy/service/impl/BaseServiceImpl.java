@@ -1,36 +1,26 @@
 package com.jy.service.impl;
 
-import com.jy.dao.impl.BaseDaoImpl;
+import com.jy.dao.BaseDao;
 import com.jy.service.BaseService;
-import com.jy.util.AppReflectUtil;
-
-import javax.annotation.Resource;
 
 public abstract class BaseServiceImpl<Entity> implements BaseService<Entity> {
 
-    private Class<Entity> clazz;
-
-    @Resource
-    private BaseDaoImpl<Entity> baseDaoImpl;
-
     public void save(Entity entity) {
-        baseDaoImpl.save(entity);
+        getBaseDao().save(entity);
     }
 
     public void update(Entity entity) {
-        baseDaoImpl.update(entity);
+        getBaseDao().update(entity);
     }
 
     public void deleteById(Long id) {
-        baseDaoImpl.deleteById(clazz, id);
+        getBaseDao().deleteById(id);
     }
 
     public Entity queryById(Long id) {
-        return baseDaoImpl.queryById(clazz, id);
+        return getBaseDao().queryById(id);
     }
 
-    public BaseServiceImpl() {
-        clazz = AppReflectUtil.findTypeParam(this, BaseServiceImpl.class, "Entity");
-    }
+    public abstract BaseDao<Entity> getBaseDao();
 
 }
