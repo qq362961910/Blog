@@ -237,9 +237,9 @@
             <properties>
                 <!-- jdbc -->
                 <db.driver.class>com.mysql.cj.jdbc.Driver</db.driver.class>
-                <db.url>jdbc:mysql://localhost:3306/blog?useSSL=false&amp;characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</db.url>
-                <db.username>blog</db.username>
-                <db.password>blog</db.password>
+                <db.url>jdbc:mysql://localhost:3306/amen?useSSL=false&amp;characterEncoding=UTF-8&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</db.url>
+                <db.username>amen</db.username>
+                <db.password>123456</db.password>
                 <db.initialPoolSize>5</db.initialPoolSize>
                 <db.minPoolSize>10</db.minPoolSize>
                 <db.maxPoolSize>30</db.maxPoolSize>
