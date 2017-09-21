@@ -6,7 +6,9 @@ import com.jy.util.AppReflectUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional(rollbackFor = Exception.class)
 public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
 
     private Class<Entity> clazz;

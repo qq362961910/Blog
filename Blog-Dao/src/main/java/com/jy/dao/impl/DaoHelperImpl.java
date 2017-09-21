@@ -25,6 +25,10 @@ public class DaoHelperImpl implements DaoHelper {
         return sessionFactory.getCurrentSession();
     }
 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     public void flushCurrentSession() {
         sessionFactory.getCurrentSession().flush();
     }
