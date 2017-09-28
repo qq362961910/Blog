@@ -154,23 +154,23 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return qiNiuHelper;
     }
 
-    @Bean
-    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
-
-        DefaultResourceLoader loader = new DefaultResourceLoader();
-        MyResourceHttpRequestHandler handler = new MyResourceHttpRequestHandler();
-        List<Resource> locations = new ArrayList<>();
-        locations.add(loader.getResource("/"));
-        handler.setLocations(locations);
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("/**/*.html", handler);
-
-        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
-        simpleUrlHandlerMapping.setUrlMap(map);
-
-        return simpleUrlHandlerMapping;
-    }
+//    @Bean
+//    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+//
+//        DefaultResourceLoader loader = new DefaultResourceLoader();
+//        MyResourceHttpRequestHandler handler = new MyResourceHttpRequestHandler();
+//        List<Resource> locations = new ArrayList<>();
+//        locations.add(loader.getResource("/"));
+//        handler.setLocations(locations);
+//
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("/**/*.html", handler);
+//
+//        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+//        simpleUrlHandlerMapping.setUrlMap(map);
+//
+//        return simpleUrlHandlerMapping;
+//    }
 
 //    @Bean
 //    public SimpleMappingExceptionResolver simpleMappingExceptionResolver(){
