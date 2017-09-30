@@ -1,25 +1,14 @@
-/*body {*/
-    /*height: 100%;*/
-/*}*/
-/*!* 去掉导航栏边框，背景色 *!*/
-/*#navbar-default {*/
-    /*border: 0;*/
-    /*background-color: transparent;*/
-/*}*/
-/*#example-navbar-collapse > ul > li {*/
-  /*font-size: x-large;*/
-/*}*/
-/*
-激活的导航选项去除背景色
-#example-navbar-collapse > ul > li.active > a {
-  background-color: transparent;
-  color: blue;
-}*/
-/*.content-vertical-align-middle {*/
-  /*position: relative;*/
-  /*transform: translateY(50%)*/
-/*}*/
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    margin-top: 0.5%;
+}
 
+.navbar-nav>.active>a {
+    background-color: transparent!important;
+}
 
-
+.navbar-nav {
+    font-size: ;
+}
 
