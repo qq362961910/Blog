@@ -1,0 +1,84 @@
+/* x >= 1200 */
+@media screen and (min-device-width: 1200px){
+    #blog-banner {
+        background: url(/static/images/banner_top.jpg) top center no-repeat;
+        height: 20rem;
+    }
+    #blog-banner>section {
+        height: 20rem;
+        margin: auto;
+    }
+    #blog-banner>section>ul {
+        padding-top: 3rem;
+    }
+    #blog-banner>section>ul>li {
+        color: #756F71;
+        transform: translate(60px);
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8), 2px 2px 3px rgba(180, 151, 151, 0.3);
+    }
+    .avatar-frame {
+        border: #FFF 4px solid;
+        width: 12rem;
+        height: 12rem;
+        margin-top: 3rem;
+        border-radius: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+    .avatar-img {
+        display: block;
+        padding-top: 8rem;
+        width: 100%;
+        background: url("http://ogoysg5ko.bkt.clouddn.com/avatar.jpg") 0% 0% /12rem 12rem no-repeat;
+    }
+    .nickname{
+        width: 200%;
+        margin-top: 8rem;
+        margin-left: -6rem;
+        font-size: 1.4rem;
+        display: block;
+        text-align: center;
+        line-height: 3.5rem;
+        color: #fff;
+        background: rgba(0, 0, 0, .5);
+        transition: margin-top .2s ease-in-out;
+    }
+    .avatar-frame a:hover span {
+        margin-top: 0rem;
+        height: 100%;
+    }
+}
+
+/* 1200 > x >= 992 */
+@media screen and (min-device-width: 992px) and (max-device-width: 1199px){
+
+}
+
+/* 992 > x >= 768 */
+@media screen and (min-device-width: 768px) and (max-device-width: 991px){
+
+}
+
+/* x < 768  */
+@media screen and (max-device-width: 767px){
+
+}
+
+#blog-banner>section>ul>li:nth-child(n+1) {
+    animation: animations 3s ease-out 1s backwards;
+}
+
+@keyframes animations {
+    0% {
+        transform: translate(0);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(30px);
+        opacity: .5;
+    }
+    100% {
+        transform: translate(60px);
+        opacity: 1;
+    }
+}
