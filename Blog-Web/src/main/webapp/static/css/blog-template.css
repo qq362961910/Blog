@@ -1,0 +1,22 @@
+.blog-template-frame {
+  height: 10rem;
+  background-color: #F1F0EE;
+}
+
+.blog-template-title {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.blog-template-title>h3 {
+  background-color: #474645;
+  width: 22rem;
+}
+
+
+.blog-template-line {
+  border-bottom: 2px solid white;
+}
+.blog-template-line>hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}

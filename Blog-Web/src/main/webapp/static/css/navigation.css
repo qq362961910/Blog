@@ -7,9 +7,10 @@
     margin-top:1.5rem;
 }
 
-.navbar-nav>.active>a {
-    background-color: transparent!important;
+#example-navbar-collapse>ul>li.active>a {
+    background-color: transparent;
 }
+
 @media screen and (min-device-width: 1200px){
     body {font-size: 1.6rem;/*1.4 × 10px = 14px */}
     #example-navbar-collapse>ul>li>a {
