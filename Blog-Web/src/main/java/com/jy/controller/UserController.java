@@ -37,7 +37,6 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = {"", "index"}, method = RequestMethod.GET)
     public ModelAndView userIndex(@PathVariable("username") String username) {
-
         User user = userService.findUserByUsername(username);
         if (user == null) {
             return new ModelAndView("404");

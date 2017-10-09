@@ -4,7 +4,7 @@
     /*banner图片和高度*/
     #blog-banner {
         background: url(/static/images/banner_top.jpg) top center no-repeat;
-        height: 20rem;
+        height: 25rem;
     }
     /*banner文字描述*/
     #blog-banner>section {
@@ -14,7 +14,7 @@
         width: 30rem;
         color: #756F71;
         /*对元素进行旋转、缩放、移动或倾斜, translate(x, y)*/
-        transform: translate(5rem);
+        transform: translate(40rem);
         text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8), 2px 2px 3px rgba(180, 151, 151, 0.3);
     }
     /*头像相框*/
@@ -72,48 +72,12 @@
 }
 
 @keyframes animations {
-    0% {
-        transform: translate(0);
-        opacity: 0;
-    }
-    10% {
-      transform: translate(0.5rem);
-      opacity: .1;
-    }
-    20% {
-      transform: translate(1rem);
-      opacity: .2;
-    }
-    30% {
-      transform: translate(1.5rem);
-      opacity: .3;
-    }
-    40% {
-      transform: translate(2rem);
-      opacity: .4;
-    }
-    50% {
-        transform: translate(2.5rem);
-        opacity: .5;
-    }
-    60% {
-      transform: translate(3rem);
-      opacity: .6;
-    }
-    70% {
-      transform: translate(3.5rem);
-      opacity: .7;
-    }
-    80% {
-      transform: translate(4rem);
-      opacity: .8;
-    }
-    90% {
-      transform: translate(4.5rem);
-      opacity: .9;
-    }
-    100% {
-        transform: translate(5rem);
-        opacity: 1;
-    }
+  0% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(40rem);
+    opacity: 1;
+  }
 }

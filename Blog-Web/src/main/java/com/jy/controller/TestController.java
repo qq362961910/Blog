@@ -12,7 +12,6 @@ import java.util.HashMap;
 public class TestController {
 
     private final Logger logger = LogManager.getLogger(TestController.class);
-//  private static Logger logger = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
 
     @RequestMapping("/json")
     public Object testJson() {

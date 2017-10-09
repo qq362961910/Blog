@@ -26,7 +26,11 @@
             <p>为自己掘一个坟墓来葬心，红尘一梦，不再追寻。</p>
             <p>加了锁的青春，不会再因谁而推开心门。</p>
         </ul>
-        <div class="avatar"><a id="avatar" href="javascript:void(0);"><span id="nickname"></span></a></div>
+        <div class="avatar">
+          <a id="avatar" href="javascript:void(0);">
+            <span id="nickname"></span>
+          </a>
+        </div>
     </section>
 </div>
 <div class="template">
@@ -102,8 +106,7 @@
     </div>
     <aside class="right">
         <div class="weather">
-            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
-                    src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
+            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
         </div>
         <div class="news">
             <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
@@ -149,7 +152,10 @@
         <a href="/" class="weixin"> </a></aside>
 </article>
 <footer>
-    <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
+    <p>
+      Design by DanceSmile
+      <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+      <a href="/">网站统计</a>
     </p>
 </footer>
 <script type="text/javascript" src="<%=static_file_path%>js/index.js"></script>
