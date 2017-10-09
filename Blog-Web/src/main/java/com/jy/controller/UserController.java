@@ -2,15 +2,10 @@ package com.jy.controller;
 
 import com.jy.entity.User;
 import com.jy.response.entity.UserWrapper;
-import com.jy.response.service.ArticleWrapperService;
 import com.jy.response.service.UserWrapperService;
-import com.jy.service.ArticleService;
 import com.jy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -24,13 +19,10 @@ import java.util.Map;
 public class UserController extends BaseController {
 
     @Autowired
-    private ArticleService articleService;
-    @Autowired
     private UserService userService;
     @Autowired
-    private ArticleWrapperService articleWrapperService;
-    @Autowired
     private UserWrapperService userWrapperService;
+
 
     /**
      * 用户首页
@@ -161,6 +153,14 @@ public class UserController extends BaseController {
         }
         UserWrapper userWrapper = userWrapperService.buildUserWrapper(user, true);
         return success(userWrapper);
+    }
+
+    /**
+     * 注册并登录
+     * */
+    @RequestMapping(value = "phone_reg_and_login", method = RequestMethod.GET)
+    public Map<String, Object> phoneRegisterAndLogin(@RequestParam("phone") String phone) throws Exception{
+      return success();
     }
 
 

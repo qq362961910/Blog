@@ -1,8 +1,8 @@
 package com.jy.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jy.handler.MyResourceHttpRequestHandler;
 import com.jy.helper.QiNiuHelper;
+import com.jy.helper.SmsHelper;
 import com.jy.interceptor.ResourceInterceptor;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
@@ -12,8 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -23,7 +21,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -39,7 +36,8 @@ import java.util.*;
 )
 @PropertySource({"classpath:props/db.properties",
         "classpath:props/hibernate.properties",
-        "classpath:props/qiniu.properties"})
+        "classpath:props/qiniu.properties",
+        "classpath:props/sms.properties"})
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
@@ -152,6 +150,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         qiNiuHelper.setPublicImgBucket(environment.getProperty("qiniu.public.img.bucket"));
         qiNiuHelper.init();
         return qiNiuHelper;
+    }
+
+    @Bean
+    public SmsHelper smsHelper() {
+      SmsHelper smsHelper = new SmsHelper();
+      smsHelper.setUsername(environment.getProperty("sms.username"));
+      smsHelper.setPassword(environment.getProperty("sms.password"));
+      smsHelper.setBaseUrl(environment.getProperty("sms.base_url"));
+      return smsHelper;
     }
 
 //    @Bean
