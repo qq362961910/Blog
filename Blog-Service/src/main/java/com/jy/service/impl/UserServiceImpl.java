@@ -25,6 +25,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
+    public User findUserByUsernameAndPassword(String username, String password) throws NoSuchAlgorithmException {
+        return userDao.findUserByUsernameAndPassword(username, PasswordUtil.createPassword(password));
+    }
+
+    @Override
     public User findUserByPhone(String phone) {
         return userDao.findUserByPhone(phone);
     }

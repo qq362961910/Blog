@@ -1,6 +1,7 @@
 package com.jy.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jy.controller.interceptor.RequiredLoginInterceptor;
 import com.jy.helper.QiNiuHelper;
 import com.jy.helper.SmsHelper;
 import com.jy.interceptor.ResourceInterceptor;
@@ -42,6 +43,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private Environment environment;
+    @Autowired
+    private RequiredLoginInterceptor requiredLoginInterceptor;
 
     /* 数据模型package */
     private static String[] MODEL_PACKAGES = {
@@ -60,6 +63,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new ResourceInterceptor());
+        registry.addInterceptor(requiredLoginInterceptor);
     }
 
     @Bean

@@ -19,12 +19,18 @@ public enum ServiceErrorCode {
     /**
      * 用户名不正确
      */
-    LOGIN_USERNAME_ERROR("login_0001", "用户名或密码不正确"),
+    LOGIN_USERNAME_ERROR("login_0001", "用户名不正确"),
 
     /**
      * 密码不正确
      */
-    LOGIN_PASSWORD_ERROR("login_0002", "用户名或密码不正确"),
+    LOGIN_PASSWORD_ERROR("login_0002", "密码不正确"),
+
+    /**
+     * 用户名或密码不正确
+     */
+    LOGIN_USERNAME_OR_PASSWORD_ERROR("login_0003", "用户名或密码不正确"),
+
 
     /**
      * 验证码不正确

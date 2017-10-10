@@ -1,13 +1,13 @@
 package com.jy.controller.interceptor;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jy.common.constants.ServiceErrorCode;
 import com.jy.controller.interceptor.anno.RequiredLogin;
 import com.jy.controller.util.AppContextUtil;
 import com.jy.controller.util.RequestUtil;
-import com.jy.entity.LoginLog;
 import com.jy.entity.User;
-import com.jy.service.LoginLogService;
-import com.jy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,13 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+@Component
 public class RequiredLoginInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
-    private LoginLogService loginLogService;
-    @Autowired
-    private UserService userService;
+    private ObjectMapper objectMapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -35,21 +36,26 @@ public class RequiredLoginInterceptor extends HandlerInterceptorAdapter {
                 if (ticket == null) {
                     validate = false;
                 } else {
-                    LoginLog loginLog = loginLogService.queryByTicket(ticket);
-                    if (loginLog == null) {
+                    User user = AppContextUtil.getUserByTicket(ticket);
+                    if (user == null) {
                         validate = false;
                     } else {
-                        User user = userService.queryById(loginLog.getUserId());
-                        if (user == null) {
-                            validate = false;
-                        } else {
-                            AppContextUtil.setCurrentUser(user);
-                        }
+                        AppContextUtil.setCurrentUser(user);
                     }
                 }
             }
         }
-        AppContextUtil.setCurrentRequestTimePoint(new Date());
+        if (!validate) {
+            Map<String, Object> result = new HashMap<>();
+            result.put("success", Boolean.FALSE);
+            result.put("code", ServiceErrorCode.CHECK_NO_USER_LOGIN.code);
+            result.put("msg", ServiceErrorCode.CHECK_NO_USER_LOGIN.msg);
+            result.put("data", "");
+            response.getWriter().write(objectMapper.writeValueAsString(result));
+        }
+        else {
+            AppContextUtil.setCurrentRequestTimePoint(new Date());
+        }
         return validate;
     }
 

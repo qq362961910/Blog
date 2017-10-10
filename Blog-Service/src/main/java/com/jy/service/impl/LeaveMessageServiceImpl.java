@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 @Transactional(rollbackFor = Exception.class)
 @Service
 public class LeaveMessageServiceImpl extends BaseServiceImpl<LeaveMessage> implements LeaveMessageService {
@@ -21,7 +23,9 @@ public class LeaveMessageServiceImpl extends BaseServiceImpl<LeaveMessage> imple
         leaveMessage.setFromUserId(fromUserId);
         leaveMessage.setToUserId(toUserId);
         leaveMessage.setContent(content);
+        leaveMessage.setLikeCount(0);
         leaveMessage.setRepliedLeaveMessageId(leaveMessageId);
+        leaveMessage.setCreateTime(new Date());
         save(leaveMessage);
     }
 

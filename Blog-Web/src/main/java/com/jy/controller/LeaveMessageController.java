@@ -11,15 +11,14 @@ import com.jy.response.service.LeaveMessageWrapperService;
 import com.jy.service.LeaveMessageService;
 import com.jy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RestController
 @RequestMapping("leave_message")
 public class LeaveMessageController extends BaseController {
 
@@ -38,7 +37,8 @@ public class LeaveMessageController extends BaseController {
         return success();
     }
 
-    public Object queryUserLeaveMessage(@RequestBody Map<String, Object> requestBody) {
+    @RequestMapping(value = "query_user_leave_message", method = RequestMethod.GET)
+    public Object queryUserLeaveMessage(@RequestParam Map<String, Object> requestBody) {
         String username = (String) requestBody.get("username");
         if (StringUtil.isEmpty(username)) {
             return fail(ServiceErrorCode.PARAM_MISSING);
@@ -64,7 +64,7 @@ public class LeaveMessageController extends BaseController {
         leaveMessageList.forEach(leaveMessage -> {
             leaveMessageWrapperList.add(leaveMessageWrapperService.buildLeaveMessageWrapper(leaveMessage));
         });
-        data.put("leaveMessage", leaveMessageWrapperList);
+        data.put("leaveMessages", leaveMessageWrapperList);
         return success(data);
     }
 
