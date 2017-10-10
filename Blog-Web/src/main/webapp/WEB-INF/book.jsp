@@ -160,7 +160,7 @@
 </article>
 
 <div id="cover" style="display: block; position: fixed; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7); z-index: 999">
-    <div style="position:absolute; left: 30%; top: 35%; width: 40%;height: 30%; background-color: rgba(253,247,6,1); z-index: 1000"></div>
+    <div style="position:absolute; left: 30%; top: 35%; width: 40%;height: 30%; border-radius:25px;  background-color: rgba(253,247,6,1); z-index: 1000"></div>
 </div>
 <footer>
     <p>
