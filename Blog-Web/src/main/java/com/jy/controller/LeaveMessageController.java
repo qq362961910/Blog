@@ -84,6 +84,7 @@ public class LeaveMessageController extends BaseController {
     @RequestMapping(value = "query_user_leave_message", method = RequestMethod.GET)
     public Object queryUserLeaveMessage(@RequestParam Map<String, Object> requestBody) {
         String username = (String) requestBody.get("username");
+        String orderType = (String) requestBody.get("orderType");
         if (username == null) {
             return fail(ServiceErrorCode.PARAM_MISSING);
         }
@@ -107,6 +108,15 @@ public class LeaveMessageController extends BaseController {
         param.setOwnerId(user.getId());
         param.setCurrentPage(currentPage);
         param.setPageSize(pageSize);
+        if (orderType == "2") {
+            param.getOrderList().add(Order.asc("createTime"));
+        }
+        else if (orderType == "3") {
+            param.getOrderList().add(Order.desc("likeCount"));
+        }
+        else {
+            param.getOrderList().add(Order.desc("createTime"));
+        }
         List<LeaveMessage> leaveMessageList = leaveMessageService.queryListByParam(param);
         List<LeaveMessageWrapper> leaveMessageWrapperList = new ArrayList<>(leaveMessageList.size());
         Map<String, Object> data = new HashMap<>();

@@ -9,7 +9,7 @@ function queryMostLikeCountLeaveMessage () {
     var queryUrl = "/leave_message/rest/query_user_most_like_count_leave_message";
     var param = {username: username};
     var method = POST;
-    var queryArticleCallback = function (result) {
+    var queryMostLikeCountLeaveMessageCallback = function (result) {
         if (result.success) {
             var leaveMessages = result.data.leaveMessages;
             for (var i=0; i<leaveMessages.length; i++) {
@@ -26,14 +26,14 @@ function queryMostLikeCountLeaveMessage () {
             }
         }
     }
-    executeRequest(queryUrl, param, method, queryArticleCallback);
+    executeRequest(queryUrl, param, method, queryMostLikeCountLeaveMessageCallback);
 }
 
 function queryLeaveMessage () {
     var queryUrl = "/leave_message/rest/query_user_leave_message";
     var param = {username: username};
     var method = POST;
-    var queryArticleCallback = function (result) {
+    var queryLeaveMessageCallback = function (result) {
         if (result.success) {
             var leaveMessages = result.data.leaveMessages;
             for (var i=0; i<leaveMessages.length; i++) {
@@ -49,6 +49,29 @@ function queryLeaveMessage () {
                 dom.innerHTML = dom.innerHTML + item.getLeaveMessageItem();
             }
         }
+    };
+    executeRequest(queryUrl, param, method, queryLeaveMessageCallback);
+}
+
+function publishLeaveMessage() {
+    var content = $("#replyContent").value;
+    if (content == null || content.trim() == "") {
+        return;
     }
-    executeRequest(queryUrl, param, method, queryArticleCallback);
+    var queryUrl = "/leave_message";
+    var param = {username: username, content: content};
+    var method = POST;
+    var publishLeaveMessageCallback = function (result) {
+        if (result.success) {
+            //重新加载留言板
+            queryLeaveMessage ();
+        }
+        else {
+            //未登录
+            if (result.code == "check_0001") {
+                $("#cover").style.display = "block";
+            }
+        }
+    };
+    executeRequest(queryUrl, param, method, publishLeaveMessageCallback);
 }

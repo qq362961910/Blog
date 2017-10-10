@@ -26,8 +26,7 @@
     <div class="book left">
         <!-- Duoshuo Comment BEGIN -->
         <!-- 多说评论框 start -->
-        <div class="ds-thread" data-category="1" data-title="留言板"
-             data-url="http://www.yangqq.com/e/tool/gbook/?bid=1" id="ds-thread">
+        <div class="ds-thread" id="ds-thread">
             <div id="ds-reset">
                 <div class="ds-meta" style="display: none;">
                     <a href="javascript:void(0)" class="ds-like-thread-button ds-rounded">
@@ -36,17 +35,19 @@
                         <span class="ds-thread-cancel-like">取消喜欢</span>
                     </a>
                     <span class="ds-like-panel">
-                      <span class="ds-highlight">103</span>
-                      人喜欢</span>
+                      <span class="ds-highlight">103</span>人喜欢
+                    </span>
                 </div>
                 <div class="ds-rounded" id="ds-hot-posts">
                     <div class="ds-header ds-gradient-bg">被顶起来的评论</div>
-                    <ul id="mostLikeCountLeaveMessage">
-                    </ul>
+                    <ul id="mostLikeCountLeaveMessage"></ul>
                 </div>
                 <div class="ds-comments-info">
-                    <div class="ds-sort"><a class="ds-order-desc ds-current">最新</a><a class="ds-order-asc">最早</a><a
-                        class="ds-order-hot">最热</a></div>
+                    <div class="ds-sort">
+                        <a class="ds-order-desc ds-current">最新</a>
+                        <a class="ds-order-asc">最早</a><a
+                        class="ds-order-hot">最热</a>
+                    </div>
                     <ul class="ds-comments-tabs">
                         <li class="ds-tab">
                             <a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">
@@ -65,8 +66,7 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="ds-comments" id="leaveMessages">
-                </ul>
+                <ul class="ds-comments" id="leaveMessages"></ul>
                 <div class="ds-paginator">
                     <div class="ds-border"></div>
                     <a data-page="1" href="javascript:void(0);" class="ds-current">1</a>
@@ -77,7 +77,6 @@
                     <span class="page-break">...</span>
                     <a data-page="166" href="javascript:void(0);">166</a>
                 </div>
-                <a name="respond"></a>
                 <div class="ds-login-buttons"><p>社交帐号登录:</p>
                     <div class="ds-social-links">
                         <ul class="ds-service-list">
@@ -125,27 +124,17 @@
                     <a class="ds-avatar" href="javascript:void(0);" onclick="return false">
                         <img src="<%=static_file_path%>images/39630.jpg" alt="">
                     </a>
-                    <form method="post"><input type="hidden" name="thread_id" value="6220675869506011906">
-                        <input type="hidden" name="parent_id" value="">
-                        <input type="hidden" name="nonce" value="57fc59a286d74">
-                        <div class="ds-textarea-wrapper ds-rounded-top">
-                            <textarea name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea>
-                            <pre class="ds-hidden-text"></pre>
+                    <div class="ds-textarea-wrapper ds-rounded-top">
+                        <textarea id="replyContent" name="message" title="Ctrl+Enter快捷提交" placeholder="说点什么吧…"></textarea>
+                        <pre class="ds-hidden-text"></pre>
+                    </div>
+                    <div class="ds-post-toolbar">
+                        <div class="ds-post-options ds-gradient-bg">
+                            <span class="ds-sync"></span>
                         </div>
-                        <div class="ds-post-toolbar">
-                            <div class="ds-post-options ds-gradient-bg">
-                                <span class="ds-sync"></span>
-                            </div>
-                            <button class="ds-post-button" type="submit">发布</button>
-                            <div class="ds-toolbar-buttons">
-                                <a class="ds-toolbar-button ds-add-emote" title="插入表情"></a>
-                            </div>
-                        </div>
-                    </form>
+                        <button onclick="publishLeaveMessage();" class="ds-post-button" type="button">发布</button>
+                    </div>
                 </div>
-                <p class="ds-powered-by">
-                    <a href="http://duoshuo.com/" target="_blank" rel="nofollow">杨青个人博客网站正在使用多说</a>
-                </p>
             </div>
         </div>
     </div>
@@ -169,6 +158,10 @@
         </div>
     </aside>
 </article>
+
+<div id="cover" style="display: block; position: fixed; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7); z-index: 999">
+    <div style="position:absolute; left: 30%; top: 35%; width: 40%;height: 30%; background-color: rgba(253,247,6,1); z-index: 1000"></div>
+</div>
 <footer>
     <p>
         Design by DanceSmile
