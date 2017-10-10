@@ -13,6 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -27,6 +29,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Properties;
 
 @Configuration
@@ -45,6 +49,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     private Environment environment;
     @Autowired
     private RequiredLoginInterceptor requiredLoginInterceptor;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     /* 数据模型package */
     private static String[] MODEL_PACKAGES = {
@@ -202,7 +208,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+        return objectMapper;
+    }
+
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        MappingJackson2HttpMessageConverter mm = new MappingJackson2HttpMessageConverter();
+        mm.setObjectMapper(objectMapper);
+        converters.add(mm);
     }
 
 

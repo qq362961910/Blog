@@ -282,4 +282,4 @@ $.unregisterVLCEvent = function (id, event, handler) {
             dom.removeEventListener(event, handler, false);
         }
     }
-}
+};

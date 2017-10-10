@@ -5,19 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; UTF-8">
-    <script type="text/javascript" async="" src="<%=static_file_path%>js/insideText.js"></script>
     <title>留言</title>
-    <meta name="keywords" content="yangqq留言板">
-    <meta name="description" content="yangqq留言板">
+    <meta name="keywords" content="留言板">
+    <meta name="description" content="留言板">
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/book.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="<%=static_file_path%>css/embed.default.css">
     <!--[if lt IE 9]>
     <script src="<%=static_file_path%>js/modernizr.js"></script>
     <![endif]-->
-    <script type="text/javascript" async="" src="<%=static_file_path%>js/embed.js" charset="UTF-8"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
-    <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/LeaveMessage.js"></script>
 </head>
 <body>
 <header>
@@ -28,7 +26,7 @@
     <div class="book left">
         <!-- Duoshuo Comment BEGIN -->
         <!-- 多说评论框 start -->
-        <div class="ds-thread" data-category="1" data-title="yangqq留言板"
+        <div class="ds-thread" data-category="1" data-title="留言板"
              data-url="http://www.yangqq.com/e/tool/gbook/?bid=1" id="ds-thread">
             <div id="ds-reset">
                 <div class="ds-meta" style="display: none;">
@@ -43,243 +41,31 @@
                 </div>
                 <div class="ds-rounded" id="ds-hot-posts">
                     <div class="ds-header ds-gradient-bg">被顶起来的评论</div>
-                    <ul>
-                        <li class="ds-post" data-post-id="6297768470306095873">
-                            <div class="ds-post-self" data-post-id="6297768470306095873"
-                                 data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                                <div class="ds-avatar"><img src="<%=static_file_path%>images/39630.jpg" alt="小丑"></div>
-                                <div class="ds-comment-body">
-                                    <div class="ds-comment-header">
-                                        <span class="ds-user-name" data-qqt-account="">小丑</span>
-                                    </div>
-                                    <p>看了很多博主的帖子，我深受鼓舞。想到自己当年大学刚入学，老师要求我们几人一组做一个网站....</p>
-                                    <div class="ds-comment-footer ds-comment-actions">
-                                        <span class="ds-time" datetime="2016-06-19T13:18:06+08:00"
-                                              title="2016年6月19日 下午1:18:06">6月19日</span>
-                                        <a class="ds-post-reply" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-reply"></span>回复
-                                        </a>
-                                        <a class="ds-post-likes" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-like"></span>顶(30)
-                                        </a>
-                                        <a class="ds-post-repost" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-share"></span>转发
-                                        </a>
-                                        <a class="ds-post-report" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-report"></span>举报
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="ds-post" data-post-id="6290720795211596545">
-                            <div class="ds-post-self" data-post-id="6290720795211596545"
-                                 data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                                <div class="ds-avatar" data-user-id="6290719956988330754">
-                                    <a rel="nofollow author" target="_blank" href="http://weibo.com/lai88520"
-                                       onclick="javascript: void(0);" title="草戊水来">
-                                        <img src="<%=static_file_path%>images/764240e1jw1e8qgp5bmzyj2050050aa8.jpg"
-                                             alt="草戊水来">
-                                    </a>
-                                </div>
-                                <div class="ds-comment-body">
-                                    <div class="ds-comment-header">
-                                        <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                           href="http://weibo.com/lai88520" onclick="javascript: void(0);"
-                                           rel="nofollow" target="_blank" data-user-id="6290719956988330754">草戊水来</a>
-                                    </div>
-                                    <p>时间的过客，匆匆路过！已在用博主的模板学习（http://www.lmlblog.com/wo/），感谢博主的分享！！</p>
-                                    <div class="ds-comment-footer ds-comment-actions">
-                                        <span class="ds-time" datetime="2016-05-31T13:29:31+08:00"
-                                              title="2016年5月31日 下午1:29:31">5月31日</span>
-                                        <a class="ds-post-reply" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-reply"></span>回复</a>
-                                        <a class="ds-post-likes" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-like"></span>顶(16)
-                                        </a>
-                                        <a class="ds-post-repost" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-share"></span>转发
-                                        </a>
-                                        <a class="ds-post-report" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-report"></span>举报</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="ds-post" data-post-id="6343355356420244225">
-                            <div class="ds-post-self" data-post-id="6343355356420244225"
-                                 data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                                <div class="ds-avatar" data-user-id="6313387657648931586">
-                                    <a rel="nofollow author" target="_blank" href="http://www.zbboke.com/"
-                                       onclick="javascript: void(0);" title="张兵个人博客">
-                                        <img src="./杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站_files/100" alt="张兵个人博客">
-                                    </a>
-                                </div>
-                                <div class="ds-comment-body">
-                                    <div class="ds-comment-header">
-                                        <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                           href="http://www.zbboke.com/" onclick="javascript: void(0);" rel="nofollow"
-                                           target="_blank" data-user-id="6313387657648931586">张兵个人博客</a>
-                                    </div>
-                                    <p>www.zbboke.com 张兵个人博客 特来参观~ 欢迎来访</p>
-                                    <div class="ds-comment-footer ds-comment-actions">
-                                        <span class="ds-time" datetime="2016-10-20T09:38:30+08:00"
-                                              title="2016年10月20日 上午9:38:30">10月20日</span>
-                                        <a class="ds-post-reply" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-reply"></span>回复
-                                        </a>
-                                        <a class="ds-post-likes" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-like"></span>顶(7)
-                                        </a>
-                                        <a class="ds-post-repost" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-share"></span>转发
-                                        </a>
-                                        <a class="ds-post-report" href="javascript:void(0);">
-                                            <span class="ds-icon ds-icon-report"></span>举报</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                    <ul id="mostLikeCountLeaveMessage">
                     </ul>
                 </div>
                 <div class="ds-comments-info">
                     <div class="ds-sort"><a class="ds-order-desc ds-current">最新</a><a class="ds-order-asc">最早</a><a
                         class="ds-order-hot">最热</a></div>
                     <ul class="ds-comments-tabs">
-                        <li class="ds-tab"><a class="ds-comments-tab-duoshuo ds-current"
-                                              href="javascript:void(0);"><span class="ds-highlight">1039</span>条评论</a>
+                        <li class="ds-tab">
+                            <a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">
+                                <span class="ds-highlight">1039</span>条评论
+                            </a>
                         </li>
-                        <li class="ds-tab"><a class="ds-comments-tab-weibo" href="javascript:void(0);"><span
-                            class="ds-highlight">11</span>条新浪微博</a></li>
-                        <li class="ds-tab"><a class="ds-comments-tab-qqt" href="javascript:void(0);"><span
-                            class="ds-highlight">6</span>条腾讯微博</a></li>
+                        <li class="ds-tab">
+                            <a class="ds-comments-tab-weibo" href="javascript:void(0);">
+                                <span class="ds-highlight">11</span>条新浪微博
+                            </a>
+                        </li>
+                        <li class="ds-tab">
+                            <a class="ds-comments-tab-qqt" href="javascript:void(0);">
+                                <span class="ds-highlight">6</span>条腾讯微博
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <ul class="ds-comments">
-                    <li class="ds-post" data-post-id="6343829174670590722">
-                        <div class="ds-post-self" data-post-id="6343829174670590722"
-                             data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                            <div class="ds-avatar" data-user-id="6343827747160195841">
-                                <a rel="nofollow author" target="_blank" href="http://t.qq.com/I_am_Lxy"
-                                   onclick="javascript: void(0);" title="罗小洋">
-                                    <img src="./杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站_files/100(1)" alt="罗小洋"></a></div>
-                            <div class="ds-comment-body">
-                                <div class="ds-comment-header">
-                                    <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                       href="http://t.qq.com/I_am_Lxy" onclick="javascript: void(0);" rel="nofollow"
-                                       target="_blank" data-user-id="6343827747160195841">罗小洋</a></div>
-                                <p>可以的，</p>
-                                <div class="ds-comment-footer ds-comment-actions">
-                                    <span class="ds-time" datetime="2016-10-21T16:17:09+08:00"
-                                          title="2016年10月21日 下午4:17:09">10月21日</span>
-                                    <a class="ds-post-reply" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-reply"></span>回复
-                                    </a>
-                                    <a class="ds-post-likes" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-like"></span>顶</a>
-                                    <a class="ds-post-repost" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-share"></span>转发
-                                    </a>
-                                    <a class="ds-post-report" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-report"></span>举报
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="ds-post" data-post-id="6343829174670590722">
-                        <div class="ds-post-self" data-post-id="6343829174670590722"
-                             data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                            <div class="ds-avatar" data-user-id="6343827747160195841">
-                                <a rel="nofollow author" target="_blank" href="http://t.qq.com/I_am_Lxy"
-                                   onclick="javascript: void(0);" title="罗小洋">
-                                    <img src="./杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站_files/100(1)" alt="罗小洋"></a></div>
-                            <div class="ds-comment-body">
-                                <div class="ds-comment-header">
-                                    <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                       href="http://t.qq.com/I_am_Lxy" onclick="javascript: void(0);" rel="nofollow"
-                                       target="_blank" data-user-id="6343827747160195841">罗小洋</a></div>
-                                <p>可以的，</p>
-                                <div class="ds-comment-footer ds-comment-actions">
-                                    <span class="ds-time" datetime="2016-10-21T16:17:09+08:00"
-                                          title="2016年10月21日 下午4:17:09">10月21日</span>
-                                    <a class="ds-post-reply" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-reply"></span>回复
-                                    </a>
-                                    <a class="ds-post-likes" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-like"></span>顶</a>
-                                    <a class="ds-post-repost" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-share"></span>转发
-                                    </a>
-                                    <a class="ds-post-report" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-report"></span>举报
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="ds-post" data-post-id="6343829174670590722">
-                        <div class="ds-post-self" data-post-id="6343829174670590722"
-                             data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                            <div class="ds-avatar" data-user-id="6343827747160195841">
-                                <a rel="nofollow author" target="_blank" href="http://t.qq.com/I_am_Lxy"
-                                   onclick="javascript: void(0);" title="罗小洋">
-                                    <img src="./杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站_files/100(1)" alt="罗小洋"></a></div>
-                            <div class="ds-comment-body">
-                                <div class="ds-comment-header">
-                                    <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                       href="http://t.qq.com/I_am_Lxy" onclick="javascript: void(0);" rel="nofollow"
-                                       target="_blank" data-user-id="6343827747160195841">罗小洋</a></div>
-                                <p>可以的，</p>
-                                <div class="ds-comment-footer ds-comment-actions">
-                                    <span class="ds-time" datetime="2016-10-21T16:17:09+08:00"
-                                          title="2016年10月21日 下午4:17:09">10月21日</span>
-                                    <a class="ds-post-reply" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-reply"></span>回复
-                                    </a>
-                                    <a class="ds-post-likes" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-like"></span>顶</a>
-                                    <a class="ds-post-repost" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-share"></span>转发
-                                    </a>
-                                    <a class="ds-post-report" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-report"></span>举报
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="ds-post" data-post-id="6343829174670590722">
-                        <div class="ds-post-self" data-post-id="6343829174670590722"
-                             data-thread-id="6220675869506011906" data-root-id="0" data-source="duoshuo">
-                            <div class="ds-avatar" data-user-id="6343827747160195841">
-                                <a rel="nofollow author" target="_blank" href="http://t.qq.com/I_am_Lxy"
-                                   onclick="javascript: void(0);" title="罗小洋">
-                                    <img src="./杨青个人博客网站—一个站在web前端设计之路的女技术员个人博客网站_files/100(1)" alt="罗小洋"></a></div>
-                            <div class="ds-comment-body">
-                                <div class="ds-comment-header">
-                                    <a class="ds-user-name ds-highlight" data-qqt-account=""
-                                       href="http://t.qq.com/I_am_Lxy" onclick="javascript: void(0);" rel="nofollow"
-                                       target="_blank" data-user-id="6343827747160195841">罗小洋</a></div>
-                                <p>可以的，</p>
-                                <div class="ds-comment-footer ds-comment-actions">
-                                    <span class="ds-time" datetime="2016-10-21T16:17:09+08:00"
-                                          title="2016年10月21日 下午4:17:09">10月21日</span>
-                                    <a class="ds-post-reply" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-reply"></span>回复
-                                    </a>
-                                    <a class="ds-post-likes" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-like"></span>顶</a>
-                                    <a class="ds-post-repost" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-share"></span>转发
-                                    </a>
-                                    <a class="ds-post-report" href="javascript:void(0);">
-                                        <span class="ds-icon ds-icon-report"></span>举报
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                <ul class="ds-comments" id="leaveMessages">
                 </ul>
                 <div class="ds-paginator">
                     <div class="ds-border"></div>
@@ -296,15 +82,15 @@
                     <div class="ds-social-links">
                         <ul class="ds-service-list">
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/weixin/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-weixin">微信</a>
                             </li>
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/weibo/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-weibo">微博</a>
                             </li>
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/qq/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-qq">QQ</a>
                             </li>
                             <li>
@@ -317,19 +103,19 @@
                         </ul>
                         <ul class="ds-service-list ds-additional-services">
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/douban/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-douban">豆瓣</a>
                             </li>
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/kaixin/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-kaixin">开心</a>
                             </li>
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/baidu/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-baidu">百度</a>
                             </li>
                             <li>
-                                <a href="http://yangqq.duoshuo.com/login/google/" rel="nofollow"
+                                <a href="#" rel="nofollow"
                                    class="ds-service-link ds-google">谷歌</a>
                             </li>
                         </ul>
@@ -362,22 +148,6 @@
                 </p>
             </div>
         </div>
-        <!-- 多说评论框 end -->
-        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-        <script type="text/javascript">
-            var duoshuoQuery = {short_name: "yangqq"};
-            (function () {
-                var ds = document.createElement('script');
-                ds.type = 'text/javascript';
-                ds.async = true;
-                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                ds.charset = 'UTF-8';
-                (document.getElementsByTagName('head')[0]
-                || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-        </script>
-        <!-- 多说公共JS代码 end -->
-        <!-- Duoshuo Comment END -->
     </div>
     <aside class="right">
         <div class="about_c">
@@ -405,10 +175,11 @@
         <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-<script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>js/book.js"></script>
 <script type="text/javascript">
     queryUserInfo();
+    initBookPage();
 </script>
 </body>
 </html>

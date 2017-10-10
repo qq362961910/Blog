@@ -44,7 +44,7 @@ public class LoginController extends BaseController {
             return fail(ServiceErrorCode.LOGIN_USERNAME_OR_PASSWORD_ERROR);
         }
         writeTicket(user, response);
-        return success();
+        return successResponse(user);
     }
 
     /**
@@ -63,7 +63,7 @@ public class LoginController extends BaseController {
             return fail(ServiceErrorCode.USER_NOT_FOUND);
         }
         writeTicket(user, response);
-        return success();
+        return successResponse(user);
     }
 
     /**
@@ -83,6 +83,10 @@ public class LoginController extends BaseController {
         }
         user = userService.save(phoneNumber);
         writeTicket(user, response);
+        return successResponse(user);
+    }
+
+    private Map<String, Object> successResponse(User user) {
         Map<String, Object> data = new HashMap<>();
         data.put("user", userWrapperService.buildUserWrapper(user, false));
         return success(data);

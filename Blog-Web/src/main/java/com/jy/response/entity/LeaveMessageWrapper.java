@@ -3,6 +3,8 @@ package com.jy.response.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
+
 @JsonInclude(JsonInclude.Include.ALWAYS)
 public class LeaveMessageWrapper {
 
@@ -15,8 +17,11 @@ public class LeaveMessageWrapper {
     @JsonProperty("content")
     private String content;
 
-    @JsonProperty("like_count")
+    @JsonProperty("likeCount")
     private Integer likeCount;
+
+    @JsonProperty("createTime")
+    private Date createTime;
 
     public UserWrapper getFromUser() {
         return fromUser;
@@ -48,5 +53,13 @@ public class LeaveMessageWrapper {
 
     public void setLikeCount(Integer likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

@@ -23,6 +23,7 @@ public class LeaveMessageWrapperService extends ResponseBaseService {
         leaveMessageWrapper.setToUser(userWrapperService.buildUserWrapper(userService.queryById(leaveMessage.getToUserId()), false));
         leaveMessageWrapper.setContent(leaveMessage.getContent());
         leaveMessageWrapper.setLikeCount(leaveMessage.getLikeCount());
+        leaveMessageWrapper.setCreateTime(leaveMessage.getCreateTime());
         return leaveMessageWrapper;
     }
 }
