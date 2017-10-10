@@ -1,8 +1,7 @@
 package com.jy.controller;
 
 
-import com.jy.exception.ExceptionCode;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import com.jy.common.constants.ServiceErrorCode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,9 +33,14 @@ public class BaseController {
     }
 
     public Map<String, Object> fail() {
-        return result(false, ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue(), null, null);
+        return result(false, ServiceErrorCode.SERVER_INTERNAL_EXCEPTION.code, null, null);
     }
-
+    public Map<String, Object> fail(String errorCode) {
+        return result(false, errorCode, null, null);
+    }
+    public Map<String, Object> fail(ServiceErrorCode errorCode) {
+        return result(false, errorCode.code, errorCode.msg, null);
+    }
     public Map<String, Object> fail(String errorCode, Object data) {
         return result(false, errorCode, null, data);
     }
@@ -46,14 +50,14 @@ public class BaseController {
     }
 
     public Map<String, Object> fail(String errorCode, String description, Object data) {
-        return result(false, ExceptionCode.SERVER_INTERNAL_EXCEPTION.getValue(), description, data);
+        return result(false, ServiceErrorCode.SERVER_INTERNAL_EXCEPTION.code, description, data);
     }
 
     /**
      * 404
      */
     public Map<String, Object> fail404() {
-        return result(false, ExceptionCode.SOURCE_NOT_FOUND_EXCEPTION.getValue(), null, null);
+        return result(false, ServiceErrorCode.SOURCE_NOT_FOUND_EXCEPTION.code, null, null);
     }
 
     public Map<String, Object> result(boolean success, String errorCode, String description, Object data) {
@@ -71,10 +75,4 @@ public class BaseController {
         result.put("data", data);
         return result;
     }
-
-    @ExceptionHandler(Exception.class)
-    public Map<String, Object> exception(Exception e) {
-        return fail();
-    }
-
 }

@@ -354,13 +354,11 @@
         <p>职业：<span id="occupation"></span></p>
         <p>喜欢的书：<span id="like_books"></span></p>
         <p>喜欢的音乐：<span id="like_musics"></span></p>
-        <a target="_blank"
-           href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">
-          <img src="http://pub.idqqimg.com/wpa/images/group.png" alt="杨青个人博客网站" title="杨青个人博客网站"></a>
-        <a target="_blank"
-           href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HHh9cn95b3F1cHVye1xtbTJ-c3E"><img
-          src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_22.png"
-          alt="杨青个人博客网站"></a>
+        <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">
+          <img src="http://pub.idqqimg.com/wpa/images/group.png" alt="" title=""></a>
+        <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HHh9cn95b3F1cHVye1xtbTJ-c3E">
+          <img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_22.png" alt="">
+        </a>
       </div>
     </aside>
 </article>
@@ -368,19 +366,8 @@
     <p>
       Design by DanceSmile
       <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
-        <script type="text/javascript">
-            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ff655f558c510211e38805f6b586e6b15' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script src="<%=static_file_path%>js/h.js" type="text/javascript"></script>
     </p>
 </footer>
-<script src="<%=static_file_path%>js/silder.js"></script>
-<script src="<%=static_file_path%>js/i.js" type="text/javascript"></script>
-<script src="<%=static_file_path%>js/cnw.js" type="text/javascript"></script>
-<div id="BAIDU_SSP__wrapper_u1831141_0">
-    <script id="ScriptIdu1831141_0" src="<%=static_file_path%>js/xcmm" charset="utf-8"></script>
-</div>
 <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
 <script type="text/javascript">

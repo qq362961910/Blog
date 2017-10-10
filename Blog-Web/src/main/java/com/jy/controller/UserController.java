@@ -155,13 +155,5 @@ public class UserController extends BaseController {
         return success(userWrapper);
     }
 
-    /**
-     * 注册并登录
-     * */
-    @RequestMapping(value = "phone_reg_and_login", method = RequestMethod.GET)
-    public Map<String, Object> phoneRegisterAndLogin(@RequestParam("phone") String phone) throws Exception{
-      return success();
-    }
-
 
 }

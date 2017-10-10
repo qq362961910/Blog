@@ -8,4 +8,6 @@ import com.jy.entity.User;
 public interface UserDao extends BaseDao<User> {
 
     User selectUserByUsername(String username);
+
+    User findUserByPhone(String phone);
 }
