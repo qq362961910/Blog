@@ -6,7 +6,7 @@ import com.jy.response.entity.ArticleWrapper;
 import com.jy.response.service.ArticleWrapperService;
 import com.jy.service.ArticleService;
 import constants.ArticleType;
-import javafx.util.Pair;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -98,7 +98,7 @@ public class ArticleController extends BaseController {
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
+        serviceParam.getOrderList().add(Order.desc("createTime"));
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
@@ -132,7 +132,7 @@ public class ArticleController extends BaseController {
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
         serviceParam.setUsername(username);
-        serviceParam.setOrderBy(new Pair<>("readCount", "desc"));
+        serviceParam.getOrderList().add(Order.desc("readCount"));
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
@@ -191,7 +191,7 @@ public class ArticleController extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<String, String>("article.createTime", "desc"));
+        serviceParam.getOrderList().add(Order.desc("createTime"));
         int count = articleService.countArticleByArticleParam(serviceParam);
         List<Article> articles;
         if (count == 0) {
@@ -209,7 +209,6 @@ public class ArticleController extends BaseController {
         result.put(currentPageKey, currentPage);
         return success(result);
     }
-
 
 
     /**
@@ -240,7 +239,7 @@ public class ArticleController extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<>("article.createTime", "desc"));
+        serviceParam.getOrderList().add(Order.desc("createTime"));
         int count = articleService.countArticleByArticleParam(serviceParam);
         List<Article> articles;
         if (count == 0) {

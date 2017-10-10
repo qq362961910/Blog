@@ -15,38 +15,38 @@ public class TokenHelper {
 
     /**
      * 默认token有效时长110分钟
-     * */
+     */
     private static final int DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND = 60 * 110;
 
     /**
      * 默认加载TOken超时时间
-     * */
+     */
     private static final int DEFAULT_LOAD_TOKEN_TIMEOUT_IN_MILLS = 1000 * 5;
 
     /**
      * 默认key锁超时时间
-     * */
+     */
     private static final int DEFAULT_KEY_LOCK_TIMEOUT_IN_MILLS = 1000 * 5;
 
     /**
      * token存活时间
-     * */
+     */
     private final int tokenExpireTime;
 
     /**
      * 默认TOken加载器需要redis支持
-     * */
+     */
     private JedisCluster jedisCluster;
 
     /**
      * 默认token加载器
-     * */
+     */
     private TokenLoader defaultTokenLoader = null;
 
 
     /**
      * token加载器映射
-     * */
+     */
     private Map<String, TokenLoader> tokenLoaderMapping = new HashMap();
 
 
@@ -90,23 +90,24 @@ public class TokenHelper {
 
     /**
      * 添加token加载器
-     * */
-    public synchronized void  addTokenLoader(String key, TokenLoader tokenLoader) {
+     */
+    public synchronized void addTokenLoader(String key, TokenLoader tokenLoader) {
         tokenLoaderMapping.put(key, tokenLoader);
     }
 
     /**
      * 查看对应key的TokenLoader是否存在
-     * */
+     */
     public boolean tokenLoaderExist(String key) {
         return tokenLoaderMapping.containsKey(key);
     }
 
     /**
      * Token加载器
-     * */
+     */
     public interface TokenLoader {
         String loadToken(String key, long timeout);
+
         long loadTokenTimeoutInMills();
     }
 
@@ -117,7 +118,7 @@ public class TokenHelper {
 
     /**
      * Token加载器默认实现
-     * */
+     */
     public static abstract class AbstractTokenLoader implements TokenLoader {
 
         private static final Logger logger = LogManager.getLogger(AbstractTokenLoader.class);
@@ -146,8 +147,7 @@ public class TokenHelper {
                         //设置超时
                         tokenHelper.jedisCluster.expire(key, tokenExpireTime());
                         logger.info("releaseLockSuccess! load new  token for key: " + key + ", token: " + token + ", expire time: " + tokenExpireTime());
-                    }
-                    else {
+                    } else {
                         logger.info("load token timeout for key: " + key);
                         if (oldToken != null) {
                             //还原token,忽略自己纠正token正确性的时间片段
@@ -155,14 +155,21 @@ public class TokenHelper {
                             logger.warn("load token timeout, reset the correct token: " + token);
                         }
                         //自己token已失效,休息一下,重新获取token
-                        try { Thread.sleep(200); } catch (InterruptedException e) { e.printStackTrace(); }
-                        token = loadToken(key, timeout-200);
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        token = loadToken(key, timeout - 200);
                     }
-                }
-                else {
+                } else {
                     //休息一下
-                    try { Thread.sleep(200); } catch (InterruptedException e) { e.printStackTrace(); }
-                    timeout-=200;
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    timeout -= 200;
                     token = tokenHelper.jedisCluster.get(key);
                 }
             }
@@ -224,7 +231,7 @@ public class TokenHelper {
             return DEFAULT_KEY_LOCK_TIMEOUT_IN_MILLS;
         }
 
-        public int tokenExpireTime(){
+        public int tokenExpireTime() {
             return DEFAULT_TOKEN_EXPIRE_TIIME_IN_SECOND;
         }
 

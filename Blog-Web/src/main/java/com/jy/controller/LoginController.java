@@ -6,7 +6,10 @@ import com.jy.entity.User;
 import com.jy.response.service.UserWrapperService;
 import com.jy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -25,11 +28,11 @@ public class LoginController extends BaseController {
 
     /**
      * 验证码登录
-     * */
+     */
     @RequestMapping(value = "login/code", method = RequestMethod.POST)
     public Object loginByPhoneCode(@RequestBody Map<String, Object> param, HttpServletResponse response) {
-        String code = (String)param.get("code");
-        String phoneNumber = (String)param.get("phoneNumber");
+        String code = (String) param.get("code");
+        String phoneNumber = (String) param.get("phoneNumber");
         String realCode = AppContextUtil.getAndRemovePhoneLoginCode(phoneNumber);
         if (realCode == null || !realCode.equals(code)) {
             return fail(ServiceErrorCode.LOGIN_CODE_ERROR);
@@ -46,11 +49,11 @@ public class LoginController extends BaseController {
 
     /**
      * 注册并登录
-     * */
+     */
     @RequestMapping(value = "phone_reg_and_login", method = RequestMethod.POST)
-    public Map<String, Object> phoneRegisterAndLogin(@RequestBody Map<String, Object> param, HttpServletResponse response) throws Exception{
-        String code = (String)param.get("code");
-        String phoneNumber = (String)param.get("phoneNumber");
+    public Map<String, Object> phoneRegisterAndLogin(@RequestBody Map<String, Object> param, HttpServletResponse response) throws Exception {
+        String code = (String) param.get("code");
+        String phoneNumber = (String) param.get("phoneNumber");
         String realCode = AppContextUtil.getAndRemovePhoneLoginCode(phoneNumber);
         if (realCode == null || !realCode.equals(code)) {
             return fail(ServiceErrorCode.LOGIN_CODE_ERROR);

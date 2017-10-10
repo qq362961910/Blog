@@ -3,11 +3,14 @@ package com.jy.response.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class BaseWrapper {
 
     @JsonProperty("id")
     private long id;
+
+    @JsonProperty("structureType")
+    private String structureType;
 
     public long getId() {
         return id;
@@ -18,4 +21,11 @@ public class BaseWrapper {
         return this;
     }
 
+    public String getStructureType() {
+        return structureType;
+    }
+
+    public void setStructureType(String structureType) {
+        this.structureType = structureType;
+    }
 }

@@ -34,8 +34,8 @@ public class UserBookEmbedKey implements Serializable {
     @Override
     public String toString() {
         return "UserBookEmbedKey{" +
-                "ownerId=" + ownerId +
-                ", bookId=" + bookId +
-                '}';
+            "ownerId=" + ownerId +
+            ", bookId=" + bookId +
+            '}';
     }
 }

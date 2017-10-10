@@ -5,7 +5,7 @@ import com.jy.entity.Mood;
 
 import java.util.List;
 
-public interface MoodService extends BaseService<Mood>{
+public interface MoodService extends BaseService<Mood> {
 
     int countMoodByMoodParam(MoodDao.MoodParam param);
 

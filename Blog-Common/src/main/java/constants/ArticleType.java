@@ -43,8 +43,8 @@ public enum ArticleType {
     @Override
     public String toString() {
         return "ArticleType{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
+            "name='" + name + '\'' +
+            ", value=" + value +
+            '}';
     }
 }

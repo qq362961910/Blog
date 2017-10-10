@@ -23,7 +23,7 @@ public class Book extends BaseEntity {
     @Override
     public String toString() {
         return "Book{" +
-                "name='" + name + '\'' +
-                '}';
+            "name='" + name + '\'' +
+            '}';
     }
 }

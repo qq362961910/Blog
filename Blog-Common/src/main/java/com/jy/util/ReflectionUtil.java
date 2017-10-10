@@ -16,7 +16,7 @@ public class ReflectionUtil {
 
     /**
      * 获取类对象泛型结构
-     * */
+     */
     public static ClassGenericity getGenericity(Class clazz) {
         if (clazz == null) {
             return null;
@@ -41,7 +41,7 @@ public class ReflectionUtil {
             //泛型实际类型
             Type rawType = parameterizedType.getRawType();
             if (rawType instanceof Class) {
-                Class<?> superClass = (Class<?>)rawType;
+                Class<?> superClass = (Class<?>) rawType;
                 if (!Object.class.equals(superClass)) {
                     TypeVariable<?>[] superTypeVariables = superClass.getTypeParameters();
                     ClassGenericity superClassGenericity = new ClassGenericity();
@@ -127,15 +127,15 @@ public class ReflectionUtil {
 
     /**
      * 类泛型的表示
-     * */
+     */
     private static class ClassGenericity {
         /**
          * 父类泛型
-         * */
+         */
         private ClassGenericity parent;
         /**
          * 泛型颗粒List
-         * */
+         */
         private List<Genericity> genericityList;
 
         public ClassGenericity getParent() {
@@ -163,25 +163,25 @@ public class ReflectionUtil {
         @Override
         public String toString() {
             return "ClassGenericity{" +
-                    "parent=" + parent +
-                    ", genericityList=" + genericityList +
-                    '}';
+                "parent=" + parent +
+                ", genericityList=" + genericityList +
+                '}';
         }
     }
 
     /**
      * 泛型颗粒
-     * */
+     */
     public static class Genericity {
 
         /**
          * 泛型本身类型
-         * */
+         */
         private String type;
 
         /**
          * 泛型里面嵌套的泛型
-         * */
+         */
         private ClassGenericity embedClassGenericity;
 
         public String getType() {
@@ -209,9 +209,9 @@ public class ReflectionUtil {
         @Override
         public String toString() {
             return "Genericity{" +
-                    "type='" + type + '\'' +
-                    ", embedClassGenericity=" + embedClassGenericity +
-                    '}';
+                "type='" + type + '\'' +
+                ", embedClassGenericity=" + embedClassGenericity +
+                '}';
         }
     }
 

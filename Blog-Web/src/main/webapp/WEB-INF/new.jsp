@@ -25,7 +25,7 @@
         <h2 class="c_titile">爱情不容有错，即使错了那就重来</h2>
 
         <p class="box_c"><span class="d_time">发布时间：2013-09-08</span><span>编辑：杨青</span><span>互动QQ群：<a
-                href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">280998807</a></span>
+            href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">280998807</a></span>
         </p>
         <ul class="infos">
             <p>
@@ -75,8 +75,8 @@
     <aside class="right">
         <!-- Baidu Button BEGIN -->
         <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
-                class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
-                class="shareCount"></a></div>
+            class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
+            class="shareCount"></a></div>
         <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">

@@ -78,7 +78,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
     /**
      * html模板分享页面item
      * */
-    this.getShareHtmlTemplateListItem = function() {
+    this.getShareHtmlTemplateListItem = function () {
         var html = "<h2>" + this.title + "</h2>" +
             "<p class='dateview'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
             "<figure><img src='" + this.coverImage + "'></figure>" +

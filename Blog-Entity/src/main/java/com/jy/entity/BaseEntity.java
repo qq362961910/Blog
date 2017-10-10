@@ -49,9 +49,9 @@ public class BaseEntity implements Serializable {
     @Override
     public String toString() {
         return "BaseEntity{" +
-                "id=" + id +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                '}';
+            "id=" + id +
+            ", createTime=" + createTime +
+            ", updateTime=" + updateTime +
+            '}';
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MoodWrapperService  extends ResponseBaseService {
+public class MoodWrapperService extends ResponseBaseService {
 
     private static final MoodWrapper empty = new MoodWrapper();
     @Autowired

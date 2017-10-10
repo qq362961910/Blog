@@ -19,14 +19,14 @@ import javax.websocket.server.ServerEndpointConfig;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AppInit implements WebApplicationInitializer,ServerApplicationConfig {
+public class AppInit implements WebApplicationInitializer, ServerApplicationConfig {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
 
         /* Open Session In View */
         servletContext.addFilter("hibernateFilter", OpenSessionInViewFilter.class)
-                .addMappingForUrlPatterns(null, false, "/*");
+            .addMappingForUrlPatterns(null, false, "/*");
 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(AppConfig.class);
@@ -36,7 +36,7 @@ public class AppInit implements WebApplicationInitializer,ServerApplicationConfi
         DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
         ServletRegistration.Dynamic servlet = servletContext.addServlet(
-                "dispatcherServlet", dispatcherServlet);
+            "dispatcherServlet", dispatcherServlet);
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
 
@@ -48,7 +48,7 @@ public class AppInit implements WebApplicationInitializer,ServerApplicationConfi
         characterEncodingFilter.setForceEncoding(true);
         characterEncodingFilter.setEncoding("UTF-8");
         FilterRegistration.Dynamic encodingFilter = servletContext.addFilter(
-                "characterEncodingFilter", characterEncodingFilter);
+            "characterEncodingFilter", characterEncodingFilter);
         encodingFilter.addMappingForUrlPatterns(null, true, "/*");
 
     }
@@ -57,8 +57,8 @@ public class AppInit implements WebApplicationInitializer,ServerApplicationConfi
     public Set<ServerEndpointConfig> getEndpointConfigs(Set<Class<? extends Endpoint>> scanned) {
         Set<ServerEndpointConfig> result = new HashSet<>();
         result.add(ServerEndpointConfig.Builder.create(
-                ServletWebsocketEndPoint.class,
-                "/servlet/websocket/{relationId}/{username}").build());
+            ServletWebsocketEndPoint.class,
+            "/servlet/websocket/{relationId}/{username}").build());
         return result;
     }
 
@@ -74,7 +74,7 @@ public class AppInit implements WebApplicationInitializer,ServerApplicationConfi
 //            }
 //        }
 //        return results;
-         //do nothing
+        //do nothing
         return scanned;
     }
 }

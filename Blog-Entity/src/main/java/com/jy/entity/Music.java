@@ -23,7 +23,7 @@ public class Music extends BaseEntity {
     @Override
     public String toString() {
         return "Music{" +
-                "name='" + name + '\'' +
-                '}';
+            "name='" + name + '\'' +
+            '}';
     }
 }

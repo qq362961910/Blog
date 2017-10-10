@@ -36,7 +36,7 @@
         <root level="INFO">
             <appender-ref ref="RollingFile"/>
             <appender-ref ref="Console"/>
-            <appender-ref ref="ERROR" />
+            <appender-ref ref="ERROR"/>
             <appender-ref ref="Log"/>
         </root>
 

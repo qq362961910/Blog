@@ -16,7 +16,7 @@ function queryUserInfo() {
             var books = userInfo.profile.likeBooks;
             var bookContent = '';
             if (typeof books != UNDEFINED && books != null) {
-                for (var i=0; i<books.length; i++) {
+                for (var i = 0; i < books.length; i++) {
                     bookContent += "&lt;&lt;" + books[i].name + "&gt;&gt; ";
                 }
             }
@@ -25,7 +25,7 @@ function queryUserInfo() {
             var musics = userInfo.profile.likeMusics;
             var musicContent = '';
             if (typeof musics != UNDEFINED && musics != null) {
-                for (var i=0; i<musics.length; i++) {
+                for (var i = 0; i < musics.length; i++) {
                     musicContent += "&lt;&lt;" + musics[i].name + "&gt;&gt; ";
                 }
             }

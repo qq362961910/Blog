@@ -1,16 +1,13 @@
 package com.jy.dao;
 
 import com.jy.entity.Mood;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
-import java.util.List;
-
-public interface MoodDao extends BaseDao<Mood>{
-
-    int countMoodByMoodParam(MoodParam param);
-
-    List<Mood> selectMoodByMoodParam(MoodParam param);
+public interface MoodDao extends BaseDao<Mood> {
 
     class MoodParam extends BaseParam {
+
         private String username;
 
         public String getUsername() {
@@ -23,10 +20,17 @@ public interface MoodDao extends BaseDao<Mood>{
         }
 
         @Override
+        public void addSubRestrictions(Criteria criteria) {
+            if (username != null) {
+                criteria.add(Restrictions.eq("owner.username", username));
+            }
+        }
+
+        @Override
         public String toString() {
             return "MoodParam{" +
-                    "username='" + username + '\'' +
-                    '}';
+                "username='" + username + '\'' +
+                '}';
         }
     }
 }

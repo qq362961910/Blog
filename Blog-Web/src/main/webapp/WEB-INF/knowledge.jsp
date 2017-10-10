@@ -25,7 +25,7 @@
         <h2>仿新浪博客风格・梅――古典个人博客模板</h2>
 
         <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">个人博客模板</a>]</span></p>
+            href="/news/life/">个人博客模板</a>]</span></p>
         <figure><img src="<%=static_file_path%>images/01.jpg"></figure>
         <ul class="nlist">
             <p>界面设计非原创，出自新浪博客风格・梅作者水云心。在原来的设计上增加了梅花飘落的flash动画。原设计的边界阴影部分用图片实现，本例采用css3新的规则属性，box-shadow</p>
@@ -35,7 +35,7 @@
         <h2>黑色质感时间轴html5个人博客模板</h2>
 
         <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">个人博客模板</a>]</span></p>
+            href="/news/life/">个人博客模板</a>]</span></p>
         <figure><img src="<%=static_file_path%>images/02.jpg"></figure>
         <ul class="nlist">
             <p>
@@ -46,7 +46,7 @@
         <h2>Green绿色小清新的夏天-个人博客模板</h2>
 
         <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">个人博客模板</a>]</span></p>
+            href="/news/life/">个人博客模板</a>]</span></p>
         <figure><img src="<%=static_file_path%>images/03.jpg"></figure>
         <ul class="nlist">
             <p>这是一个有关Green绿色小清新的夏天的css3 html5绿色个人博客网站模板，导航下面的效果使用了CSS3 Animation 实现对象从右到左渐变的动画效果。</p>
@@ -56,7 +56,7 @@
         <h2>女生清新个人博客网站模板</h2>
 
         <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>分类：[<a
-                href="/news/life/">个人博客模板</a>]</span></p>
+            href="/news/life/">个人博客模板</a>]</span></p>
         <figure><img src="<%=static_file_path%>images/04.jpg"></figure>
         <ul class="nlist">
             <p>
@@ -69,7 +69,7 @@
             <img src="<%=static_file_path%>images/ad.png">
         </div>
         <div class="page"><a title="Total record"><b>41</b></a><b>1</b><a href="/news/s/index_2.html">2</a><a
-                href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
+            href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
     </div>
     <aside class="right">
         <div class="rnav">
@@ -116,8 +116,8 @@
         </div>
         <!-- Baidu Button BEGIN -->
         <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
-                class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
-                class="shareCount"></a></div>
+            class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
+            class="shareCount"></a></div>
         <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">

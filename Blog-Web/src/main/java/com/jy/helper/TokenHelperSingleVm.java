@@ -21,55 +21,55 @@ public class TokenHelperSingleVm {
 
     /**
      * 默认110分钟更新一次token
-     * */
+     */
     private static final int DEFAULT_TOKEN_EXPIRE_TIIME_IN_MILLS = 1000 * 60 * 110;
     /**
      * 默认1分钟检查一次Token是否有效
-     * */
+     */
     private static final int DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS = 500;
     /**
      * 默认token服务生命时长
-     * */
+     */
     private static final int DEFAULT_TOKEN_SERVICE_LIFE_TIMEOUT_IN_MILLS = 1000 * 10;
     /**
      * token存活时间
-     * */
+     */
     private final int tokenExpireTime;
     /**
      * 使用token服务超时期限
-     * */
+     */
     private final int serviceLifeTimeout;
     /**
      * 默认token加载器
-     * */
+     */
     private final TokenLoader defaultTokenLoader;
     /**
      * token缓存容器
-     * */
+     */
     private volatile Map<String, String> tokenMapping = new HashMap<>();
     /**
      * token最近更新一次时间映射
-     * */
+     */
     private volatile Map<String, Long> tokenLastUpdateTimeMapping = new HashMap();
     /**
      * 正在加载token的eky
-     * */
+     */
     private volatile List<String> loadingTokenKeys = new ArrayList<>();
     /**
      * 正在使用中的token
-     * */
+     */
     private volatile Map<String, Long> tokenInUseMapping = new ConcurrentHashMap<>();
     /**
      * 正在使用的token数量
-     * */
+     */
     private volatile Map<String, Integer> tokenInUseCount = new HashMap();
     /**
      * token加载器映射
-     * */
+     */
     private volatile Map<String, TokenLoader> tokenLoaderMapping = new HashMap();
     /**
      * 状态
-     * */
+     */
     private volatile boolean closed = false;
 
     public TokenHelperSingleVm() {
@@ -84,14 +84,14 @@ public class TokenHelperSingleVm {
         this.tokenExpireTime = tokenExpireTime;
         this.serviceLifeTimeout = serviceLifeTimeout;
         this.defaultTokenLoader = defaultTokenLoader;
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 while (!closed) {
                     try {
                         long currentTimeMillis = System.currentTimeMillis();
                         //遍历过期Token
-                        for (Map.Entry<String, Long> entry: tokenInUseMapping.entrySet() ) {
+                        for (Map.Entry<String, Long> entry : tokenInUseMapping.entrySet()) {
                             //判断是否使用超时
                             if (currentTimeMillis - TokenHelperSingleVm.this.serviceLifeTimeout > entry.getValue()) {
                                 logger.info("usage time exceed limit, remove key from tokenInUseMapping: " + entry.getKey());
@@ -104,7 +104,7 @@ public class TokenHelperSingleVm {
                         Thread.sleep(DEFAULT_CHECK_TOKEN_EXPIRE_TIME_IN_MILLS);
                     } catch (Exception e) {
                         StackTraceElement[] stackTraceElements = e.getStackTrace();
-                        for (StackTraceElement stackTraceElement: stackTraceElements) {
+                        for (StackTraceElement stackTraceElement : stackTraceElements) {
                             logger.error(stackTraceElement.toString());
                         }
                     }
@@ -123,7 +123,7 @@ public class TokenHelperSingleVm {
                 loadToken(key);
             } catch (Exception e) {
                 StackTraceElement[] stackTraceElements = e.getStackTrace();
-                for (StackTraceElement stackTraceElement: stackTraceElements) {
+                for (StackTraceElement stackTraceElement : stackTraceElements) {
                     logger.error(stackTraceElement.toString());
                 }
             }
@@ -138,7 +138,7 @@ public class TokenHelperSingleVm {
     public void releaseToken(String key) {
         synchronized (key.intern()) {
             int count = decreaseTokenInUse(key, 1);
-            logger.info("release key: " +key + ", in using: " + count);
+            logger.info("release key: " + key + ", in using: " + count);
             if (count == 0) {
                 tokenInUseMapping.remove(key);
                 logger.info("key: " + key + " is not in using, remove it from KEY IN USING COUNTER");
@@ -168,16 +168,15 @@ public class TokenHelperSingleVm {
                 if (tokenInUseCount.get(key) == null) {
                     tokenInUseCount.put(key, 0);
                 }
-                logger.info("key: " + key +", load token successfully, token: " + token);
+                logger.info("key: " + key + ", load token successfully, token: " + token);
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 logger.error("load token error for key:" + key);
                 StackTraceElement[] stackTraceElements = e.getStackTrace();
-                for (StackTraceElement stackTraceElement: stackTraceElements) {
+                for (StackTraceElement stackTraceElement : stackTraceElements) {
                     logger.error(stackTraceElement.toString());
                 }
-            }
-            finally {
+            } finally {
                 synchronized (key.intern()) {
                     //Notify
                     loadingTokenKeys.remove(key);
@@ -189,7 +188,7 @@ public class TokenHelperSingleVm {
 
     /**
      * 注册正在加载中的key
-     * */
+     */
     private boolean registerLoadingKey(String key) throws InterruptedException {
         synchronized (key.intern()) {
             if (loadingTokenKeys.contains(key)) {
@@ -203,8 +202,7 @@ public class TokenHelperSingleVm {
                     blockThreadCount--;
                 }
                 return false;
-            }
-            else {
+            } else {
                 loadingTokenKeys.add(key);
                 logger.info("register key successfully: " + key);
                 return true;
@@ -214,14 +212,14 @@ public class TokenHelperSingleVm {
 
     /**
      * 添加token加载器
-     * */
+     */
     public void addTokenLoader(String key, TokenLoader tokenLoader) {
         tokenLoaderMapping.put(key, tokenLoader);
     }
 
     /**
      * 查看对应key的TokenLoader是否存在
-     * */
+     */
     public boolean tokenLoaderExist(String key) {
         return tokenLoaderMapping.containsKey(key);
     }
@@ -229,7 +227,7 @@ public class TokenHelperSingleVm {
     /**
      * safe
      * 增加token使用计数
-     * */
+     */
     private int increaseTokenInUse(String key, int count) {
         synchronized (key.intern()) {
             int newCount = tokenInUseCount.get(key) + count;
@@ -241,7 +239,7 @@ public class TokenHelperSingleVm {
     /**
      * Unsafe
      * 减少token使用计数
-     * */
+     */
     private int decreaseTokenInUse(String key, int count) {
         int newCount = tokenInUseCount.get(key) - count;
         tokenInUseCount.put(key, newCount);
@@ -250,19 +248,19 @@ public class TokenHelperSingleVm {
 
     /**
      * Token加载器
-     * */
+     */
     public interface TokenLoader {
         String loadToken(String key);
     }
 
     /**
      * 阻塞线程数统计
-     * */
+     */
     public int getBlockThreadCount() {
         return blockThreadCount;
     }
 
-    public void close () {
+    public void close() {
         closed = true;
     }
 

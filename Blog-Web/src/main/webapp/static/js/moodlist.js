@@ -9,7 +9,7 @@ function queryUserMoodList(param) {
     var param = param || {};
     param.username = username;
     param.pageSize = 1;
-    var queryUserMoodListCallback = function(result) {
+    var queryUserMoodListCallback = function (result) {
         if (result.success) {
             var lastPage = currentPage;
             var moods = result.data.moods;
@@ -20,7 +20,7 @@ function queryUserMoodList(param) {
 
             var moodlistDiv = $("#moodlist");
             moodlistDiv.innerHTML = '';
-            for (var i=0; i<moods.length; i++) {
+            for (var i = 0; i < moods.length; i++) {
                 var mood = new Mood(moods[i].id, moods[i].coverImage, moods[i].content, moods[i].createTime);
                 moodlistDiv.innerHTML = moodlistDiv.innerHTML + mood.getMoodListItem();
             }

@@ -117,8 +117,8 @@ public class QiNiuHelper {
         @Override
         public String toString() {
             return "FileType{" +
-                    "value='" + value + '\'' +
-                    '}';
+                "value='" + value + '\'' +
+                '}';
         }
     }
 }

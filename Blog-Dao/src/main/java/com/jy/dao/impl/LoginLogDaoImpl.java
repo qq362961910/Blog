@@ -14,6 +14,6 @@ public class LoginLogDaoImpl extends BaseDaoImpl<LoginLog> implements LoginLogDa
         Session session = getCurrentSession();
         Query query = session.createQuery("select loginLog from com.jy.entity.LoginLog loginLog where loginLog.ticket = :ticket");
         query.setString("ticket", ticket);
-        return (LoginLog)query.uniqueResult();
+        return (LoginLog) query.uniqueResult();
     }
 }

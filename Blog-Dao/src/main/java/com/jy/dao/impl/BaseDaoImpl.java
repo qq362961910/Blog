@@ -3,10 +3,14 @@ package com.jy.dao.impl;
 import com.jy.dao.BaseDao;
 import com.jy.dao.DaoHelper;
 import com.jy.util.AppReflectUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Transactional(rollbackFor = Exception.class)
 public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
@@ -37,6 +41,19 @@ public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
         }
     }
 
+    @Override
+    public int countByParam(BaseParam param) {
+        Criteria criteria = param.buildCriteria(getCurrentSession(), clazz);
+        criteria.setProjection(Projections.rowCount());
+        return ((Number) criteria.uniqueResult()).intValue();
+    }
+
+    @Override
+    public List<Entity> queryListByParam(BaseParam param) {
+        Criteria criteria = param.buildCriteria(getCurrentSession(), clazz);
+        return criteria.list();
+    }
+
     public Entity queryById(Long id) {
         return daoHelper.getCurrentSession().get(clazz, id);
     }
@@ -52,6 +69,11 @@ public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
     @Override
     public Query setHqlParam(Query query, String key, Object value) {
         return daoHelper.setHqlParam(query, key, value);
+    }
+
+    @Override
+    public Class<Entity> getEntityClass() {
+        return clazz;
     }
 
     public BaseDaoImpl() {

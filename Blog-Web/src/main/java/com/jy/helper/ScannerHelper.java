@@ -29,7 +29,7 @@ public class ScannerHelper {
         ScannerHelper scannerHelper = new ScannerHelper();
         scannerHelper.setPackagesToScan("com.wxsk.data.collector");
         Set<String> classes = scannerHelper.scan();
-        for (String clazz: classes) {
+        for (String clazz : classes) {
             System.out.println(clazz);
         }
     }
@@ -38,7 +38,7 @@ public class ScannerHelper {
 
     private static final String PACKAGE_INFO_SUFFIX = ".package-info";
 
-    private TypeFilter[] entityTypeFilters = { new DataCollectorFilter(Scope.class, false)};
+    private TypeFilter[] entityTypeFilters = {new DataCollectorFilter(Scope.class, false)};
 
     private String[] packagesToScan;
     private ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
@@ -53,7 +53,7 @@ public class ScannerHelper {
         try {
             for (String pkg : packagesToScan) {
                 String pattern = ResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX +
-                ClassUtils.convertClassNameToResourcePath(pkg) + RESOURCE_PATTERN;
+                    ClassUtils.convertClassNameToResourcePath(pkg) + RESOURCE_PATTERN;
                 Resource[] resources = resourcePatternResolver.getResources(pattern);
                 MetadataReaderFactory readerFactory = new CachingMetadataReaderFactory(this.resourcePatternResolver);
                 for (Resource resource : resources) {
@@ -62,15 +62,13 @@ public class ScannerHelper {
                         String className = reader.getClassMetadata().getClassName();
                         if (matchesEntityTypeFilter(reader, readerFactory)) {
                             entityClassNames.add(className);
-                        }
-                        else if (className.endsWith(PACKAGE_INFO_SUFFIX)) {
+                        } else if (className.endsWith(PACKAGE_INFO_SUFFIX)) {
                             packageNames.add(className.substring(0, className.length() - PACKAGE_INFO_SUFFIX.length()));
                         }
                     }
                 }
             }
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             throw new RuntimeException("Failed to scan classpath for unlisted classes", ex);
         }
         return entityClassNames;
@@ -113,7 +111,7 @@ class DataCollectorFilter extends AbstractTypeHierarchyTraversingFilter {
     protected boolean matchSelf(MetadataReader metadataReader) {
         AnnotationMetadata metadata = metadataReader.getAnnotationMetadata();
         return metadata.hasAnnotation(annotationType.getName()) ||
-                considerMetaAnnotations && metadata.hasMetaAnnotation(annotationType.getName());
+            considerMetaAnnotations && metadata.hasMetaAnnotation(annotationType.getName());
     }
 
     @Override
@@ -125,17 +123,16 @@ class DataCollectorFilter extends AbstractTypeHierarchyTraversingFilter {
     protected Boolean matchInterface(String interfaceName) {
         return hasAnnotation(interfaceName);
     }
+
     protected Boolean hasAnnotation(String typeName) {
         if (Object.class.getName().equals(typeName)) {
             return false;
-        }
-        else if (typeName.startsWith("java")) {
+        } else if (typeName.startsWith("java")) {
             try {
                 Class<?> clazz = ClassUtils.forName(typeName, getClass().getClassLoader());
                 return (considerMetaAnnotations ? AnnotationUtils.getAnnotation(clazz, annotationType) :
-                        clazz.getAnnotation(annotationType)) != null;
-            }
-            catch (Throwable ex) {
+                    clazz.getAnnotation(annotationType)) != null;
+            } catch (Throwable ex) {
                 logger.error("", ex);
             }
         }

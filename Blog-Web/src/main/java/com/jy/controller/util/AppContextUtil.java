@@ -73,30 +73,32 @@ public class AppContextUtil {
 
     /**
      * 生成手机验证码
-     * */
+     */
     public static String generatePhoneLoginCode(String phone) {
-        String code = RandomUtil.randomNumberString(phone, (byte)6);
+        String code = RandomUtil.randomNumberString(phone, (byte) 6);
         cachedPhoneCode.put(phone, code);
         return code;
     }
+
     /**
      * 生成手机验证码
-     * */
+     */
     public static String getAndRemovePhoneLoginCode(String phone) {
         return cachedPhoneCode.remove(phone);
     }
 
     /**
      * 生成ticket
-     * */
+     */
     public static String generateTicket(User user) {
-        String ticket = RandomUtil.randomNumberString(user.getPhone(), (byte)32);
+        String ticket = RandomUtil.randomNumberString(user.getPhone(), (byte) 32);
         cachedTicket.put(ticket, user);
         return ticket;
     }
+
     /**
      * 通过ticket获取用户
-     * */
+     */
     public static User getUserByTicket(String ticket) {
         return cachedTicket.get(ticket);
     }

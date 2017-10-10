@@ -1,6 +1,5 @@
 package com.jy.entity;
 
-import com.jy.embedkey.UserBookEmbedKey;
 import com.jy.embedkey.UserMusicEmbedKey;
 
 import javax.persistence.Column;
@@ -43,8 +42,8 @@ public class UserMusicLike {
     @Override
     public String toString() {
         return "UserMusicLike{" +
-                "userMusicEmbedKey=" + userMusicEmbedKey +
-                ", createTime=" + createTime +
-                '}';
+            "userMusicEmbedKey=" + userMusicEmbedKey +
+            ", createTime=" + createTime +
+            '}';
     }
 }

@@ -17,12 +17,12 @@ public class MoodServiceImpl extends BaseServiceImpl<Mood> implements MoodServic
 
     @Override
     public int countMoodByMoodParam(MoodDao.MoodParam param) {
-        return moodDao.countMoodByMoodParam(param);
+        return moodDao.countByParam(param);
     }
 
     @Override
     public List<Mood> findMoodByMoodParam(MoodDao.MoodParam param) {
-        return moodDao.selectMoodByMoodParam(param);
+        return moodDao.queryListByParam(param);
     }
 
     @Override

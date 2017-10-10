@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class LeaveMessageServiceImpl extends BaseServiceImpl<LeaveMessage> implements LeaveMessageService {
 
-  @Autowired
-  private LeaveMessageDao leaveMessageDao;
+    @Autowired
+    private LeaveMessageDao leaveMessageDao;
 
     @Override
     public void save(Long fromUserId, Long toUserId, Long leaveMessageId, String content) {
@@ -26,7 +26,7 @@ public class LeaveMessageServiceImpl extends BaseServiceImpl<LeaveMessage> imple
     }
 
     @Override
-  public BaseDao<LeaveMessage> getBaseDao() {
-    return leaveMessageDao;
-  }
+    public BaseDao<LeaveMessage> getBaseDao() {
+        return leaveMessageDao;
+    }
 }

@@ -45,7 +45,7 @@
         <div class="blank"></div>
 
         <div class="page"><a title="Total record"><b>41</b></a><b>1</b><a href="/news/s/index_2.html">2</a><a
-                href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
+            href="/news/s/index_2.html">&gt;</a><a href="/news/s/index_2.html">&gt;&gt;</a></div>
     </div>
     <aside class="right">
         <div class="rnav">
@@ -90,8 +90,8 @@
         </div>
         <!-- Baidu Button BEGIN -->
         <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
-                class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
-                class="shareCount"></a></div>
+            class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
+            class="shareCount"></a></div>
         <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">

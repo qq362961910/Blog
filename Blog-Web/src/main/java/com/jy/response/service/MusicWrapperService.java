@@ -10,7 +10,7 @@ public class MusicWrapperService {
     private static final MusicWrapper empty = new MusicWrapper();
 
     public MusicWrapper buildMusicWrapper(Music music) {
-        if(music == null) {
+        if (music == null) {
             return empty;
         }
         MusicWrapper musicWrapper = new MusicWrapper();

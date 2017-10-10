@@ -3,7 +3,7 @@ package com.jy.response.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class UserWrapper extends BaseWrapper {
 
     /**
@@ -26,7 +26,7 @@ public class UserWrapper extends BaseWrapper {
 
     /**
      * 详细资料信息
-     * */
+     */
     @JsonProperty("profile")
     private UserProfileWrapper userProfileWrapper;
 

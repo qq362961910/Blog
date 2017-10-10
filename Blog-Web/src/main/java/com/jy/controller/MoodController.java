@@ -5,7 +5,7 @@ import com.jy.entity.Mood;
 import com.jy.response.entity.MoodWrapper;
 import com.jy.response.service.MoodWrapperService;
 import com.jy.service.MoodService;
-import javafx.util.Pair;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/mood")
-public class MoodController  extends BaseController {
+public class MoodController extends BaseController {
 
     @Autowired
     private MoodService moodService;
@@ -42,7 +42,7 @@ public class MoodController  extends BaseController {
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
-        serviceParam.setOrderBy(new Pair<>("mood.createTime", "desc"));
+        serviceParam.getOrderList().add(Order.desc("createTime"));
         int count = moodService.countMoodByMoodParam(serviceParam);
         List<Mood> moods;
         if (count == 0) {

@@ -8,15 +8,15 @@ import java.lang.reflect.*;
 public class AppReflectUtil {
 
     public static Class findTypeParam(
-            final Object object, Class parameterizedSuperclass, String typeParamName) {
+        final Object object, Class parameterizedSuperclass, String typeParamName) {
 
         final Class thisClass = object.getClass();
         Class currentClass = thisClass;
-        for (;;) {
+        for (; ; ) {
             if (currentClass.getSuperclass() == parameterizedSuperclass) {
                 int typeParamIndex = -1;
                 TypeVariable<?>[] typeParams = currentClass.getSuperclass().getTypeParameters();
-                for (int i = 0; i < typeParams.length; i ++) {
+                for (int i = 0; i < typeParams.length; i++) {
                     if (typeParamName.equals(typeParams[i].getName())) {
                         typeParamIndex = i;
                         break;
@@ -25,7 +25,7 @@ public class AppReflectUtil {
 
                 if (typeParamIndex < 0) {
                     throw new IllegalStateException(
-                            "unknown type parameter '" + typeParamName + "': " + parameterizedSuperclass);
+                        "unknown type parameter '" + typeParamName + "': " + parameterizedSuperclass);
                 }
 
                 Type genericSuperType = currentClass.getGenericSuperclass();
@@ -79,6 +79,6 @@ public class AppReflectUtil {
 
     private static Class<?> fail(Class<?> type, String typeParamName) {
         throw new IllegalStateException(
-                "cannot determine the type of the type parameter '" + typeParamName + "': " + type);
+            "cannot determine the type of the type parameter '" + typeParamName + "': " + type);
     }
 }

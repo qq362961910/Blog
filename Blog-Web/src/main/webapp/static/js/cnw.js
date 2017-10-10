@@ -38,7 +38,7 @@ try {
                     for (var o in i)if (i.hasOwnProperty(o) && i[o]) {
                         var r;
                         if ("string" != typeof i[o] ? (t[o] = i[o], t[o] && t[o].__name && (r = t[o].__full)) : (r = i[o], t[o] = this.find(r)), !r || e[r])continue;
-                        if (e[r] = !0, t[o])t[o].__deps && (n = n.concat(this.loadDeps(t[o], e))); else {
+                        if (e[r] = !0, t[o]) t[o].__deps && (n = n.concat(this.loadDeps(t[o], e))); else {
                             if ("node" === this.runtime)try {
                                 t[o] = require(this.getClassPath(r))
                             } catch (s) {
@@ -57,7 +57,7 @@ try {
                 }, deepClone: function (t, e) {
                     "number" != typeof e && (e = 10);
                     var i, n = e - 1;
-                    if (e > 0)if (t instanceof Date)i = new Date, i.setTime(t.getTime()); else if (t instanceof Array) {
+                    if (e > 0)if (t instanceof Date) i = new Date, i.setTime(t.getTime()); else if (t instanceof Array) {
                         i = [];
                         for (var o = 0, r = t.length; r > o; o++)i[o] = this.deepClone(t[o], n)
                     } else if ("object" == typeof t) {
@@ -69,7 +69,8 @@ try {
                     } else i = t; else i = t;
                     return i
                 }, proxy: function (t, e) {
-                    var i = Array.prototype.slice.apply(arguments), n = i.shift(), o = "function" == typeof this ? this : i.shift();
+                    var i = Array.prototype.slice.apply(arguments), n = i.shift(),
+                        o = "function" == typeof this ? this : i.shift();
                     return function () {
                         var t = Array.prototype.slice.apply(arguments);
                         return o.apply(n, t.concat(i))
@@ -706,9 +707,13 @@ try {
             $material: function () {
                 var t = this;
                 this.materialFactory = {}, this.materialFactory.text = function (e) {
-                    var i = "font-size:{size:number}{unit:string};color:{defaultColor:string};font-weight:{defaultBold:string};font-style:{defaultItalic:string};text-decoration:{defaultUnderline:string};", n = '<span style="word-wrap:break-word;"><a href="{clickUrl:string}" target="{target:string}" style="' + i + '"{events}>{text:string}</a></span>', o = /\{events\}/;
-                    if (1 === e.version)n = n.replace(o, ""); else if (2 === e.version) {
-                        var r = "this.style.color='{defaultColor:string}';this.style.fontWeight='{defaultBold:string}';this.style.fontStyle='{defaultItalic:string}';this.style.textDecoration='{defaultUnderline:string}';", s = "this.style.color='{hoverColor:string}';this.style.fontWeight='{hoverBold:string}';this.style.fontStyle='{hoverItalic:string}';this.style.textDecoration='{hoverUnderline:string}';", a = ' onmouseover="' + s + '" onmouseout="' + r + '"';
+                    var i = "font-size:{size:number}{unit:string};color:{defaultColor:string};font-weight:{defaultBold:string};font-style:{defaultItalic:string};text-decoration:{defaultUnderline:string};",
+                        n = '<span style="word-wrap:break-word;"><a href="{clickUrl:string}" target="{target:string}" style="' + i + '"{events}>{text:string}</a></span>',
+                        o = /\{events\}/;
+                    if (1 === e.version) n = n.replace(o, ""); else if (2 === e.version) {
+                        var r = "this.style.color='{defaultColor:string}';this.style.fontWeight='{defaultBold:string}';this.style.fontStyle='{defaultItalic:string}';this.style.textDecoration='{defaultUnderline:string}';",
+                            s = "this.style.color='{hoverColor:string}';this.style.fontWeight='{hoverBold:string}';this.style.fontStyle='{hoverItalic:string}';this.style.textDecoration='{hoverUnderline:string}';",
+                            a = ' onmouseover="' + s + '" onmouseout="' + r + '"';
                         n = n.replace(o, a);
                         for (var d = ["default", "hover"], l = 0; l < d.length; l++) {
                             var c = d[l], h = c + "Color", u = c + "Bold", p = c + "Italic", m = c + "Underline";
@@ -872,7 +877,7 @@ try {
                     if (this.browser.ie && this.browser.ie < 9 && !e)try {
                         o.documentElement.doScroll("left"), t = !0
                     } catch (i) {
-                    } else if ("complete" === o.readyState || this.domContentLoaded)t = !0; else if (this.domReadyMonitorRunTimes > 3e5)return void(this.domReadyMonitorId && (n.clearInterval(this.domReadyMonitorId), this.domReadyMonitorId = null));
+                    } else if ("complete" === o.readyState || this.domContentLoaded) t = !0; else if (this.domReadyMonitorRunTimes > 3e5)return void(this.domReadyMonitorId && (n.clearInterval(this.domReadyMonitorId), this.domReadyMonitorId = null));
                     if (t)try {
                         if (this.readyFuncArray && this.readyFuncArray.length)for (var r = 0, s = this.readyFuncArray.length; s > r; r++) {
                             var a = this.readyFuncArray[r];
@@ -913,9 +918,9 @@ try {
                     width: document.documentElement.clientWidth,
                     height: document.documentElement.clientHeight
                 } : document.body && document.body.clientWidth && (t = {
-                    width: document.body.clientWidth,
-                    height: document.body.clientHeight
-                }), t
+                        width: document.body.clientWidth,
+                        height: document.body.clientHeight
+                    }), t
             },
             getNotCrossDomainWin: function () {
                 var t = this.getWinList();
@@ -962,7 +967,8 @@ try {
                 if (t.getBoundingClientRect) {
                     var r = t.getBoundingClientRect();
                     e.left = Math.floor(r.left) + Math.max(o.scrollLeft, n.scrollLeft), e.top = Math.floor(r.top) + Math.max(o.scrollTop, n.scrollTop), e.left -= o.clientLeft, e.top -= o.clientTop;
-                    var s = this.getStyle(n, "borderLeftWidth"), a = this.getStyle(n, "borderTopWidth"), d = parseInt(s, 10), l = parseInt(a, 10);
+                    var s = this.getStyle(n, "borderLeftWidth"), a = this.getStyle(n, "borderTopWidth"),
+                        d = parseInt(s, 10), l = parseInt(a, 10);
                     e.left -= isNaN(d) ? 2 : d, e.top -= isNaN(l) ? 2 : l
                 }
                 return e
@@ -1101,7 +1107,9 @@ try {
             },
             getMainDomain: function (t) {
                 t = t || document.domain, 0 === t.indexOf("www.") && (t = t.substr(4)), "." === t.charAt(t.length - 1) && (t = t.substring(0, t.length - 1));
-                var e = ["com", "cn", "net", "org", "gov", "info", "la", "cc", "co", "jp", "us", "hk", "tv", "me", "biz", "in", "be", "io", "tk", "cm", "li", "ru", "ws", "hn", "fm", "tw", "ma", "in", "vn", "name", "mx", "gd", "im"], i = new RegExp("([a-z0-9][a-z0-9\\-]*?\\.(?:" + e.join("|") + ")(?:\\.(?:cn|jp|tw|ru|th))?)$", "i"), n = t.match(i);
+                var e = ["com", "cn", "net", "org", "gov", "info", "la", "cc", "co", "jp", "us", "hk", "tv", "me", "biz", "in", "be", "io", "tk", "cm", "li", "ru", "ws", "hn", "fm", "tw", "ma", "in", "vn", "name", "mx", "gd", "im"],
+                    i = new RegExp("([a-z0-9][a-z0-9\\-]*?\\.(?:" + e.join("|") + ")(?:\\.(?:cn|jp|tw|ru|th))?)$", "i"),
+                    n = t.match(i);
                 return n ? n[0] : t
             },
             queryToJson: function (t) {
@@ -1202,7 +1210,9 @@ try {
             saveOrientation: function (t, e, i) {
                 if (!e || !e.length)return !1;
                 i = i || {urgent: !1, merge: !1, override: !1};
-                var n = i.merge ? this.data.getInfo(this.orientKey) : {}, o = i.urgent ? this.orientUrgentKey : this.orientKey, r = i.override ? {} : this.data.getInfo(o) || n, s = {};
+                var n = i.merge ? this.data.getInfo(this.orientKey) : {},
+                    o = i.urgent ? this.orientUrgentKey : this.orientKey,
+                    r = i.override ? {} : this.data.getInfo(o) || n, s = {};
                 for (var a in r)this.hasOwn.call(r, a) && (s[a] = "array" === this.lang.getType(r[a]) ? r[a].slice() : r[a]);
                 for (var d = s[t] || [], l = e.length, c = 0; l > c; c++) {
                     var h = e[c];
@@ -1395,7 +1405,7 @@ try {
             deps: {dom: "dup.common.utility.dom"},
             bind: function (t, e, i) {
                 var n = this.dom.isWindow(t) ? t : this.dom.g(t);
-                if (n)if (n.addEventListener)n.addEventListener(e, i, !1); else if (n.attachEvent)n.attachEvent("on" + e, i); else {
+                if (n)if (n.addEventListener) n.addEventListener(e, i, !1); else if (n.attachEvent) n.attachEvent("on" + e, i); else {
                     var o = n["on" + e];
                     n["on" + e] = function () {
                         o && o.apply(this, arguments), i.apply(this, arguments)
@@ -1410,7 +1420,7 @@ try {
                     for (n in r)delete r[n];
                     return t
                 }
-                if (e.indexOf("on") && (e = "on" + e), "undefined" == typeof i)delete r[e]; else if (o = r[e])for (n = o.length - 1; n >= 0; n--)o[n].handler === i && o.splice(n, 1);
+                if (e.indexOf("on") && (e = "on" + e), "undefined" == typeof i) delete r[e]; else if (o = r[e])for (n = o.length - 1; n >= 0; n--)o[n].handler === i && o.splice(n, 1);
                 return t
             },
             unBind: function (t, e, i) {
@@ -1433,7 +1443,8 @@ try {
             },
             createFPIframe: function () {
                 if (!this.dom.g(this.fpElId)) {
-                    var t = window, e = t.document, i = e.body, n = this.dom.isInIframe(t) ? e.URL : "", o = null, r = null;
+                    var t = window, e = t.document, i = e.body, n = this.dom.isInIframe(t) ? e.URL : "", o = null,
+                        r = null;
                     if ((this.browser.ie > 9 || !this.browser.ie) && n)try {
                         o = e.cookie, r = this.storage.isAvailable
                     } catch (s) {
@@ -1511,13 +1522,15 @@ try {
             getPreviewUrl: function (t, e, i, n) {
                 var o = window.location.href;
                 if (!this.validate(t, e, n, i, o))return "";
-                var r = n.indexOf("inlay") >= 0 ? "bd_cpro_prev" : "bd_cpro_fprev", s = this.getPrevValue(n, o), a = this.parsePreviewData(s), d = "";
+                var r = n.indexOf("inlay") >= 0 ? "bd_cpro_prev" : "bd_cpro_fprev", s = this.getPrevValue(n, o),
+                    a = this.parsePreviewData(s), d = "";
                 return n.indexOf("inlay") >= 0 ? d = this.getInlayUrl(parseInt(a.type, 10), r, s, "text_default_" + t + "_" + e) : n.indexOf("float") >= 0 && (d = this.getFloatUrl(parseInt(a.type, 10), r, s)), d
             },
             getPrevValue: function (t, e) {
                 var i;
                 i = e ? e.substring(e.indexOf("?")) : this.dom.isInCrossDomainIframe(window) ? window.location.search.slice(1) : window.top.location.search.slice(1);
-                var n, o = document.referrer, r = t.indexOf("inlay") >= 0 || "ui" === t ? "bd_cpro_prev" : "bd_cpro_fprev", s = "";
+                var n, o = document.referrer,
+                    r = t.indexOf("inlay") >= 0 || "ui" === t ? "bd_cpro_prev" : "bd_cpro_fprev", s = "";
                 try {
                     n = document.cookie
                 } catch (a) {
@@ -1530,7 +1543,8 @@ try {
             getFloatUrl: function (t, e, i) {
                 var n;
                 n = 2 === t ? "float_image.html" : 4 === t || 3 === t ? "float_flash.html" : "blank_tips.html";
-                var o = this.PREV_TEMP_URL + n + "?", r = "tn=template_float_all_normal" + ("&" + e + "=" + i).replace(/\./g, "%252e") + "&ut=" + +new Date;
+                var o = this.PREV_TEMP_URL + n + "?",
+                    r = "tn=template_float_all_normal" + ("&" + e + "=" + i).replace(/\./g, "%252e") + "&ut=" + +new Date;
                 return o + r
             },
             getInlayUrl: function (t, e, i, n) {
@@ -1595,15 +1609,17 @@ try {
                     var i = e.data;
                     if ("string" == typeof i && !(i.indexOf(this.expansionActionName) < 0)) {
                         this.expandContainerEl = document.createElement("div");
-                        var n = Math.max(this.style.getClientWidth(), this.style.getClientHeight()), o = this.expandContainerEl.style;
+                        var n = Math.max(this.style.getClientWidth(), this.style.getClientHeight()),
+                            o = this.expandContainerEl.style;
                         o.position = "fixed", o.left = "0", o.top = n + "px", o.zIndex = 2147483647, o.background = "#ffffff", o.width = "100%", o.transition = o.WebkitTransition = o.MozTransition = o.OTransition = "top 1s ease-in-out", i = i.slice(this.expansionActionName.length);
-                        var r = ['<iframe id="{lpIframeId}" ', 'src="{clickUrl}" width="{iframeWidth}" ', 'height="{iframeHeight}" align="center,center" ', 'marginwidth="0"  marginheight="0" ', 'frameborder="0"></iframe>', '<div id="{lpIframeId}_closeBtn" ', 'style="position:absolute;right:0;top:0;', "width:{closeBtnSize}px;", "height:{closeBtnSize}px;", "overflow:hidden;display:block;", "background:url('https://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.0/xuantingClose.png') ", "no-repeat 0 0; ", "_filter:progid:DXImageTransform", ".Microsoft.AlphaImageLoader(", "enabled=true, sizingMethod=none, ", "src='https://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.0/xuantingClose.png');", "_background:none;cursor:pointer;", 'background-position:center;background-size:100%,100%;">&nbsp;</div>'].join(""), s = Math.min(this.style.getClientWidth(), this.style.getClientHeight()), a = {
-                            lpIframeId: this.pageIframeId,
-                            clickUrl: i,
-                            iframeWidth: this.style.getClientWidth(),
-                            iframeHeight: this.style.getClientHeight(),
-                            closeBtnSize: 80 * s / 640
-                        };
+                        var r = ['<iframe id="{lpIframeId}" ', 'src="{clickUrl}" width="{iframeWidth}" ', 'height="{iframeHeight}" align="center,center" ', 'marginwidth="0"  marginheight="0" ', 'frameborder="0"></iframe>', '<div id="{lpIframeId}_closeBtn" ', 'style="position:absolute;right:0;top:0;', "width:{closeBtnSize}px;", "height:{closeBtnSize}px;", "overflow:hidden;display:block;", "background:url('https://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.0/xuantingClose.png') ", "no-repeat 0 0; ", "_filter:progid:DXImageTransform", ".Microsoft.AlphaImageLoader(", "enabled=true, sizingMethod=none, ", "src='https://cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.0/xuantingClose.png');", "_background:none;cursor:pointer;", 'background-position:center;background-size:100%,100%;">&nbsp;</div>'].join(""),
+                            s = Math.min(this.style.getClientWidth(), this.style.getClientHeight()), a = {
+                                lpIframeId: this.pageIframeId,
+                                clickUrl: i,
+                                iframeWidth: this.style.getClientWidth(),
+                                iframeHeight: this.style.getClientHeight(),
+                                closeBtnSize: 80 * s / 640
+                            };
                         this.expandContainerEl.innerHTML = this.lang.template(r, a), this.expandContainerEl.style.top = "0", document.body.appendChild(this.expandContainerEl), this.dom.bind(window, "resize", t.proxy(this, this.onResizeHandler));
                         var d = this.dom.g(this.pageIframeId + "_closeBtn");
                         this.dom.bind(d, "click", t.proxy(this, this.onCloseBtnClickHandler))
@@ -1614,7 +1630,8 @@ try {
                 this.expandContainerEl.style.top = Math.max(this.style.getClientWidth(), this.style.getClientHeight()) + "px", this.expandContainerEl && this.expandContainerEl.parentNode ? (this.expandContainerEl.parentNode.removeChild(this.expandContainerEl), this.expandContainerEl = null) : this.expandContainerEl.innerHTML = ""
             },
             onResizeHandler: function () {
-                var t = this.style.getClientWidth(), e = this.style.getClientHeight(), i = this.dom.g(this.pageIframeId);
+                var t = this.style.getClientWidth(), e = this.style.getClientHeight(),
+                    i = this.dom.g(this.pageIframeId);
                 i.style.width = t + "px", i.style.height = e + "px", i.setAttribute("width", t), i.setAttribute("height", e)
             }
         }), t.define({
@@ -1630,11 +1647,13 @@ try {
                 i = i >= 5 ? i : 5, this.percentage = (1 / i).toFixed(2);
                 var n = e.response.placement, o = n.container;
                 this.dockTo = parseInt(o.location, 10) || this.BOTTOM, this.adWrapEl = document.getElementById(e.containerId), this.adWrapEl.style.display = "block", this.adIframe = this.dom.g(e.containerId + "_frame");
-                var r = this.dom.g(e.containerId + "_closebtn"), s = parseInt(this.adWrapEl.style.height || e.height, 10), a = parseInt(r.style.height, 10);
+                var r = this.dom.g(e.containerId + "_closebtn"),
+                    s = parseInt(this.adWrapEl.style.height || e.height, 10), a = parseInt(r.style.height, 10);
                 this.hiddenHeight = -1 * (s + a), this.haveSetIframeUrl = !0, this.countDownTimerId = !1, this.close4ever = !1, this.shrinkAd(), this.transitionDecorator(this.adWrapEl), this.lastScrollTop = this.style.getScrollTop(), this.dom.bind(r, "click", t.proxy(this, this.closeBtnOnClickHandler)), this.dom.bind(window, "scroll", t.proxy(this, this.onScrollHandler))
             },
             validate: function (t) {
-                var e = !!t.styleOpenApi.cpro_enable_hidden_float, i = t.response.placement.container, n = i.anchoredType, o = i.floated.trigger;
+                var e = !!t.styleOpenApi.cpro_enable_hidden_float, i = t.response.placement.container,
+                    n = i.anchoredType, o = i.floated.trigger;
                 return e || "11" == n && o ? this.alreadyEnableHidden ? !1 : (this.alreadyEnableHidden = !0, !0) : !1
             },
             shrinkAd: function () {
@@ -1657,7 +1676,8 @@ try {
                 this.shrinkAd(), this.close4ever = !0
             },
             onScrollHandler: function () {
-                var e = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * this.percentage, i = this.style.getScrollTop(), n = i > this.lastScrollTop ? "down" : "top";
+                var e = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) * this.percentage,
+                    i = this.style.getScrollTop(), n = i > this.lastScrollTop ? "down" : "top";
                 this.totalScrollLength += i - this.lastScrollTop, this.lastScrollTop = i, "top" === n && !this.close4ever && Math.abs(this.totalScrollLength) >= e && !this.countDownTimerId ? (this.expandAd(), this.startCountDown(this.autoCloseTime, t.proxy(this, this.onTimeCountDownHandler))) : "down" === n && (this.totalScrollLength = 0)
             },
             onTimeCountDownHandler: function () {
@@ -1706,7 +1726,8 @@ try {
                 }
             }, {
                 key: "cw", value: function () {
-                    var t = this.slotInfo.styleOpenApi.cpro_ftpc || "true" === this.slotInfo.styleOpenApi.cpro_ftpc || "-1" === this.slotInfo.pcwd, e = this.dom.g(this.slotInfo.containerId);
+                    var t = this.slotInfo.styleOpenApi.cpro_ftpc || "true" === this.slotInfo.styleOpenApi.cpro_ftpc || "-1" === this.slotInfo.pcwd,
+                        e = this.dom.g(this.slotInfo.containerId);
                     return t && e && e.parentElement.clientWidth ? e.parentElement.clientWidth || 0 : void 0
                 }
             }],
@@ -1724,7 +1745,8 @@ try {
                 return e = this.url.getQueryValue(i, this.CLB_PREFIX + t), e || (e = this.url.getQueryValue(i, this.DUP_PREFIX + t)), e
             },
             getInfo: function () {
-                var t, e = this.getValue("sid"), i = this.getValue("mid"), n = this.getValue("vc"), o = +this.getValue("ts"), r = +new Date;
+                var t, e = this.getValue("sid"), i = this.getValue("mid"), n = this.getValue("vc"),
+                    o = +this.getValue("ts"), r = +new Date;
                 return 3e4 >= r - o && (t = {sid: e, mid: i, vc: n}), this.getInfo = function () {
                     return t
                 }, t
@@ -1771,7 +1793,9 @@ try {
                 }
             },
             monitorLog: function (t) {
-                var e, i = t.id ? t.id : "", n = t.async ? t.async : "", o = t.type ? t.type : "ssplog", r = t.pos ? t.pos : "", s = t.status ? t.status : "", a = t.mes ? encodeURIComponent(t.mes) : "", d = t.exps ? t.exps : "";
+                var e, i = t.id ? t.id : "", n = t.async ? t.async : "", o = t.type ? t.type : "ssplog",
+                    r = t.pos ? t.pos : "", s = t.status ? t.status : "", a = t.mes ? encodeURIComponent(t.mes) : "",
+                    d = t.exps ? t.exps : "";
                 e = this.config.LOG_URL + ["?type=" + o, "id=" + i, "pos=" + r, "status=" + s, "async=" + n, "mes=" + a, "exps=" + d, "from=ssp", "tm=" + +new Date].join("&"), this.sendLogRequest(e)
             },
             sendLogRequest: function (t) {
@@ -1787,7 +1811,8 @@ try {
             },
             sendLog: function (t) {
                 t = "object" === this.lang.getType(t) ? t : {};
-                var e = t.url || this.config.LOG_URL, i = t.data || {}, n = t.option || "now", o = this.lang.serialize(i);
+                var e = t.url || this.config.LOG_URL, i = t.data || {}, n = t.option || "now",
+                    o = this.lang.serialize(i);
                 switch (e += (e.indexOf("?") >= 0 ? "&" : "?") + o + (o ? "&" : "") + "rdm=" + +new Date, n) {
                     case"now":
                         this.loadImage(e);
@@ -1916,7 +1941,7 @@ try {
                 var s = e["extends"] || {};
                 if (s && s.hasOwnProperty("sspw") && s.hasOwnProperty("ssph")) {
                     var a = parseInt(s.sspw || 0, 10), d = parseInt(s.ssph || 0, 10), l = parseInt(s.cbsz || 0, 10);
-                    if (a && d && (i.width = a, i.height = d), l > 0 && (i.sizeType = l), 1 === l)t.width = a, t.height = d; else if (2 === l) {
+                    if (a && d && (i.width = a, i.height = d), l > 0 && (i.sizeType = l), 1 === l) t.width = a, t.height = d; else if (2 === l) {
                         var c = this.translateScaleToPixelSize(a, d);
                         t.width = c.width, t.height = c.height
                     }
@@ -2019,7 +2044,8 @@ try {
             processSlot: function (t) {
                 var e = !1, i = !1;
                 if (t.response) {
-                    var n = t.response.rtb_deliv, o = t.response.order_deliv, r = parseInt(n.deliv_id, 10), s = parseInt(n.demand_id, 10), a = parseInt(o.deliv_id, 10), d = parseInt(o.demand_id, 10);
+                    var n = t.response.rtb_deliv, o = t.response.order_deliv, r = parseInt(n.deliv_id, 10),
+                        s = parseInt(n.demand_id, 10), a = parseInt(o.deliv_id, 10), d = parseInt(o.demand_id, 10);
                     e = !(r || s || a || d), (e || 0 !== a) && (i = 0 !== r || 0 !== a)
                 }
                 t.isPdbAd = e, t.isNeedCacheRequest = i
@@ -2148,7 +2174,8 @@ try {
             adInfoIsAvailable: function (t) {
                 var e = t.response;
                 if (!e)return !0;
-                var i = e.pdb_deliv, n = e.rtb_deliv, o = e.order_deliv, r = e.pdb_deliv.deliv_des, s = (r._html, e.placement.complement_type);
+                var i = e.pdb_deliv, n = e.rtb_deliv, o = e.order_deliv, r = e.pdb_deliv.deliv_des,
+                    s = (r._html, e.placement.complement_type);
                 return !(!this.config.IS_PREVIEW && 0 === i.deliv_id && 0 === n.deliv_id && 0 === o.deliv_id && 7 == s)
             }
         }), t.define({
@@ -2270,9 +2297,11 @@ try {
                 if (!i)return {isInView: !1, isAdView: !1};
                 var n = !1, o = !1;
                 if (this.winFocused)try {
-                    var r = this.style.getClientWidth(this.win), s = this.style.getClientHeight(this.win), a = this.getPosition(i), d = this.style.getOuterWidth(i), l = this.style.getOuterHeight(i);
+                    var r = this.style.getClientWidth(this.win), s = this.style.getClientHeight(this.win),
+                        a = this.getPosition(i), d = this.style.getOuterWidth(i), l = this.style.getOuterHeight(i);
                     n = a.top >= 0 && a.bottom <= s && a.left >= 0 && a.left <= r;
-                    var c = a.top > 0 ? a.top : 0, h = a.bottom > s ? s : a.bottom, u = a.left > 0 ? a.left : 0, p = a.right > r ? r : a.right, m = d * l;
+                    var c = a.top > 0 ? a.top : 0, h = a.bottom > s ? s : a.bottom, u = a.left > 0 ? a.left : 0,
+                        p = a.right > r ? r : a.right, m = d * l;
                     if (h > c && p > u) {
                         var f = (h - c) * (p - u);
                         o = f > .5 * m
@@ -2282,7 +2311,9 @@ try {
                 return {isInView: n, isAdView: o}
             },
             getPosition: function (t) {
-                var e = this.style.getPositionCore(t), i = this.style.getScrollLeft(window), n = this.style.getScrollTop(window), o = this.style.getOuterWidth(t, !1), r = this.style.getOuterHeight(t, !1);
+                var e = this.style.getPositionCore(t), i = this.style.getScrollLeft(window),
+                    n = this.style.getScrollTop(window), o = this.style.getOuterWidth(t, !1),
+                    r = this.style.getOuterHeight(t, !1);
                 return {
                     top: e.top - n,
                     bottom: e.top - n + r,
@@ -2505,7 +2536,8 @@ try {
                 for (var e in t)for (var i in t[e]) {
                     var n = t[e][i];
                     if (!n.isExpand)return;
-                    var o = n.origin, r = o.getElementsByTagName("iframe")[0], s = (n.targetWidth, n.targetHeight, n.originWidth);
+                    var o = n.origin, r = o.getElementsByTagName("iframe")[0],
+                        s = (n.targetWidth, n.targetHeight, n.originWidth);
                     n.originHeight;
                     switch (e) {
                         case"up":
@@ -2566,7 +2598,11 @@ try {
             expandAd: function (t) {
                 if (!this.expandStatus[t]) {
                     this.expandStatus[t] = !0;
-                    var e = this.slot.getSlotInfoByRawId(t), i = e.response.placement.container, n = i.width, o = i.height, r = e.response.placement.container.slide, s = r.slideWidth, a = r.slideHeight, d = 1e3 * parseInt(r.extendTime, 10), l = parseInt(r.slideMode, 10), c = parseInt(r.direction, 10), h = e.containerId, u = this.dom.g(h), p = u.getElementsByTagName("iframe")[0];
+                    var e = this.slot.getSlotInfoByRawId(t), i = e.response.placement.container, n = i.width,
+                        o = i.height, r = e.response.placement.container.slide, s = r.slideWidth, a = r.slideHeight,
+                        d = 1e3 * parseInt(r.extendTime, 10), l = parseInt(r.slideMode, 10),
+                        c = parseInt(r.direction, 10), h = e.containerId, u = this.dom.g(h),
+                        p = u.getElementsByTagName("iframe")[0];
                     if (1 === c || 2 === c ? (p.setAttribute("height", a), p.style.height = a + "px") : 3 !== c && 4 !== c || (p.setAttribute("width", s), p.style.width = s + "px"), 2 == l && 2 == c || 2 == l && 4 == c)switch (c) {
                         case 2:
                             p.setAttribute("height", a), p.style.height = a + "px";
@@ -2595,13 +2631,15 @@ try {
             collapseAd: function (t) {
                 if (this.expandStatus[t]) {
                     this.expandStatus[t] = !1, clearTimeout(this.timers[t]);
-                    var e = this.slot.getSlotInfoByRawId(t), i = e.response.placement.container, n = i.width, o = i.height, r = e.containerId, s = this.dom.g(r), a = s.getElementsByTagName("iframe")[0];
+                    var e = this.slot.getSlotInfoByRawId(t), i = e.response.placement.container, n = i.width,
+                        o = i.height, r = e.containerId, s = this.dom.g(r), a = s.getElementsByTagName("iframe")[0];
                     s.style.position = "", s.style.width = "", s.style.height = "", s.style.top = "", s.style.left = "", a.style.position = "", a.style.display = "", a.style.top = "", a.style.left = "", a.style.right = "", a.style.width = "", a.style.height = "", a.setAttribute("height", o), a.setAttribute("width", n);
                     for (var d in this.scrollObserver)for (var l in this.scrollObserver[d])l == t && (this.scrollObserver[d][l].isExpand = !1)
                 }
             },
             observer: function (t) {
-                var t = this.slot.getSlotInfoByRawId(t.slotId), e = t.response.placement.container.slide, i = t.containerId, n = this.dom.g(i);
+                var t = this.slot.getSlotInfoByRawId(t.slotId), e = t.response.placement.container.slide,
+                    i = t.containerId, n = this.dom.g(i);
                 e.slideMode, e.direction;
                 n.style.textAlign = "left", this.hasInit || (this.hasInit = !0, this.init())
             },
@@ -2610,7 +2648,8 @@ try {
                     return "[object Array]" == Object.prototype.toString.call(t)
                 }, o = this.slot.getSlotInfoByRawId(e), r = o.response.placement.container.slide;
                 r && (i = r.trigger);
-                var s = n(i) ? i[0] : i ? i : 0, a = ["", "BEFORE_PAGELOAD", "AFTER_PAGECLOSE", "PAGE_PERCENT", "mouseover", "click", "adloaded", "SLIP"];
+                var s = n(i) ? i[0] : i ? i : 0,
+                    a = ["", "BEFORE_PAGELOAD", "AFTER_PAGECLOSE", "PAGE_PERCENT", "mouseover", "click", "adloaded", "SLIP"];
                 a[s] === t && this.sendMessage(e, {title: "baidudup", type: "eventHappen", parameters: [t]})
             }
         }), t.define({
@@ -2642,14 +2681,17 @@ try {
                     o = o._html;
                     var r = n.response, s = r.pdb_deliv, a = r.rtb_deliv, d = r.order_deliv;
                     if (0 === s.deliv_id && (0 !== parseInt(d.deliv_id, 10) || 0 !== parseInt(a.deliv_id, 10)) && "success" !== i && 7 === r.placement.complement_type) {
-                        var l = document.getElementById(n.containerId), c = document.getElementById(n.containerId + "_left"), h = document.getElementById(n.containerId + "_right");
+                        var l = document.getElementById(n.containerId),
+                            c = document.getElementById(n.containerId + "_left"),
+                            h = document.getElementById(n.containerId + "_right");
                         return l && (this.viewWatch.unregisetViewWatch(n), l.parentNode.removeChild(l)), c && c.parentNode.removeChild(c), void(h && h.parentNode.removeChild(h))
                     }
                     if (n)if (o.type && "rich" === o.type) {
-                        var u = this.material.formatMaterial(o, n), p = document.getElementById(n.containerId), m = "<!DOCTYPE html><body>";
+                        var u = this.material.formatMaterial(o, n), p = document.getElementById(n.containerId),
+                            m = "<!DOCTYPE html><body>";
                         u.indexOf(m) > -1 && (u = u.slice(m.length));
                         var f = this.checkRichAdType(u);
-                        if ("popup" === f)p.style.display = "none"; else if ("barrier" === f) {
+                        if ("popup" === f) p.style.display = "none"; else if ("barrier" === f) {
                             p.style.display = "none";
                             var g = document.getElementById(n.containerId + "_placeholder");
                             g && (g.style.display = "none")
@@ -2718,8 +2760,9 @@ try {
                     } catch (a) {
                     }
                 }
-                var d = e.width || n && n.width, l = e.height || n && n.height, c = this.creativePreview.getPreviewUrl(d, l, r, e.displayType || "inlay");
-                if (c)i = c; else if (e.isPdbAd) {
+                var d = e.width || n && n.width, l = e.height || n && n.height,
+                    c = this.creativePreview.getPreviewUrl(d, l, r, e.displayType || "inlay");
+                if (c) i = c; else if (e.isPdbAd) {
                     var h = this.config.DUP_PREFIX + "renderFrame";
                     this.data.defineOnce(h, t.proxy(this, this.renderFrame)), i = this.getFrameUrl(), o = 'onload="' + h + "('" + e.id + "', this);\""
                 } else if (e.isNeedCacheRequest) {
@@ -2759,7 +2802,8 @@ try {
             render: function (t, e) {
                 try {
                     if (!t.response)return;
-                    var i = t.response, n = (i.rtb_deliv, i.order_deliv, i.pdb_deliv.deliv_des), o = n._html, r = t.isNeedCacheRequest;
+                    var i = t.response, n = (i.rtb_deliv, i.order_deliv, i.pdb_deliv.deliv_des), o = n._html,
+                        r = t.isNeedCacheRequest;
                     if (!e && (!o || "rich" !== o.type || r))return !1;
                     var s = o.content
                 } catch (a) {
@@ -2817,15 +2861,22 @@ try {
                 return "button" !== t.blockType && "popup" !== t.blockType || i.push("position:absolute;left:0;top:" + (this.COUPLET_CLOSE_BTN_HEIGHT + this.GAP) + "px;"), e = ['<div style="' + i.join("") + '">', "{iframe}", "</div>", "{closeBtn}"].join("")
             },
             createCloseElement: function (t) {
-                var e = {}, i = "\\u5FAE\\u8F6F\\u96C5\\u9ED1", n = "\\u5173\\u95ED", o = t.domId + "_closebtn", r = this;
+                var e = {}, i = "\\u5FAE\\u8F6F\\u96C5\\u9ED1", n = "\\u5173\\u95ED", o = t.domId + "_closebtn",
+                    r = this;
                 return e.couplet = function () {
-                    var e = ["box-sizing: content-box;", "position:absolute;", "width:" + t.containerWidth + "px;", "height:20px;", "top:" + (t.containerHeight - this.COUPLET_CLOSE_BTN_HEIGHT) + "px;", "left:0;", "cursor:pointer;", "background-color:#999999;", "color:#fff;font-size:12px;", "font-family: " + r.unicode.toDecode(i) + ";", "text-align:center;line-height:20px;"].join(""), s = '<div id="' + o + '" style="' + e + '">' + r.unicode.toDecode(n) + "</div>";
+                    var e = ["box-sizing: content-box;", "position:absolute;", "width:" + t.containerWidth + "px;", "height:20px;", "top:" + (t.containerHeight - this.COUPLET_CLOSE_BTN_HEIGHT) + "px;", "left:0;", "cursor:pointer;", "background-color:#999999;", "color:#fff;font-size:12px;", "font-family: " + r.unicode.toDecode(i) + ";", "text-align:center;line-height:20px;"].join(""),
+                        s = '<div id="' + o + '" style="' + e + '">' + r.unicode.toDecode(n) + "</div>";
                     return s
                 }, e.button = e.popup = function () {
-                    var e = 61, i = t.containerWidth - e, n = "\\u5FAE\\u8F6F\\u96C5\\u9ED1", s = "\\u5173\\u95ED", a = ["box-sizing: content-box;", "position:absolute;width:" + e + "px;", "height:20px;top:0;", "left:" + i + "px;", "margin:0;padding:0;margin-bottom:5px;", "cursor:pointer;overflow:hidden;"].join(""), d = ['<div id="' + o + '" style="' + a + '">', '<div style="', "box-sizing: content-box;", "width:40px;height:20px;", "background-color:#999999;", "color:#fff;float:left;", "margin-right:1px;font-size:12px;", "font-family:" + r.unicode.toDecode(n) + ";", "text-align: center;line-height:20px;", '">' + r.unicode.toDecode(s) + "</div>", '<a style="maring:0;padding:0;', "display:inline-block;border:none;", "overflow:hidden;height:20px;", "line-height:20px;cursor:pointer;", "width:20px;background:url(", "'https://cpro.baidustatic.com/cpro/ui/", "noexpire/img/2.0.1/xuanfu_close.png", "') no-repeat 0 0;margin-bottom:3px;", 'float:left" ></a>', "</div>"].join("");
+                    var e = 61, i = t.containerWidth - e, n = "\\u5FAE\\u8F6F\\u96C5\\u9ED1", s = "\\u5173\\u95ED",
+                        a = ["box-sizing: content-box;", "position:absolute;width:" + e + "px;", "height:20px;top:0;", "left:" + i + "px;", "margin:0;padding:0;margin-bottom:5px;", "cursor:pointer;overflow:hidden;"].join(""),
+                        d = ['<div id="' + o + '" style="' + a + '">', '<div style="', "box-sizing: content-box;", "width:40px;height:20px;", "background-color:#999999;", "color:#fff;float:left;", "margin-right:1px;font-size:12px;", "font-family:" + r.unicode.toDecode(n) + ";", "text-align: center;line-height:20px;", '">' + r.unicode.toDecode(s) + "</div>", '<a style="maring:0;padding:0;', "display:inline-block;border:none;", "overflow:hidden;height:20px;", "line-height:20px;cursor:pointer;", "width:20px;background:url(", "'https://cpro.baidustatic.com/cpro/ui/", "noexpire/img/2.0.1/xuanfu_close.png", "') no-repeat 0 0;margin-bottom:3px;", 'float:left" ></a>', "</div>"].join("");
                     return d
                 }, e["default"] = function () {
-                    var e = "https://cpro.baidustatic.com/cpro/ui/noexpire/img/clb/1.0.0/close.gif", i = ["box-sizing: content-box;", "height:15px;", "border:1px solid #e1e1e1;", "background:#f0f0f0;", "margin:0;", "padding:0;", "overflow:hidden;"].join(""), n = ["box-sizing: content-box;", "float:right;", "clear:right;", "margin:2px 5px 0 0;", "width:39px;", "height:13px;", "cursor:pointer;", "background:url(" + e + ") no-repeat scroll 0 0;"].join(""), o = ['<div style="' + i + '">', '<span id="' + t.domId + '_closebtn" style="' + n + '" ', "onmouseover=\"this.style.backgroundPosition='0 -20px';\" ", "onmouseout=\"this.style.backgroundPosition='0 0';\" ", ">", "</span>", "</div>"].join("");
+                    var e = "https://cpro.baidustatic.com/cpro/ui/noexpire/img/clb/1.0.0/close.gif",
+                        i = ["box-sizing: content-box;", "height:15px;", "border:1px solid #e1e1e1;", "background:#f0f0f0;", "margin:0;", "padding:0;", "overflow:hidden;"].join(""),
+                        n = ["box-sizing: content-box;", "float:right;", "clear:right;", "margin:2px 5px 0 0;", "width:39px;", "height:13px;", "cursor:pointer;", "background:url(" + e + ") no-repeat scroll 0 0;"].join(""),
+                        o = ['<div style="' + i + '">', '<span id="' + t.domId + '_closebtn" style="' + n + '" ', "onmouseover=\"this.style.backgroundPosition='0 -20px';\" ", "onmouseout=\"this.style.backgroundPosition='0 0';\" ", ">", "</span>", "</div>"].join("");
                     return o
                 }, e[t.blockType]()
             },
@@ -2849,7 +2900,7 @@ try {
                 this.dom.g(t.domId) ? e = this.dom.g(t.domId) : (e = document.createElement("div"), e.id = t.domId);
                 var i = ["box-sizing: content-box;", "width: " + t.containerWidth + "px;", "height: " + t.containerHeight + "px;", "overflow: hidden;", "z-index: 2147483647;"];
                 if (1 === t.followType) {
-                    if (this.style.canFixed())i.push("position: fixed;"); else {
+                    if (this.style.canFixed()) i.push("position: fixed;"); else {
                         i.push("position: absolute;"), this.updatePosition(t, e);
                         var n = this;
                         this.dom.bind(window, "scroll", function () {
@@ -2870,7 +2921,9 @@ try {
             updatePosition: function (t, e) {
                 var i = this.dom.g(e);
                 if (i) {
-                    var n = i.style, o = "CSS1Compat" !== document.compatMode, r = o ? document.body : document.documentElement, s = (r.clientWidth, r.clientHeight), a = (window.pageXOffset || r.scrollLeft, window.pageYOffset || r.scrollTop);
+                    var n = i.style, o = "CSS1Compat" !== document.compatMode,
+                        r = o ? document.body : document.documentElement, s = (r.clientWidth, r.clientHeight),
+                        a = (window.pageXOffset || r.scrollLeft, window.pageYOffset || r.scrollTop);
                     t.contentWidth > 0 && 1 === t.dockType;
                     "top" === t.verticalType || 0 === t.verticalType.length ? n.top = a + t.vSpace + "px" : n.top = a + s - t.vSpace - t.containerHeight + "px"
                 }
@@ -2902,7 +2955,7 @@ try {
             },
             closeBtnOnMouseOverHandler: function () {
                 var t = this.info.domId + "_closebtn", e = this.dom.g(t);
-                if (e)if ("couplet" === this.info.blockType)e.style.backgroundColor = "#0066cc"; else if ("popup" === this.info.blockType || "button" === this.info.blockType) {
+                if (e)if ("couplet" === this.info.blockType) e.style.backgroundColor = "#0066cc"; else if ("popup" === this.info.blockType || "button" === this.info.blockType) {
                     var i = e.getElementsByTagName("div")[0];
                     i.style.backgroundColor = "#0066cc";
                     var n = e.getElementsByTagName("a")[0];
@@ -2911,7 +2964,7 @@ try {
             },
             closeBtnOnMouseOutHandler: function () {
                 var t = this.info.domId + "_closebtn", e = this.dom.g(t);
-                if (e)if ("couplet" === this.info.blockType)e.style.backgroundColor = "#999999"; else if ("popup" === this.info.blockType || "button" === this.info.blockType) {
+                if (e)if ("couplet" === this.info.blockType) e.style.backgroundColor = "#999999"; else if ("popup" === this.info.blockType || "button" === this.info.blockType) {
                     var i = e.getElementsByTagName("div")[0];
                     i.style.backgroundColor = "#999999";
                     var n = e.getElementsByTagName("a")[0];
@@ -2956,15 +3009,17 @@ try {
                 this.win = window
             },
             processSlotInfo: function (t) {
-                var e = {}, i = t.response.placement, n = i.container, o = (i.fillstyle, n.sizeType), r = n.width, s = n.height;
+                var e = {}, i = t.response.placement, n = i.container, o = (i.fillstyle, n.sizeType), r = n.width,
+                    s = n.height;
                 if (t.styleOpenApi.scale) {
                     o = 2;
                     var a = t.styleOpenApi.scale, d = a.split(".");
                     r = d[0], s = d[1]
                 }
-                if (1 === o)e.width = r, e.height = s; else if (2 === o || 5 === o) {
+                if (1 === o) e.width = r, e.height = s; else if (2 === o || 5 === o) {
                     t.pcwd || t.ftpc ? (e.wScale = t.pcwd || "-1", t.styleOpenApi.cpro_ftpc = "true") : e.wScale = r, t.pchd ? e.hScale = t.pchd : e.hScale = s;
-                    var l = {}, c = t.styleOpenApi.cpro_ftpc || "true" === t.styleOpenApi.cpro_ftpc || "-1" === e.wScale;
+                    var l = {},
+                        c = t.styleOpenApi.cpro_ftpc || "true" === t.styleOpenApi.cpro_ftpc || "-1" === e.wScale;
                     c = 5 === o ? !0 : c;
                     var h = this.dom.g(t.containerId);
                     c && h && h.parentElement.clientWidth && (l.width = h.parentElement.clientWidth || 0), "-1" === e.hScale && h && h.parentElement && (l.height = h.parentElement.clientHeight || 0);
@@ -3048,7 +3103,8 @@ try {
             "float": function () {
             },
             processSlotInfo: function (t) {
-                var e = t.response.placement, i = e.container, n = e.fillstyle, o = parseFloat(n.opacity || .9), r = n.backgroundColor || "#000", s = this.painter.processSlotInfo(t);
+                var e = t.response.placement, i = e.container, n = e.fillstyle, o = parseFloat(n.opacity || .9),
+                    r = n.backgroundColor || "#000", s = this.painter.processSlotInfo(t);
                 s.backgroundOpacity = o, s.backgroundColor = r;
                 var a = i.location;
                 return 2 !== a && 3 !== a && (a = 3), s.locationType = a, s.containerId = t.containerId, s.closeType = i.closeType, s
@@ -3058,7 +3114,8 @@ try {
                 return this.lang.template(e, t)
             },
             parseCloseBtnLayoutData: function (t) {
-                var e = 40, i = 40, n = 0, o = "", r = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+                var e = 40, i = 40, n = 0, o = "",
+                    r = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
                 e = r * (1 / 8), i = .4 * e, n = 16 * (e / 50);
                 var s = 0;
                 2 === t.locationType ? (o = 4, s = t.height) : 3 === t.locationType && (o = 3, s = "-" + i);
@@ -3073,7 +3130,8 @@ try {
                 return a
             },
             parseCloseButtonHtml: function (t) {
-                var e = ["<div", ' id="{domId}_closebtn"', ' style="', "box-sizing: content-box;", "position:absolute;", "right:0px;", "top:{top}px;", "width:{closeBtnWidth}px;", "height:{closeBtnHeight}px;", "overflow:hidden;", "display:block;", "background:url('{closeBtnImgUrl}') no-repeat 0 0;", "_filter:progid:DXImageTransform.", "Microsoft.AlphaImageLoader(", "enabled=true,", " sizingMethod=none,", " src='{closeBtnImgUrl}');", "_background:none;", "cursor:pointer;", "background-position:center;", "background-size:100% 100%;", 'z-index:2147483647;">&nbsp;</div>'].join(""), i = this.parseCloseBtnLayoutData(t);
+                var e = ["<div", ' id="{domId}_closebtn"', ' style="', "box-sizing: content-box;", "position:absolute;", "right:0px;", "top:{top}px;", "width:{closeBtnWidth}px;", "height:{closeBtnHeight}px;", "overflow:hidden;", "display:block;", "background:url('{closeBtnImgUrl}') no-repeat 0 0;", "_filter:progid:DXImageTransform.", "Microsoft.AlphaImageLoader(", "enabled=true,", " sizingMethod=none,", " src='{closeBtnImgUrl}');", "_background:none;", "cursor:pointer;", "background-position:center;", "background-size:100% 100%;", 'z-index:2147483647;">&nbsp;</div>'].join(""),
+                    i = this.parseCloseBtnLayoutData(t);
                 return this.lang.template(e, i)
             },
             decorateContainer: function (t, e) {
@@ -3237,7 +3295,8 @@ try {
                 var e = this.dom.g(t.containerId);
                 if (!this.slot.adInfoIsAvailable(t))return this.slot.setStatus(t.id, this.config.STATUS_FINISH), !1;
                 t.displayType = "inlay";
-                var i = null == t.response ? null : t.response.placement.container.slide, n = !(!i || this.lang.isEmptyObj(i) || !this.supportPostMessage);
+                var i = null == t.response ? null : t.response.placement.container.slide,
+                    n = !(!i || this.lang.isEmptyObj(i) || !this.supportPostMessage);
                 if (n && (this.expand.observer(t), this.bindEvent4Expand(t)), this.validate(t)) {
                     this.monitor.sendLog(t);
                     var o = this.richMaterial.render(t), r = this;
@@ -3276,7 +3335,11 @@ try {
                 return o > 4095 && (o = 4095), !(o >= screen.width)
             },
             processSlotInfo: function (t) {
-                var e = t.response.placement, i = e.container, n = i.floated, o = n.dockType, r = i.closeType, s = i.closeTime || 0, a = n.vspace || 0, d = n.hspace || 0, l = t.response.rtb_deliv.deliv_id && t.response.order_deliv.deliv_id, c = t.width || i.width, h = t.height || i.height, u = +c, p = +h, m = ["default", "couplet", "button", "popup"], f = parseInt(n.blockType || 0, 10), g = m[f];
+                var e = t.response.placement, i = e.container, n = i.floated, o = n.dockType, r = i.closeType,
+                    s = i.closeTime || 0, a = n.vspace || 0, d = n.hspace || 0,
+                    l = t.response.rtb_deliv.deliv_id && t.response.order_deliv.deliv_id, c = t.width || i.width,
+                    h = t.height || i.height, u = +c, p = +h, m = ["default", "couplet", "button", "popup"],
+                    f = parseInt(n.blockType || 0, 10), g = m[f];
                 "default" !== g && (u += 2 * this.GAP + 1, p += 2 * this.GAP + 1), p += "couplet" === g ? this.COUPLET_CLOSE_BTN_HEIGHT : "button" === g || "popup" === g ? this.COUPLET_CLOSE_BTN_HEIGHT + this.GAP : this.NORMAL_CLOSE_BTN_HEIGHT;
                 var y = i.location, v = "", w = "";
                 switch (y) {
@@ -3405,6 +3468,7 @@ try {
         i.process()
     }(_ssp_global.oojs)
 } catch (e) {
-    var url = ["//eclick.baidu.com/se.jpg?", "type=fatalError", "mes=" + encodeURIComponent(e)].join("&"), img = new Image;
+    var url = ["//eclick.baidu.com/se.jpg?", "type=fatalError", "mes=" + encodeURIComponent(e)].join("&"),
+        img = new Image;
     img.src = url
 }

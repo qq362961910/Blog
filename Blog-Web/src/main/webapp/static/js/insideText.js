@@ -132,7 +132,9 @@
             }
         },
         drawIcon: function (t, e) {
-            var i = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop, n = 5, o = 10, s = this.browser.ie < 9 ? e.clientX : e.pageX, r = 38, a = this.browser.ie < 9 ? e.clientY + i - document.body.clientTop : e.pageY;
+            var i = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop, n = 5, o = 10,
+                s = this.browser.ie < 9 ? e.clientX : e.pageX, r = 38,
+                a = this.browser.ie < 9 ? e.clientY + i - document.body.clientTop : e.pageY;
             this.baiduTip = "" + this.SET_DATA_JSONP + Math.ceil(1e5 * Math.random());
             var d = document.createElement("img");
             d.id = this.baiduTip, d.src = "//cpro.baidustatic.com/cpro/ui/noexpire/img/2.0.0/icon.png", d.style.cursor = "pointer", d.style.width = r + "px", d.style.height = r + "px", d.style.position = "absolute", d.style.top = parseInt(a, 10) - r - n + "px", d.style.left = s + n + "px", t.length > o && (t = t.substr(0, o)), d.alt = t, document.body.appendChild(d), this.event.bind(d, "click", oojs.proxy(this, this.openUrl))
@@ -144,7 +146,8 @@
             }
         },
         openUrl: function (t) {
-            var e, i = t || window.event, n = i.target || i.srcElement, o = document.getElementById(this.baiduTip), s = encodeURIComponent(n.alt);
+            var e, i = t || window.event, n = i.target || i.srcElement, o = document.getElementById(this.baiduTip),
+                s = encodeURIComponent(n.alt);
             o && (e = this.iss ? this.getFirstUrl.replace(/&k=[^&]*/g, "&k=" + s).replace(/&di=\d*/g, "&di=128") : this.getFirstUrl.replace(/&k=[^&]*/g, "&k=" + s).replace(/&di=\d*/g, "&di=8"), window.open(e), document.body.removeChild(o))
         }
     });

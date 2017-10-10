@@ -5,16 +5,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "blog_login_log")
-public class LoginLog extends BaseEntity{
+public class LoginLog extends BaseEntity {
 
     /**
      * 用户id
-     * */
+     */
     private Long userId;
 
     /**
      * ticket
-     * */
+     */
     private String ticket;
 
 

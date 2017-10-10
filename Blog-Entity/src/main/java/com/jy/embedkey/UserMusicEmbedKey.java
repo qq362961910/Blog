@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class UserMusicEmbedKey  implements Serializable {
+public class UserMusicEmbedKey implements Serializable {
 
     @Column(name = "user_id")
     private Long ownerId;
@@ -34,8 +34,8 @@ public class UserMusicEmbedKey  implements Serializable {
     @Override
     public String toString() {
         return "UserMusicEmbedKey{" +
-                "ownerId=" + ownerId +
-                ", musicId=" + musicId +
-                '}';
+            "ownerId=" + ownerId +
+            ", musicId=" + musicId +
+            '}';
     }
 }

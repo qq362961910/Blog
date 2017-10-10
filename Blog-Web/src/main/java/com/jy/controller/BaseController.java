@@ -35,12 +35,15 @@ public class BaseController {
     public Map<String, Object> fail() {
         return result(false, ServiceErrorCode.SERVER_INTERNAL_EXCEPTION.code, null, null);
     }
+
     public Map<String, Object> fail(String errorCode) {
         return result(false, errorCode, null, null);
     }
+
     public Map<String, Object> fail(ServiceErrorCode errorCode) {
         return result(false, errorCode.code, errorCode.msg, null);
     }
+
     public Map<String, Object> fail(String errorCode, Object data) {
         return result(false, errorCode, null, data);
     }

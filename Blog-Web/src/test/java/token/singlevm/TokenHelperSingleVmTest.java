@@ -22,7 +22,7 @@ public class TokenHelperSingleVmTest {
     private static ExecutorService ExecutorService = Executors.newFixedThreadPool(50);
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         logger.info("test begin....");
         //prepare TokenHelper
@@ -35,13 +35,13 @@ public class TokenHelperSingleVmTest {
 
         //prepare Worker List
         List<Worker> workerList = new ArrayList<>(TOTAL_WORKER);
-        for (int i=0; i<TOTAL_WORKER; i++) {
-            workerList.add(WorkerFactory.newRandomWorker(keys[i%keys.length], tokenHelperSingleVm, server));
+        for (int i = 0; i < TOTAL_WORKER; i++) {
+            workerList.add(WorkerFactory.newRandomWorker(keys[i % keys.length], tokenHelperSingleVm, server));
         }
 
         //begin to work
-        for (int i=0; i<30; i++) {
-            for (final Worker worker: workerList) {
+        for (int i = 0; i < 30; i++) {
+            for (final Worker worker : workerList) {
                 final int worktime = RandonUtil.nextRandomPositiveInt(MIN_WORK_TIME, MAX_WORK_TIME);
                 ExecutorService.submit(new Runnable() {
                     @Override
@@ -56,8 +56,7 @@ public class TokenHelperSingleVmTest {
         boolean success = ExecutorService.awaitTermination(5, TimeUnit.MINUTES);
         if (success) {
             logger.info("ExecutorService close success");
-        }
-        else {
+        } else {
             logger.info("ExecutorService close fail");
         }
         tokenHelperSingleVm.close();
@@ -72,6 +71,7 @@ public class TokenHelperSingleVmTest {
 class WorkerFactory {
     private static final String WORKER_NAME_PREFIX = "worker";
     private static int count = 0;
+
     public static Worker newRandomWorker(String key, TokenHelperSingleVm tokenHelperSingleVm, Server server) {
         return new Worker(WORKER_NAME_PREFIX + "-" + count++, key, tokenHelperSingleVm, server);
     }
@@ -91,15 +91,14 @@ class Worker {
             boolean success = server.service(token);
             if (success) {
                 logger.info("worker: " + workerName + " get token: " + token + ", will work " + workTimeInMills + " million seconds with key: " + key);
-            }
-            else {
+            } else {
                 logger.error("worker: " + workerName + " with wrong token: " + token + ", key: " + key);
             }
             return true;
         } catch (InterruptedException e) {
             e.printStackTrace();
             return false;
-        }finally {
+        } finally {
             tokenHelperSingleVm.releaseToken(key);
         }
     }
@@ -118,19 +117,18 @@ class Worker {
 
 class RandonUtil {
 
-    private static  final Random random = new Random();
+    private static final Random random = new Random();
 
     public static int nextRandomPositiveInt(int min, int max) {
         int r = random.nextInt();
-        if (r<0) {
+        if (r < 0) {
             r = -r;
         }
-        r%=max;
-        if (r >= min && r<=max) {
+        r %= max;
+        if (r >= min && r <= max) {
             return r;
-        }
-        else {
-            return min + (r%(max - min));
+        } else {
+            return min + (r % (max - min));
         }
     }
 }
@@ -139,7 +137,7 @@ class RandonUtil {
 class Server {
 
     private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 60 * 120;
-//    private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 4;
+    //    private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 4;
     private static final long CHECK_TOKEN_EXPIRE_TIME_IN_MILLS = 500;
 
     private static final Object lock = new Object();
@@ -168,7 +166,7 @@ class Server {
     }
 
     public Server() {
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 while (!close) {
@@ -192,6 +190,7 @@ class Server {
             }
         }.start();
     }
+
     public void destroy() {
         close = true;
     }

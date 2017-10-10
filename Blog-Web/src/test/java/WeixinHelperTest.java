@@ -2,7 +2,7 @@ import com.jy.helper.WxHelper;
 import xml.UnionPayRequestConfigure;
 
 public class WeixinHelperTest {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         WxHelper helper = new WxHelper();
         UnionPayRequestConfigure unionPayRequestConfigure = new UnionPayRequestConfigure();

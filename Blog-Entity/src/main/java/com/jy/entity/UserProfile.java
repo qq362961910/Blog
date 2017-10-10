@@ -77,7 +77,7 @@ public class UserProfile extends BaseEntity {
 
     /**
      * 用户喜欢的音乐
-     * */
+     */
     @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "userMusicEmbedKey.ownerId")
     private List<UserMusicLike> userMusicLikeList;
@@ -193,18 +193,18 @@ public class UserProfile extends BaseEntity {
     @Override
     public String toString() {
         return "UserProfile{" +
-                "ownerId=" + ownerId +
-                ", idCardNo='" + idCardNo + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", occupation='" + occupation + '\'' +
-                ", position='" + position + '\'' +
-                ", realName='" + realName + '\'' +
-                ", birthday=" + birthday +
-                ", nativePlace='" + nativePlace + '\'' +
-                ", address='" + address + '\'' +
-                ", selfIntroduction='" + selfIntroduction + '\'' +
-                ", userBookLikeList=" + userBookLikeList +
-                ", userMusicLikeList=" + userMusicLikeList +
-                '}';
+            "ownerId=" + ownerId +
+            ", idCardNo='" + idCardNo + '\'' +
+            ", companyName='" + companyName + '\'' +
+            ", occupation='" + occupation + '\'' +
+            ", position='" + position + '\'' +
+            ", realName='" + realName + '\'' +
+            ", birthday=" + birthday +
+            ", nativePlace='" + nativePlace + '\'' +
+            ", address='" + address + '\'' +
+            ", selfIntroduction='" + selfIntroduction + '\'' +
+            ", userBookLikeList=" + userBookLikeList +
+            ", userMusicLikeList=" + userMusicLikeList +
+            '}';
     }
 }

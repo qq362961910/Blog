@@ -867,13 +867,16 @@ window.Modernizr = (function (window, document, undefined) {
         return a.loader = {load: j, i: 0}, a
     }
 
-    var l = b.documentElement, m = a.setTimeout, n = b.getElementsByTagName("script")[0], o = {}.toString, p = [], q = 0, r = "MozAppearance" in l.style, s = r && !!b.createRange().compareNode, t = s ? l : n.parentNode, l = a.opera && "[object Opera]" == o.call(a.opera), l = !!b.attachEvent && !l, u = r ? "object" : l ? "script" : "img", v = l ? "script" : u, w = Array.isArray || function (a) {
-            return "[object Array]" == o.call(a)
-        }, x = [], y = {}, z = {
-        timeout: function (a, b) {
-            return b.length && (a.timeout = b[0]), a
-        }
-    }, A, B;
+    var l = b.documentElement, m = a.setTimeout, n = b.getElementsByTagName("script")[0], o = {}.toString, p = [],
+        q = 0, r = "MozAppearance" in l.style, s = r && !!b.createRange().compareNode, t = s ? l : n.parentNode,
+        l = a.opera && "[object Opera]" == o.call(a.opera), l = !!b.attachEvent && !l,
+        u = r ? "object" : l ? "script" : "img", v = l ? "script" : u, w = Array.isArray || function (a) {
+                return "[object Array]" == o.call(a)
+            }, x = [], y = {}, z = {
+            timeout: function (a, b) {
+                return b.length && (a.timeout = b[0]), a
+            }
+        }, A, B;
     B = function (a) {
         function b(a) {
             var a = a.split("!"), b = x.length, c = a.pop(), d = a.length, c = {
@@ -896,7 +899,7 @@ window.Modernizr = (function (window, document, undefined) {
         function h(a, b) {
             function c(a, c) {
                 if (a) {
-                    if (e(a))c || (j = function () {
+                    if (e(a)) c || (j = function () {
                         var a = [].slice.call(arguments);
                         k.apply(this, a), l()
                     }), g(a, j, b, 0, h); else if (Object(a) === a)for (n in m = function () {
@@ -920,7 +923,7 @@ window.Modernizr = (function (window, document, undefined) {
         }
 
         var i, j, l = this.yepnope.loader;
-        if (e(a))g(a, 0, l, 0); else if (w(a))for (i = 0; i < a.length; i++)j = a[i], e(j) ? g(j, 0, l, 0) : w(j) ? B(j) : Object(j) === j && h(j, l); else Object(a) === a && h(a, l)
+        if (e(a)) g(a, 0, l, 0); else if (w(a))for (i = 0; i < a.length; i++)j = a[i], e(j) ? g(j, 0, l, 0) : w(j) ? B(j) : Object(j) === j && h(j, l); else Object(a) === a && h(a, l)
     }, B.addPrefix = function (a, b) {
         z[a] = b
     }, B.addFilter = function (a) {

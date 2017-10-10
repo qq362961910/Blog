@@ -63,133 +63,135 @@
             for (var i = ["Moz", "Webkit", "ms"], e = e.charAt(0).toUpperCase() + e.substr(1), r = 0; r < i.length; r++)if ("string" == typeof a[i[r] + e])return s ? i[r] + e : !0
         }, !e.DUOSHUO) {
         for (var l in Object.prototype)return alert("Object.prototype 不为空，请不要给 Object.prototype 设置方法");
-        var c, u, p = e.JSON, h = e.location, f = e.XMLHttpRequest, m = p && p.stringify && e.localStorage, v = e.navigator.userAgent, g = "https:" == t.location.protocol ? "https:" : "http:", b = 0, y = [], _ = u = function () {
-            function e(e) {
-                return t[e] || "&amp;"
-            }
-
-            var t = {
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#x27;",
-                "`": "&#x60;"
-            }, s = /&(?!\w+;)|[<>"'`]/g, a = /[&<>"'`]/;
-            return function (t) {
-                return null == t || t === !1 ? "" : a.test(t) ? t.replace(s, e) : t
-            }
-        }(), k = function (e) {
-            if (e.match(/^(http|https):/))return e;
-            var s = t.createElement("a");
-            return s.href = e, P.hrefNormalized ? s.href : s.getAttribute("href", 4)
-        }, w = function (e) {
-            return function () {
-                return e
-            }
-        }, x = function () {
-            for (var e = {}, t = 0; t < arguments.length; t++)arguments[t] && o.extend(e, arguments[t]);
-            var s = o.param(e);
-            return s ? "?" + s : ""
-        }, T = function () {
-            var e = o.getCookie("duoshuo_token");
-            return e ? {jwt: e} : c.remote_auth ? {short_name: c.short_name, remote_auth: c.remote_auth} : s
-        }, q = function () {
-            if (!c && (c = e.duoshuoQuery)) {
-                if (!c.short_name || "your_duoshuo_short_name" === c.short_name)return c = s, void alert("你还没有设置多说域名(duoshuoQuery.short_name)，填入已有域名或创建新站点：http://duoshuo.com/create-site/");
-                it.trigger("queryDefined")
-            }
-            return c
-        }, C = function (e) {
-            return e && e.error && e.warn ? e : {
-                error: function () {
-                }, log: function () {
-                }, warn: function () {
+        var c, u, p = e.JSON, h = e.location, f = e.XMLHttpRequest, m = p && p.stringify && e.localStorage,
+            v = e.navigator.userAgent, g = "https:" == t.location.protocol ? "https:" : "http:", b = 0, y = [],
+            _ = u = function () {
+                function e(e) {
+                    return t[e] || "&amp;"
                 }
-            }
-        }(e.console), S = e.DUOSHUO = {
-            sourceName: {
-                weibo: "新浪微博",
-                qq: "QQ",
-                qzone: "QQ空间",
-                qqt: "腾讯微博",
-                renren: "人人网",
-                douban: "豆瓣网",
-                kaixin: "开心网",
-                sohu: "搜狐微博",
-                baidu: "百度",
-                google: "谷歌",
-                wechat: "微信",
-                weixin: "微信",
-                facebook: "Facebook",
-                twitter: "Twitter",
-                linkedin: "Linkedin"
-            },
-            serviceNames: {
-                weibo: "微博",
-                qq: "QQ",
-                douban: "豆瓣",
-                renren: "人人",
-                kaixin: "开心",
-                baidu: "百度",
-                google: "谷歌",
-                wechat: "微信",
-                weixin: "微信",
-                facebook: "Facebook",
-                twitter: "Twitter",
-                linkedin: "Linkedin"
-            },
-            parseDate: function (e) {
-                return e.parse("2011-10-28T00:00:00+08:00") && function (t) {
-                        return new e(t)
-                    } || e.parse("2011/10/28T00:00:00+0800") && function (t) {
-                        return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1"))
-                    } || e.parse("2011/10/28 00:00:00+0800") && function (t) {
-                        return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1").replace("T", " "))
-                    } || function (t) {
-                        return new e(t)
+
+                var t = {
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#x27;",
+                    "`": "&#x60;"
+                }, s = /&(?!\w+;)|[<>"'`]/g, a = /[&<>"'`]/;
+                return function (t) {
+                    return null == t || t === !1 ? "" : a.test(t) ? t.replace(s, e) : t
+                }
+            }(), k = function (e) {
+                if (e.match(/^(http|https):/))return e;
+                var s = t.createElement("a");
+                return s.href = e, P.hrefNormalized ? s.href : s.getAttribute("href", 4)
+            }, w = function (e) {
+                return function () {
+                    return e
+                }
+            }, x = function () {
+                for (var e = {}, t = 0; t < arguments.length; t++)arguments[t] && o.extend(e, arguments[t]);
+                var s = o.param(e);
+                return s ? "?" + s : ""
+            }, T = function () {
+                var e = o.getCookie("duoshuo_token");
+                return e ? {jwt: e} : c.remote_auth ? {short_name: c.short_name, remote_auth: c.remote_auth} : s
+            }, q = function () {
+                if (!c && (c = e.duoshuoQuery)) {
+                    if (!c.short_name || "your_duoshuo_short_name" === c.short_name)return c = s, void alert("你还没有设置多说域名(duoshuoQuery.short_name)，填入已有域名或创建新站点：http://duoshuo.com/create-site/");
+                    it.trigger("queryDefined")
+                }
+                return c
+            }, C = function (e) {
+                return e && e.error && e.warn ? e : {
+                    error: function () {
+                    }, log: function () {
+                    }, warn: function () {
                     }
-            }(Date),
-            fullTime: function (e) {
-                var t = S.parseDate(e);
-                return t.getFullYear() + "年" + (t.getMonth() + 1) + "月" + t.getDate() + "日 " + t.toLocaleTimeString()
-            },
-            elapsedTime: function (e) {
-                var t = S.parseDate(e), s = new Date, a = (s - b - t) / 1e3;
-                return 10 > a ? "刚刚" : 60 > a ? Math.round(a) + "秒前" : 3600 > a ? Math.round(a / 60) + "分钟前" : 86400 > a ? Math.round(a / 3600) + "小时前" : (s.getFullYear() == t.getFullYear() ? "" : t.getFullYear() + "年") + (t.getMonth() + 1) + "月" + t.getDate() + "日"
-            },
-            compileStyle: function (e) {
-                var t = "", s = {};
-                if (s.textbox = "#ds-thread #ds-reset .ds-replybox .ds-textarea-wrapper", !e)return t;
-                for (var a in e)t += s[a] + "{" + e[a] + "}\n";
-                return t
-            },
-            init: function (e, t) {
-                e && !O[e] && (O[e] = t || {type: "EmbedThread"}), S.initView && S.initView()
-            }
-        }, j = t.all, P = S.support = function () {
-            var s = t.createElement("div");
-            s.innerHTML = '<a href="/a" style="opacity:.55;">a</a><input type="checkbox"/>';
-            var a = s.getElementsByTagName("a")[0], i = s.getElementsByTagName("input")[0], r = {
-                placeholder: "placeholder" in i,
-                touch: "ontouchstart" in e || "onmsgesturechange" in e,
-                opacity: /^0.55$/.test(a.style.opacity),
-                hrefNormalized: "/a" === a.getAttribute("href"),
-                iOS: v.match(/ \((iPad|iPhone|iPod);( U;)? CPU( iPhone)? OS /),
-                android: v.match(/ \(Linux; U; Android /)
-            };
-            return r.ie6 = !f && "undefined" == typeof s.style.maxHeight, r.authInWin = e.postMessage && e.screen.width > 800 && !r.iOS && !r.android && h.origin, r
-        }(), O = S.selectors = {
-            ".ds-thread": {type: "EmbedThread"},
-            ".ds-recent-comments": {type: "RecentComments"},
-            ".ds-recent-visitors": {type: "RecentVisitors"},
-            ".ds-top-users": {type: "TopUsers"},
-            ".ds-top-threads": {type: "TopThreads"},
-            ".ds-login": {type: "LoginWidget"},
-            ".ds-thread-count": {type: "ThreadCount"},
-            ".ds-share": {type: "ShareWidget"}
-        }, E = S.openDialog = function (e) {
-            return S.dialog !== s && S.dialog.el.remove(), S.dialog = new st.Dialog(et.dialog(e)).open()
-        }, L = S.smilies = {};
+                }
+            }(e.console), S = e.DUOSHUO = {
+                sourceName: {
+                    weibo: "新浪微博",
+                    qq: "QQ",
+                    qzone: "QQ空间",
+                    qqt: "腾讯微博",
+                    renren: "人人网",
+                    douban: "豆瓣网",
+                    kaixin: "开心网",
+                    sohu: "搜狐微博",
+                    baidu: "百度",
+                    google: "谷歌",
+                    wechat: "微信",
+                    weixin: "微信",
+                    facebook: "Facebook",
+                    twitter: "Twitter",
+                    linkedin: "Linkedin"
+                },
+                serviceNames: {
+                    weibo: "微博",
+                    qq: "QQ",
+                    douban: "豆瓣",
+                    renren: "人人",
+                    kaixin: "开心",
+                    baidu: "百度",
+                    google: "谷歌",
+                    wechat: "微信",
+                    weixin: "微信",
+                    facebook: "Facebook",
+                    twitter: "Twitter",
+                    linkedin: "Linkedin"
+                },
+                parseDate: function (e) {
+                    return e.parse("2011-10-28T00:00:00+08:00") && function (t) {
+                            return new e(t)
+                        } || e.parse("2011/10/28T00:00:00+0800") && function (t) {
+                            return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1"))
+                        } || e.parse("2011/10/28 00:00:00+0800") && function (t) {
+                            return new e(t.replace(/-/g, "/").replace(/:(\d\d)$/, "$1").replace("T", " "))
+                        } || function (t) {
+                            return new e(t)
+                        }
+                }(Date),
+                fullTime: function (e) {
+                    var t = S.parseDate(e);
+                    return t.getFullYear() + "年" + (t.getMonth() + 1) + "月" + t.getDate() + "日 " + t.toLocaleTimeString()
+                },
+                elapsedTime: function (e) {
+                    var t = S.parseDate(e), s = new Date, a = (s - b - t) / 1e3;
+                    return 10 > a ? "刚刚" : 60 > a ? Math.round(a) + "秒前" : 3600 > a ? Math.round(a / 60) + "分钟前" : 86400 > a ? Math.round(a / 3600) + "小时前" : (s.getFullYear() == t.getFullYear() ? "" : t.getFullYear() + "年") + (t.getMonth() + 1) + "月" + t.getDate() + "日"
+                },
+                compileStyle: function (e) {
+                    var t = "", s = {};
+                    if (s.textbox = "#ds-thread #ds-reset .ds-replybox .ds-textarea-wrapper", !e)return t;
+                    for (var a in e)t += s[a] + "{" + e[a] + "}\n";
+                    return t
+                },
+                init: function (e, t) {
+                    e && !O[e] && (O[e] = t || {type: "EmbedThread"}), S.initView && S.initView()
+                }
+            }, j = t.all, P = S.support = function () {
+                var s = t.createElement("div");
+                s.innerHTML = '<a href="/a" style="opacity:.55;">a</a><input type="checkbox"/>';
+                var a = s.getElementsByTagName("a")[0], i = s.getElementsByTagName("input")[0], r = {
+                    placeholder: "placeholder" in i,
+                    touch: "ontouchstart" in e || "onmsgesturechange" in e,
+                    opacity: /^0.55$/.test(a.style.opacity),
+                    hrefNormalized: "/a" === a.getAttribute("href"),
+                    iOS: v.match(/ \((iPad|iPhone|iPod);( U;)? CPU( iPhone)? OS /),
+                    android: v.match(/ \(Linux; U; Android /)
+                };
+                return r.ie6 = !f && "undefined" == typeof s.style.maxHeight, r.authInWin = e.postMessage && e.screen.width > 800 && !r.iOS && !r.android && h.origin, r
+            }(), O = S.selectors = {
+                ".ds-thread": {type: "EmbedThread"},
+                ".ds-recent-comments": {type: "RecentComments"},
+                ".ds-recent-visitors": {type: "RecentVisitors"},
+                ".ds-top-users": {type: "TopUsers"},
+                ".ds-top-threads": {type: "TopThreads"},
+                ".ds-login": {type: "LoginWidget"},
+                ".ds-thread-count": {type: "ThreadCount"},
+                ".ds-share": {type: "ShareWidget"}
+            }, E = S.openDialog = function (e) {
+                return S.dialog !== s && S.dialog.el.remove(), S.dialog = new st.Dialog(et.dialog(e)).open()
+            }, L = S.smilies = {};
         S.require = function () {
             function t(e) {
                 var t = U[e] ? "?" + U[e] + ".js" : "";
@@ -198,7 +200,7 @@
 
             var s = {mzadxN: "undefined" != typeof mzadxN};
             return "undefined" != typeof jQuery && jQuery.fn.jquery >= "1.5" && (s["embed.compat"] = !0, S.jQuery = e.jQuery), function (e, a) {
-                if ("string" == typeof e)s[e] ? a() : o.injectScript(t(e), function () {
+                if ("string" == typeof e) s[e] ? a() : o.injectScript(t(e), function () {
                     s[e] = !0, a()
                 }); else if ("object" == typeof e) {
                     var i, r = !0;
@@ -234,7 +236,7 @@
 
                 function l(e, t, s) {
                     var a, i, o, l = t;
-                    if (e >= 200 && 300 > e || 304 === e)if (304 === e)l = "notmodified", o = !0; else try {
+                    if (e >= 200 && 300 > e || 304 === e)if (304 === e) l = "notmodified", o = !0; else try {
                         a = p.parse(s), l = "success", o = !0
                     } catch (c) {
                         l = "parsererror", i = c
@@ -259,7 +261,7 @@
                         return m.open(e, a() + "/api/" + t + ".json" + ("GET" == e ? "?" + o.param(i) : ""), !0), m.withCredentials = !0, m.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"), m.send("GET" == e ? null : o.param(i)), g = function (e, t) {
                             var a, i, r, n;
                             try {
-                                if (g && (t || 4 === m.readyState))if (g = s, t)4 !== m.readyState && m.abort(); else {
+                                if (g && (t || 4 === m.readyState))if (g = s, t) 4 !== m.readyState && m.abort(); else {
                                     a = m.status, r = m.getAllResponseHeaders();
                                     try {
                                         n = m.responseText
@@ -299,7 +301,8 @@
                 if (!("WebSocket" in e && p))return !1;
                 var a = this;
                 if (a.messages.push(p.stringify(s)), !a.webSocket) {
-                    var r = "https:" === t.location.protocol ? "wss://ws.duoshuo.com:8202/" : "ws://ws.duoshuo.com:8201/", n = a.webSocket = new WebSocket(r);
+                    var r = "https:" === t.location.protocol ? "wss://ws.duoshuo.com:8202/" : "ws://ws.duoshuo.com:8201/",
+                        n = a.webSocket = new WebSocket(r);
                     n.onopen = function () {
                         var e, t = 1 === n.readyState;
                         if (t)for (; e = a.messages.shift();)n.send(e)
@@ -622,7 +625,8 @@
             if (s)for (var a, i = -1, r = s.length - 1; r > i;)a = s[i += 1], t += '<li><a href="' + Z.loginUrl(a) + '" rel="nofollow" class="ds-service-link ds-' + a + '">' + S.serviceNames[a] + "</a></li>";
             return t
         }, et.shareWidget = function (e) {
-            var t = '<div class="ds-share-icons"> <div class="ds-share-icons-inner"> <ul class="ds-share-icons-16"> ', s = e.services;
+            var t = '<div class="ds-share-icons"> <div class="ds-share-icons-inner"> <ul class="ds-share-icons-16"> ',
+                s = e.services;
             if (s)for (var a, i = -1, r = s.length - 1; r > i;)a = s[i += 1], t += ' <li> <a class="ds-' + a + '" href="javascript:void(0);" data-service="' + a + '">' + S.sourceName[a] + "</a> </li> ";
             return t += ' </ul> </div> <div class="ds-share-icons-footer">' + e.copyright + "</div></div>"
         }, et.smiliesTooltip = function (e) {
@@ -645,7 +649,9 @@
             for (var s in e.social_uid)t += '<a href="' + S.REMOTE + "/user-proxy/" + s + "/" + e.social_uid[s] + '/" target="_blank" class="ds-service-icon ds-' + s + '" title="' + S.sourceName[s] + '"></a>';
             return t += '<p class="ds-user-card-meta"><a href="' + S.REMOTE + "/profile/" + e.user_id + '/" target="_blank"><span class="ds-highlight">' + e.comments + "</span>条评论</a></p>", e.description && (t += '<p class="ds-user-description">' + u(e.description) + "</p>"), t
         };
-        var st = S.Views = {}, at = (S.Callbacks = {}, S.pagelets = []), it = S.events = new J, rt = S.site = new V, nt = S.visitor = new $, ot = S.unread = new V, dt = S.threadPool = new Y(G), lt = S.postPool = new Y(F), ct = S.userPool = new Y($);
+        var st = S.Views = {}, at = (S.Callbacks = {}, S.pagelets = []), it = S.events = new J, rt = S.site = new V,
+            nt = S.visitor = new $, ot = S.unread = new V, dt = S.threadPool = new Y(G), lt = S.postPool = new Y(F),
+            ct = S.userPool = new Y($);
         it.on("queryDefined", function () {
             var e = c.short_name;
             if (c.theme && n(c.theme), m) {
@@ -799,7 +805,8 @@
             function U(e, t) {
                 function s() {
                     if (r())return w(), !1;
-                    var e = H(this).parent(), t = e.hasClass("ds-post-liked"), s = H(this).html().match(/\((\d+)\)/), a = (s ? parseInt(s[1]) : 0) + (t ? -1 : 1);
+                    var e = H(this).parent(), t = e.hasClass("ds-post-liked"), s = H(this).html().match(/\((\d+)\)/),
+                        a = (s ? parseInt(s[1]) : 0) + (t ? -1 : 1);
                     return R.post("posts/vote", {
                         post_id: e.closest(".ds-ctx-entry, .ds-post-self").attr("data-post-id"),
                         vote: t ? 0 : 1
@@ -827,7 +834,7 @@
 
                 function o() {
                     var s = H(this), a = s.closest(".ds-comment-actions");
-                    if (a.hasClass("ds-reply-active"))h.el.fadeOut(200, function () {
+                    if (a.hasClass("ds-reply-active")) h.el.fadeOut(200, function () {
                         H(this).detach()
                     }), a.removeClass("ds-reply-active"); else {
                         var i = s.closest(".ds-ctx-entry, .ds-post-self");
@@ -876,9 +883,10 @@
                         }
 
                         tt = 0, X.owner = s, N();
-                        var i = a.offset(), r = e.el.offset(), n = a.innerWidth() / 2, o = e.el.innerHeight() - (i.top - r.top) + 6, d = i.left - r.left - 35 + (n > 35 ? 35 : n);
+                        var i = a.offset(), r = e.el.offset(), n = a.innerWidth() / 2,
+                            o = e.el.innerHeight() - (i.top - r.top) + 6, d = i.left - r.left - 35 + (n > 35 ? 35 : n);
                         try {
-                            if (a.hasClass("ds-comment-context"))K.attr("id", "ds-ctx-bubble").attr("data-post-id", a.attr("data-post-id")).html('<ul id="ds-ctx">' + et.ctxPost({post: lt[a.attr("data-parent-id")].toJSON()}) + '</ul><div class="ds-bubble-footer"><a class="ds-ctx-open" href="javascript:void(0);">查看对话</a></div>'); else if (a.hasClass("ds-avatar") || a.hasClass("ds-user-name")) {
+                            if (a.hasClass("ds-comment-context")) K.attr("id", "ds-ctx-bubble").attr("data-post-id", a.attr("data-post-id")).html('<ul id="ds-ctx">' + et.ctxPost({post: lt[a.attr("data-parent-id")].toJSON()}) + '</ul><div class="ds-bubble-footer"><a class="ds-ctx-open" href="javascript:void(0);">查看对话</a></div>'); else if (a.hasClass("ds-avatar") || a.hasClass("ds-user-name")) {
                                 var l = {}, c = l.user_id = a.attr("data-user-id");
                                 if (!c)throw"no info";
                                 K.attr("id", "ds-user-card").attr("data-user-id", c).empty(), ct[c] ? K.html(et.userInfo(ct[c].data)) : R.get("users/profile", B(l), t)
@@ -920,16 +928,18 @@
                 var t = e.offset().top;
                 (t < V.scrollTop() || t > V.scrollTop() + V.height()) && H("html, body").animate({scrollTop: t - 40}, 200, "swing")
             }, S.toJSON = function (e) {
-                var t = /\r?\n/g, s = /^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i, a = /^(?:select|textarea)/i, i = e.map(function () {
-                    return this.elements ? H.makeArray(this.elements) : this
-                }).filter(function () {
-                    return this.name && !this.disabled && (this.checked || a.test(this.nodeName) || s.test(this.type))
-                }).map(function (e, s) {
-                    var a = H(this).val();
-                    return null == a ? null : H.isArray(a) ? H.map(a, function (e) {
-                        return {name: s.name, value: e.replace(t, "\r\n")}
-                    }) : {name: s.name, value: a.replace(t, "\r\n")}
-                }).toArray(), r = {};
+                var t = /\r?\n/g,
+                    s = /^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,
+                    a = /^(?:select|textarea)/i, i = e.map(function () {
+                        return this.elements ? H.makeArray(this.elements) : this
+                    }).filter(function () {
+                        return this.name && !this.disabled && (this.checked || a.test(this.nodeName) || s.test(this.type))
+                    }).map(function (e, s) {
+                        var a = H(this).val();
+                        return null == a ? null : H.isArray(a) ? H.map(a, function (e) {
+                            return {name: s.name, value: e.replace(t, "\r\n")}
+                        }) : {name: s.name, value: a.replace(t, "\r\n")}
+                    }).toArray(), r = {};
                 return H.each(i, function () {
                     r[this.name] = this.value
                 }), r
@@ -966,41 +976,44 @@
                         checked: 0
                     };
                     for (var v in nt.data.repostOptions)nt.data.repostOptions[v] && (h.repostArray.push(v), h.checked = 1);
-                    var g = i.el = H(et.replybox(h)).click(p), b = g.find("form"), y = b.find("input[type=checkbox]")[0], _ = b.find("a.ds-service-icon, a.ds-service-icon-grey"), k = f(b.find("textarea")).focus(p).keyup(n).keyup(d).bind("focus mousedown mouseup keyup", u), w = g.find(".ds-add-emote").click(function (e) {
-                        var s = S.smiliesTooltip;
-                        return w.toggleClass("ds-expanded").hasClass("ds-expanded") ? (s || (s = S.smiliesTooltip = new st.SmiliesTooltip, s.render(), S.require("smilies", function () {
-                            s.reset("微博-默认")
-                        })), s.replybox = i, s.el.appendTo(t.body).css({
-                            top: i.el.offset().top + i.el.outerHeight() + 4 + "px",
-                            left: i.el.find(".ds-textarea-wrapper").offset().left + "px"
-                        }), H(t.body).click(x)) : x(e), !1
-                    }), x = (g.find(".ds-add-image").click(function (e) {
-                        var s = k[0], a = s.value, i = "请输入图片地址", r = '<img src="' + i + '" />';
-                        if (t.selection) {
-                            s.value = a.substring(0, k.data("ds-range-start")) + r + a.substring(k.data("ds-range-end"), a.length), s.value = s.value.replace("说点什么吧 ...", ""), s.focus();
-                            var n = t.selection.createRange();
-                            n.collapse(), n.findText(i), n.select()
-                        } else {
-                            s.value = a.substring(0, s.selectionStart) + r + a.substring(s.selectionEnd);
-                            var o = s.value.search(i);
-                            s.setSelectionRange(o, o + i.length), s.focus()
-                        }
-                        e.preventDefault()
-                    }), i.hideSmilies = function () {
-                        w.removeClass("ds-expanded"), S.smiliesTooltip.el.detach(), H(t.body).unbind("click", x)
-                    }), T = function (e, t) {
-                        var s = E(et["dialog-anonymous"]({
-                            services: ["weixin", "weibo", "qq", "renren", "kaixin", "douban"],
-                            options: c
-                        })), a = s.el.find(".ds-dialog").css("width", "320px");
-                        if (a.find(".ds-icons-32 a").click(l), !c.deny_anonymous) {
-                            var i = s.el.find("form");
-                            i.submit(function () {
-                                var e = i.find("input[name=author_email]").val();
-                                return !e && !c.require_guest_email || e.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? (t(S.toJSON(i)), s.close(), !1) : (alert("请输入一个有效的email地址."), !1)
-                            }), i.find("input[name=author_name]")[0].focus()
-                        }
-                    };
+                    var g = i.el = H(et.replybox(h)).click(p), b = g.find("form"),
+                        y = b.find("input[type=checkbox]")[0], _ = b.find("a.ds-service-icon, a.ds-service-icon-grey"),
+                        k = f(b.find("textarea")).focus(p).keyup(n).keyup(d).bind("focus mousedown mouseup keyup", u),
+                        w = g.find(".ds-add-emote").click(function (e) {
+                            var s = S.smiliesTooltip;
+                            return w.toggleClass("ds-expanded").hasClass("ds-expanded") ? (s || (s = S.smiliesTooltip = new st.SmiliesTooltip, s.render(), S.require("smilies", function () {
+                                s.reset("微博-默认")
+                            })), s.replybox = i, s.el.appendTo(t.body).css({
+                                top: i.el.offset().top + i.el.outerHeight() + 4 + "px",
+                                left: i.el.find(".ds-textarea-wrapper").offset().left + "px"
+                            }), H(t.body).click(x)) : x(e), !1
+                        }), x = (g.find(".ds-add-image").click(function (e) {
+                            var s = k[0], a = s.value, i = "请输入图片地址", r = '<img src="' + i + '" />';
+                            if (t.selection) {
+                                s.value = a.substring(0, k.data("ds-range-start")) + r + a.substring(k.data("ds-range-end"), a.length), s.value = s.value.replace("说点什么吧 ...", ""), s.focus();
+                                var n = t.selection.createRange();
+                                n.collapse(), n.findText(i), n.select()
+                            } else {
+                                s.value = a.substring(0, s.selectionStart) + r + a.substring(s.selectionEnd);
+                                var o = s.value.search(i);
+                                s.setSelectionRange(o, o + i.length), s.focus()
+                            }
+                            e.preventDefault()
+                        }), i.hideSmilies = function () {
+                            w.removeClass("ds-expanded"), S.smiliesTooltip.el.detach(), H(t.body).unbind("click", x)
+                        }), T = function (e, t) {
+                            var s = E(et["dialog-anonymous"]({
+                                services: ["weixin", "weibo", "qq", "renren", "kaixin", "douban"],
+                                options: c
+                            })), a = s.el.find(".ds-dialog").css("width", "320px");
+                            if (a.find(".ds-icons-32 a").click(l), !c.deny_anonymous) {
+                                var i = s.el.find("form");
+                                i.submit(function () {
+                                    var e = i.find("input[name=author_email]").val();
+                                    return !e && !c.require_guest_email || e.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? (t(S.toJSON(i)), s.close(), !1) : (alert("请输入一个有效的email地址."), !1)
+                                }), i.find("input[name=author_name]")[0].focus()
+                            }
+                        };
                     c.deny_anonymous && k.focus(function () {
                         if (r()) {
                             T(b, q);
@@ -1117,7 +1130,8 @@
                         return f.left = 0, f.top = d.position().top + d.outerHeight() - 4 + "px", n.tooltip.appendTo(n.embedThread.innerEl).css(f), H(t.body).click(c), !1
                     }
 
-                    var n = this, o = n.embedThread.model, d = n.el = H(et.meta(o.toJSON())), l = d.find(".ds-like-thread-button");
+                    var n = this, o = n.embedThread.model, d = n.el = H(et.meta(o.toJSON())),
+                        l = d.find(".ds-like-thread-button");
                     return l.click(a), n.resetLikePanel(), r() && d.hide(), n
                 }, resetLikePanel: function () {
                     this.el.find(".ds-like-panel").html(et.likePanel(this.embedThread.model.toJSON()))
@@ -1218,27 +1232,28 @@
             }, et.postPlaceholder = function () {
                 return ['<li class="ds-post ds-post-placeholder">', z.no_comments_yet, "</li>"].join("")
             };
-            var X = H('<div id="ds-bubble"><div class="ds-bubble-content"></div><div class="ds-arrow ds-arrow-down ds-arrow-border"></div><div class="ds-arrow ds-arrow-down"></div></div>'), K = X.find(".ds-bubble-content").delegate("a.ds-ctx-open", "click", function () {
-                function e(e) {
-                    function t(e, t) {
-                        return et.ctxPost({post: e, index: t})
+            var X = H('<div id="ds-bubble"><div class="ds-bubble-content"></div><div class="ds-arrow ds-arrow-down ds-arrow-border"></div><div class="ds-arrow ds-arrow-down"></div></div>'),
+                K = X.find(".ds-bubble-content").delegate("a.ds-ctx-open", "click", function () {
+                    function e(e) {
+                        function t(e, t) {
+                            return et.ctxPost({post: e, index: t})
+                        }
+
+                        C.log(H.map(e.response, t).join("\n"));
+                        s.el.find("ol");
+                        s.el.find("ol").html(H.map(e.response, t).join("\n"))
                     }
 
-                    C.log(H.map(e.response, t).join("\n"));
-                    s.el.find("ol");
-                    s.el.find("ol").html(H.map(e.response, t).join("\n"))
-                }
-
-                var t = {};
-                t.post_id = K.attr("data-post-id"), R.get("posts/conversation", t, e);
-                var s = E('<h2>查看对话</h2><ol id="ds-ctx"></ol>');
-                return s.el.find(".ds-dialog").css("width", "600px"), s.el.find(".ds-dialog-body").css({
-                    "max-height": "350px",
-                    _height: "350px",
-                    "overflow-y": "auto",
-                    "padding-top": "10px"
-                }), !1
-            }), tt = bubbleOutTimer = 0;
+                    var t = {};
+                    t.post_id = K.attr("data-post-id"), R.get("posts/conversation", t, e);
+                    var s = E('<h2>查看对话</h2><ol id="ds-ctx"></ol>');
+                    return s.el.find(".ds-dialog").css("width", "600px"), s.el.find(".ds-dialog-body").css({
+                        "max-height": "350px",
+                        _height: "350px",
+                        "overflow-y": "auto",
+                        "padding-top": "10px"
+                    }), !1
+                }), tt = bubbleOutTimer = 0;
             X.mouseenter(N).mouseleave(I), st.PostList = function (e) {
                 e && (e.params && (this.params = e.params), e.embedThread && (this.embedThread = e.embedThread)), this.el = H('<ul class="ds-comments"></ul>')
             }, st.PostList.prototype = {
@@ -1279,7 +1294,8 @@
                     var e = this.el;
                     if ("请将此处替换成文章在你的站点中的ID" === e.data("thread-key"))return alert("请设置正确的 data-thread-key 属性"), !1;
                     e.attr("id", "ds-thread").append(et.waitingImg());
-                    var t = e.width(), s = e.data("url") || !e.attr("data-thread-id") && H("link[rel=canonical]").attr("href");
+                    var t = e.width(),
+                        s = e.data("url") || !e.attr("data-thread-id") && H("link[rel=canonical]").attr("href");
                     s ? e.data("url", k(s)) : e.data("container-url", h.href), t && 400 >= t && e.addClass("ds-narrow").data("max-depth", 1)
                 },
                 updateCounter: function (e) {
@@ -1302,7 +1318,8 @@
                     this.el.html("评论框出错啦(" + e.code + "): " + e.errorMessage)
                 },
                 onload: function (t) {
-                    var a = this, i = a.threadId = t.thread.thread_id, n = t.cursor, o = a.options = t.options, d = a.innerEl = p(H('<div id="ds-reset"></div>').appendTo(a.el));
+                    var a = this, i = a.threadId = t.thread.thread_id, n = t.cursor, o = a.options = t.options,
+                        d = a.innerEl = p(H('<div id="ds-reset"></div>').appendTo(a.el));
                     a.model = new G(a.data = t.thread), lt.set(t.parentPosts || t.relatedPosts), ct.set(t.users), a.el.find("#ds-waiting").remove(), t.options && t.options.show_recommend && (a.relatedRead = new st.RelatedRead, a.relatedRead.load(t.thread.site_id), a.relatedRead.mount(d)), o.like_thread_enabled && (a.meta = new st.Meta(a), d.append(a.meta.render().el)), o.hot_posts && t.hotPosts && t.hotPosts.length && (a.hotPosts = new st.HotPosts(H('<div class="ds-rounded"></div>'), {
                         max_depth: 1,
                         show_context: o.show_context
@@ -1414,7 +1431,8 @@
                             n.hide()
                         })
                     } else {
-                        var l = i.children().hasClass("ds-share-aside-left") ? "slide-to-right" : "slide-to-left", c = i.children();
+                        var l = i.children().hasClass("ds-share-aside-left") ? "slide-to-right" : "slide-to-left",
+                            c = i.children();
                         if (!o.cssProperty("transition")) {
                             var u = i.children().hasClass("ds-share-aside-left") ? "left" : "right";
                             i.delegate(".ds-share-aside-toggle", "mouseover", function () {
@@ -1435,10 +1453,11 @@
                         var s = H(this).data("service");
                         if (!i.data("url"))return void alert("请设置data-url");
                         if ("wechat" === s) {
-                            var r = a() + "/api/qrcode/getImage.png", n = "?size=240&text=" + i.data("url"), d = E(et["dialog-qrcode"]({
-                                qrcode_url: r + n,
-                                url: i.data("url")
-                            }));
+                            var r = a() + "/api/qrcode/getImage.png", n = "?size=240&text=" + i.data("url"),
+                                d = E(et["dialog-qrcode"]({
+                                    qrcode_url: r + n,
+                                    url: i.data("url")
+                                }));
                             d.el.find(".ds-dialog").css("width", "320px")
                         } else {
                             var l = a() + "/share-proxy/?" + o.param({

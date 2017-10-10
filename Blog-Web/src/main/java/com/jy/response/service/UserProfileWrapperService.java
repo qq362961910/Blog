@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserProfileWrapperService extends ResponseBaseService{
+public class UserProfileWrapperService extends ResponseBaseService {
 
     private static final UserProfileWrapper empty = new UserProfileWrapper();
 
@@ -42,17 +42,17 @@ public class UserProfileWrapperService extends ResponseBaseService{
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             userProfileWrapper.setBirthday(sdf.format(userProfile.getBirthday()));
         }
-        if (needLikeBooks && userProfile.getUserBookLikeList() != null ) {
-            List<BookWrapper> bookWrapperServiceList = new ArrayList<>(userProfile.getUserBookLikeList() .size());
-            for (UserBookLike userBookLike: userProfile.getUserBookLikeList()) {
+        if (needLikeBooks && userProfile.getUserBookLikeList() != null) {
+            List<BookWrapper> bookWrapperServiceList = new ArrayList<>(userProfile.getUserBookLikeList().size());
+            for (UserBookLike userBookLike : userProfile.getUserBookLikeList()) {
                 Book book = bookService.queryById(userBookLike.getUserBookEmbedKey().getBookId());
                 bookWrapperServiceList.add(bookWrapperService.buildBookWrapper(book));
             }
             userProfileWrapper.setLikeBooks(bookWrapperServiceList);
         }
-        if (needLikeMusic && userProfile.getUserMusicLikeList() != null ) {
+        if (needLikeMusic && userProfile.getUserMusicLikeList() != null) {
             List<MusicWrapper> musicWrapperList = new ArrayList<>(userProfile.getUserMusicLikeList().size());
-            for (UserMusicLike userMusicLike: userProfile.getUserMusicLikeList()) {
+            for (UserMusicLike userMusicLike : userProfile.getUserMusicLikeList()) {
                 Music music = musicService.queryById(userMusicLike.getUserMusicEmbedKey().getMusicId());
                 musicWrapperList.add(musicWrapperService.buildMusicWrapper(music));
             }

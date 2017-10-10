@@ -18,7 +18,7 @@ public @interface XmlElement {
 
     /**
      * Default value of this element.
-     *
+     * <p>
      * <p>
      * The <pre>'\u0000'</pre> value specified as a default of this annotation element
      * is used as a poor-man's substitute for null to allow implementations
@@ -28,6 +28,6 @@ public @interface XmlElement {
 
     /**
      * escape
-     * */
+     */
     boolean escape() default false;
 }

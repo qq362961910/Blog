@@ -71,10 +71,10 @@
             document.removeEventListener("DOMContentLoaded", g, w);
             a()
         } : document.attachEvent && (g = function () {
-            "complete" === document.readyState && (document.detachEvent("onreadystatechange", g), a())
-        });
+                "complete" === document.readyState && (document.detachEvent("onreadystatechange", g), a())
+            });
         (function () {
-            if (!e)if (e = s, "complete" === document.readyState)a.w = s; else if (document.addEventListener)document.addEventListener("DOMContentLoaded",
+            if (!e)if (e = s, "complete" === document.readyState) a.w = s; else if (document.addEventListener) document.addEventListener("DOMContentLoaded",
                 g, w), window.addEventListener("load", a, w); else if (document.attachEvent) {
                 document.attachEvent("onreadystatechange", g);
                 window.attachEvent("onload", a);
@@ -201,7 +201,7 @@
         return t
     };
     mt.localStorage.remove = function (a) {
-        if (window.localStorage)window.localStorage.removeItem(a); else if (mt.localStorage.A())try {
+        if (window.localStorage) window.localStorage.removeItem(a); else if (mt.localStorage.A())try {
             mt.localStorage.f.load(document.location.hostname), mt.localStorage.f.removeAttribute(a), mt.localStorage.f.save(document.location.hostname)
         } catch (b) {
         }
@@ -237,7 +237,7 @@
             var b = navigator.plugins["Shockwave Flash"];
             b && b.description && (a = b.description.replace(/^.*\s+(\S+)\s+\S+$/, "$1"))
         } else if (window.ActiveXObject)try {
-            if (b = new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))(a = b.GetVariable("$version")) && (a = a.replace(/^.*\s+(\d+),(\d+).*$/, "$1.$2"))
+            if (b = new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) (a = b.GetVariable("$version")) && (a = a.replace(/^.*\s+(\d+),(\d+).*$/, "$1.$2"))
         } catch (e) {
         }
         return a
@@ -300,7 +300,7 @@
             var g = document.createElement("script");
             g.charset = "utf-8";
             b.d(d, "Function") && (g.readyState ? g.onreadystatechange = function () {
-                if ("loaded" === g.readyState || "complete" === g.readyState)g.onreadystatechange = t, d()
+                if ("loaded" === g.readyState || "complete" === g.readyState) g.onreadystatechange = t, d()
             } : g.onload = function () {
                 d()
             });
@@ -329,7 +329,7 @@
             x && (a = "visible" == document[x]);
             z && (a = !document[z]);
             f = "undefined" == typeof a ? s : a;
-            if ((!n || !l) && f && m)u = s, p = +new Date; else if (n && l && (!f || !m))u = w, q += +new Date - p;
+            if ((!n || !l) && f && m) u = s, p = +new Date; else if (n && l && (!f || !m)) u = w, q += +new Date - p;
             n = f;
             l = m;
             y = setTimeout(b, 100)
@@ -337,7 +337,7 @@
 
         function e(a) {
             var p = document, l = "";
-            if (a in p)l = a; else for (var b = ["webkit", "ms", "moz", "o"], q = 0; q < b.length; q++) {
+            if (a in p) l = a; else for (var b = ["webkit", "ms", "moz", "o"], q = 0; q < b.length; q++) {
                 var m = b[q] + a.charAt(0).toUpperCase() + a.slice(1);
                 if (m in p) {
                     l =
@@ -349,10 +349,11 @@
         }
 
         function d(a) {
-            if (!("focus" == a.type || "blur" == a.type) || !(a.target && a.target != window))m = "focus" == a.type || "focusin" == a.type ? s : w, b()
+            if (!("focus" == a.type || "blur" == a.type) || !(a.target && a.target != window)) m = "focus" == a.type || "focusin" == a.type ? s : w, b()
         }
 
-        var g = mt.event, k = h.D, n = s, f = s, l = s, m = s, v = +new Date, p = v, q = 0, u = s, x = e("visibilityState"), z = e("hidden"), y;
+        var g = mt.event, k = h.D, n = s, f = s, l = s, m = s, v = +new Date, p = v, q = 0, u = s,
+            x = e("visibilityState"), z = e("hidden"), y;
         b();
         (function () {
             var a = x.replace(/[vV]isibilityState/, "visibilitychange");
@@ -382,7 +383,7 @@
                     e([b.protocol, "//datax.baidu.com/x.js?si=", c.id, "&dm=", encodeURIComponent(k)].join(""), d)
                 }
             }, Ca: function (b) {
-                if (a.d(b, "String") || a.d(b, "Number"))window._dxt = window._dxt || [], window._dxt.push(["_setUserId", b])
+                if (a.d(b, "String") || a.d(b, "Number")) window._dxt = window._dxt || [], window._dxt.push(["_setUserId", b])
             }
         };
         return h.aa = d
@@ -418,7 +419,7 @@
             }, ba: function () {
                 var a = window._hmt ||
                     [];
-                if (!a || e.d(a, "Array"))window._hmt = {
+                if (!a || e.d(a, "Array")) window._hmt = {
                     id: c.id, cmd: {}, push: function () {
                         for (var a = window._hmt, l = 0; l < arguments.length; l++) {
                             var p = arguments[l];
@@ -438,11 +439,11 @@
                 f.p = t
             }, K: function (a) {
                 var b = a[0];
-                if (f.hasOwnProperty(b) && e.d(f[b], "Function"))f[b](a)
+                if (f.hasOwnProperty(b) && e.d(f[b], "Function")) f[b](a)
             }, _setAccount: function (a) {
                 1 < a.length && /^[0-9a-f]{32}$/.test(a[1]) && (f.e |= 1)
             }, _setAutoPageview: function (a) {
-                if (1 < a.length && (a = a[1], w === a || s === a))f.e |= 2, h.b.P = a
+                if (1 < a.length && (a = a[1], w === a || s === a)) f.e |= 2, h.b.P = a
             }, _trackPageview: function (a) {
                 if (1 < a.length && a[1].charAt && "/" === a[1].charAt(0)) {
                     f.e |= 4;
@@ -481,7 +482,7 @@
                 if (a = {
                         webim: 1,
                         tel: 2, map: 3, sms: 4, callback: 5, share: 6
-                    }[a[1]])f.e |= 32, h.b.a.et = 93, h.b.a.ep = a, h.b.g()
+                    }[a[1]]) f.e |= 32, h.b.a.et = 93, h.b.a.ep = a, h.b.g()
             }, _trackRTPageview: function (b) {
                 b = b[1];
                 e.d(b, "Object") && (a(b), b = d.stringify(b), 512 >= encodeURIComponent(b).length && (f.e |= 64, h.b.a.rt = b))
@@ -498,7 +499,7 @@
                         h.b.g();
                         h.b.a.rt = b
                     }, k = b.length;
-                    if (900 >= k)m.call(this, b); else for (var k = Math.ceil(k / 900), p = "block|" + Math.round(Math.random() *
+                    if (900 >= k) m.call(this, b); else for (var k = Math.ceil(k / 900), p = "block|" + Math.round(Math.random() *
                             g.J).toString(16) + "|" + k + "|", q = [], u = 0; u < k; u++)q.push(u), q.push(b.substring(900 * u, 900 * u + 900)), m.call(this, p + q.join("|")), q = []
                 }
             }, _setUserId: function (a) {
@@ -516,7 +517,8 @@
             "undefined" === typeof window["_bdhm_loaded_" + c.id] && (window["_bdhm_loaded_" + c.id] = s, this.a = {}, this.P = s, this.H = w, this.init())
         }
 
-        var b = mt.url, e = mt.U, d = mt.M, g = mt.lang, k = mt.cookie, n = mt.h, f = mt.localStorage, l = mt.sessionStorage, m = h.B, v = h.D;
+        var b = mt.url, e = mt.U, d = mt.M, g = mt.lang, k = mt.cookie, n = mt.h, f = mt.localStorage,
+            l = mt.sessionStorage, m = h.B, v = h.D;
         a.prototype = {
             I: function (a, b) {
                 a = "." + a.replace(/:\d+/, "");
@@ -585,7 +587,7 @@
                 this.setData("Hm_lpvt_" + c.id, m.k);
                 d = m.k === this.getData("Hm_lpvt_" + c.id) ? "1" : "0";
                 if (0 === c.nv && this.s(document.location.href) &&
-                    ("" === document.referrer || this.s(document.referrer)))a = 0, b = 4;
+                    ("" === document.referrer || this.s(document.referrer))) a = 0, b = 4;
                 this.a.nv = a;
                 this.a.st = b;
                 this.a.cc = d;
@@ -649,11 +651,14 @@
                     g.d(a, "Function") && a.call(b)
                 })
             }, $: function () {
-                var a = document.location.hash.substring(1), d = RegExp(c.id), e = -1 < document.referrer.indexOf(m.Y), f = b.i(a, "jn"), g = /^heatlink$|^select$/.test(f);
+                var a = document.location.hash.substring(1), d = RegExp(c.id), e = -1 < document.referrer.indexOf(m.Y),
+                    f = b.i(a, "jn"), g = /^heatlink$|^select$/.test(f);
                 a && (d.test(a) && e && g) && (this.a.rnd = Math.round(Math.random() * m.J), a = document.createElement("script"), a.setAttribute("type", "text/javascript"), a.setAttribute("charset", "utf-8"), a.setAttribute("src", m.protocol + "//" + c.js + f + ".js?" + this.a.rnd), f = document.getElementsByTagName("script")[0], f.parentNode.insertBefore(a,
                     f))
             }, X: function (a) {
-                var b = l.get("Hm_unsent_" + c.id) || "", d = this.a.u ? "" : "&u=" + encodeURIComponent(document.location.href), b = encodeURIComponent(a.replace(/^https?:\/\//, "") + d) + (b ? "," + b : "");
+                var b = l.get("Hm_unsent_" + c.id) || "",
+                    d = this.a.u ? "" : "&u=" + encodeURIComponent(document.location.href),
+                    b = encodeURIComponent(a.replace(/^https?:\/\//, "") + d) + (b ? "," + b : "");
                 l.set("Hm_unsent_" + c.id, b)
             }, L: function (a) {
                 var b = l.get("Hm_unsent_" + c.id) || "";
@@ -698,7 +703,7 @@
                     a = document.referrer;
                     var l = a.match(/^(http[s]?:\/\/)?([^\/]+)(.*)/) || [], u = t;
                     b = t;
-                    if ("www.baidu.com" === l[2] || "m.baidu.com" === l[2])u = e.i(a, "qid"), b = e.i(a, "click_t");
+                    if ("www.baidu.com" === l[2] || "m.baidu.com" === l[2]) u = e.i(a, "qid"), b = e.i(a, "click_t");
                     a = u;
                     f.qid = a != t ? a : "";
                     b != t ? (f.bdDom = n ? n - b : 0, f.bdRun = g - b, f.bdDef = k("navigation").start - b) : (f.bdDom = 0, f.bdRun = 0, f.bdDef = 0);
@@ -730,7 +735,8 @@
                 f.t = "clk";
                 f.v = a;
                 if (e) {
-                    var k = e.getAttribute("href"), l = e.getAttribute("onclick") ? "" + e.getAttribute("onclick") : t, m = e.getAttribute("id") || "";
+                    var k = e.getAttribute("href"), l = e.getAttribute("onclick") ? "" + e.getAttribute("onclick") : t,
+                        m = e.getAttribute("id") || "";
                     n.test(k) ? (f.sn = "mediate",
                         f.snv = k) : b.d(l, "String") && n.test(l) && (f.sn = "wrap", f.snv = l);
                     f.id = m
@@ -740,7 +746,7 @@
                 h.b.g();
                 for (f = +new Date; 400 >= +new Date - f;);
             };
-            if (c.med)k = "/zoosnet", g = "swt", n = /swt|zixun|call|chat|zoos|business|talk|kefu|openkf|online|\/LR\/Chatpre\.aspx/i, f = {
+            if (c.med) k = "/zoosnet", g = "swt", n = /swt|zixun|call|chat|zoos|business|talk|kefu|openkf|online|\/LR\/Chatpre\.aspx/i, f = {
                 click: function () {
                     for (var a = [], b = l(document.getElementsByTagName("a")), b = [].concat.apply(b, l(document.getElementsByTagName("area"))), b = [].concat.apply(b, l(document.getElementsByTagName("img"))), d, f, e = 0, g = b.length; e < g; e++)d = b[e], f = d.getAttribute("onclick"),
                         d = d.getAttribute("href"), (n.test(f) || n.test(d)) && a.push(b[e]);

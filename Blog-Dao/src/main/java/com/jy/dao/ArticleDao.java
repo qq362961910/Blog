@@ -2,14 +2,10 @@ package com.jy.dao;
 
 import com.jy.entity.Article;
 import constants.ArticleType;
-
-import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
 public interface ArticleDao extends BaseDao<Article> {
-
-    int countArticleByArticleParam(ArticleParam param);
-
-    List<Article> selectArticleByArticleParam(ArticleParam param);
 
     class ArticleParam extends BaseParam {
 
@@ -58,13 +54,33 @@ public interface ArticleDao extends BaseDao<Article> {
         }
 
         @Override
+        public void addSubRestrictions(Criteria criteria) {
+            //Username
+            if (username != null) {
+                criteria.add(Restrictions.eq("owner.username", username));
+            }
+            //Title
+            if (title != null) {
+                criteria.add(Restrictions.like("title", "%" + title + "%"));
+            }
+            //recommend
+            if (recommended != null) {
+                criteria.add(Restrictions.eq("recommended", recommended));
+            }
+            //type
+            if (articleType != null) {
+                criteria.add(Restrictions.eq("type", articleType.getValue()));
+            }
+        }
+
+        @Override
         public String toString() {
             return "ArticleParam{" +
-                    "title='" + title + '\'' +
-                    ", recommended=" + recommended +
-                    ", articleType=" + articleType +
-                    ", username='" + username + '\'' +
-                    '}';
+                "title='" + title + '\'' +
+                ", recommended=" + recommended +
+                ", articleType=" + articleType +
+                ", username='" + username + '\'' +
+                '}';
         }
     }
 }

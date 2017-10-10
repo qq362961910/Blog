@@ -4,7 +4,7 @@
 //常量
 var UNDEFINED = 'undefined';
 var STRING = 'string';
-var NUMBER_CHARS = ['1','2','3','4','5','6','7','8','9','0'];
+var NUMBER_CHARS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
 
 //请求类型
 var GET = "GET";
@@ -231,20 +231,20 @@ $.redirect500 = function () {
     document.location.href = "/500";
 }
 
-$.alertError = function(message) {
+$.alertError = function (message) {
     alert(message);
 }
 
 $.getUserIndexUrl = function () {
     return "/user/" + username;
 }
-$.randomNumberChars = function(len) {
+$.randomNumberChars = function (len) {
     if (typeof len == UNDEFINED || len == null) {
         len = 8;
     }
     var result = '';
-    for (var i=0; i<len; i++) {
-        result += Math.floor(Math.random()*10);
+    for (var i = 0; i < len; i++) {
+        result += Math.floor(Math.random() * 10);
     }
     return result;
 }
@@ -258,28 +258,28 @@ $.bindHtml = function (bindConfig) {
     }
 }
 
-$.registerVLCEvent = function(id, event, handler){
+$.registerVLCEvent = function (id, event, handler) {
     var dom = $(id);
     if (dom) {
         if (dom.attachEvent) {
             // Microsoft
-            dom.attachEvent (event, handler);
+            dom.attachEvent(event, handler);
         } else if (dom.addEventListener) {
             // Mozilla: DOM level 2
-            dom.addEventListener (event, handler, false);
+            dom.addEventListener(event, handler, false);
         }
     }
 }
 // stop listening to event
-$.unregisterVLCEvent = function(id, event, handler) {
+$.unregisterVLCEvent = function (id, event, handler) {
     var dom = $(id);
     if (dom) {
         if (dom.detachEvent) {
             // Microsoft
-            dom.detachEvent (event, handler);
+            dom.detachEvent(event, handler);
         } else if (vlc.removeEventListener) {
             // Mozilla: DOM level 2
-            dom.removeEventListener (event, handler, false);
+            dom.removeEventListener(event, handler, false);
         }
     }
 }

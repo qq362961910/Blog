@@ -42,8 +42,7 @@ public class RequiredLoginInterceptor extends HandlerInterceptorAdapter {
                         User user = userService.queryById(loginLog.getUserId());
                         if (user == null) {
                             validate = false;
-                        }
-                        else {
+                        } else {
                             AppContextUtil.setCurrentUser(user);
                         }
                     }

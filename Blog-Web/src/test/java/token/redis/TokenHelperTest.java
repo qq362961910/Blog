@@ -15,40 +15,45 @@ public class TokenHelperTest {
     private static final Logger logger = LogManager.getLogger(TokenHelperTest.class);
     private static volatile Server server = new Server();
     private static final int TOTAL_WORKER = 20;
-//    private static final String[] keys = {"AAA", "BBB", "CCC", "DDD"};
+    //    private static final String[] keys = {"AAA", "BBB", "CCC", "DDD"};
     private static final String[] keys = {"AAA"};
     private static final int MIN_WORK_TIME = 100;
     private static final int MAX_WORK_TIME = 3000;
     private static ExecutorService ExecutorService = Executors.newFixedThreadPool(10);
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         logger.info("test begin....");
         //prepare TokenHelper
 
         JedisCluster jedisCluster = getJedisCluster();
 
-        for (String key: keys) {
+        for (String key : keys) {
             jedisCluster.del(key);
-            jedisCluster.del(key+"_lock");
+            jedisCluster.del(key + "_lock");
         }
 
 
         TokenHelper tokenHelper = new TokenHelper(jedisCluster);
         TokenHelper.TokenLoader loader = new TokenHelper.AbstractTokenLoader(tokenHelper) {
             private boolean first = true;
+
             @Override
             public String loadTokenImpl(String key) {
                 if (first) {
-                    try { Thread.sleep(5000); } catch (InterruptedException e) { e.printStackTrace();}
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     first = false;
-                }
-                else {
+                } else {
                     first = true;
                 }
                 return server.getToken(key);
             }
+
             @Override
             public int tokenExpireTime() {
                 return 2;
@@ -68,13 +73,13 @@ public class TokenHelperTest {
 
         //prepare Worker List
         List<Worker> workerList = new ArrayList<>(TOTAL_WORKER);
-        for (int i=0; i<TOTAL_WORKER; i++) {
-            workerList.add(WorkerFactory.newRandomWorker(keys[i%keys.length], tokenHelper, server));
+        for (int i = 0; i < TOTAL_WORKER; i++) {
+            workerList.add(WorkerFactory.newRandomWorker(keys[i % keys.length], tokenHelper, server));
         }
 
         //begin to work
-        for (int i=0; i<300; i++) {
-            for (final Worker worker: workerList) {
+        for (int i = 0; i < 300; i++) {
+            for (final Worker worker : workerList) {
                 final int worktime = RandonUtil.nextRandomPositiveInt(MIN_WORK_TIME, MAX_WORK_TIME);
                 ExecutorService.submit(new Runnable() {
                     @Override
@@ -89,8 +94,7 @@ public class TokenHelperTest {
         boolean success = ExecutorService.awaitTermination(5, TimeUnit.MINUTES);
         if (success) {
             logger.info("ExecutorService close success");
-        }
-        else {
+        } else {
             logger.info("ExecutorService close fail");
         }
         logger.info("tokenHelper close....");
@@ -99,7 +103,7 @@ public class TokenHelperTest {
     }
 
 
-    public static JedisCluster getJedisCluster(){
+    public static JedisCluster getJedisCluster() {
         Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         jedisClusterNodes.add(new HostAndPort("192.168.14.131", 6379));
         jedisClusterNodes.add(new HostAndPort("192.168.14.131", 6381));
@@ -114,6 +118,7 @@ public class TokenHelperTest {
 class WorkerFactory {
     private static final String WORKER_NAME_PREFIX = "worker";
     private static int count = 0;
+
     public static Worker newRandomWorker(String key, TokenHelper tokenHelper, Server server) {
         return new Worker(WORKER_NAME_PREFIX + "-" + count++, key, tokenHelper, server);
     }
@@ -139,8 +144,7 @@ class Worker {
             boolean success = server.service(key, token);
             if (success) {
                 logger.info("worker: " + workerName + " get token: " + token + ", will work " + workTimeInMills + " million seconds with key: " + key);
-            }
-            else {
+            } else {
                 logger.info("worker: " + workerName + " with wrong token: " + token + ", key: " + key);
             }
             return true;
@@ -164,19 +168,18 @@ class Worker {
 
 class RandonUtil {
 
-    private static  final Random random = new Random();
+    private static final Random random = new Random();
 
     public static int nextRandomPositiveInt(int min, int max) {
         int r = random.nextInt();
-        if (r<0) {
+        if (r < 0) {
             r = -r;
         }
-        r%=max;
-        if (r >= min && r<=max) {
+        r %= max;
+        if (r >= min && r <= max) {
             return r;
-        }
-        else {
-            return min + (r%(max - min));
+        } else {
+            return min + (r % (max - min));
         }
     }
 }
@@ -184,7 +187,7 @@ class RandonUtil {
 
 class Server {
 
-//    private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 60 * 120;
+    //    private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 60 * 120;
     private static final long TOKEN_EXPIRE_TIME_IN_MILLS = 1000 * 4;
     private static final long CHECK_TOKEN_EXPIRE_TIME_IN_MILLS = 500;
 
@@ -214,7 +217,7 @@ class Server {
     }
 
     public Server() {
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 while (!close) {
@@ -239,6 +242,7 @@ class Server {
             }
         }.start();
     }
+
     public void destroy() {
         close = true;
     }

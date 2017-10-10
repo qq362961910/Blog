@@ -10,7 +10,7 @@ function queryUserHtmlTemplate(param) {
     var param = param || {}
     param.username = username;
 
-    var queryUserHtmlTemplateCallback = function(result) {
+    var queryUserHtmlTemplateCallback = function (result) {
         if (result.success) {
             var lastPage = currentPage;
             var htmlTemplates = result.data.htmlTemplates;

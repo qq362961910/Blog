@@ -63,8 +63,8 @@ public class StringUtil {
             cursor += numBytes;
         }
         return stringPart
-                .setLatinCharacters(latinCharactersBuilder.toString().toCharArray())
-                .setOtherCharacters(otherCharactersBuilder.toString().toCharArray());
+            .setLatinCharacters(latinCharactersBuilder.toString().toCharArray())
+            .setOtherCharacters(otherCharactersBuilder.toString().toCharArray());
     }
 
     public static void main(String[] args) {

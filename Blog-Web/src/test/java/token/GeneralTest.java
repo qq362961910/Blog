@@ -11,7 +11,7 @@ public class GeneralTest {
     @Test
     public void testRandom() {
         Random r = new Random();
-        for (int i=0; i<10000; i++) {
+        for (int i = 0; i < 10000; i++) {
             int num = r.nextInt();
             if (num < 0) {
                 System.out.println(num);
@@ -21,21 +21,21 @@ public class GeneralTest {
 
     @Test
     public void testModel() {
-        System.out.println(10%(-3));
+        System.out.println(10 % (-3));
     }
 
 
     public static void main(String[] args) {
         final Map<Integer, Integer> map = new ConcurrentHashMap<>();
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 int index = 0;
                 while (true) {
                     try {
-                        for (int i=0; i<10; i++) {
-                            map.put(i, index ++);
+                        for (int i = 0; i < 10; i++) {
+                            map.put(i, index++);
                         }
 //                        for (int i=0; i<10; i++) {
 //                            map.remove(i);
@@ -49,12 +49,12 @@ public class GeneralTest {
             }
         }.start();
 
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 try {
                     while (true) {
-                        for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+                        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
                             System.out.println("key :" + entry.getKey() + ", value: " + entry.getValue());
                             Thread.sleep(500);
                             map.remove(entry.getKey());

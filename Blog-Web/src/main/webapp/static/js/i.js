@@ -167,7 +167,8 @@
         b = null
     };
     baidu.sio.callByServer = function (a, m, n) {
-        var i = document.createElement("SCRIPT"), h = "bd__cbs__", k, e, o = n || {}, d = o.charset, f = o.queryField || "callback", l = o.timeOut || 0, b, c = new RegExp("(\\?|&)" + f + "=([^&]*)"), g;
+        var i = document.createElement("SCRIPT"), h = "bd__cbs__", k, e, o = n || {}, d = o.charset,
+            f = o.queryField || "callback", l = o.timeOut || 0, b, c = new RegExp("(\\?|&)" + f + "=([^&]*)"), g;
         if (baidu.lang.isFunction(m)) {
             k = h + Math.floor(Math.random() * 2147483648).toString(36);
             window[k] = j(0)
@@ -285,10 +286,12 @@
     baidu.browser.isStrict = document.compatMode == "CSS1Compat";
     baidu.dom.getPosition = function (a) {
         a = baidu.dom.g(a);
-        var j = baidu.dom.getDocument(a), d = baidu.browser, g = baidu.dom.getStyle, c = d.isGecko > 0 && j.getBoxObjectFor && g(a, "position") == "absolute" && (a.style.top === "" || a.style.left === ""), h = {
-            left: 0,
-            top: 0
-        }, f = (d.ie && !d.isStrict) ? j.body : j.documentElement, k, b;
+        var j = baidu.dom.getDocument(a), d = baidu.browser, g = baidu.dom.getStyle,
+            c = d.isGecko > 0 && j.getBoxObjectFor && g(a, "position") == "absolute" && (a.style.top === "" || a.style.left === ""),
+            h = {
+                left: 0,
+                top: 0
+            }, f = (d.ie && !d.isStrict) ? j.body : j.documentElement, k, b;
         if (a == f) {
             return h
         }
@@ -465,7 +468,9 @@
         }
     })();
     function ka(a, b, c) {
-        var d = 2 < arguments.length ? [].slice.call(arguments, 2) : null, e = "[object String]" === Object.prototype.toString.call(a) ? b[a] : a, f = b || e, g = Function.prototype.bind;
+        var d = 2 < arguments.length ? [].slice.call(arguments, 2) : null,
+            e = "[object String]" === Object.prototype.toString.call(a) ? b[a] : a, f = b || e,
+            g = Function.prototype.bind;
         if (g) {
             var k = [].slice.call(arguments, 2);
             k.unshift(f);
@@ -609,7 +614,7 @@
                 } else h.keyCode =
                     0 < h.charCode ? h.charCode : h.keyCode, l = c(h);
                 h = l
-            } else if (e[r])l = r, h = a(k.MouseEvents, h), document.createEvent ? (p = b(l, "MouseEvents", h), h.relatedTarget && !p.relatedTarget && ("mouseout" === l.toLowerCase() ? p.toElement = h.relatedTarget : "mouseover" === l.toLowerCase() && (p.fromElement = h.relatedTarget))) : (h.button = 0 === h.button ? 1 : 1 === h.button ? 4 : ha(h.button) ? h.button : 0, p = c(h)), h = p; else if (f[r]) {
+            } else if (e[r]) l = r, h = a(k.MouseEvents, h), document.createEvent ? (p = b(l, "MouseEvents", h), h.relatedTarget && !p.relatedTarget && ("mouseout" === l.toLowerCase() ? p.toElement = h.relatedTarget : "mouseover" === l.toLowerCase() && (p.fromElement = h.relatedTarget))) : (h.button = 0 === h.button ? 1 : 1 === h.button ? 4 : ha(h.button) ? h.button : 0, p = c(h)), h = p; else if (f[r]) {
                 l = r;
                 h.bubbles = g.hasOwnProperty(l);
                 h = a(k.HTMLEvents, h);
@@ -675,7 +680,7 @@
     };
     function sa(a) {
         a = a.split(".");
-        for (var b = window, c; c = a.shift();)if (null != b[c])b = b[c]; else return null;
+        for (var b = window, c; c = a.shift();)if (null != b[c]) b = b[c]; else return null;
         return b
     }
 
@@ -790,7 +795,7 @@
         a = this.g(a);
         var b = a.ownerDocument || a.document, c = {left: 0, top: 0}, d = v && !fa;
         if (a === (d ? b.body : b.documentElement))return c;
-        if (a.getBoundingClientRect)a = a.getBoundingClientRect(), c.left = Math.floor(a.left) + Math.max(b.documentElement.scrollLeft, b.body.scrollLeft), c.top = Math.floor(a.top) + Math.max(b.documentElement.scrollTop, b.body.scrollTop), c.left -= b.documentElement.clientLeft, c.top -= b.documentElement.clientTop, a = b.body, b = parseInt(this.getStyle(a, "borderLeftWidth"), 10), a = parseInt(this.getStyle(a,
+        if (a.getBoundingClientRect) a = a.getBoundingClientRect(), c.left = Math.floor(a.left) + Math.max(b.documentElement.scrollLeft, b.body.scrollLeft), c.top = Math.floor(a.top) + Math.max(b.documentElement.scrollTop, b.body.scrollTop), c.left -= b.documentElement.clientLeft, c.top -= b.documentElement.clientTop, a = b.body, b = parseInt(this.getStyle(a, "borderLeftWidth"), 10), a = parseInt(this.getStyle(a,
             "borderTopWidth"), 10), d && (c.left -= isNaN(b) ? 2 : b, c.top -= isNaN(a) ? 2 : a); else {
             d = a;
             do {
@@ -803,7 +808,7 @@
                 }
                 d = d.offsetParent
             } while (d && d !== a);
-            if (0 < ca || 0 < ga && "absolute" === this.getStyle(a, "position"))c.top -= b.body.offsetTop;
+            if (0 < ca || 0 < ga && "absolute" === this.getStyle(a, "position")) c.top -= b.body.offsetTop;
             for (d = a.offsetParent; d && d !== b.body;)c.left -= d.scrollLeft, ca && "TR" === d.tagName || (c.top -= d.scrollTop), d = d.offsetParent
         }
         return c
@@ -924,7 +929,7 @@
     n.q = function (a, b, c) {
         var d = [], e, f, g;
         if (!(a = G(a)))return d;
-        if ("undefined" === typeof b)b = this.r; else if (b = this.g(b), !b)return d;
+        if ("undefined" === typeof b) b = this.r; else if (b = this.g(b), !b)return d;
         c && (c = G(c).toUpperCase());
         if (b.getElementsByClassName)for (f = b.getElementsByClassName(a), b = f.length, e = 0; e < b; e++)g = f[e], c && g.tagName !== c || (d[d.length] = g); else for (a = RegExp("(^|\\s)" + String(a).replace(RegExp("([.*+?^=!:${}()|[\\]/\\\\-])", "g"), "\\$1") + "(\\s|$)"), f = c ? b.getElementsByTagName(c) : b.all || b.getElementsByTagName("*"), b = f.length, e = 0; e < b; e++)g = f[e], a.test(g.className) && (d[d.length] =
             g);
@@ -944,7 +949,7 @@
                 if (!c) {
                     c = !0;
                     var d = a.r, f = window;
-                    if (v && f === top)(function () {
+                    if (v && f === top) (function () {
                         if (!b.isReady) {
                             try {
                                 d.documentElement.doScroll("left")
@@ -972,7 +977,7 @@
                     } else if (aa) {
                         var k;
                         (function () {
-                            if (!b.isReady)if ("loaded" !== d.readyState && "complete" !== d.readyState)setTimeout(arguments.callee, 0); else {
+                            if (!b.isReady)if ("loaded" !== d.readyState && "complete" !== d.readyState) setTimeout(arguments.callee, 0); else {
                                 if (void 0 === k) {
                                     k = 0;
                                     var a = d.getElementsByTagName("style"), c = d.getElementsByTagName("link");
@@ -987,8 +992,8 @@
                         f.detachEvent("onload",
                             b)
                     })) : f.addEventListener && (f.addEventListener("load", b, !1), K(function () {
-                        f.removeEventListener("load", b, !1)
-                    }))
+                            f.removeEventListener("load", b, !1)
+                        }))
                 }
             })();
             return function (a) {
@@ -1021,13 +1026,13 @@
     function Na(a, b) {
         function c() {
             var a = d.readyState;
-            if ("undefined" === typeof a || /^(?:loaded|complete)$/.test(a))if (a = d.src, d = d.onload = d.onreadystatechange = null, P[a])b(P[a]); else {
+            if ("undefined" === typeof a || /^(?:loaded|complete)$/.test(a))if (a = d.src, d = d.onload = d.onreadystatechange = null, P[a]) b(P[a]); else {
                 var c = Ka.pop();
                 c && (P[a] = c, b(c))
             }
         }
 
-        if (P[a])b(P[a]); else {
+        if (P[a]) b(P[a]); else {
             var d = Oa();
             d.src = a;
             document.addEventListener ? d.onload = c : d.readyState && (d.onreadystatechange = c);
@@ -1070,12 +1075,12 @@
         var c = D.g(a.A + "-icon");
         A(c, "mouseover", function (a) {
             na(a);
-            if (a = c.nextSibling)a.style.display = "block";
+            if (a = c.nextSibling) a.style.display = "block";
             b("tipmouseover")
         });
         A(c, "mouseout", function (a) {
             na(a);
-            if (a = c.nextSibling)a.style.display = "none";
+            if (a = c.nextSibling) a.style.display = "none";
             b("tipmouseout")
         });
         A(c, "click", function (a) {
@@ -1163,7 +1168,8 @@
     }
 
     n.W = function (a, b, c) {
-        var d = this, e = "string" === typeof b ? b : b.url, f = "string" === typeof b ? "" : b.id, g = new R(this, a), k = g.getImgWrapper();
+        var d = this, e = "string" === typeof b ? b : b.url, f = "string" === typeof b ? "" : b.id, g = new R(this, a),
+            k = g.getImgWrapper();
         if (k) {
             b = e;
             var m = d.config.get("vReg");
@@ -1219,7 +1225,7 @@
             for (c in a)if (a.hasOwnProperty(c)) {
                 var e = za(a[c]);
                 if ("object" === e || "array" === e) {
-                    if ("object" !== e || a[c].constructor === Object)b[c] = d(a[c])
+                    if ("object" !== e || a[c].constructor === Object) b[c] = d(a[c])
                 } else b[c] = a[c]
             }
             return b
@@ -1229,7 +1235,7 @@
         a = e.ya;
         var e = e.o, f = c || "ALL";
         c = [];
-        if (w(f))c = f; else if ("ALL" === f)for (var g in a)a.hasOwnProperty(g) && c.push(g); else c = [f];
+        if (w(f)) c = f; else if ("ALL" === f)for (var g in a)a.hasOwnProperty(g) && c.push(g); else c = [f];
         f = [];
         b = "f21ac82b21eeb7322631b6aa94e17f45closeBoardCavnasId" + b;
         for (var k = 0; k < c.length; k++)if (g = c[k], g !== b) {
@@ -1283,7 +1289,7 @@
     }
 
     Q.prototype.recordKey = function (a, b, c, d) {
-        if (a = this.a[a])a.I[b] = a.I[b] || [], a.I[b].push("string" === typeof c ? {type: c, time: d} : c)
+        if (a = this.a[a]) a.I[b] = a.I[b] || [], a.I[b].push("string" === typeof c ? {type: c, time: d} : c)
     };
     Q.prototype.addListener = function (a, b, c, d) {
         var e = this.O[a];
@@ -1338,7 +1344,7 @@
     };
     R.prototype.setShareData = function (a, b, c) {
         var d = this.c;
-        if (c)d.s = d.s || {}, d.s[a] = b; else if (c = d.a[this.d])c.$ = c.$ || {}, c.$[a] = b
+        if (c) d.s = d.s || {}, d.s[a] = b; else if (c = d.a[this.d]) c.$ = c.$ || {}, c.$[a] = b
     };
     R.prototype.getShareData = function (a, b) {
         if (b) {
@@ -1372,7 +1378,7 @@
         var b = {usePrompt: !0, reasons: "", availableReasons: null, canvas: "ALL", closeBy: "AD"};
         I(b, a || {}, !0);
         a = b.canvas;
-        if ("string" === typeof a)"ME" === a.toUpperCase() && (a = this.l, b.canvas = this.l); else for (var c = 0; c < a.length; c++)"ME" === a[c].toUpperCase() && (a[c] = this.l);
+        if ("string" === typeof a) "ME" === a.toUpperCase() && (a = this.l, b.canvas = this.l); else for (var c = 0; c < a.length; c++)"ME" === a[c].toUpperCase() && (a[c] = this.l);
         if (b.usePrompt) {
             b.materials = Ua(this.c, this.d, b.canvas);
             a = this.c;
@@ -1382,7 +1388,7 @@
                 for (var g in b)b.hasOwnProperty(g) && (b[g].style.display = "block", d[g] = "canvasopen");
                 a.b(c, "show");
                 a.b(c, "reopen")
-            } else b[e].style.display = "block", d[e] = "canvasopen", a.fire(c, e, "show"), a.fire(c, e, "reopen"); else if (g = a.config.get("closeBoardRenderUrl"))d.w[e] = "canvasloading", b = b || {}, b.id = e, a.W(c, {
+            } else b[e].style.display = "block", d[e] = "canvasopen", a.fire(c, e, "show"), a.fire(c, e, "reopen"); else if (g = a.config.get("closeBoardRenderUrl")) d.w[e] = "canvasloading", b = b || {}, b.id = e, a.W(c, {
                 url: g,
                 id: "closeBoardRenderId"
             }, b)
@@ -1426,7 +1432,7 @@
         if ((c = a.baiduImageplusHiddenParent) && Ya(c))return b;
         var d = !1, e = !1, f = null, c = baidu.dom.getAncestorBy(a, function (b) {
             var c = D.getStyle(b, "position");
-            if ("absolute" === c || "fixed" === c)e = !0;
+            if ("absolute" === c || "fixed" === c) e = !0;
             if (Ya(b))return d = !0;
             if (e && "static" === c || !Za(b))return !1;
             f = $a(a, b);
@@ -1449,7 +1455,8 @@
     }
 
     function $a(a, b) {
-        var c = L(a), d = L(b), e = c.top, f = c.left, g = c.width, k = c.height, m = d.top, r = d.left, h = d.width, d = d.height;
+        var c = L(a), d = L(b), e = c.top, f = c.left, g = c.width, k = c.height, m = d.top, r = d.left, h = d.width,
+            d = d.height;
         if (e >= m && f >= r && f + g <= r + h && e + k <= m + d)return c.clipped = !1, c;
         c = {clipped: !0};
         f > r ? (c.left = f, c.width = h - (f - r)) : (c.left = r, c.width = g - (r - f));
@@ -1548,10 +1555,10 @@
 
     n.ja = function (a, b) {
         var c = this, d = c.getImgIndex(a);
-        if (d)cb(c, d), b && b(d); else if (c.m >= c.F)b && b(0); else if (hb(c, a))b && b(0); else {
+        if (d) cb(c, d), b && b(d); else if (c.m >= c.F) b && b(0); else if (hb(c, a)) b && b(0); else {
             var e = (new Date).getTime();
             ib(a, function (d) {
-                if (!d || c.m >= c.F)b && b(0); else {
+                if (!d || c.m >= c.F) b && b(0); else {
                     d = a[c.R] = U(a);
                     var g = X(c.config, d);
                     if (gb(c, g)) {
@@ -1661,7 +1668,7 @@
         (a = this.a[a]) && D.remove(a.h)
     };
     n.getData = function (a, b, c) {
-        if (location.href.match(/(\?|&)baiduImageplus=/))b(window.baiduImagePlusFakeData); else {
+        if (location.href.match(/(\?|&)baiduImageplus=/)) b(window.baiduImagePlusFakeData); else {
             c = 1 === (c || {}).imgType;
             var d = this, e, f, g;
             if (a.nodeName && "img" === a.nodeName.toLowerCase()) {
@@ -1694,7 +1701,7 @@
                 screen_width: Va(),
                 screen_height: Xa()
             };
-            if (d.config.get("clid") || d.config.get("cuid"))r.clid = d.config.get("clid"), r.cuid = d.config.get("cuid");
+            if (d.config.get("clid") || d.config.get("cuid")) r.clid = d.config.get("clid"), r.cuid = d.config.get("cuid");
             var k = k + (-1 === k.indexOf("?") ? "?" : "&"), h = function (a, b) {
                 I(a, r);
                 baidu.sio.callByServer(k + ra(a), b, {charset: "gbk", timeOut: 1E4, onfailure: b})
@@ -1706,7 +1713,7 @@
                 (I(e, d.P[p % d.C]), p++);
                 h(e, a)
             };
-            if (c)e(b, !1, !0); else if (0 <= d.ta && d.T >= d.ta)e(b, !0); else {
+            if (c) e(b, !1, !0); else if (0 <= d.ta && d.T >= d.ta) e(b, !0); else {
                 var l = parseInt(d.config.get("yuetuFormId", 0) || 0, 10), t = !1;
                 0 < l && F(d.P || [], function (a) {
                     if (l === parseInt(a.formId || 0, 10))return t = !0, !1
@@ -1719,12 +1726,12 @@
                     z >= E && b(Array.prototype.concat.apply([], u))
                 };
                 0 < l && !t && (E += 1, a = {dri: ++d.ea, formId: l}, h(a, c));
-                if (1 > d.C)e(c, !1); else for (a = 0; a < d.C; a++)e(c, !0)
+                if (1 > d.C) e(c, !1); else for (a = 0; a < d.C; a++)e(c, !0)
             }
         }
     };
     function ib(a, b) {
-        if (a.complete)b(!0); else {
+        if (a.complete) b(!0); else {
             var c = function () {
                 b(!0);
                 C(a, "load", c)
@@ -1752,7 +1759,7 @@
             var d = c[0], c = c[1];
             if (D.contains(document.documentElement, c.f)) {
                 var e = U(c.f), f = c.rect;
-                if (e.top !== f.top || e.left !== f.left || e.width !== f.width || e.height !== f.height)if (c.rect = e, X(this.config, e))pb(this, e, c.h), cb(this, d), ob(c.h, c.f), this.b(d, "resize", e); else if (d = this.getImgIndex(d))c = this.a[d], c.inView = !1, c.h.style.display = "none", this.b(d, "hide")
+                if (e.top !== f.top || e.left !== f.left || e.width !== f.width || e.height !== f.height)if (c.rect = e, X(this.config, e)) pb(this, e, c.h), cb(this, d), ob(c.h, c.f), this.b(d, "resize", e); else if (d = this.getImgIndex(d)) c = this.a[d], c.inView = !1, c.h.style.display = "none", this.b(d, "hide")
             } else this.Z(d), 1 === c.Ra ? this.da-- : this.T--
         }
     };
@@ -1835,8 +1842,8 @@
     function eb(a, b) {
         function c(a) {
             (a = "." === a.charAt(0) ? baidu.q(a.replace(/^\./, "")) : D.g(a.replace(/^#/, ""))) && (baidu.lang.isArray(a) ? a.length && F(a, function (a) {
-                d.Y(a, f, e)
-            }) : d.Y(a, f, e))
+                    d.Y(a, f, e)
+                }) : d.Y(a, f, e))
         }
 
         var d = a, e = b ? d.getImgIndex(b) : 1, f = d.a[e];
@@ -1877,7 +1884,7 @@
         var c;
         var d = b, e = d;
         for (c = [d]; (e = e.offsetParent) && "body" !== e.nodeName.toLowerCase();)"static" !== D.getStyle(e, "position") && (d = e, c.push(d));
-        if (6 === v)c = parseInt(D.getStyle(d, "z-index"), 10) || 0; else {
+        if (6 === v) c = parseInt(D.getStyle(d, "z-index"), 10) || 0; else {
             for (e = 0; c.length;)d = c.pop(), d = parseInt(D.getStyle(d, "z-index"), 10), isNaN(d) || (e = Math.max(d, e));
             c = e
         }
@@ -1925,7 +1932,8 @@
                             var h;
                             if (h = 0 !== r)if ("a" === m.nodeName.toLowerCase() ? h = !0 : (h = D.getStyle(m, "cursor"), h = "pointer" === h || 0 === h.indexOf("url(")), h && (h = !D.contains(m, e))) {
                                 h = L(m);
-                                var p = d.rect, l = h.top, t = h.left, u = p.top, z = p.left, t = Math.abs(t - z) < (t > z ? p.width : h.width);
+                                var p = d.rect, l = h.top, t = h.left, u = p.top, z = p.left,
+                                    t = Math.abs(t - z) < (t > z ? p.width : h.width);
                                 h = Math.abs(l - u) < (l > u ? p.height :
                                         h.height) && t
                             }
@@ -1952,7 +1960,8 @@
     }
 
     function jb() {
-        var a = baidu.page.getViewHeight(), b = baidu.page.getViewWidth(), c = baidu.page.getScrollTop(), d = baidu.page.getScrollLeft();
+        var a = baidu.page.getViewHeight(), b = baidu.page.getViewWidth(), c = baidu.page.getScrollTop(),
+            d = baidu.page.getScrollLeft();
         return [c, d, b, a].join("_")
     }
 
@@ -2052,7 +2061,7 @@
 
     function Ab(a, b) {
         var c = {};
-        if (c.immediate || !a.ca)a.ca = !0, a.ja(b, function (d) {
+        if (c.immediate || !a.ca) a.ca = !0, a.ja(b, function (d) {
             a.ca = !1;
             var e = a.pa;
             d ? (b[e] = 2, eb(a, b)) : (b[e] = 1, b[a.oa] = Bb(b));
@@ -2074,7 +2083,7 @@
 
     Y.prototype.Z = function (a) {
         var b = a;
-        if ("number" === typeof b)if (b = this.a[b])b = b.f; else return;
+        if ("number" === typeof b)if (b = this.a[b]) b = b.f; else return;
         b.baiduImageplusStatus = 0;
         Y.superClass.Z.call(this, a)
     };
@@ -2253,7 +2262,7 @@
         }
     };
     n.getData = function (a, b) {
-        if (location.href.match(/(\?|&)baiduImageplus=/))b(window.baiduImagePlusFakeData); else {
+        if (location.href.match(/(\?|&)baiduImageplus=/)) b(window.baiduImagePlusFakeData); else {
             var c = this.config.get("apiWd");
             "function" === typeof c && (c = c({}));
             var d = this.config.get("api"), e = this.config.get("unionId"), c = {
@@ -2274,7 +2283,7 @@
                 screen_width: Va(),
                 screen_height: Xa()
             };
-            if (this.config.get("clid") || this.config.get("cuid"))c.clid = this.config.get("clid"), c.cuid = this.config.get("cuid");
+            if (this.config.get("clid") || this.config.get("cuid")) c.clid = this.config.get("clid"), c.cuid = this.config.get("cuid");
             d += -1 === d.indexOf("?") ? "?" : "&";
             e = {dri: ++this.ea, formId: a};
             I(e, c);
@@ -2443,7 +2452,8 @@
         window.baiduImagePlus = $;
         window.baiduTujia = {config: $};
         Mb.start = (new Date).getTime();
-        var Pb = $.api || "http://imageplus.baidu.com/ui", Pb = Pb + (-1 === Pb.indexOf("?") ? "?" : "&") + "api=config&tu=" + G($.unionId || "").replace(/^u/, "") + "&pic=" + document.getElementsByTagName("img").length + "&vn=" + qb;
+        var Pb = $.api || "http://imageplus.baidu.com/ui",
+            Pb = Pb + (-1 === Pb.indexOf("?") ? "?" : "&") + "api=config&tu=" + G($.unionId || "").replace(/^u/, "") + "&pic=" + document.getElementsByTagName("img").length + "&vn=" + qb;
         baidu.sio.callByServer(Pb, function (a) {
             Mb.site_api_loaded = (new Date).getTime();
             a = a || {};

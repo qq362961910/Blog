@@ -178,17 +178,17 @@ public class Article extends BaseEntity {
     @Override
     public String toString() {
         return "Article{" +
-                "title='" + title + '\'' +
-                ", coverImage='" + coverImage + '\'' +
-                ", owner=" + owner +
-                ", readCount=" + readCount +
-                ", likeCount=" + likeCount +
-                ", summary='" + summary + '\'' +
-                ", content='" + content + '\'' +
-                ", keyworks='" + keyworks + '\'' +
-                ", type=" + type +
-                ", recommended=" + recommended +
-                ", deleted=" + deleted +
-                '}';
+            "title='" + title + '\'' +
+            ", coverImage='" + coverImage + '\'' +
+            ", owner=" + owner +
+            ", readCount=" + readCount +
+            ", likeCount=" + likeCount +
+            ", summary='" + summary + '\'' +
+            ", content='" + content + '\'' +
+            ", keyworks='" + keyworks + '\'' +
+            ", type=" + type +
+            ", recommended=" + recommended +
+            ", deleted=" + deleted +
+            '}';
     }
 }

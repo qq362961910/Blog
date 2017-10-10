@@ -27,9 +27,9 @@
             <p>加了锁的青春，不会再因谁而推开心门。</p>
         </ul>
         <div class="avatar">
-          <a id="avatar" href="javascript:void(0);">
-            <span id="nickname"></span>
-          </a>
+            <a id="avatar" href="javascript:void(0);">
+                <span id="nickname"></span>
+            </a>
         </div>
     </section>
 </div>
@@ -106,7 +106,8 @@
     </div>
     <aside class="right">
         <div class="weather">
-            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
+            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
+                    src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
         </div>
         <div class="news">
             <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
@@ -141,8 +142,8 @@
         </div>
         <!-- Baidu Button BEGIN -->
         <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
-                class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
-                class="shareCount"></a></div>
+            class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
+            class="shareCount"></a></div>
         <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
         <script type="text/javascript" id="bdshell_js"></script>
         <script type="text/javascript">
@@ -153,9 +154,9 @@
 </article>
 <footer>
     <p>
-      Design by DanceSmile
-      <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
-      <a href="/">网站统计</a>
+        Design by DanceSmile
+        <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a>
+        <a href="/">网站统计</a>
     </p>
 </footer>
 <script type="text/javascript" src="<%=static_file_path%>js/index.js"></script>

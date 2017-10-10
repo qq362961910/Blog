@@ -18,7 +18,6 @@ public @interface XmlRootElement {
      * <p>
      * If the value is "##default", then the name is derived from the
      * class name.
-     *
      */
     String value();
 }

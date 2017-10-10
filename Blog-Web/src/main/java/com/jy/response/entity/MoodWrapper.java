@@ -3,30 +3,30 @@ package com.jy.response.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.ALWAYS)
 public class MoodWrapper extends BaseWrapper {
 
     /**
      * 封面图
-     * */
+     */
     @JsonProperty("coverImage")
     private String coverImage;
 
     /**
      * 内容
-     * */
+     */
     @JsonProperty("content")
     private String content;
 
     /**
      * 发布时间
-     * */
+     */
     @JsonProperty("createTime")
     private String createTime;
 
     /**
      * 发布者
-     * */
+     */
     @JsonProperty("owner")
     private UserWrapper owner;
 

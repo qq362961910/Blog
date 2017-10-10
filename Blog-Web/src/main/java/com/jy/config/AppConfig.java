@@ -26,18 +26,18 @@ import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
-import java.util.*;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(
-        basePackages = "com.jy"
+    basePackages = "com.jy"
 )
 @PropertySource({"classpath:props/db.properties",
-        "classpath:props/hibernate.properties",
-        "classpath:props/qiniu.properties",
-        "classpath:props/sms.properties"})
+    "classpath:props/hibernate.properties",
+    "classpath:props/qiniu.properties",
+    "classpath:props/sms.properties"})
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
@@ -45,7 +45,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     /* 数据模型package */
     private static String[] MODEL_PACKAGES = {
-            "com.jy.entity"
+        "com.jy.entity"
     };
 
     /**
@@ -154,11 +154,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public SmsHelper smsHelper() {
-      SmsHelper smsHelper = new SmsHelper();
-      smsHelper.setUsername(environment.getProperty("sms.username"));
-      smsHelper.setPassword(environment.getProperty("sms.password"));
-      smsHelper.setBaseUrl(environment.getProperty("sms.base_url"));
-      return smsHelper;
+        SmsHelper smsHelper = new SmsHelper();
+        smsHelper.setUsername(environment.getProperty("sms.username"));
+        smsHelper.setPassword(environment.getProperty("sms.password"));
+        smsHelper.setBaseUrl(environment.getProperty("sms.base_url"));
+        return smsHelper;
     }
 
 //    @Bean

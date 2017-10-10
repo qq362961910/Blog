@@ -32,7 +32,7 @@ public class WxHelper {
     }
 
     private static ValueHandler getValueHandler(Class clazz) {
-        for (ValueHandler valueHandler: xmlElementHandlers) {
+        for (ValueHandler valueHandler : xmlElementHandlers) {
             if (valueHandler.support(clazz)) {
                 return valueHandler;
             }
@@ -50,26 +50,25 @@ public class WxHelper {
             return "";
         }
         StringBuilder urlBuilder = new StringBuilder();
-        for (Map.Entry<Field, String> entry: mapping.entrySet()) {
+        for (Map.Entry<Field, String> entry : mapping.entrySet()) {
             Field f = entry.getKey();
             if (urlBuilder.length() == 0) {
                 urlBuilder.append('?');
-            }
-            else {
+            } else {
                 urlBuilder.append('&');
             }
             if (!f.isAccessible()) {
                 f.setAccessible(true);
             }
             String urlParam = entry.getValue();
-            String paramValue = (String)f.get(configure);
+            String paramValue = (String) f.get(configure);
             urlBuilder.append(urlParam).append("=").append(paramValue);
         }
         return urlBuilder.toString();
     }
 
     @SuppressWarnings("unchecked")
-    public String buildXml (Object configure, boolean isTop) throws IllegalAccessException {
+    public String buildXml(Object configure, boolean isTop) throws IllegalAccessException {
         if (configure == null || configure.getClass() == null || CONFIGURE_FIELD_XML_MAPPING.get(configure.getClass()) == null) {
             return "";
         }
@@ -82,7 +81,7 @@ public class WxHelper {
             appendTagBegin(sb, rootTag.getTagName());
         }
         Map<Field, Entry<String, Boolean>> fieldMapping = xmlFieldMapping.getValue();
-        for (Map.Entry<Field, Entry<String, Boolean>> entry: fieldMapping.entrySet()) {
+        for (Map.Entry<Field, Entry<String, Boolean>> entry : fieldMapping.entrySet()) {
             Field f = entry.getKey();
             Entry<String, Boolean> tagEntry = entry.getValue();
             //tag head
@@ -99,9 +98,8 @@ public class WxHelper {
                 Object tagValue = f.get(configure);
                 //need to escape
                 if (tagEntry.getValue()) {
-                    escapeTagValue(sb, (String)tagValue);
-                }
-                else {
+                    escapeTagValue(sb, (String) tagValue);
+                } else {
                     sb.append(valueHandler.handle(tagValue));
                 }
             }
@@ -124,25 +122,24 @@ public class WxHelper {
                 String tagName;
                 String value = f.get(o).toString();
                 XmlElement e = f.getAnnotation(XmlElement.class);
-                if (e!= null) {
+                if (e != null) {
                     tagName = e.value();
                     if (e.escape()) {
                         if (value.contains("<![CDATA[")) {
                             value = value.substring(9, value.length() - 3);
                         }
                     }
-                }
-                else {
+                } else {
                     tagName = f.getName();
                 }
                 list.add(tagName + "=" + value + "&");
             }
         }
         int size = list.size();
-        String [] arrayToSort = list.toArray(new String[size]);
+        String[] arrayToSort = list.toArray(new String[size]);
         Arrays.sort(arrayToSort, String.CASE_INSENSITIVE_ORDER);
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i++) {
             sb.append(arrayToSort[i]);
         }
         String result = sb.toString();
@@ -155,11 +152,13 @@ public class WxHelper {
         sb.append('<').append(tagName).append('>');
         return this;
     }
-    private WxHelper appendTagEnd(StringBuilder sb,String tagName) {
+
+    private WxHelper appendTagEnd(StringBuilder sb, String tagName) {
         sb.append("</").append(tagName).append('>');
         return this;
     }
-    private WxHelper escapeTagValue(StringBuilder sb,String tagValue) {
+
+    private WxHelper escapeTagValue(StringBuilder sb, String tagValue) {
         sb.append("<![CDATA[").append(tagValue).append("]]>");
         return this;
     }
@@ -171,9 +170,9 @@ public class WxHelper {
     //load UrlParam class
     static {
         Map<Field, String> accessTokenRequestConfigureClassMap = new HashMap<>();
-        Class<AccessTokenRequestConfigure> accessTokenRequestConfigureClass =  AccessTokenRequestConfigure.class;
+        Class<AccessTokenRequestConfigure> accessTokenRequestConfigureClass = AccessTokenRequestConfigure.class;
         Field[] accessTokenRequestConfigureClassFields = accessTokenRequestConfigureClass.getDeclaredFields();
-        for (Field f: accessTokenRequestConfigureClassFields) {
+        for (Field f : accessTokenRequestConfigureClassFields) {
             String urlParamName;
             UrlParam urlParam = f.getAnnotation(UrlParam.class);
             if (urlParam != null) {
@@ -181,14 +180,14 @@ public class WxHelper {
                 if (urlParamName == null || urlParamName.trim().length() == 0) {
                     urlParamName = f.getName();
                 }
-            }
-            else {
+            } else {
                 urlParamName = f.getName();
             }
             accessTokenRequestConfigureClassMap.put(f, urlParamName);
         }
         CONFIGURE_FIELD_URLPARAM_MAPPING.put(accessTokenRequestConfigureClass, accessTokenRequestConfigureClassMap);
     }
+
     //load xml config class
     static {
         analyseXmlConfigMapping(UnionPayRequestConfigure.class);
@@ -199,17 +198,17 @@ public class WxHelper {
      * 功能: 解析XML实体类
      * 参与注解: {@link XmlRootElement}, {@link XmlElement}
      * 解析结果缓存结构:<Class<?>, Map.Entry<RootTag, Map<Field, Object>>>
-     *     key: bean 类名
-     *     value: Entry
-     *     -------------------------------------------------------------
-     *     value.Entry.key: 跟标签,包含标签名称和文档声明
-     *     value.Entry.value: 类属性与标签名称的映射
-     *          结构: Field <----> Entry<String, Boolean>, Entry.key表示标签名称, Entry.value 表示是否需要转义
-     *          1.当属性(Field)为简单类型时,标签名称取自{@link XmlElement#value()}
-     *          2.当属性(Field)为复杂类型时,去标签名称的优先级为: {@link XmlElement#value()} > {@link XmlRootElement#value()}
-     *
+     * key: bean 类名
+     * value: Entry
+     * -------------------------------------------------------------
+     * value.Entry.key: 跟标签,包含标签名称和文档声明
+     * value.Entry.value: 类属性与标签名称的映射
+     * 结构: Field <----> Entry<String, Boolean>, Entry.key表示标签名称, Entry.value 表示是否需要转义
+     * 1.当属性(Field)为简单类型时,标签名称取自{@link XmlElement#value()}
+     * 2.当属性(Field)为复杂类型时,去标签名称的优先级为: {@link XmlElement#value()} > {@link XmlRootElement#value()}
+     * <p>
      * 功能总结: 采集类的属性与标签的映射关系,以及标签是否余姚被转义
-     * */
+     */
     private static void analyseXmlConfigMapping(Class<?> clazz) {
         if (clazz == null || CONFIGURE_FIELD_XML_MAPPING.containsKey(clazz)) {
             return;
@@ -219,8 +218,7 @@ public class WxHelper {
         String declaration = xmlRootElement.declaration();
         if (xmlRootElement == null) {
             rootTag = clazz.getSimpleName();
-        }
-        else {
+        } else {
             rootTag = xmlRootElement.value();
         }
         Entry<RootTag, Map<Field, Entry<String, Boolean>>> xmlConfigureMapping = new Entry<>(new RootTag(rootTag, declaration));
@@ -228,7 +226,7 @@ public class WxHelper {
         Map<Field, Entry<String, Boolean>> xmlFiledsConfigureMapping = new HashMap();
         xmlConfigureMapping.setValue(xmlFiledsConfigureMapping);
         Field[] unionPayRequestConfigureClassFields = clazz.getDeclaredFields();
-        for (Field f: unionPayRequestConfigureClassFields) {
+        for (Field f : unionPayRequestConfigureClassFields) {
             //非静态变量
             if (!Modifier.isStatic(f.getModifiers())) {
                 if (!f.isAccessible()) {
@@ -245,20 +243,16 @@ public class WxHelper {
                     }
                     if (e != null) {
                         tagName = e.value();
-                    }
-                    else if (innerXmlRootElement.value() != null && innerXmlRootElement.value().trim().length() > 0) {
+                    } else if (innerXmlRootElement.value() != null && innerXmlRootElement.value().trim().length() > 0) {
                         tagName = innerXmlRootElement.value();
-                    }
-                    else {
+                    } else {
                         tagName = f.getName();
                     }
                     escape = false;
-                }
-                else {
+                } else {
                     if (e != null) {
                         tagName = e.value();
-                    }
-                    else {
+                    } else {
                         tagName = f.getName();
                     }
                     escape = e.escape();
@@ -270,8 +264,10 @@ public class WxHelper {
 
     public interface ValueHandler {
         boolean support(Class<?> clazz);
+
         String handle(Object t);
     }
+
     public static abstract class AbstractValueHandler implements ValueHandler {
 
         @Override
@@ -280,10 +276,12 @@ public class WxHelper {
         }
 
         private final Class<?> t;
+
         public AbstractValueHandler(Class<?> t) {
             this.t = t;
         }
     }
+
     public static class StringValueHandler extends AbstractValueHandler {
         @Override
         public String handle(Object s) {

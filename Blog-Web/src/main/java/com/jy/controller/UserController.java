@@ -5,7 +5,10 @@ import com.jy.response.entity.UserWrapper;
 import com.jy.response.service.UserWrapperService;
 import com.jy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -146,7 +149,7 @@ public class UserController extends BaseController {
      * 用户信息
      */
     @RequestMapping(value = "userinfo", method = RequestMethod.GET)
-    public Map<String, Object> getUserInfo(@PathVariable("username") String username) throws Exception{
+    public Map<String, Object> getUserInfo(@PathVariable("username") String username) throws Exception {
         User user = userService.findUserByUsername(username);
         if (user == null) {
             user = new User();

@@ -4,29 +4,29 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "blog_mood")
-public class Mood extends BaseEntity{
+public class Mood extends BaseEntity {
 
     /**
      * 图片
-     * */
+     */
     @Column(name = "cover_image")
     private String coverImage;
 
     /**
      * 内容
-     * */
+     */
     @Column(name = "content")
     private String content;
 
     /**
      * 删除状态
-     * */
+     */
     @Column(name = "deleted")
     private Boolean deleted;
 
     /**
      * 作者
-     * */
+     */
     @ManyToOne
     @JoinColumn(name = "owner", referencedColumnName = "username")
     private User owner;
@@ -70,10 +70,10 @@ public class Mood extends BaseEntity{
     @Override
     public String toString() {
         return "Mood{" +
-                "coverImage='" + coverImage + '\'' +
-                ", content='" + content + '\'' +
-                ", deleted=" + deleted +
-                ", owner=" + owner +
-                '}';
+            "coverImage='" + coverImage + '\'' +
+            ", content='" + content + '\'' +
+            ", deleted=" + deleted +
+            ", owner=" + owner +
+            '}';
     }
 }

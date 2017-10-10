@@ -5,54 +5,54 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserProfileWrapper extends BaseWrapper{
+@JsonInclude(JsonInclude.Include.ALWAYS)
+public class UserProfileWrapper extends BaseWrapper {
 
     /**
      * 姓名
-     * */
+     */
     @JsonProperty("realName")
     private String realName;
 
     /**
      * 生日
-     * */
+     */
     @JsonProperty("birthday")
     private String birthday;
 
     /**
      * 籍贯
-     * */
+     */
     @JsonProperty("nativePlace")
     private String nativePlace;
 
     /**
      * 现居地址
-     * */
+     */
     @JsonProperty("address")
     private String address;
 
     /**
      * 职业
-     * */
+     */
     @JsonProperty("occupation")
     private String occupation;
 
     /**
      * 喜欢的书籍
-     * */
+     */
     @JsonProperty("likeBooks")
     private List<BookWrapper> likeBooks;
 
     /**
      * 喜欢的书籍
-     * */
+     */
     @JsonProperty("likeMusics")
     private List<MusicWrapper> likeMusics;
 
     /**
      * 个人介绍
-     * */
+     */
     @JsonProperty("selfIntroduction")
     private String selfIntroduction;
 

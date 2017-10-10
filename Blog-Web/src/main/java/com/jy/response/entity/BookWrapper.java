@@ -3,12 +3,12 @@ package com.jy.response.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class BookWrapper extends BaseWrapper{
+@JsonInclude(JsonInclude.Include.ALWAYS)
+public class BookWrapper extends BaseWrapper {
 
     /**
      * 书名
-     * */
+     */
     @JsonProperty("name")
     private String name;
 
