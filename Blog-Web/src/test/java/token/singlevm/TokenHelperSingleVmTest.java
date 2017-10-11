@@ -1,6 +1,6 @@
 package token.singlevm;
 
-import com.jy.helper.TokenHelperSingleVm;
+import com.jy.blog.helper.TokenHelperSingleVm;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

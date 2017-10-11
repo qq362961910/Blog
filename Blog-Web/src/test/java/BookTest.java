@@ -1,9 +1,9 @@
-import com.jy.config.AppConfig;
-import com.jy.entity.Book;
-import com.jy.entity.UserBookLike;
-import com.jy.entity.UserProfile;
-import com.jy.service.BookService;
-import com.jy.service.UserProfileService;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.entity.Book;
+import com.jy.blog.entity.UserBookLike;
+import com.jy.blog.entity.UserProfile;
+import com.jy.blog.service.BookService;
+import com.jy.blog.service.UserProfileService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

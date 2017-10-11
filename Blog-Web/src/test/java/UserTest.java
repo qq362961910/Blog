@@ -1,10 +1,10 @@
-import com.jy.config.AppConfig;
-import com.jy.entity.User;
-import com.jy.entity.UserProfile;
-import com.jy.enums.Sex;
-import com.jy.service.UserProfileService;
-import com.jy.service.UserService;
-import com.jy.util.PasswordUtil;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.entity.User;
+import com.jy.blog.entity.UserProfile;
+import com.jy.blog.enums.Sex;
+import com.jy.blog.service.UserProfileService;
+import com.jy.blog.service.UserService;
+import com.jy.blog.blog.common.util.PasswordUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

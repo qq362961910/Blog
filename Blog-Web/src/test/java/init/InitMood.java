@@ -1,10 +1,10 @@
 package init;
 
-import com.jy.config.AppConfig;
-import com.jy.entity.Mood;
-import com.jy.entity.User;
-import com.jy.service.MoodService;
-import com.jy.service.UserService;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.entity.Mood;
+import com.jy.blog.entity.User;
+import com.jy.blog.service.MoodService;
+import com.jy.blog.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

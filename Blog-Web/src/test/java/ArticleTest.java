@@ -1,9 +1,9 @@
-import com.jy.config.AppConfig;
-import com.jy.dao.ArticleDao;
-import com.jy.entity.Article;
-import com.jy.entity.User;
-import com.jy.service.ArticleService;
-import com.jy.service.UserService;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.blog.dao.ArticleDao;
+import com.jy.blog.entity.Article;
+import com.jy.blog.entity.User;
+import com.jy.blog.service.ArticleService;
+import com.jy.blog.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

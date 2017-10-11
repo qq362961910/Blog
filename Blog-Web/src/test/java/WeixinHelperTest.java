@@ -1,5 +1,5 @@
-import com.jy.helper.WxHelper;
-import xml.UnionPayRequestConfigure;
+import com.jy.blog.helper.WxHelper;
+import com.jy.blog.blog.common.xml.UnionPayRequestConfigure;
 
 public class WeixinHelperTest {
     public static void main(String[] args) throws Exception {

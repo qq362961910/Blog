@@ -1,6 +1,6 @@
 package token.redis;
 
-import com.jy.helper.TokenHelper;
+import com.jy.blog.helper.TokenHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import redis.clients.jedis.HostAndPort;

@@ -1,10 +1,10 @@
 package init;
 
-import com.jy.config.AppConfig;
-import com.jy.entity.Music;
-import com.jy.entity.UserProfile;
-import com.jy.service.MusicService;
-import com.jy.service.UserProfileService;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.entity.Music;
+import com.jy.blog.entity.UserProfile;
+import com.jy.blog.service.MusicService;
+import com.jy.blog.service.UserProfileService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

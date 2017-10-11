@@ -1,5 +1,5 @@
-import com.jy.config.AppConfig;
-import com.jy.helper.QiNiuHelper;
+import com.jy.blog.config.AppConfig;
+import com.jy.blog.helper.QiNiuHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
