@@ -35,11 +35,11 @@
             <ul>
                 <li class="login-wei-xin-support">
                 </li>
-                <li class="login-wei-xin-support">
+                <li class="login-ten-cent-support">
                 </li>
-                <li class="login-wei-xin-support">
+                <li class="login-si-na-support">
                 </li>
-                <li class="login-wei-xin-support">
+                <li class="login-phone-support">
                 </li>
             </ul>
         </div>

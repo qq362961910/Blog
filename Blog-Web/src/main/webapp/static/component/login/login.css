@@ -208,11 +208,23 @@
 .login-wei-xin-support:hover {
     background: url("./img/wechat-hover.png") 100% 100% no-repeat;
 }
-.login-so-hu-support {
-    background:url("./img/login-group.png") -20px 16px no-repeat;
+.login-ten-cent-support {
+    background: url("./img/tencent.png") 100% 100% no-repeat;
 }
-.login-so-hu-support:hover {
-    background:url("./img/login-group.png") 15px 16px no-repeat;
+.login-ten-cent-support:hover {
+    background: url("./img/tencent-hover.png") 100% 100% no-repeat;
+}
+.login-si-na-support {
+    background: url("./img/sina.png") 100% 100% no-repeat;
+}
+.login-si-na-support:hover {
+    background: url("./img/sina-hover.png") 100% 100% no-repeat;
+}
+.login-phone-support {
+    background: url("./img/phone.png") 100% 100% no-repeat;
+}
+.login-phone-support:hover {
+    background: url("./img/phone-hover.png") 100% 100% no-repeat;
 }
 .login-tip-frame{
     position: relative;
