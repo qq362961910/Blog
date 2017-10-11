@@ -33,10 +33,14 @@ public class LeaveMessageController extends BaseController {
     @RequiredLogin
     @RequestMapping(method = RequestMethod.POST)
     public Object saveLeaveMessage(@RequestBody Map<String, Object> param) {
-        Number userId = (Number) param.get("userId");
+        String username = (String) param.get("username");
         String content = (String) param.get("content");
         User currentUser = AppContextUtil.getCurrentUser();
-        leaveMessageService.save(currentUser.getId(), userId.longValue(), null, content);
+        User toUser = userService.findUserByUsername(username);
+        if (toUser == null) {
+            return fail(ServiceErrorCode.USER_NOT_FOUND);
+        }
+        leaveMessageService.save(currentUser.getId(), toUser.getId(), null, content);
         return success();
     }
 

@@ -1,41 +1,41 @@
-package com.jy.embedkey;
+package com.jy.blog.embedkey;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class UserMusicEmbedKey implements Serializable {
+public class UserBookEmbedKey implements Serializable {
 
     @Column(name = "user_id")
     private Long ownerId;
 
-    @Column(name = "music_id")
-    private Long musicId;
+    @Column(name = "book_id")
+    private Long bookId;
 
     public Long getOwnerId() {
         return ownerId;
     }
 
-    public UserMusicEmbedKey setOwnerId(Long ownerId) {
+    public UserBookEmbedKey setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public Long getMusicId() {
-        return musicId;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public UserMusicEmbedKey setMusicId(Long musicId) {
-        this.musicId = musicId;
+    public UserBookEmbedKey setBookId(Long bookId) {
+        this.bookId = bookId;
         return this;
     }
 
     @Override
     public String toString() {
-        return "UserMusicEmbedKey{" +
+        return "UserBookEmbedKey{" +
             "ownerId=" + ownerId +
-            ", musicId=" + musicId +
+            ", bookId=" + bookId +
             '}';
     }
 }

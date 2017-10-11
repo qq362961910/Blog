@@ -1,6 +1,6 @@
-package com.jy.entity;
+package com.jy.blog.entity;
 
-import com.jy.enums.Sex;
+import com.jy.blog.enums.Sex;
 
 import javax.persistence.*;
 

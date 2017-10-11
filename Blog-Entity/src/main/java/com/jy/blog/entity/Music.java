@@ -1,12 +1,12 @@
-package com.jy.entity;
+package com.jy.blog.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "blog_book")
-public class Book extends BaseEntity {
+@Table(name = "blog_music")
+public class Music extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -15,14 +15,14 @@ public class Book extends BaseEntity {
         return name;
     }
 
-    public Book setName(String name) {
+    public Music setName(String name) {
         this.name = name;
         return this;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Music{" +
             "name='" + name + '\'' +
             '}';
     }

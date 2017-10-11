@@ -69,7 +69,7 @@ public class LoginController extends BaseController {
     /**
      * 注册并登录
      */
-    @RequestMapping(value = "phone_reg_and_login", method = RequestMethod.POST)
+    @RequestMapping(value = "rest/phone_reg_and_login", method = RequestMethod.POST)
     public Map<String, Object> phoneRegisterAndLogin(@RequestBody Map<String, Object> param, HttpServletResponse response) throws Exception {
         String code = (String) param.get("code");
         String phoneNumber = (String) param.get("phoneNumber");
@@ -78,10 +78,9 @@ public class LoginController extends BaseController {
             return fail(ServiceErrorCode.LOGIN_CODE_ERROR);
         }
         User user = userService.findUserByPhone(phoneNumber);
-        if (user != null) {
-            return fail(ServiceErrorCode.USER_ALREADY_EXISTS);
+        if (user == null) {
+            user = userService.save(phoneNumber);
         }
-        user = userService.save(phoneNumber);
         writeTicket(user, response);
         return successResponse(user);
     }

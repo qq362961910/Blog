@@ -1,4 +1,4 @@
-package com.jy.enums;
+package com.jy.blog.enums;
 
 /**
  * 性别

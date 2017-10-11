@@ -1,6 +1,6 @@
-package com.jy.entity;
+package com.jy.blog.entity;
 
-import com.jy.embedkey.UserMusicEmbedKey;
+import com.jy.blog.embedkey.UserMusicEmbedKey;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;

@@ -25,7 +25,7 @@ function queryMostLikeCountLeaveMessage () {
                 dom.innerHTML = dom.innerHTML + item.getLeaveMessageItem();
             }
         }
-    }
+    };
     executeRequest(queryUrl, param, method, queryMostLikeCountLeaveMessageCallback);
 }
 
@@ -36,6 +36,8 @@ function queryLeaveMessage () {
     var queryLeaveMessageCallback = function (result) {
         if (result.success) {
             var leaveMessages = result.data.leaveMessages;
+            var dom = $("#leaveMessages");
+            dom.innerHTML = "";
             for (var i=0; i<leaveMessages.length; i++) {
                 var leaveMessage = leaveMessages[i];
                 var item = new LeaveMessage(leaveMessage.fromUser.avatar,
@@ -45,7 +47,6 @@ function queryLeaveMessage () {
                     null,
                     leaveMessage.likeCount
                 );
-                var dom = $("#leaveMessages");
                 dom.innerHTML = dom.innerHTML + item.getLeaveMessageItem();
             }
         }
@@ -55,7 +56,7 @@ function queryLeaveMessage () {
 
 function publishLeaveMessage() {
     var content = $("#replyContent").value;
-    if (content == null || content.trim() == "") {
+    if (content === null || content.trim() === "") {
         return;
     }
     var queryUrl = "/leave_message";
@@ -68,8 +69,8 @@ function publishLeaveMessage() {
         }
         else {
             //未登录
-            if (result.code == "check_0001") {
-                $("#cover").style.display = "block";
+            if (result.code === "check_0001") {
+                login.show();
             }
         }
     };

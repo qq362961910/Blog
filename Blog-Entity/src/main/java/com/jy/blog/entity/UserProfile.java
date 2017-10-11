@@ -1,4 +1,4 @@
-package com.jy.entity;
+package com.jy.blog.entity;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

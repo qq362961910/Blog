@@ -1,0 +1,226 @@
+/* 弹幕 */
+.login {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 999
+}
+@media screen and (max-device-width: 767px) {
+    .login-frame {
+        position:absolute;
+        left: 20%;
+        top: 25%;
+        width: 60%;
+        height: 50%;
+        border-radius:15px;
+        background-color: rgba(255,255,255,1);
+    }
+}
+@media screen and (min-device-width: 768px) {
+    .login-frame {
+        position:absolute;
+        left: 40%;
+        top: 20%;
+        width: 20%;
+        height: 52%;
+        border-radius:15px;
+        background-color: rgba(255,255,255,1);
+    }
+}
+.login-close-btn {
+    width: 4%;
+    height: 100%;
+    float: right;
+    margin-top: 1%;
+    margin-right: 4%;
+    background: url(./img/close-btn.png) 100%/100% no-repeat;
+}
+.login-close-btn-frame {
+    width: 100%;
+    height: 10%;
+    border-radius:15px 15px 0 0;
+}
+.login-close-btn:hover {
+    background: url(./img/close-btn-hover.png) 100%/100% no-repeat;
+    cursor: pointer;
+}
+.login-banner-frame {
+    position: relative;
+    width: 100%;
+    height: 15%;
+    border: 0;
+}
+.login-banner {
+    position: relative;
+    width: 40%;
+    height: 100%;
+    margin: auto;
+    background: url(./img/logo.jpg) 100%/100% no-repeat;
+}
+.login-short-message-frame {
+    position: relative;
+    width: 90%;
+    margin: 3% auto;
+    border-top: 1px solid #e5e5e5;
+}
+.login-short-message {
+    width: 20%;
+    text-align: center;
+    background: #FFF;
+    position: absolute;
+    top: -0.5rem;
+    left: 40%;
+}
+
+.login-type-frame {
+    position: relative;
+    width: 100%;
+    height: 5%;
+    margin: 3% auto;
+}
+.login-type {
+    position: absolute;
+    width: 100%;
+    font-size: 200%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.login-type-hint-frame {
+    position: relative;
+    width: 100%;
+    height: 1.5rem;
+    margin: 0.1rem auto;
+}
+.login-type-hint {
+    width: 100%;
+    font-size: 0.8rem;
+    color: #ababab;
+    position: absolute;
+    text-align: center;
+}
+.login-phone-input-frame {
+    position: relative;
+    width: 100%;
+    height: 7%;
+    margin-left: 5%;
+}
+.login-phone-input {
+    position: absolute;
+    width: 86%;
+    height: 100%;
+    border-radius: 0.4rem;
+    outline: none;
+    padding-left: 3%;
+    line-height: 100%;
+}
+.login-phone-input:focus {
+    background: yellow;
+    box-shadow: 0 0 0.3rem 0 dodgerblue;
+}
+.login-password-outline-frame {
+    position: relative;
+    width: 100%;
+    height: 7%;
+    margin-top: 3%;
+}
+.login-password-frame {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 100%;
+    margin-left: 5%;
+}
+.login-password {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    outline: none;
+    padding-left: 3%;
+}
+.login-password:focus {
+    background: yellow;
+    box-shadow: 0 0 0.3rem 0 dodgerblue;
+}
+.login-request-password-btn-frame {
+    position: relative;
+    float: left;
+    width: 35%;
+    height: 100%;
+    margin-left: 5%;
+}
+.login-request-password-btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    outline: none;
+    background-color: transparent;
+}
+.login-btn-frame {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    margin-left: 5%;
+    margin-top: 4%;
+}
+.login-btn {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    border-radius: 0.4rem;
+    background-color: rgba(56, 163, 253, 1);
+}
+.login-third-party-support-frame {
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+.login-third-party-support-frame>ul {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-left: 22.5%;
+}
+.login-third-party-support-frame>ul>li {
+    position: relative;
+    float: left;
+    list-style-type: none;
+    display: inline-block;
+    width: 10%;
+    padding-bottom: 10%;
+    height: 0;
+    margin-left: 2.5%;
+    border-radius: 50%;
+}
+.login-third-party-support-frame>ul>li:hover {
+  cursor: pointer;
+}
+.login-wei-xin-support {
+    background: url("./img/webchat.png") 100% 100% no-repeat;
+}
+.login-wei-xin-support:hover {
+    background: url("./img/wechat-hover.png") 100% 100% no-repeat;
+}
+.login-so-hu-support {
+    background:url("./img/login-group.png") -20px 16px no-repeat;
+}
+.login-so-hu-support:hover {
+    background:url("./img/login-group.png") 15px 16px no-repeat;
+}
+.login-tip-frame{
+    position: relative;
+    width: 100%;
+    height: 7%;
+    text-align: center;
+}
+.login-tip {
+    color: #bababa;
+}
+

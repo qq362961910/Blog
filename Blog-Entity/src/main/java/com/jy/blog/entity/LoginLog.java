@@ -1,4 +1,4 @@
-package com.jy.entity;
+package com.jy.blog.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

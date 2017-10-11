@@ -8,6 +8,7 @@
     <title>留言</title>
     <meta name="keywords" content="留言板">
     <meta name="description" content="留言板">
+    <link href="<%=static_file_path%>css/common.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/book.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="<%=static_file_path%>css/embed.default.css">
@@ -16,6 +17,8 @@
     <![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/LeaveMessage.js"></script>
+    <%--login--%>
+    <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -158,10 +161,7 @@
         </div>
     </aside>
 </article>
-
-<div id="cover" style="display: block; position: fixed; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.7); z-index: 999">
-    <div style="position:absolute; left: 30%; top: 35%; width: 40%;height: 30%; border-radius:25px;  background-color: rgba(253,247,6,1); z-index: 1000"></div>
-</div>
+<%@include file="/static/component/login/login.jsp"%>
 <footer>
     <p>
         Design by DanceSmile
@@ -170,6 +170,7 @@
 </footer>
 <script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/book.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 <script type="text/javascript">
     queryUserInfo();
     initBookPage();
