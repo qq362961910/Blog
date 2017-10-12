@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.ALWAYS)
-public class LeaveMessageWrapper {
+public class LeaveMessageWrapper extends BaseWrapper{
 
     @JsonProperty("fromUser")
     private UserWrapper fromUser;

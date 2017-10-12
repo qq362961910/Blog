@@ -43,7 +43,7 @@ public abstract class BaseDaoImpl<Entity> implements BaseDao<Entity> {
 
     @Override
     public int countByParam(BaseParam param) {
-        Criteria criteria = param.buildCriteria(getCurrentSession(), clazz);
+        Criteria criteria = param.buildCriteriaRestrictions(getCurrentSession(), clazz);
         criteria.setProjection(Projections.rowCount());
         return ((Number) criteria.uniqueResult()).intValue();
     }

@@ -4,7 +4,9 @@ import com.jy.blog.blog.common.constants.ServiceErrorCode;
 import com.jy.blog.controller.interceptor.anno.RequiredLogin;
 import com.jy.blog.controller.util.AppContextUtil;
 import com.jy.blog.entity.LeaveMessage;
+import com.jy.blog.response.entity.PageableWrapper;
 import com.jy.blog.response.service.LeaveMessageWrapperService;
+import com.jy.blog.service.BaseService;
 import com.jy.blog.service.LeaveMessageService;
 import com.jy.blog.service.UserService;
 import com.jy.blog.blog.dao.LeaveMessageDao;
@@ -29,6 +31,8 @@ public class LeaveMessageController extends BaseController {
     private UserService userService;
     @Autowired
     private LeaveMessageWrapperService leaveMessageWrapperService;
+
+    private int pageSizeDefault = 6;
 
     @RequiredLogin
     @RequestMapping(method = RequestMethod.POST)
@@ -101,7 +105,7 @@ public class LeaveMessageController extends BaseController {
         if (pageSize == null) {
             pageSize = pageSizeDefault;
         } else {
-            if (pageSize > 30) {
+            if (pageSize > pageSizeDefault) {
                 pageSize = pageSizeDefault;
             }
         }
@@ -121,13 +125,10 @@ public class LeaveMessageController extends BaseController {
         else {
             param.getOrderList().add(Order.desc("createTime"));
         }
-        List<LeaveMessage> leaveMessageList = leaveMessageService.queryListByParam(param);
-        List<LeaveMessageWrapper> leaveMessageWrapperList = new ArrayList<>(leaveMessageList.size());
+        BaseService.Pageable<LeaveMessage> leaveMessagePageable = leaveMessageService.queryPageableListByParam(param);
+        PageableWrapper pageableWrapper = leaveMessageWrapperService.buildPageableWrapper(leaveMessagePageable);
         Map<String, Object> data = new HashMap<>();
-        leaveMessageList.forEach(leaveMessage -> {
-            leaveMessageWrapperList.add(leaveMessageWrapperService.buildLeaveMessageWrapper(leaveMessage));
-        });
-        data.put("leaveMessages", leaveMessageWrapperList);
+        data.put("pageable", pageableWrapper);
         return success(data);
     }
 

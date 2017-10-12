@@ -1,10 +1,8 @@
 package com.jy.blog.response.service;
 
 import com.jy.blog.entity.*;
+import com.jy.blog.response.entity.*;
 import com.jy.blog.service.BookService;
-import com.jy.blog.response.entity.BookWrapper;
-import com.jy.blog.response.entity.MusicWrapper;
-import com.jy.blog.response.entity.UserProfileWrapper;
 import com.jy.blog.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserProfileWrapperService extends ResponseBaseService {
+public class UserProfileWrapperService extends PageableWrapperService<UserProfile> {
 
     private static final UserProfileWrapper empty = new UserProfileWrapper();
 
@@ -60,5 +58,15 @@ public class UserProfileWrapperService extends ResponseBaseService {
         }
 
         return userProfileWrapper;
+    }
+
+    @Override
+    public List<? extends BaseWrapper> buildEntityListWrapper(List<UserProfile> userProfiles) {
+        if (userProfiles == null) {
+            return null;
+        }
+        List<UserProfileWrapper> userProfileWrapperList = new ArrayList<>(userProfiles.size());
+        userProfiles.forEach(userProfile -> userProfileWrapperList.add(buildUserProfileWrapper(userProfile, false, false)));
+        return userProfileWrapperList;
     }
 }
