@@ -20,7 +20,7 @@ var RESOURCE_NOT_FOUND_EXCEPTION_CODE = "404";
 
 //选择器
 function $(id) {
-    if (typeof id == UNDEFINED || typeof id != STRING || id == null) {
+    if (typeof id === UNDEFINED || typeof id !== STRING || id === null) {
         return null;
     }
     if (id.startwith('#')) {
@@ -40,7 +40,7 @@ function $(id) {
 
 $.getUri = function () {
     return document.location.pathname;
-}
+};
 
 //函数
 if (!JSON) {
@@ -62,10 +62,10 @@ if (!JSON.parse) {
 if (!typeof String.prototype.startwith) {
 
     String.prototype.startwith = function (prefix) {
-        if (this == prefix) {
+        if (this === prefix) {
             return true;
         }
-        if (typeof prefix != STRING) {
+        if (typeof prefix !== STRING) {
             return false;
         }
         if (this.length < prefix.length) {
@@ -76,32 +76,32 @@ if (!typeof String.prototype.startwith) {
 }
 
 String.prototype.startwith = function (prefix) {
-    if (this == prefix) {
+    if (this === prefix) {
         return true;
     }
-    if (typeof prefix != STRING) {
+    if (typeof prefix !== STRING) {
         return false;
     }
     if (this.length < prefix.length) {
         return false;
     }
     return this.substring(0, prefix.length) === prefix;
-}
+};
 
 if (!typeof String.prototype.trim) {
     String.prototype.trim = function (str) {
         //header " "
         for (var i = 0; i < str.length; i++) {
-            if (str[i] != " ") {
-                if (i != 0) {
+            if (str[i] !== " ") {
+                if (i !== 0) {
                     str = str.substring(i);
                 }
                 break;
             }
         }
         for (var i = str.length - 1; i > -1; i--) {
-            if (str[i] != " ") {
-                if (i != str.length - 1) {
+            if (str[i] !== " ") {
+                if (i !== str.length - 1) {
                     str = str.substring(0, i + 1);
                 }
                 break;
@@ -113,77 +113,19 @@ if (!typeof String.prototype.trim) {
 
 function parseSimpleObject(object) {
     var type = typeof object;
-    if (type == "string" || type == "function") {
+    if (type === "string" || type === "function") {
         return "\"" + object.toString().replace("\"", "\\\"") + "\"";
     }
 
-    if (type == "number" || type == "boolean") {
+    if (type === "number" || type === "boolean") {
         return object.toString();
     }
 
-    if (type == "undefined") {
+    if (type === "undefined") {
         return "undefined";
     }
 
     return "\"" + object.toString().replace("\"", "\\\"") + "\"";
-}
-if (!JSON.stringify) {
-    JSON.stringify = function stringify(object) {
-        var type = typeof object;
-
-        //如果是简单类型，则直接返回简单类型的结果
-        if (indexOf(simpleTypes, type) > -1) {
-            return parseSimpleObject(object);
-        }
-
-        //数组对象的
-        if (object instanceof Array) {
-            var len = object.length;
-            var resArr = [];
-            for (var i = 0; i < len; i++) {
-                var itemType = typeof object[i];
-                if (indexOf(simpleTypes, itemType) > -1) {
-
-                    //undefined特殊处理，数组中变成null
-                    if (itemType != "undefined") {
-                        resArr.push(parseSimpleObject(object[i]));
-                    } else {
-                        resArr.push("null");
-                    }
-
-                } else {
-                    //递归处理JS数组中的复杂元素
-                    resArr.push(stringify(object[i]));
-                }
-            }
-
-            return "[" + resArr.join(",") + "]";
-        }
-
-        //普通object对象
-        if (object instanceof Object) {
-            if (object == null) {
-                return "null";
-                bodyBytes
-            }
-
-            var resArr = [];
-
-            for (var name in object) {
-                var itemType = typeof object[name];
-                if (indexOf(simpleTypes, itemType) > -1) {
-                    //undefined特殊处理，object中不编码
-                    if (itemType != "undefined") {
-                        resArr.push("\"" + name + "\":" + parseSimpleObject(object[name]));
-                    }
-                } else {
-                    resArr.push("\"" + name + "\":" + stringify(object[name]));
-                }
-            }
-
-            return "{" + resArr.join(",") + "}";
-        }
-    }
 }
 
 function createXmlHttpRequest() {
@@ -216,8 +158,8 @@ function executeRequest(url, param, method, callback) {
     xmlHttp.setRequestHeader("x-requested-with", "XMLHttpRequest");
     xmlHttp.send(JSON.stringify(param));
     xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4)
-            if (xmlHttp.status == 200) {
+        if (xmlHttp.readyState === 4)
+            if (xmlHttp.status === 200) {
                 callback(eval("(" + xmlHttp.responseText + ")"));
             }
     };
@@ -225,21 +167,21 @@ function executeRequest(url, param, method, callback) {
 
 $.redirect404 = function () {
     document.location.href = "/404";
-}
+};
 
 $.redirect500 = function () {
     document.location.href = "/500";
-}
+};
 
 $.alertError = function (message) {
     alert(message);
-}
+};
 
 $.getUserIndexUrl = function () {
     return "/user/" + username;
-}
+};
 $.randomNumberChars = function (len) {
-    if (typeof len == UNDEFINED || len == null) {
+    if (typeof len === UNDEFINED || len === null) {
         len = 8;
     }
     var result = '';
@@ -247,18 +189,18 @@ $.randomNumberChars = function (len) {
         result += Math.floor(Math.random() * 10);
     }
     return result;
-}
+};
 
 $.bindHtml = function (bindConfig) {
     for (var key in bindConfig) {
         var ele = $("#" + key);
-        if (typeof ele != 'undefined' && ele != null) {
+        if (typeof ele !== 'undefined' && ele !== null) {
             ele.innerHTML = bindConfig[key];
         }
     }
-}
+};
 
-$.registerVLCEvent = function (id, event, handler) {
+$.registerEvent = function (id, event, handler) {
     var dom = $(id);
     if (dom) {
         if (dom.attachEvent) {
@@ -269,17 +211,71 @@ $.registerVLCEvent = function (id, event, handler) {
             dom.addEventListener(event, handler, false);
         }
     }
-}
+};
+
 // stop listening to event
-$.unregisterVLCEvent = function (id, event, handler) {
+$.unRegisterEvent = function (id, event, handler) {
     var dom = $(id);
     if (dom) {
         if (dom.detachEvent) {
             // Microsoft
             dom.detachEvent(event, handler);
-        } else if (vlc.removeEventListener) {
+        } else if (dom.removeEventListener) {
             // Mozilla: DOM level 2
             dom.removeEventListener(event, handler, false);
         }
+    }
+};
+
+$.extend = function(o,n){
+    for (var p in n){
+        o[p]=n[p];
+    }
+    return o;
+};
+
+$.addClass = function(id, clazz) {
+    var dom;
+    if(id instanceof String) {
+        dom = $("#" + id);
+    }
+    else {
+        dom = id;
+    }
+    var domClass = dom.getAttribute("class");
+    if (!domClass) {
+        domClass = clazz;
+    }
+    else {
+        domClass = domClass.concat(clazz);
+    }
+    dom.setAttribute("class", domClass);
+};
+$.removeClass = function(id, clazz) {
+    var dom;
+    if(id instanceof String) {
+        dom = $("#" + id);
+    }
+    else {
+        dom = id;
+    }
+    var domClass = dom.getAttribute("class");
+    if (domClass) {
+        domClass.replace(clazz, "");
+        dom.setAttribute("class", domClass);
+    }
+};
+$.replaceClass = function(id, clazz, newClazz) {
+    var dom;
+    if(id instanceof String) {
+        dom = $("#" + id);
+    }
+    else {
+        dom = id;
+    }
+    var domClass = dom.getAttribute("class");
+    if (domClass) {
+        domClass.replace(clazz, newClazz);
+        dom.setAttribute("class", domClass);
     }
 };

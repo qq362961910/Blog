@@ -45,7 +45,9 @@ public abstract class BaseServiceImpl<Entity> implements BaseService<Entity> {
             entityList = Collections.emptyList();
         }
         Pageable<Entity> entityPageable = new Pageable<>();
+        entityPageable.setTotalSize(count);
         entityPageable.setCurrentPage(param.getCurrentPage());
+        entityPageable.setPageSize(param.getPageSize());
         entityPageable.setTotalPage((count + param.getPageSize() - 1) / param.getPageSize());
         entityPageable.setEntityList(entityList);
         return entityPageable;

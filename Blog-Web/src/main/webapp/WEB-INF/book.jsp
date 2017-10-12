@@ -16,7 +16,11 @@
     <script src="<%=static_file_path%>js/modernizr.js"></script>
     <![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
-    <script type="text/javascript" src="<%=static_file_path%>js/entity/LeaveMessage.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/common/paginationBar.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/pageable.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/leave-message.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/leave-message-title.js"></script>
     <%--login--%>
     <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
@@ -45,41 +49,8 @@
                     <div class="ds-header ds-gradient-bg">被顶起来的评论</div>
                     <ul id="mostLikeCountLeaveMessage"></ul>
                 </div>
-                <div class="ds-comments-info">
-                    <div class="ds-sort">
-                        <a class="ds-order-desc ds-current">最新</a>
-                        <a class="ds-order-asc">最早</a><a
-                        class="ds-order-hot">最热</a>
-                    </div>
-                    <ul class="ds-comments-tabs">
-                        <li class="ds-tab">
-                            <a class="ds-comments-tab-duoshuo ds-current" href="javascript:void(0);">
-                                <span class="ds-highlight">1039</span>条评论
-                            </a>
-                        </li>
-                        <li class="ds-tab">
-                            <a class="ds-comments-tab-weibo" href="javascript:void(0);">
-                                <span class="ds-highlight">11</span>条新浪微博
-                            </a>
-                        </li>
-                        <li class="ds-tab">
-                            <a class="ds-comments-tab-qqt" href="javascript:void(0);">
-                                <span class="ds-highlight">6</span>条腾讯微博
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="ds-comments" id="leaveMessages"></ul>
-                <div class="ds-paginator">
-                    <div class="ds-border"></div>
-                    <a data-page="1" href="javascript:void(0);" class="ds-current">1</a>
-                    <a data-page="2" href="javascript:void(0);">2</a>
-                    <a data-page="3" href="javascript:void(0);">3</a>
-                    <a data-page="4" href="javascript:void(0);">4</a>
-                    <a data-page="5" href="javascript:void(0);">5</a>
-                    <span class="page-break">...</span>
-                    <a data-page="166" href="javascript:void(0);">166</a>
-                </div>
+                <!-- 留言列表title -->
+                <%@include file="/static/component/leave-message/book-leave-message.jsp"%>
                 <div class="ds-login-buttons"><p>社交帐号登录:</p>
                     <div class="ds-social-links">
                         <ul class="ds-service-list">

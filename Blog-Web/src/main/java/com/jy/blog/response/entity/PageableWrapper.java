@@ -12,8 +12,14 @@ public class PageableWrapper {
     @JsonProperty("currentPage")
     private int currentPage;
 
+    @JsonProperty("pageSize")
+    private int pageSize;
+
     @JsonProperty("totalPage")
     private int totalPage;
+
+    @JsonProperty("totalSize")
+    private int totalSize;
 
     @JsonProperty("objectList")
     private List<? extends Object> objectList = new ArrayList<>();
@@ -26,12 +32,28 @@ public class PageableWrapper {
         this.currentPage = currentPage;
     }
 
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
     public int getTotalPage() {
         return totalPage;
     }
 
     public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
+    }
+
+    public int getTotalSize() {
+        return totalSize;
+    }
+
+    public void setTotalSize(int totalSize) {
+        this.totalSize = totalSize;
     }
 
     public List<? extends Object> getObjectList() {

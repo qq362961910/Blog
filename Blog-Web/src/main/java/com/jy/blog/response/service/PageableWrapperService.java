@@ -19,7 +19,9 @@ public abstract class PageableWrapperService<Entity> {
         }
         PageableWrapper pageableWrapper = new PageableWrapper();
         pageableWrapper.setCurrentPage(entityPageable.getCurrentPage());
+        pageableWrapper.setPageSize(entityPageable.getPageSize());
         pageableWrapper.setTotalPage(entityPageable.getTotalPage());
+        pageableWrapper.setTotalSize(entityPageable.getTotalSize());
         pageableWrapper.setObjectList(buildEntityListWrapper(entityPageable.getEntityList()));
         return pageableWrapper;
     }
