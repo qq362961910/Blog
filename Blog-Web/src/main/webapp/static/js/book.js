@@ -1,6 +1,6 @@
 function initBookPage() {
     queryMostLikeCountLeaveMessage();
-    queryLeaveMessage ();
+    queryLeaveMessage();
 }
 
 
