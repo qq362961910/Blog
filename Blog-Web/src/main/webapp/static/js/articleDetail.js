@@ -27,4 +27,6 @@ function init() {
     var uri = $.getUri();
     var id = uri.substring(uri.lastIndexOf("/"));
     queryArticle(id);
+    loadLatestArticle();
+    loadRankedArticle();
 }

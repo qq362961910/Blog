@@ -63,4 +63,6 @@ function changePageBar(lastPage, currentPage, size, totalPage) {
 
 function init() {
     queryArticles();
+    loadLatestArticle();
+    loadRankedArticle();
 }

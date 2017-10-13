@@ -52,7 +52,8 @@
                     src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
         </div>
         <div class="news">
-            <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
+            <%@include file="/static/component/latest-article/latest-article.jsp" %>
+            <%@include file="/static/component/ranked-article/ranked-article.jsp" %>
             <h3 class="links">
                 <p>友情<span>链接</span></p>
             </h3>

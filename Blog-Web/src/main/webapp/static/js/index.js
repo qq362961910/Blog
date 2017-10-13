@@ -21,4 +21,6 @@ function indexInit() {
     executeRequest(queryUrl, null, method, queryUserAvatarCallback);
     loadRecommendTemplateHorizontalList();
     loadRecommendTemplateVerticalList();
+    loadLatestArticle();
+    loadRankedArticle();
 }

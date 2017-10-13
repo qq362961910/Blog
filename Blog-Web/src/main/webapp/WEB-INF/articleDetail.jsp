@@ -125,7 +125,8 @@
         </div>
         <div class="blank"></div>
         <div class="news">
-            <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
+            <%@include file="/static/component/latest-article/latest-article.jsp" %>
+            <%@include file="/static/component/ranked-article/ranked-article.jsp" %>
         </div>
         <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone"
                                                                                           data-cmd="qzone"

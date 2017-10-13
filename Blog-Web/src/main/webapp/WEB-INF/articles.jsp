@@ -88,7 +88,8 @@
             </ul>
         </div>
         <div class="news">
-            <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
+            <%@include file="/static/component/latest-article/latest-article.jsp" %>
+            <%@include file="/static/component/ranked-article/ranked-article.jsp" %>
         </div>
         <div class="visitors">
             <h3><p>最近访客</p></h3>
