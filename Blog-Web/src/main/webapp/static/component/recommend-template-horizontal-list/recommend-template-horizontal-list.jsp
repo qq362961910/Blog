@@ -6,4 +6,5 @@
         </a>
         <span>仿新浪博客风格・梅――古典个人博客模板</span>
     </li>--%>
+</ul>
 <script type="text/javascript" src="/static/component/recommend-template-horizontal-list/recommend-template-horizontal-list.js"></script>

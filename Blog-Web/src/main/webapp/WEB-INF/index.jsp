@@ -45,52 +45,7 @@
     <h2 class="title_tj">
         <p>文章<span>推荐</span></p>
     </h2>
-    <div id="article_div" class="bloglist left">
-        <%-- <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
-         <figure><img src="<%=static_file_path%>images/001.png"></figure>
-         <ul>
-             <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-             <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-         </ul>
-         <p class="dateview"><span>2013-11-04</span><span>作者：杨青</span><span>个人博客：[<a href="<%=static_file_path%>news/life/">程序人生</a>]</span>
-         </p>
-
-         <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
-         <figure><img src="<%=static_file_path%>images/001.png"></figure>
-         <ul>
-             <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-             <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-         </ul>
-         <p class="dateview"><span>2013-11-04</span><span>作者：杨青</span><span>个人博客：[<a href="<%=static_file_path%>news/life/">程序人生</a>]</span>
-         </p>
-
-         <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
-         <figure><img src="<%=static_file_path%>images/001.png"></figure>
-         <ul>
-             <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-             <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-         </ul>
-         <p class="dateview"><span>2013-11-04</span><span>作者：杨青</span><span>个人博客：[<a href="<%=static_file_path%>news/life/">程序人生</a>]</span>
-         </p>
-
-         <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
-         <figure><img src="<%=static_file_path%>images/001.png"></figure>
-         <ul>
-             <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-             <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-         </ul>
-         <p class="dateview"><span>2013-11-04</span><span>作者：杨青</span><span>个人博客：[<a href="<%=static_file_path%>news/life/">程序人生</a>]</span>
-         </p>
-
-         <h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
-         <figure><img src="<%=static_file_path%>images/001.png"></figure>
-         <ul>
-             <p>如果说掌握一门赖以生计的技术是技术人员要学会的第一课的话， 那么我觉得技术人员要真正学会的第二课，不是技术，而是业务、交流与协作，学会关心其他工作伙伴的工作情况和进展...</p>
-             <a title="/" href="/" target="_blank" class="readmore">阅读全文>></a>
-         </ul>
-         <p class="dateview"><span>2013-11-04</span><span>作者：杨青</span><span>个人博客：[<a href="<%=static_file_path%>news/life/">程序人生</a>]</span>
-         </p>--%>
-    </div>
+    <%@include file="/static/component/recommend-template-vertical-list/recommend-template-vertical-list.jsp"%>
     <aside class="right">
         <div class="weather">
             <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
@@ -98,25 +53,6 @@
         </div>
         <div class="news">
             <%@include file="/WEB-INF/share/latestAndRankArticle.jsp" %>
-            <%--
-            <ul class="rank" id="latestArticle">
-                <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
-                <li><a href="/" title="with love for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
-                <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
-                <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
-                <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
-                <li><a href="/" title="建站流程篇――教你如何快速学会做网站" target="_blank">建站流程篇――教你如何快速学会做网站</a></li>
-                <li><a href="/" title="box-shadow 阴影右下脚折边效果" target="_blank">box-shadow 阴影右下脚折边效果</a></li>
-                <li><a href="/" title="打雷时室内、户外应该需要注意什么" target="_blank">打雷时室内、户外应该需要注意什么</a></li>
-            </ul>--%>
-            <%--
-            <ul class="paih" id="readCountRankArticle">
-                <li><a href="/" title="Column 三栏布局 个人网站模板" target="_blank">Column 三栏布局 个人网站模板</a></li>
-                <li><a href="/" title="withlove for you 个人网站模板" target="_blank">with love for you 个人网站模板</a></li>
-                <li><a href="/" title="免费收录网站搜索引擎登录口大全" target="_blank">免费收录网站搜索引擎登录口大全</a></li>
-                <li><a href="/" title="做网站到底需要什么?" target="_blank">做网站到底需要什么?</a></li>
-                <li><a href="/" title="企业做网站具体流程步骤" target="_blank">企业做网站具体流程步骤</a></li>
-            </ul>--%>
             <h3 class="links">
                 <p>友情<span>链接</span></p>
             </h3>
