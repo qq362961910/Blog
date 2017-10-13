@@ -29,50 +29,34 @@ function Pagination(id, options) {
     }, options || {});
     var current_page = opts.current_page;
 
-    /**
-     * This is the event handling function for the pagination links.
-     * @param {int} page_id The new page number
-     */
-    this.pageSelected = function(page_id, evt) {
+    /** 点击跳转页面 */
+    this.pageSelected = function(page_id) {
         if (page_id < 1 || page_id > opts.total_page) {
             return false;
         }
         current_page = page_id;
-        scope.drawLinks();
-        var continuePropagation = opts.callback(page_id, panel);
-        if (!continuePropagation) {
-            if (evt.stopPropagation) {
-                evt.stopPropagation();
-            }
-            else {
-                evt.cancelBubble = true;
-            }
-        }
-        return continuePropagation;
-    }
-    this.getClickHandler = function (page_id) {
-        return function (evt) {
-            return scope.pageSelected(page_id, evt);
-        }
+        opts.callback(page_id);
     };
-    this.appendItem = function (page_id, appendopts) {
-        appendopts = $.extend({text: page_id, classes: ""}, appendopts || {});
-        var link;
+    /** 添加页面跳转项 */
+    this.appendItem = function (page_id, opt) {
+        opt = $.extend({text: page_id, classes: ""}, opt || {});
+        var dom;
         if (page_id === current_page) {
-            link = document.createElement("a");
-            link.innerHTML = appendopts.text;
-            $.addClass(link, "ds-current");
+            dom = document.createElement("a");
+            dom.innerHTML = opt.text;
+            $.addClass(dom, "ds-current");
         }
         else {
-            link = document.createElement("a");
-            link.innerHTML = appendopts.text;
-            $.registerEvent(link, "click", scope.getClickHandler(page_id));
-            link.href = opts.link_to.replace(/__id__/, page_id);
+            dom = document.createElement("a");
+            dom.innerHTML = opt.text;
+            $.registerEvent(dom, "click", function() {
+                scope.pageSelected(page_id);
+            });
         }
-        if (appendopts.classes) {
-            $.addClass(link, appendopts.classes);
+        if (opt.classes) {
+            $.addClass(dom, opt.classes);
         }
-        panel.appendChild(link);
+        panel.appendChild(dom);
     };
     /**
      * This function inserts the pagination links into the container element
@@ -87,7 +71,7 @@ function Pagination(id, options) {
         panel.appendChild(beginDiv);
 
         // Generate "Previous"-Link
-        if (opts.prev_text && (current_page > 0 || opts.prev_show_always)) {
+        if (opts.prev_text && opts.prev_show_always) {
             scope.appendItem(current_page - 1, {text: opts.prev_text, classes: "prev"});
         }
         // Generate interval links
@@ -119,28 +103,6 @@ function Pagination(id, options) {
         // Generate "Next"-Link
         if (opts.next_text && (current_page < opts.total_page - 1 || opts.next_show_always)) {
             scope.appendItem(current_page + 1, {text: opts.next_text, classes: "next"});
-        }
-    };
-
-    this.selectPage = function (page_id) {
-        opts.callback(page_id);
-    };
-    this.prevPage = function () {
-        if (current_page > 1) {
-            scope.pageSelected(current_page - 1);
-            return true;
-        }
-        else {
-            return false;
-        }
-    };
-    this.nextPage = function () {
-        if (current_page < opts.total_page - 1) {
-            scope.pageSelected(current_page + 1);
-            return true;
-        }
-        else {
-            return false;
         }
     };
     // When all initialisation is done, draw the links

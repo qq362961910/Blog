@@ -32,8 +32,6 @@ public class LeaveMessageController extends BaseController {
     @Autowired
     private LeaveMessageWrapperService leaveMessageWrapperService;
 
-    private int pageSizeDefault = 6;
-
     @RequiredLogin
     @RequestMapping(method = RequestMethod.POST)
     public Object saveLeaveMessage(@RequestBody Map<String, Object> param) {

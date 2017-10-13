@@ -11,25 +11,18 @@ function paginationBar(show_elem_id, total_items, items_per_page, total_page, cu
     new Pagination(show_elem_id, opt);
 }
 
-function isEmpty(str){
-	if(!str){
-		return true;
-	}
-	return false;
-}
-
 function initPageBar(total_items,items_per_page, total_page, current_page, callback){
 	var opt = {};
-    if(!isEmpty(total_items)) {
+    if(total_items) {
         opt.total_items = total_items;
     }
-	if (!isEmpty(items_per_page)) {
+	if (items_per_page) {
 		opt.items_per_page = items_per_page;
 	}
-    if (!isEmpty(total_page)) {
+    if (total_page) {
         opt.total_page = total_page;
     }
-	if (!isEmpty(current_page)) {
+	if (current_page) {
 		opt.current_page = current_page;
 	}
 	opt.callback = callback;
