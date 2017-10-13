@@ -13,7 +13,7 @@
 </head>
 <body>
 <header>
-    <%@include file="/WEB-INF/base-page/navigation.jsp" %>
+    <%@include file="/static/component/navbar/navbar.jsp" %>
 </header>
 <div class="moodlist">
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
