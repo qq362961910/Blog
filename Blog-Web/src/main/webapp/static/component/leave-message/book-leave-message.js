@@ -6,7 +6,7 @@
  * */
 function queryLeaveMessage (pageIndex) {
     var queryUrl = "/leave_message/rest/query_user_leave_message";
-    var param = {username: username, pageSize: 3, currentPageKey: pageIndex || 1};
+    var param = {username: username, pageSize: 1, currentPageKey: pageIndex || 1};
     var method = POST;
     var queryLeaveMessageCallback = function (result) {
         if (result.success) {
@@ -18,7 +18,7 @@ function queryLeaveMessage (pageIndex) {
             //渲染留言列表
             renderLeaveMessageItem(leaveMessageList);
             //渲染page bar
-            renderLeaveMessageListPageBar(pageable.totalSize, pageable.pageSize, pageable.currentPage, queryLeaveMessage);
+            renderLeaveMessageListPageBar(pageable.totalSize, pageable.pageSize,pageable.totalPage, pageable.currentPage, queryLeaveMessage);
         }
     };
     executeRequest(queryUrl, param, method, queryLeaveMessageCallback);

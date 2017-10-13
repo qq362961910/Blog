@@ -201,7 +201,13 @@ $.bindHtml = function (bindConfig) {
 };
 
 $.registerEvent = function (id, event, handler) {
-    var dom = $(id);
+    var dom;
+    if(id instanceof String) {
+        dom = $(id);
+    }
+    else {
+        dom = id;
+    }
     if (dom) {
         if (dom.attachEvent) {
             // Microsoft
@@ -215,7 +221,13 @@ $.registerEvent = function (id, event, handler) {
 
 // stop listening to event
 $.unRegisterEvent = function (id, event, handler) {
-    var dom = $(id);
+    var dom;
+    if(id instanceof String) {
+        dom = $(id);
+    }
+    else {
+        dom = id;
+    }
     if (dom) {
         if (dom.detachEvent) {
             // Microsoft
@@ -229,7 +241,7 @@ $.unRegisterEvent = function (id, event, handler) {
 
 $.extend = function(o,n){
     for (var p in n){
-        o[p]=n[p];
+        o[p] = n[p];
     }
     return o;
 };

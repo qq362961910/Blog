@@ -144,7 +144,7 @@ public interface BaseDao<Entity> {
             Criteria criteria = buildCriteriaRestrictions(session, clazz);
             if (currentPage > 1) {
                 int skip = (currentPage - 1) * pageSize;
-                criteria.setFirstResult(skip + 1);
+                criteria.setFirstResult(skip);
             }
             if (pageSize > 0) {
                 criteria.setMaxResults(pageSize);
