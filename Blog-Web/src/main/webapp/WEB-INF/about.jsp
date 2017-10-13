@@ -5,15 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>关于我</title>
-    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
-    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
+    <meta name="keywords" content="个人博客"/>
+    <meta name="description" content="个人博客"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/about.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="<%=static_file_path%>js/modernizr.js"></script>
-    <![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
+    <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
 </head>
 <body>
 <header>
@@ -33,13 +31,13 @@
             <p>职业：<span id="occupation"></span></p>
             <p>喜欢的书：<span id="like_books"></span></p>
             <p>喜欢的音乐：<span id="like_musics"></span></p>
-            <a target="_blank"
-               href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">
-                <img src="http://pub.idqqimg.com/wpa/images/group.png" alt="杨青个人博客网站" title="杨青个人博客网站"></a>
-            <a target="_blank"
-               href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HHh9cn95b3F1cHVye1xtbTJ-c3E"><img
-                src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_22.png"
-                alt="杨青个人博客网站"></a>
+            <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=1a2fc8ad422c4df633bf38af83b81f1786977f9c7894aa119f158fb350ea3e0c">
+                <img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="码农" title="码农">
+            </a>
+            <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=W2htaWJtamJqaxsqKnU4NDY" style="text-decoration:none;">
+                <img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_02.png"/>
+            </a>
+            <a target="_blank" href="tencent://message/?uin=362961910" rel="nofollow">QQ联系我</a>
         </div>
     </aside>
 </article>

@@ -11,9 +11,7 @@
     <link href="<%=static_file_path%>css/index.css" rel="stylesheet">
     <script src="<%=static_file_path%>js/common.js"></script>
     <script src="<%=static_file_path%>js/entity/article.js"></script>
-    <!--[if lt IE 9]>
-    <script src="<%=static_file_path%>js/modernizr.js"></script>
-    <![endif]-->
+    <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
 </head>
 <body>
 <header>
@@ -51,7 +49,7 @@
                 <li><a href="/">思衡网络</a></li>
             </ul>
         </div>
-        <a href="/" class="weixin"> </a>
+        <a href="/" class="weixin"></a>
     </aside>
 </article>
 <footer>
@@ -61,7 +59,7 @@
         <a href="/">网站统计</a>
     </p>
 </footer>
-<script type="text/javascript" src="<%=static_file_path%>js/index.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript">
     indexInit();
 </script>
