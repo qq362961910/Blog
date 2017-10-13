@@ -6,7 +6,7 @@
  * */
 function queryLeaveMessage (pageIndex) {
     var queryUrl = "/leave_message/rest/query_user_leave_message";
-    var param = {username: username, pageSize: 1, currentPageKey: pageIndex || 1};
+    var param = {username: username, pageSize: 6, currentPageKey: pageIndex || 1};
     var method = POST;
     var queryLeaveMessageCallback = function (result) {
         if (result.success) {
