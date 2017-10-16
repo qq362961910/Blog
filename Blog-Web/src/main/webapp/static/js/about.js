@@ -1,3 +1,1 @@
-function queryUserInfo() {
-    loadUserInfo();
-}
+loadUserInfo();

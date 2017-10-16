@@ -29,7 +29,4 @@
 </body>
 <script type="text/javascript" src="<%=static_file_path%>js/entity/mood.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/moodlist.js"></script>
-<script type="text/javascript">
-    initUserMoodList();
-</script>
 </html>

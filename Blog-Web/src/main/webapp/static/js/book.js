@@ -1,10 +1,3 @@
-function initBookPage() {
-    queryMostLikeCountLeaveMessage();
-    queryLeaveMessage();
-}
-
-
-
 function queryMostLikeCountLeaveMessage () {
     var queryUrl = "/leave_message/rest/query_user_most_like_count_leave_message";
     var param = {username: username};
@@ -53,3 +46,6 @@ function publishLeaveMessage() {
     };
     executeRequest(queryUrl, param, method, publishLeaveMessageCallback);
 }
+loadUserInfo();
+queryMostLikeCountLeaveMessage();
+queryLeaveMessage();

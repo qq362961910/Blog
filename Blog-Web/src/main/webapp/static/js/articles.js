@@ -1,5 +1,3 @@
-function init() {
-    queryArticleList();
-    loadLatestArticle();
-    loadRankedArticle();
-}
+queryArticleList();
+loadLatestArticle();
+loadRankedArticle();

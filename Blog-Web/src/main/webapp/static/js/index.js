@@ -1,7 +1,5 @@
-function indexInit() {
-    loadBannerUserInfo();
-    loadRecommendTemplateHorizontalList();
-    loadRecommendTemplateVerticalList();
-    loadLatestArticle();
-    loadRankedArticle();
-}
+loadBannerUserInfo();
+loadRecommendTemplateHorizontalList();
+loadRecommendTemplateVerticalList();
+loadLatestArticle();
+loadRankedArticle();

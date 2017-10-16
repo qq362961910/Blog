@@ -32,7 +32,4 @@
 </body>
 <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
-<script type="text/javascript">
-    queryUserInfo();
-</script>
 </html>

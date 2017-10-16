@@ -62,7 +62,4 @@
 </footer>
 </body>
 <script type="text/javascript" src="<%=static_file_path%>js/template-share.js"></script>
-<script type="text/javascript">
-    initShareUserHtmlTemplate();
-</script>
 </html>

@@ -137,11 +137,8 @@
         <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-<script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
+<script type="text/javascript" src="/static/component/user-introduction/user-introduction.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/book.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
-<script type="text/javascript">
-    initBookPage();
-</script>
 </body>
 </html>

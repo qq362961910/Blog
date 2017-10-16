@@ -60,8 +60,5 @@
     </p>
 </footer>
 <script type="text/javascript" src="/static/js/index.js"></script>
-<script type="text/javascript">
-    indexInit();
-</script>
 </body>
 </html>

@@ -61,8 +61,5 @@
     </p>
 </footer>
 <script type="text/javascript" src="<%=static_file_path%>js/articles.js"></script>
-<script type="text/javascript">
-    init();
-</script>
 </body>
 </html>

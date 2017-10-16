@@ -1,5 +1,3 @@
-function initShareUserHtmlTemplate() {
-    loadTemplateShareList();
-    loadLatestTemplateShare();
-    loadRankedTemplateShare();
-}
+loadTemplateShareList();
+loadLatestTemplateShare();
+loadRankedTemplateShare();

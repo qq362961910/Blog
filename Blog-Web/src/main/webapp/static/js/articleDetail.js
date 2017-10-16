@@ -13,20 +13,17 @@ function queryArticle(id) {
                 read_count: "readCount",
                 article_content: "content",
                 keywords: "keyworks"
-            }
+            };
             article.bindHtml(bindParam);
         }
         else {
             $.redirect404();
         }
-    }
+    };
     executeRequest(queryUrl, null, method, queryArticleCallback);
 }
-
-function init() {
-    var uri = $.getUri();
-    var id = uri.substring(uri.lastIndexOf("/"));
-    queryArticle(id);
-    loadLatestArticle();
-    loadRankedArticle();
-}
+var uri = $.getUri();
+var id = uri.substring(uri.lastIndexOf("/"));
+queryArticle(id);
+loadLatestArticle();
+loadRankedArticle();
