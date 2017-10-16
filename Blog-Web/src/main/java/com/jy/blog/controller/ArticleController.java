@@ -6,6 +6,7 @@ import com.jy.blog.response.entity.ArticleWrapper;
 import com.jy.blog.entity.Article;
 import com.jy.blog.response.service.ArticleWrapperService;
 import com.jy.blog.service.ArticleService;
+import com.jy.blog.service.BaseService;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -240,22 +241,10 @@ public class ArticleController extends BaseController {
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         serviceParam.getOrderList().add(Order.desc("createTime"));
-        int count = articleService.countArticleByArticleParam(serviceParam);
-        List<Article> articles;
-        if (count == 0) {
-            articles = Collections.emptyList();
-        } else {
-            articles = articleService.findArticleByArticleParam(serviceParam);
-        }
-        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        Map<String, Object> result = new HashMap<>();
-        result.put("size", count);
-        result.put("articles", articleWrappers);
-        result.put(totalPageKey, (count + pageSize - 1) / pageSize);
-        result.put(pageSizeKey, pageSize);
-        result.put(currentPageKey, currentPage);
-        return success(result);
+        BaseService.Pageable<Article> articlePageable = articleService.queryPageableListByParam(serviceParam);
+        Map<String, Object> data = new HashMap<>();
+        data.put("pageable", articleWrapperService.buildPageableWrapper(articlePageable));
+        return success(data);
     }
 
 }

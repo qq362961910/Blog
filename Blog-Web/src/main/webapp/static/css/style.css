@@ -242,11 +242,17 @@ aside .rnav ul li a:hover {
 .page > b, .page a:hover {
     background: #333;
     color: #FFF;
+    cursor: pointer;
 }
 
 .page a {
     color: #F33;
     border: #999 1px solid;
+}
+
+.page a.ds-current{
+    background: black;
+    color: white;
 }
 
 
