@@ -2,6 +2,7 @@ package com.jy.blog.controller;
 
 
 import com.jy.blog.blog.common.constants.ServiceErrorCode;
+import com.jy.blog.response.entity.PageableWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,5 +78,11 @@ public class BaseController {
         result.put("msg", description);
         result.put("data", data);
         return result;
+    }
+
+    public Map<String, Object> createPageableMap(PageableWrapper pageable) {
+        Map<String,Object> data = new HashMap<>();
+        data.put("pageable", pageable);
+        return data;
     }
 }

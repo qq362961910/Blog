@@ -242,9 +242,7 @@ public class ArticleController extends BaseController {
         serviceParam.setCurrentPage(currentPage);
         serviceParam.getOrderList().add(Order.desc("createTime"));
         BaseService.Pageable<Article> articlePageable = articleService.queryPageableListByParam(serviceParam);
-        Map<String, Object> data = new HashMap<>();
-        data.put("pageable", articleWrapperService.buildPageableWrapper(articlePageable));
-        return success(data);
+        return success(createPageableMap(articleWrapperService.buildPageableWrapper(articlePageable)));
     }
 
 }

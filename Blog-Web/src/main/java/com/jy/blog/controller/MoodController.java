@@ -2,8 +2,8 @@ package com.jy.blog.controller;
 
 import com.jy.blog.blog.dao.MoodDao;
 import com.jy.blog.entity.Mood;
+import com.jy.blog.service.BaseService;
 import com.jy.blog.service.MoodService;
-import com.jy.blog.response.entity.MoodWrapper;
 import com.jy.blog.response.service.MoodWrapperService;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,22 +43,8 @@ public class MoodController extends BaseController {
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         serviceParam.getOrderList().add(Order.desc("createTime"));
-        int count = moodService.countMoodByMoodParam(serviceParam);
-        List<Mood> moods;
-        if (count == 0) {
-            moods = Collections.emptyList();
-        } else {
-            moods = moodService.findMoodByMoodParam(serviceParam);
-        }
-        List<MoodWrapper> moodWrapperList = new ArrayList<>(moods.size());
-        moods.forEach(mood -> moodWrapperList.add(moodWrapperService.buildMoodWrapper(mood)));
-        Map<String, Object> result = new HashMap<>();
-        result.put("size", count);
-        result.put("moods", moodWrapperList);
-        result.put(totalPageKey, (count + pageSize - 1) / pageSize);
-        result.put(pageSizeKey, pageSize);
-        result.put(currentPageKey, currentPage);
-        return success(result);
+        BaseService.Pageable<Mood> moodPageable = moodService.queryPageableListByParam(serviceParam);
+        return success(createPageableMap(moodWrapperService.buildPageableWrapper(moodPageable)));
     }
 
 }

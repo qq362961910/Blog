@@ -124,10 +124,7 @@ public class LeaveMessageController extends BaseController {
             param.getOrderList().add(Order.desc("createTime"));
         }
         BaseService.Pageable<LeaveMessage> leaveMessagePageable = leaveMessageService.queryPageableListByParam(param);
-        PageableWrapper pageableWrapper = leaveMessageWrapperService.buildPageableWrapper(leaveMessagePageable);
-        Map<String, Object> data = new HashMap<>();
-        data.put("pageable", pageableWrapper);
-        return success(data);
+        return success(createPageableMap(leaveMessageWrapperService.buildPageableWrapper(leaveMessagePageable)));
     }
 
 
