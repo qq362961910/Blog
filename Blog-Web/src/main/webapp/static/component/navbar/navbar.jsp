@@ -2,6 +2,7 @@
 <div id="logo">
     <a href="javascript:void(0);"></a>
 </div>
+<div class="login-div login-icon" title="登录" id="login"></div>
 <nav class="topnav" id="topnav">
     <a href="/user/${username}/index">
         <span>首页</span>

@@ -1,6 +1,7 @@
 package com.jy.blog.controller;
 
 import com.jy.blog.blog.common.constants.ServiceErrorCode;
+import com.jy.blog.blog.common.util.StringUtil;
 import com.jy.blog.controller.util.AppContextUtil;
 import com.jy.blog.response.service.UserWrapperService;
 import com.jy.blog.service.UserService;
@@ -85,6 +86,18 @@ public class LoginController extends BaseController {
         return successResponse(user);
     }
 
+    /**
+     * 退出
+     * */
+    @RequestMapping(value = "rest/logout", method = RequestMethod.POST)
+    public Map<String, Object> restLogout(@CookieValue(value = "ticket", required = false) String ticket, HttpServletResponse response) {
+        if (StringUtil.isEmpty(ticket)) {
+            return success();
+        }
+        removeTicket(ticket, response);
+        return success();
+    }
+
     private Map<String, Object> successResponse(User user) {
         Map<String, Object> data = new HashMap<>();
         data.put("user", userWrapperService.buildUserWrapper(user, false));
@@ -96,5 +109,12 @@ public class LoginController extends BaseController {
         Cookie cookie = new Cookie(TICKET_KEY, ticket);
         cookie.setPath("/");
         response.addCookie(cookie);
+    }
+    public void removeTicket(String ticket, HttpServletResponse response) {
+        Cookie cookie = new Cookie(TICKET_KEY, "");
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        AppContextUtil.removeTicket(ticket);
     }
 }

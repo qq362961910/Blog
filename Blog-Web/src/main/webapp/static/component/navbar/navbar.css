@@ -1,0 +1,21 @@
+#topnav{
+    margin-right: 10px;
+}
+.login-div {
+    width: 5%;
+    height: 50px;
+    margin-top: 15px;
+    float: right;
+    position: relative;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+.login-icon {
+    background-image: url(./img/login.png);
+}
+.logout-icon {
+    background-image: url(./img/logout.png);
+}
+.login-div:hover {
+    cursor: pointer;
+}

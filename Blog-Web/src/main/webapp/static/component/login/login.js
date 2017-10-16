@@ -33,6 +33,18 @@ if(closeBtn.length && closeBtn.length > 0) {
 }
 
 /**
+ * login btn bind click event
+ * */
+var loginShowBtn = $(".loginShowBtn");
+if (loginShowBtn && loginShowBtn.length > 0) {
+    for (var i=0; i<loginShowBtn.length; i++) {
+        loginShowBtn[i].onclick = function () {
+            login.show();
+        }
+    }
+}
+
+/**
  * request password btn bind click event
  * */
 var requestPasswordBtn = $(".login-request-password-btn");
@@ -98,7 +110,7 @@ if(loginBtn.length && loginBtn.length > 0) {
             var requestPhoneCodeCallback = function (result) {
                 if (result.success) {
                     console.info(result.data);
-                    login.hide();
+                    window.location.reload();
                 }
                 else {
                     alert(result.msg);
@@ -108,4 +120,5 @@ if(loginBtn.length && loginBtn.length > 0) {
         }
     }
 }
+
 

@@ -95,6 +95,11 @@ public class AppContextUtil {
         cachedTicket.put(ticket, user);
         return ticket;
     }
+    public static void removeTicket(String ticket) {
+        if (ticket != null) {
+            cachedTicket.remove(ticket);
+        }
+    }
 
     /**
      * 通过ticket获取用户
