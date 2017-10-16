@@ -8,11 +8,11 @@ function renderBannerUserInfo(user) {
     $("#avatar").style.backgroundSize = "130px 130px";
 }
 function loadBannerUserInfo() {
-    var queryUrl = "/user/" + username + "/userinfo";
+    var queryUrl = "/user/" + username + "/user_info";
     var method = GET;
     var queryUserAvatarCallback = function (result) {
         if (result.success) {
-            var user = new User(result.data.nickname, username, result.data.avatar);
+            var user = new User(result.data.userInfo.nickname, username, result.data.userInfo.avatar);
             renderBannerUserInfo(user);
         }
         else {

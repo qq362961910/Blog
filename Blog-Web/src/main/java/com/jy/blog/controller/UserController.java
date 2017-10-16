@@ -148,14 +148,16 @@ public class UserController extends BaseController {
     /**
      * 用户信息
      */
-    @RequestMapping(value = "userinfo", method = RequestMethod.GET)
+    @RequestMapping(value = "user_info", method = RequestMethod.GET)
     public Map<String, Object> getUserInfo(@PathVariable("username") String username) throws Exception {
         User user = userService.findUserByUsername(username);
         if (user == null) {
             user = new User();
         }
         UserWrapper userWrapper = userWrapperService.buildUserWrapper(user, true);
-        return success(userWrapper);
+        Map<String, Object> data = new HashMap<>();
+        data.put("userInfo", userWrapper);
+        return success(data);
     }
 
 
