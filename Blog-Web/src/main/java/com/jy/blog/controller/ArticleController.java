@@ -172,7 +172,7 @@ public class ArticleController extends BaseController {
      * pageSize int optional default: 10 description: 分頁大小
      * currentPage int optional default: 1 description: 當前頁面
      */
-    @RequestMapping(value = "htmlTemplateList", method = RequestMethod.POST)
+    @RequestMapping(value = "template_share_list", method = RequestMethod.POST)
     public Map<String, Object> htmlTemplateList(@RequestBody Map<String, Object> param) {
         String username = (String) param.get("username");
         Integer pageSize = (Integer) param.get(pageSizeKey);
@@ -193,22 +193,8 @@ public class ArticleController extends BaseController {
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
         serviceParam.getOrderList().add(Order.desc("createTime"));
-        int count = articleService.countArticleByArticleParam(serviceParam);
-        List<Article> articles;
-        if (count == 0) {
-            articles = Collections.emptyList();
-        } else {
-            articles = articleService.findArticleByArticleParam(serviceParam);
-        }
-        List<ArticleWrapper> htmlTemplatesWrappers = new ArrayList<>(articles.size());
-        articles.forEach(article -> htmlTemplatesWrappers.add(articleWrapperService.buildArticleWrapper(article)));
-        Map<String, Object> result = new HashMap<>();
-        result.put("size", count);
-        result.put("htmlTemplates", htmlTemplatesWrappers);
-        result.put(totalPageKey, (count + pageSize - 1) / pageSize);
-        result.put(pageSizeKey, pageSize);
-        result.put(currentPageKey, currentPage);
-        return success(result);
+        BaseService.Pageable<Article> articlePageable = articleService.queryPageableListByParam(serviceParam);
+        return success(createPageableMap(articleWrapperService.buildPageableWrapper(articlePageable)));
     }
 
 

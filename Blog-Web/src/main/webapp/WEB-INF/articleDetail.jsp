@@ -128,77 +128,37 @@
             <%@include file="/static/component/latest-article/latest-article.jsp" %>
             <%@include file="/static/component/ranked-article/ranked-article.jsp" %>
         </div>
-        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone"
-                                                                                          data-cmd="qzone"
-                                                                                          title="分享到QQ空间"></a><a
-            href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq"
-                                                                               data-cmd="tqq" title="分享到腾讯微博"></a><a
-            href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin"
-                                                                                data-cmd="weixin" title="分享到微信"></a>
+        <div class="bdsharebuttonbox">
+            <a href="#" class="bds_more" data-cmd="more"></a>
+            <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+            <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
         </div>
-        <script>window._bd_share_config = {
-            "common": {
-                "bdSnsKey": {},
-                "bdText": "",
-                "bdMini": "2",
-                "bdMiniList": false,
-                "bdPic": "",
-                "bdStyle": "1",
-                "bdSize": "32"
-            }, "share": {}
-        };
-        with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-        <script type="text/javascript">
-            var cpro_id = "u2063915";
-            (window["cproStyleApi"] = window["cproStyleApi"] || {})[cpro_id] = {
-                at: "3",
-                rsi0: "250",
-                rsi1: "250",
-                pat: "6",
-                tn: "baiduCustNativeAD",
-                rss1: "#FFFFFF",
-                conBW: "1",
-                adp: "1",
-                ptt: "1",
-                ptc: "%E7%8C%9C%E4%BD%A0%E6%84%9F%E5%85%B4%E8%B6%A3",
-                ptFS: "14",
-                ptFC: "#000000",
-                ptBC: "#F2F2F2",
-                titFF: "%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91",
-                titFS: "14",
-                rss2: "#000000",
-                titSU: "0",
-                ptbg: "90",
-                piw: "0",
-                pih: "0",
-                ptp: "0"
-            }
-        </script>
-        <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
-
         <div class="blank"></div>
         <div class="visitors">
             <h3>
                 <p>最近访客</p>
             </h3>
             <ul class="ds-recent-visitors" data-num-items="24"></ul>
+            <!-- Baidu Button BEGIN -->
+            <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><a
+                class="bds_qzone"></a><a class="bds_tqq"></a><a class="bds_renren"></a><span class="bds_more"></span><a
+                class="shareCount"></a></div>
+            <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
+            <script type="text/javascript" id="bdshell_js"></script>
             <script type="text/javascript">
-                var duoshuoQuery = {short_name: "yangqq"};
-                (function () {
-                    var ds = document.createElement('script');
-                    ds.type = 'text/javascript';
-                    ds.async = true;
-                    ds.src = 'http://static.duoshuo.com/embed.js';
-                    ds.charset = 'UTF-8';
-                    (document.getElementsByTagName('head')[0]
-                    || document.getElementsByTagName('body')[0]).appendChild(ds);
-                })();
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
             </script>
+            <!-- Baidu Button END -->
         </div>
     </aside>
 </article>
-<div id="tbox"><a id="togbook" href="/e/tool/gbook/?bid=1"></a> <a id="gotop" href="javascript:void(0)"
-                                                                   style="display: block;"></a></div>
+<div id="tbox">
+    <a id="togbook" href="/e/tool/gbook/?bid=1"></a>
+    <a id="gotop" href="javascript:void(0)" style="display: block;"></a>
+</div>
 <footer>
     <p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>

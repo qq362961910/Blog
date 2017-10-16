@@ -88,7 +88,7 @@ public class UserController extends BaseController {
      * 分享
      * share
      */
-    @RequestMapping(value = {"share"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"templateShare"}, method = RequestMethod.GET)
     public ModelAndView userShare(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
         if (user == null) {
@@ -96,7 +96,7 @@ public class UserController extends BaseController {
         }
         Map<String, String> param = new HashMap<>();
         param.put("username", username);
-        return new ModelAndView("share", param);
+        return new ModelAndView("templateShare", param);
     }
 
     /**

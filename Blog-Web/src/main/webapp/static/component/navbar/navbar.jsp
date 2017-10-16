@@ -19,9 +19,9 @@
         <span>碎言碎语</span>
         <span class="en">Doing</span>
     </a>
-    <a href="/user/${username}/share">
+    <a href="/user/${username}/templateShare">
         <span>模板分享</span>
-        <span class="en">Share</span>
+        <span class="en">templateShare</span>
     </a>
     <a href="/user/${username}/knowledge">
         <span>学无止境</span>
