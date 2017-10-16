@@ -73,7 +73,7 @@ public class UserController extends BaseController {
      * 闲言碎语
      * mood list
      */
-    @RequestMapping(value = {"moodlist"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"mood_list"}, method = RequestMethod.GET)
     public ModelAndView userMoodList(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
         if (user == null) {
@@ -88,7 +88,7 @@ public class UserController extends BaseController {
      * 分享
      * share
      */
-    @RequestMapping(value = {"templateShare"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"template_share"}, method = RequestMethod.GET)
     public ModelAndView userShare(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
         if (user == null) {

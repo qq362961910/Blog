@@ -15,11 +15,11 @@
         <span>文章笔记</span>
         <span class="en">Life</span>
     </a>
-    <a href="/user/${username}/moodlist">
+    <a href="/user/${username}/mood_list">
         <span>碎言碎语</span>
         <span class="en">Doing</span>
     </a>
-    <a href="/user/${username}/templateShare">
+    <a href="/user/${username}/template_share">
         <span>模板分享</span>
         <span class="en">templateShare</span>
     </a>
@@ -29,7 +29,7 @@
     </a>
     <a href="/user/${username}/book">
         <span>留言版</span>
-        <span class="en">Gustbook</span>
+        <span class="en">GuestBook</span>
     </a>
 </nav>
 <script type="text/javascript" src="/static/component/navbar/navbar.js"></script>
