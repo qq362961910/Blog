@@ -197,6 +197,74 @@ public class ArticleController extends BaseController {
         return success(createPageableMap(articleWrapperService.buildPageableWrapper(articlePageable)));
     }
 
+    /**
+     * 最新模板
+     * <p>
+     * optional params:
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "latest_template_share", method = RequestMethod.POST)
+    public Map<String, Object> latestTemplateShare(@RequestBody Map<String, Object> param) {
+        String username = (String) param.get("username");
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setUsername(username);
+        serviceParam.getOrderList().add(Order.desc("createTime"));
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        return success(articleWrappers);
+    }
+
+    /**
+     * 查看排行模板
+     * <p>
+     * optional params:
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "read_count_rank_template_share", method = RequestMethod.POST)
+    public Map<String, Object> readCountRankTemplateShare(@RequestBody Map<String, Object> param) {
+        String username = (String) param.get("username");
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setUsername(username);
+        serviceParam.getOrderList().add(Order.desc("readCount"));
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        List<Article> articles = articleService.findArticleByArticleParam(serviceParam);
+        List<ArticleWrapper> articleWrappers = new ArrayList<>(articles.size());
+        articles.forEach(article -> articleWrappers.add(articleWrapperService.buildArticleWrapper(article)));
+        return success(articleWrappers);
+    }
+
 
     /**
      * 用户文章查詢（json）

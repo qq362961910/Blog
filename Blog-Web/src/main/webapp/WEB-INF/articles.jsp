@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>文章笔记</title>
-    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
-    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
+    <meta name="keywords" content="个人博客"/>
+    <meta name="description" content="Amen个人博客"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<div class="newblog left" id="templateShareListDiv">
+<div id="templateShareListDiv">
     <%--<h2>仿新浪博客风格・梅――古典个人博客模板</h2>
     <p class="dateview"><span>发布时间：2013-11-04</span><span>作者：杨青</span><span>模板分类：[<a href="/news/life/">个人博客模板</a>]</span>
     </p>
@@ -11,4 +11,7 @@
     <div class="line"></div>--%>
 </div>
 <%@include file="/static/component/template-share-list/template-share-list-page-bar/template-share-list-page-bar.jsp" %>
+<div class="ad">
+    <img src="<%=static_file_path%>images/ad.png">
+</div>
 <script type="text/javascript" src="/static/component/template-share-list/template-share-list.js"></script>
