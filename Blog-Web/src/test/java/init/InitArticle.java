@@ -125,7 +125,7 @@ public class InitArticle {
         article.setSummary("博客从最初的域名购买，到上线已经有四年的时间了，这四年的时间，有笑过，有怨过，有悔过，有执着过，也有放弃过…但最后还是坚持了下来");
         article.setOwner(user);
         article.setRecommended(false);
-        article.setType(ArticleType.HTML_TEMPLATE.getValue());
+        article.setType(ArticleType.TEMPLATE_SHARE.getValue());
         articleService.save(article);
 
         for (int i = 0; i < 60; i++) {
@@ -165,7 +165,7 @@ public class InitArticle {
         article.setSummary("我的个人博客总共展示了三个版本，界面也经历了由“简单”到“复杂”再到“简单”，颜色从“色泽单一”到“五彩斑斓”再到“局部点缀”的过程。");
         article.setOwner(user);
         article.setRecommended(true);
-        article.setType(ArticleType.HTML_TEMPLATE.getValue());
+        article.setType(ArticleType.TEMPLATE_SHARE.getValue());
         articleService.save(article);
 
         for (int i = 0; i < 60; i++) {

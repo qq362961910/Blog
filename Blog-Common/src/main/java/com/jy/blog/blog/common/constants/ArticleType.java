@@ -3,7 +3,9 @@ package com.jy.blog.blog.common.constants;
 public enum ArticleType {
 
     COMMON("文章", 1),
-    HTML_TEMPLATE("HTML模板", 2);
+    TEMPLATE_SHARE("模板分享", 2),
+    KNOWLEDGE("学无止境", 3);
+
 
     public static ArticleType getArticleType(int value) {
         for (ArticleType type : values()) {

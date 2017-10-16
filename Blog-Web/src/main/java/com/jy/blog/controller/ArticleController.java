@@ -154,7 +154,7 @@ public class ArticleController extends BaseController {
         Integer pageSize = 6;
         Integer currentPage = 1;
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setArticleType(ArticleType.TEMPLATE_SHARE);
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
@@ -188,7 +188,7 @@ public class ArticleController extends BaseController {
             currentPage = currentPageDefault;
         }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setArticleType(ArticleType.TEMPLATE_SHARE);
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);
@@ -220,7 +220,7 @@ public class ArticleController extends BaseController {
             currentPage = currentPageDefault;
         }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setArticleType(ArticleType.TEMPLATE_SHARE);
         serviceParam.setUsername(username);
         serviceParam.getOrderList().add(Order.desc("createTime"));
         serviceParam.setPageSize(pageSize);
@@ -254,7 +254,7 @@ public class ArticleController extends BaseController {
             currentPage = currentPageDefault;
         }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
-        serviceParam.setArticleType(ArticleType.HTML_TEMPLATE);
+        serviceParam.setArticleType(ArticleType.TEMPLATE_SHARE);
         serviceParam.setUsername(username);
         serviceParam.getOrderList().add(Order.desc("readCount"));
         serviceParam.setPageSize(pageSize);
@@ -291,6 +291,39 @@ public class ArticleController extends BaseController {
         }
         ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
         serviceParam.setArticleType(ArticleType.COMMON);
+        serviceParam.setUsername(username);
+        serviceParam.setPageSize(pageSize);
+        serviceParam.setCurrentPage(currentPage);
+        serviceParam.getOrderList().add(Order.desc("createTime"));
+        BaseService.Pageable<Article> articlePageable = articleService.queryPageableListByParam(serviceParam);
+        return success(createPageableMap(articleWrapperService.buildPageableWrapper(articlePageable)));
+    }
+
+    /**
+     * knowledge列表（json）
+     * <p>
+     * optional params:
+     * username string optional 用户名
+     * pageSize int optional default: 10 description: 分頁大小
+     * currentPage int optional default: 1 description: 當前頁面
+     */
+    @RequestMapping(value = "knowledge_list", method = RequestMethod.POST)
+    public Map<String, Object> knowledgeList(@RequestBody Map<String, Object> param) {
+        String username = (String) param.get("username");
+        Integer pageSize = (Integer) param.get(pageSizeKey);
+        Integer currentPage = (Integer) param.get(currentPageKey);
+        if (pageSize == null) {
+            pageSize = pageSizeDefault;
+        } else {
+            if (pageSize > 30) {
+                pageSize = pageSizeDefault;
+            }
+        }
+        if (currentPage == null) {
+            currentPage = currentPageDefault;
+        }
+        ArticleDao.ArticleParam serviceParam = new ArticleDao.ArticleParam();
+        serviceParam.setArticleType(ArticleType.KNOWLEDGE);
         serviceParam.setUsername(username);
         serviceParam.setPageSize(pageSize);
         serviceParam.setCurrentPage(currentPage);

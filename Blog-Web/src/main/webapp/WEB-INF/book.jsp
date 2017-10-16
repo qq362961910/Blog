@@ -12,9 +12,7 @@
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/book.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="<%=static_file_path%>css/embed.default.css">
-    <!--[if lt IE 9]>
-    <script src="<%=static_file_path%>js/modernizr.js"></script>
-    <![endif]-->
+    <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/paginationBar.js"></script>
@@ -143,7 +141,6 @@
 <script type="text/javascript" src="<%=static_file_path%>js/book.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 <script type="text/javascript">
-    queryUserInfo();
     initBookPage();
 </script>
 </body>
