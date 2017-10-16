@@ -26,7 +26,7 @@
 <header>
     <%@include file="/static/component/navbar/navbar.jsp" %>
 </header>
-<article class="aboutcon">
+<article>
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="book left">
         <!-- Duoshuo Comment BEGIN -->
@@ -110,24 +110,8 @@
             </div>
         </div>
     </div>
-    <aside class="right">
-        <div class="about_c">
-            <p>网名：<span id="nickname"></span></p>
-            <p>姓名：<span id="name"></span></p>
-            <p>生日：<span id="birthday"></span></p>
-            <p>籍贯：<span id="native_place"></span></p>
-            <p>现居：<span id="address"></span></p>
-            <p>职业：<span id="occupation"></span></p>
-            <p>喜欢的书：<span id="like_books"></span></p>
-            <p>喜欢的音乐：<span id="like_musics"></span></p>
-            <a target="_blank"
-               href="http://wp.qq.com/wpa/qunwpa?idkey=d4d4a26952d46d564ee5bf7782743a70d5a8c405f4f9a33a60b0eec380743c64">
-                <img src="http://pub.idqqimg.com/wpa/images/group.png" alt="" title=""></a>
-            <a target="_blank"
-               href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HHh9cn95b3F1cHVye1xtbTJ-c3E">
-                <img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_22.png" alt="">
-            </a>
-        </div>
+    <aside class="right aboutcon">
+        <%@include file="/static/component/user-introduction/user-introduction.jsp" %>
     </aside>
 </article>
 <%@include file="/static/component/login/login.jsp"%>
@@ -137,7 +121,6 @@
         <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-<script type="text/javascript" src="/static/component/user-introduction/user-introduction.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/book.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </body>

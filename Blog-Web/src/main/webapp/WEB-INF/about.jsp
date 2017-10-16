@@ -17,11 +17,11 @@
 <header>
     <%@include file="/static/component/navbar/navbar.jsp" %>
 </header>
-<article class="aboutcon">
+<article>
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <div class="about left" id="user_detail">
     </div>
-    <aside class="right">
+    <aside class="right aboutcon">
         <%@include file="/static/component/user-introduction/user-introduction.jsp" %>
     </aside>
 </article>
