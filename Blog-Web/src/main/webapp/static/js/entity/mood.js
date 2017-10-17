@@ -13,7 +13,7 @@ function Mood(id, coverImage, content, createTime) {
             (this.coverImage ? "<img src='" + this.coverImage + "'>" : "") +
             "<p>" + this.content + "</p>" +
             "</div>" +
-            "<span class='dateview'>" + this.createTime + "</span>" +
+            "<span class='date-view'>" + this.createTime + "</span>" +
             "</ul>";
         return content;
     }

@@ -30,7 +30,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "href=" + this.getArticleDetailUrl() +
             " target='_blank' class='readmore'>阅读全文>></a>" +
             "</ul>" +
-            "<p class='dateview'><span>" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
+            "<p class='date-view'><span>" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
             "</p>";
         return content;
     }
@@ -63,7 +63,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * */
     this.getArticlesItemHtml = function () {
         var html = "<h2>" + this.title + "</h2>" +
-            "<p class='dateview'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
+            "<p class='date-view'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
             "<figure><img src='" + this.coverImage + "'></figure>" +
             "<ul class='nlist'>" +
             "<p>" + this.summary + "</p>" +
@@ -80,7 +80,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
      * */
     this.getShareHtmlTemplateListItem = function () {
         var html = "<h2>" + this.title + "</h2>" +
-            "<p class='dateview'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
+            "<p class='date-view'><span>发布时间：" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>分类：[<ahref='/news/life/'>程序人生</a>]</span></p>" +
             "<figure><img src='" + this.coverImage + "'></figure>" +
             "<ul class='nlist'>" +
             "<p>" + this.summary + "</p>" +

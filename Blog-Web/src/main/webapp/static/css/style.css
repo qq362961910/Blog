@@ -43,15 +43,15 @@ h1.t_nav a {
     clear: both
 }
 
-p.dateview {
+p.date-view {
     margin-bottom: 10px
 }
 
-p.dateview span {
+p.date-view span {
     margin: 0 10px 0 0
 }
 
-p.dateview span a {
+p.date-view span a {
     color: #63B120
 }
 

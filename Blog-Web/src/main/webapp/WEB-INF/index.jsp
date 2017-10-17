@@ -29,7 +29,9 @@
 <div class="template">
     <div class="box">
         <h3>
-            <p><span>个人博客</span>模板 Templates</p>
+            <p>
+                <span>个人博客</span>模板Templates
+            </p>
         </h3>
         <%@include file="/static/component/recommend-template-horizontal-list/recommend-template-horizontal-list.jsp" %>
     </div>
