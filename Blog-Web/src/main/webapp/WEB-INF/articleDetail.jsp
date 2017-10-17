@@ -13,6 +13,7 @@
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
     <link href="/static/component/motto/motto.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>css/articleDetail.css" rel="stylesheet"/>
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
@@ -21,33 +22,26 @@
 </head>
 <body>
 <header>
-    <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
+    <%@include file="/static/component/nav-bar/nav-bar.jsp"%>
 </header>
-<article class="blogs">
-    <%@include file="/static/component/motto/motto.jsp" %>
+<article>
+    <%@include file="/static/component/motto/motto.jsp"%>
     <div class="index_about">
-        <h2 class="c_titile" id="title"></h2>
-
+        <h2 class="c-title" id="title"></h2>
         <p class="box_c">
-            <span class="d_time">发布时间：
-                <span id="publish_time"></span>
-            </span>
+            <span>发布时间：<span id="publish_time"></span></span>
             <span>编辑:<span id="article_owner"></span></span>
             <span>阅读（<span id="read_count"></span>）</span>
         </p>
-        <ul class="infos">
-            <div id="article_content"></div>
-            <p align="center" class="pageLink"></p>
-        </ul>
-        <div class="keybq">
+        <div class="article-content-frame" id="article_content"></div>
+        <div class="key-word">
             <p><span>关键字词</span>：<span id="keywords"></span></p>
         </div>
-        <div class="nextinfo">
-            <p>上一篇：<a href='/jstt/bj/2014-11-06/732.html'>分享我的个人博客访问量如何做到IP从10到600的(图文)</a></p>
-
-            <p>下一篇：<a href='/jstt/bj/2015-02-14/744.html'>【郑重申明】本站只提供静态模板下载！</a></p>
+        <div class="next-info">
+            <p>上一篇：<a href='javascript:void(0);'>分享我的个人博客访问量如何做到IP从10到600的(图文)</a></p>
+            <p>下一篇：<a href='javascript:void(0);'>【郑重申明】本站只提供静态模板下载！</a></p>
         </div>
-        <div class="otherlink">
+        <div class="other-link">
             <h2>相关文章</h2>
             <ul>
                 <li><a href="/jstt/web/2015-01-01/739.html" title=" 2014年度优秀个人博客排名公布"> 2014年度优秀个人博客排名公布</a></li>
