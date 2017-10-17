@@ -11,6 +11,8 @@
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
+    <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
+    <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/pageable.js"></script>
