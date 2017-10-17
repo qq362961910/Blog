@@ -12,6 +12,8 @@
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
+    <%--login--%>
+    <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -25,6 +27,7 @@
         <%@include file="/static/component/user-introduction/user-introduction.jsp" %>
     </aside>
 </article>
+<%@include file="/static/component/login/login.jsp"%>
 <footer>
     <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
     </p>
@@ -32,4 +35,5 @@
 </body>
 <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/about.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </html>

@@ -13,6 +13,9 @@
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/pageable.js"></script>
+    <script type="text/javascript" src="<%=static_file_path%>js/entity/mood.js"></script>
+    <%--login--%>
+    <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -22,11 +25,12 @@
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
     <%@include file="/static/component/mood-list/mood-list.jsp" %>
 </div>
+<%@include file="/static/component/login/login.jsp"%>
 <footer>
     <p>Design by DanceSmile <a href="http://www.mycodes.net/" title="源码之家" target="_blank">源码之家</a> <a href="/">网站统计</a>
     </p>
 </footer>
 </body>
-<script type="text/javascript" src="<%=static_file_path%>js/entity/mood.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>js/moodlist.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </html>

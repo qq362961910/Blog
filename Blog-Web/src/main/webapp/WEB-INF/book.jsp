@@ -11,7 +11,7 @@
     <link href="<%=static_file_path%>css/common.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/book.css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="<%=static_file_path%>css/embed.default.css">
+    <link href="<%=static_file_path%>css/embed.default.css" rel="stylesheet">
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>

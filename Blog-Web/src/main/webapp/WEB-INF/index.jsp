@@ -12,6 +12,8 @@
     <script src="<%=static_file_path%>js/common.js"></script>
     <script src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
+    <%--login--%>
+    <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -52,6 +54,7 @@
         <a href="/" class="weixin"></a>
     </aside>
 </article>
+<%@include file="/static/component/login/login.jsp"%>
 <footer>
     <p>
         Design by DanceSmile
@@ -60,5 +63,6 @@
     </p>
 </footer>
 <script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </body>
 </html>

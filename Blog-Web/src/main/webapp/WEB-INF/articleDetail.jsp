@@ -8,14 +8,13 @@
     <meta name="keywords" content="个人博客"/>
     <meta name="description" content="【匆匆那些年】总结个人博客经历的这四年…"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
-    <link href="<%=static_file_path%>css/new.css" rel="stylesheet">
-    <!-- 返回顶部调用 begin -->
-    <link href="<%=static_file_path%>css/lrtk.css" rel="stylesheet"/>
-    <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
+    <link href="<%=static_file_path%>css/new.css" rel="stylesheet">
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
+    <%--login--%>
+    <link href="<%=static_file_path%>component/login/login.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -88,28 +87,15 @@
             </script>
             <script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
         </div>
-        <!-- Duoshuo Comment BEGIN -->
-        <div class="ds-thread" data-category="8" data-thread-key="740"
-             data-title="【匆匆那些年】总结个人博客经历的这四年…" data-author-key="" data-url=""></div>
-        <!-- Duoshuo Comment END -->
     </div>
     <aside class="right">
-
         <div class="rnav">
             <h2>栏目导航</h2>
             <ul>
-
-                <li><a href="/jstt/bj/">心得笔记</a></li>
-
-                <li><a href="http://www.ip3q.com/">IP查询</a></li>
-
-                <li><a href="/jstt/css3/">CSS3|Html5</a></li>
-
-                <li><a href="/jstt/web/">网站建设</a></li>
-
-                <li><a href="/news/jsex/">JS经典实例</a></li>
-
-                <li><a href="/jstt/t/">推荐工具</a></li>
+                <li><a href="javascript:void(0);" target="_blank">日记</a></li>
+                <li><a href="javascript:void(0);" target="_blank">程序人生</a></li>
+                <li><a href="javascript:void(0);" target="_blank">欣赏</a></li>
+                <li><a href="javascript:void(0);" target="_blank">短信祝福</a></li>
             </ul>
         </div>
         <div class="rnavs">
@@ -159,13 +145,12 @@
     <a id="togbook" href="/e/tool/gbook/?bid=1"></a>
     <a id="gotop" href="javascript:void(0)" style="display: block;"></a>
 </div>
+<%@include file="/static/component/login/login.jsp"%>
 <footer>
     <p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
 <script type="text/javascript" src="<%=static_file_path%>js/articleDetail.js"></script>
-<script type="text/javascript">
-    init();
-</script>
+<script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </body>
 </html>
