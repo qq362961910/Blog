@@ -9,6 +9,8 @@
     <meta name="description" content="个人博客"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/about.css" rel="stylesheet">
+    <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
+    <link href="/static/component/banner/banner.css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
@@ -17,7 +19,7 @@
 </head>
 <body>
 <header>
-    <%@include file="/static/component/navbar/navbar.jsp" %>
+    <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <article>
     <%@include file="/WEB-INF/base-page/headerTab.jsp" %>

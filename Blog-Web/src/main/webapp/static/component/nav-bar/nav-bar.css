@@ -1,0 +1,64 @@
+.logo {
+    width: 260px;
+    height: 60px;
+    margin: 10px 0 0 0;
+    position: absolute;
+    background: url(./img/logo.jpg) no-repeat;
+    display: block
+}
+.login-div {
+    width: 5%;
+    height: 50px;
+    margin-top: 15px;
+    float: right;
+    position: relative;
+    display: inline-block;
+    background-size: 100% 100%;
+}
+.login-icon {
+    background-image: url(./img/login.png);
+}
+.logout-icon {
+    background-image: url(./img/logout.png);
+}
+.login-div:hover {
+    cursor: pointer;
+}
+#nav-bar{
+    margin-right: 10px;
+}
+#nav-bar a {
+    margin: 0 5px;
+    padding: 0 8px;
+}
+
+#nav-bar a span:first-child {
+    z-index: 2;
+    display: block;
+}
+
+#nav-bar a span:last-child {
+    z-index: 1;
+    display: block;
+    color: #999;
+    font: 12px Georgia, serif;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+    text-align: center
+}
+
+#nav-bar a:hover span:last-child, #nav-bar a:focus span:last-child {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    transform: translateY(0%);
+}
+
+#nav-current-item {
+    color: #e15782;
+}

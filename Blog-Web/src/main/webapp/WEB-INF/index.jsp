@@ -7,8 +7,10 @@
     <title>个人博客模板</title>
     <meta name="keywords" content="个人博客模板,博客模板"/>
     <meta name="description" content="寻梦主题的个人博客模板，优雅、稳重、大气,低调。"/>
-    <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
-    <link href="<%=static_file_path%>css/index.css" rel="stylesheet">
+    <link href="<%=static_file_path%>css/base.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>css/index.css" rel="stylesheet"/>
+    <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
+    <link href="/static/component/banner/banner.css" rel="stylesheet"/>
     <script src="<%=static_file_path%>js/common.js"></script>
     <script src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
@@ -17,7 +19,7 @@
 </head>
 <body>
 <header>
-    <%@include file="/static/component/navbar/navbar.jsp" %>
+    <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <%@include file="/static/component/banner/banner.jsp" %>
 <div class="template">

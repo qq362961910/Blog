@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<div id="logo">
-    <a href="javascript:void(0);"></a>
+<div>
+    <a class="logo" href="javascript:void(0);"></a>
 </div>
 <div class="login-div login-icon" title="登录" id="login"></div>
-<nav class="topnav" id="topnav">
+<nav id="nav-bar">
     <a href="/user/${username}/index">
         <span>首页</span>
         <span class="en">Protal</span>
@@ -33,7 +33,7 @@
         <span class="en">GuestBook</span>
     </a>
 </nav>
-<script type="text/javascript" src="/static/component/navbar/navbar.js"></script>
+<script type="text/javascript" src="/static/component/nav-bar/nav-bar.js"></script>
 <script type="text/javascript">
     var username = ${username};
     username = username.toString();
