@@ -1,26 +1,5 @@
 @charset "gb2312";
 /* CSS Document */
-h1.t_nav span {
-    float: right;
-    color: #999
-}
-
-h1.t_nav {
-    border-bottom: #F1F1F1 1px solid;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 40px;
-    height: 40px;
-}
-
-h1.t_nav a {
-    width: 100px;
-    display: block;
-    text-align: center;
-    color: #fff;
-    float: left
-}
-
 .n1 {
     background: #5EA51B;
 }
@@ -64,29 +43,18 @@ p.date-view span a {
     border: #EAE6E7 1px solid;
     padding: 4px;
 }
-
 .nlist {
     width: 530px;
     float: left;
     margin: 0 0 0 10px;
     line-height: 1.9;
 }
-
-a.readmore {
-    background: #f90;
-    color: #fff;
-    padding: 5px 10px;
-    float: right;
-    margin: 20px 0 0 0
-}
-
 .line {
     overflow: hidden;
     width: 97%;
     height: 20px;
     border-bottom: 1px dashed #ccc;
 }
-
 .rank li {
     height: 25px;
     line-height: 25px;
@@ -96,7 +64,6 @@ a.readmore {
     padding-left: 15px;
     background: url(../images/li.jpg) no-repeat left center;
 }
-
 .rank {
     margin: 10px 0
 }
@@ -109,7 +76,6 @@ a.readmore {
     background: url(../images/ph.jpg) no-repeat left 8px;
     margin: 10px 0
 }
-
 .paih li {
     line-height: 30px;
     height: 30px;
@@ -127,7 +93,6 @@ a.readmore {
     background: #fff;
     width: 70px
 }
-
 .news h3 span {
     color: #65b020
 }
@@ -139,7 +104,6 @@ a.readmore {
 .news h3.links span {
     color: #F17B6B;
 }
-
 .news ul {
     margin-bottom: 20px
 }
@@ -151,14 +115,12 @@ a.readmore {
 .visitors ul {
     margin: 20px 0
 }
-
 .rnav {
     width: 250px;
     margin: 20px 0;
     overflow: hidden;
     background: url(../images/6167.png) no-repeat left top
 }
-
 .rnav h2 {
     font-size: 14px;
     padding-left: 40px;
@@ -166,7 +128,6 @@ a.readmore {
     height: 30px;
     margin-bottom: 10px
 }
-
 .rnav li {
     width: 120px;
     text-align: center;
@@ -177,7 +138,6 @@ a.readmore {
     height: 40px;
     line-height: 40px
 }
-
 .rnav li a {
     color: #333;
     display: block;
@@ -195,7 +155,6 @@ aside .rnav ul li a:hover {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
 }
-
 .ad {
     width: 100%;
     margin: 10px auto;

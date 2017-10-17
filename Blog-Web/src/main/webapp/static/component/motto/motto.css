@@ -1,0 +1,20 @@
+.motto {
+    border-bottom: #F1F1F1 1px solid;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 40px;
+    height: 40px;
+}
+
+.motto a {
+    width: 100px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    float: left
+}
+
+.motto span {
+    float: right;
+    color: #999
+}

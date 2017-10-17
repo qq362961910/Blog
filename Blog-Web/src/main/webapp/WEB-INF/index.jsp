@@ -15,6 +15,7 @@
     <link href="/static/component/recommend-template-vertical-list/recommend-template-vertical-list.css" rel="stylesheet"/>
     <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
     <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
+    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
     <script src="<%=static_file_path%>js/common.js"></script>
     <script src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
@@ -43,8 +44,7 @@
     <%@include file="/static/component/recommend-template-vertical-list/recommend-template-vertical-list.jsp"%>
     <aside class="right">
         <div class="weather">
-            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true"
-                    src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
+            <iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe>
         </div>
         <div class="news">
             <%@include file="/static/component/latest-article/latest-article.jsp" %>
@@ -59,7 +59,7 @@
                 <li><a href="/">思衡网络</a></li>
             </ul>
         </div>
-        <a href="/" class="weixin"></a>
+        <a href="/" class="wei-xin"></a>
     </aside>
 </article>
 <%@include file="/static/component/login/login.jsp"%>

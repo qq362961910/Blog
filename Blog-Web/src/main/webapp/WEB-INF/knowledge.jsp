@@ -12,6 +12,7 @@
     <link href="<%=static_file_path%>css/learn.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
+    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
@@ -25,7 +26,7 @@
     <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <article class="blogs">
-    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
+    <%@include file="/static/component/motto/motto.jsp" %>
     <div class="newblog left">
         <%@include file="/static/component/knowledge-list/knowledge-list.jsp" %>
     </div>

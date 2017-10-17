@@ -11,6 +11,7 @@
     <link href="<%=static_file_path%>css/about.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
+    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
@@ -22,10 +23,10 @@
     <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <article>
-    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
+    <%@include file="/static/component/motto/motto.jsp" %>
     <div class="about left" id="user_detail">
     </div>
-    <aside class="right aboutcon">
+    <aside class="right about-con">
         <%@include file="/static/component/user-introduction/user-introduction.jsp" %>
     </aside>
 </article>

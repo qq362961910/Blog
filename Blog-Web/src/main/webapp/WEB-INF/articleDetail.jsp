@@ -12,6 +12,7 @@
     <link href="<%=static_file_path%>css/new.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
+    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
@@ -23,7 +24,7 @@
     <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <article class="blogs">
-    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
+    <%@include file="/static/component/motto/motto.jsp" %>
     <div class="index_about">
         <h2 class="c_titile" id="title"></h2>
 

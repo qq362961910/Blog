@@ -14,7 +14,6 @@ a:hover {
     overflow: hidden;
     font-size: 14px;
     margin: 0 0 10px;
-    font-family: "Î¢ÈíÑÅºÚ";
     display: block;
     clear: both;
 }
@@ -66,13 +65,6 @@ a:hover {
 .date-view span a {
     color: #099B43;
 }
-a.readmore {
-    background: #fd8a61;
-    color: #fff;
-    padding: 5px 10px;
-    float: right;
-    margin: 20px 0 0 0
-}
 .weather {
     background: url(../images/weather_bg.jpg) no-repeat;
     height: 88px;
@@ -109,7 +101,7 @@ a.readmore {
     text-shadow: #fff 1px 1px 1px;
     height: 26px;
 }
-.weixin {
+.wei-xin {
     background: url(../images/weixin.jpg) no-repeat;
     width: 100%;
     display: inline-block;

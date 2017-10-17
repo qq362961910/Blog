@@ -13,6 +13,7 @@
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
     <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
     <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
+    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/entity/pageable.js"></script>
@@ -26,7 +27,7 @@
     <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <article class="blogs">
-    <%@include file="/WEB-INF/base-page/headerTab.jsp" %>
+    <%@include file="/static/component/motto/motto.jsp" %>
     <div class="newblog left">
         <%@include file="/static/component/article-list/article-list.jsp" %>
         <div class="blank"></div>
