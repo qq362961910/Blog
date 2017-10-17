@@ -1,13 +1,5 @@
 @charset "gb2312";
 /* CSS Document */
-.n1 {
-    background: #5EA51B;
-}
-
-.n2 {
-    background: #8BBF5D;
-}
-
 .newblog {
     width: 740px;
     overflow: hidden;

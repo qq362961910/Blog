@@ -1,0 +1,15 @@
+.user-detail-div {
+    margin: 20px 0
+}
+.user-detail-div {
+    padding: 10px 0 0 10px;
+    color: #999;
+    line-height: 26px;
+}
+.user-detail-div img {
+    margin: 5px 0
+}
+
+.user-detail-div span {
+    color: #19A566
+}
