@@ -1,0 +1,28 @@
+.blog-list {
+    width: 740px;
+    overflow: hidden;
+    background: url(./img/r_line.jpg) repeat-y right;
+}
+
+.blog-list h3 {
+    margin: 20px 0 10px 0;
+    color: #333
+}
+
+.blog-list figure {
+    float: left;
+    width: 183px;
+}
+
+.blog-list figure img {
+    padding: 4px;
+    border: #f4f2f2 1px solid;
+    width: 175px;
+}
+
+.blog-list ul {
+    float: left;
+    width: 520px;
+    margin: 10px 0px 0 15px;
+    line-height: 20px;
+}

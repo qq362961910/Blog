@@ -2,5 +2,5 @@
 <h3 class="ph">
     <p>点击<span>排行</span></p>
 </h3>
-<ul class="paih" id="readCountRankArticle"></ul>
+<ul class="pai-hang" id="readCountRankArticle"></ul>
 <script type="text/javascript" src="/static/component/ranked-article/ranked-article.js"></script>

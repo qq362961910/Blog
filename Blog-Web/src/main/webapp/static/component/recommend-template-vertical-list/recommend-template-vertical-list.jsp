@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
-<div id="article_div" class="bloglist left">
+<div id="article_div" class="blog-list left">
      <%--<h3>程序员请放下你的技术情节，与你的同伴一起进步</h3>
      <figure><img src="<%=static_file_path%>images/001.png"></figure>
      <ul>

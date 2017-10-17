@@ -1,0 +1,12 @@
+.pai-hang {
+    background: url(./img/ph.jpg) no-repeat left 8px;
+    margin: 10px 0
+}
+
+.pai-hang li {
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+    padding-left: 24px;
+    border-bottom: #CCC dotted 1px
+}

@@ -1,0 +1,18 @@
+#latestArticle {
+    margin-bottom: 20px
+}
+
+.rank {
+    margin: 10px 0
+}
+.rank li {
+    height: 25px;
+    line-height: 25px;
+    clear: both;
+    overflow: hidden;
+    padding-left: 15px;
+    background: url(./img/li.jpg) no-repeat left center;
+}
+.rank li a {
+    color: #333;
+}
