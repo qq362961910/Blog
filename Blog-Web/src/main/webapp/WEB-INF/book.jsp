@@ -10,6 +10,7 @@
     <meta name="description" content="留言板">
     <link href="<%=static_file_path%>css/common.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
+    <link href="<%=static_file_path%>css/about.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/book.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/embed.default.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>

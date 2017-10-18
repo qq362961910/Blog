@@ -9,7 +9,6 @@
     <meta name="description" content="Amen个人博客"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
-    <link href="<%=static_file_path%>css/learn.css" rel="stylesheet">
     <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
     <link href="/static/component/banner/banner.css" rel="stylesheet"/>
     <link href="/static/component/motto/motto.css" rel="stylesheet"/>

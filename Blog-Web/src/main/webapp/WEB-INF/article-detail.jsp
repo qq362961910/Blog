@@ -9,12 +9,11 @@
     <meta name="description" content="【匆匆那些年】总结个人博客经历的这四年…"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
-    <link href="<%=static_file_path%>css/new.css" rel="stylesheet">
-    <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
-    <link href="/static/component/banner/banner.css" rel="stylesheet"/>
-    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
-    <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
-    <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/nav-bar/nav-bar.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/banner/banner.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/motto/motto.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/latest-article/latest-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/ranked-article/ranked-article.css" rel="stylesheet"/>
     <link href="<%=static_file_path%>css/articleDetail.css" rel="stylesheet"/>
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
@@ -24,7 +23,6 @@
 </head>
 <body>
 <header>
-    <%@include file="/static/component/nav-bar/nav-bar.jsp"%>
 </header>
 <article>
     <%@include file="/static/component/motto/motto.jsp"%>
@@ -134,7 +132,7 @@
             <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585"></script>
             <script type="text/javascript" id="bdshell_js"></script>
             <script type="text/javascript">
-                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
+                document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com<%=static_file_path%>js/shell_v2.js?cdnversion=" + Math.ceil(new Date() / 3600000)
             </script>
             <!-- Baidu Button END -->
         </div>

@@ -67,13 +67,6 @@ p.date-view span a {
 .visitors ul {
     margin: 20px 0
 }
-aside .rnav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-}
 .ad {
     width: 100%;
     margin: 10px auto;
