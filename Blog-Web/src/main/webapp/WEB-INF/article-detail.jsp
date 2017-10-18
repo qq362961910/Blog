@@ -14,7 +14,7 @@
     <link href="<%=static_file_path%>component/motto/motto.css" rel="stylesheet"/>
     <link href="<%=static_file_path%>component/latest-article/latest-article.css" rel="stylesheet"/>
     <link href="<%=static_file_path%>component/ranked-article/ranked-article.css" rel="stylesheet"/>
-    <link href="<%=static_file_path%>css/articleDetail.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>css/article-detail.css" rel="stylesheet"/>
     <!-- 返回顶部调用 end-->
     <script type="text/javascript" src="<%=static_file_path%>js/entity/article.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>

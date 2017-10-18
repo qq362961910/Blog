@@ -15,14 +15,14 @@
     display: inline-block;
     background-size: 100% 100%;
 }
+.login-div:hover {
+    cursor: pointer;
+}
 .login-icon {
     background-image: url(./img/login.png);
 }
 .logout-icon {
     background-image: url(./img/logout.png);
-}
-.login-div:hover {
-    cursor: pointer;
 }
 #nav-bar{
     margin-right: 10px;

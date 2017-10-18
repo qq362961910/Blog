@@ -3,11 +3,9 @@
 a:hover {
     text-decoration: underline;
 }
-
 .template {
     background: #F1F0EE
 }
-
 .template h3 {
     border-bottom: #FFF 1px solid;
     width: 100%;
@@ -40,7 +38,6 @@ a:hover {
 .title_tj span {
     color: #FE5187
 }
-
 .title_tj p {
     background: #fff;
     width: 90px
@@ -57,11 +54,9 @@ a:hover {
     color: #838383;
     padding-left: 25px
 }
-
 .date-view span {
     margin: 0 10px;
 }
-
 .date-view span a {
     color: #099B43;
 }
@@ -71,12 +66,10 @@ a:hover {
     margin: 20px 0;
     padding: 20px 0 0 75px;
 }
-
 .news h3 {
     font-size: 14px;
     background: url(../images/r_title_bg.jpg) repeat-x center
 }
-
 .news h3 p {
     background: #fff;
     width: 70px

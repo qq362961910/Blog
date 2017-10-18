@@ -1,28 +1,9 @@
 @charset "gb2312";
 /* CSS Document */
-.aboutcon {
-    background: url(../images/aboutphoto.jpg) no-repeat bottom right;
-    color: #696969
-}
 .book {
     width: 740px;
     overflow: hidden;
     background: url(../images/r_line.jpg) repeat-y right;
     line-height: 22px;
     margin: 20px auto
-}
-
-.about_c {
-    padding: 10px 0 0 10px;
-    color: #999;
-    line-height: 26px;
-    margin: 20px auto
-}
-
-.about_c img {
-    margin: 5px 0
-}
-
-.about_c span {
-    color: #19A566
 }

@@ -73,7 +73,7 @@
 }
 .rnavs {
     width: 250px;
-    margin: 0px 0;
+    margin: 0;
     overflow: hidden;
     background: url(../images/6167.png) no-repeat left top #fff;
     opacity: 0;

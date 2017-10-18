@@ -28,7 +28,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<p>" + this.summary + "</p>" +
             "<a title='" + this.title + "' " +
             "href=" + this.getArticleDetailUrl() +
-            " target='_blank' class='readmore'>阅读全文>></a>" +
+            " target='_blank' class='read-more'>阅读全文>></a>" +
             "</ul>" +
             "<p class='date-view'><span>" + this.createTime + "</span><span>作者：" + this.owner.username + "</span><span>个人博客：[<a href=''>程序人生</a>]</span>" +
             "</p>";
@@ -69,7 +69,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<p>" + this.summary + "</p>" +
             "<a title='" + this.title + "'" +
             "href=" + this.getArticleDetailUrl() +
-            " target='_blank' class='readmore'>阅读全文>></a>" +
+            " target='_blank' class='read-more'>阅读全文>></a>" +
             "</ul>" +
             "<div class='line'></div>";
         return html;
@@ -86,7 +86,7 @@ function Article(id, createTime, content, keyworks, likeCount, readCount, summar
             "<p>" + this.summary + "</p>" +
             "<a title='" + this.title + "'" +
             "href=" + this.getArticleDetailUrl() +
-            " target='_blank' class='readmore'>阅读全文>></a>" +
+            " target='_blank' class='read-more'>阅读全文>></a>" +
             "</ul>" +
             "<div class='line'></div>";
         return html;

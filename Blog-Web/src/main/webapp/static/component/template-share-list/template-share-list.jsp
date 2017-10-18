@@ -6,7 +6,7 @@
     <figure><img src="<%=static_file_path%>images/01.jpg"></figure>
     <ul class="nlist">
         <p>界面设计非原创，出自新浪博客风格・梅作者水云心。在原来的设计上增加了梅花飘落的flash动画。原设计的边界阴影部分用图片实现，本例采用css3新的规则属性，box-shadow</p>
-        <a title="/" href="/" target="_blank" class="readmore">详细信息>></a>
+        <a title="/" href="/" target="_blank" class="read-more">详细信息>></a>
     </ul>
     <div class="line"></div>--%>
 </div>

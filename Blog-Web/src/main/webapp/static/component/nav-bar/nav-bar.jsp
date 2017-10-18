@@ -36,5 +36,7 @@
 <script type="text/javascript" src="/static/component/nav-bar/nav-bar.js"></script>
 <script type="text/javascript">
     var username = ${username};
-    username = username.toString();
+    if (username) {
+        username = username.toString();
+    }
 </script>
