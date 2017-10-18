@@ -9,11 +9,11 @@
     <meta name="description" content="Amen个人博客"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet">
     <link href="<%=static_file_path%>css/style.css" rel="stylesheet">
-    <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
-    <link href="/static/component/banner/banner.css" rel="stylesheet"/>
-    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
-    <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
-    <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/nav-bar/nav-bar.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/banner/banner.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/motto/motto.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/latest-article/latest-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/ranked-article/ranked-article.css" rel="stylesheet"/>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
     <script type="text/javascript" src="<%=static_file_path%>js/common.js"></script>
     <script type="text/javascript" src="<%=static_file_path%>js/common/jquery.pagination.js"></script>

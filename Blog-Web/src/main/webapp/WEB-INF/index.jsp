@@ -9,13 +9,13 @@
     <meta name="description" content="寻梦主题的个人博客模板，优雅、稳重、大气,低调。"/>
     <link href="<%=static_file_path%>css/base.css" rel="stylesheet"/>
     <link href="<%=static_file_path%>css/index.css" rel="stylesheet"/>
-    <link href="/static/component/nav-bar/nav-bar.css" rel="stylesheet"/>
-    <link href="/static/component/banner/banner.css" rel="stylesheet"/>
-    <link href="/static/component/recommend-template-horizontal-list/recommend-template-horizontal-list.css" rel="stylesheet"/>
-    <link href="/static/component/recommend-template-vertical-list/recommend-template-vertical-list.css" rel="stylesheet"/>
-    <link href="/static/component/latest-article/latest-article.css" rel="stylesheet"/>
-    <link href="/static/component/ranked-article/ranked-article.css" rel="stylesheet"/>
-    <link href="/static/component/motto/motto.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/nav-bar/nav-bar.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/banner/banner.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/recommend-template-horizontal-list/recommend-template-horizontal-list.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/recommend-template-vertical-list/recommend-template-vertical-list.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/latest-article/latest-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/ranked-article/ranked-article.css" rel="stylesheet"/>
+    <link href="<%=static_file_path%>component/motto/motto.css" rel="stylesheet"/>
     <script src="<%=static_file_path%>js/common.js"></script>
     <script src="<%=static_file_path%>js/entity/article.js"></script>
     <!--[if lt IE 9]><script src="<%=static_file_path%>js/modernizr.js"></script><![endif]-->
