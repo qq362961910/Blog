@@ -25,8 +25,10 @@
     <%@include file="/static/component/nav-bar/nav-bar.jsp" %>
 </header>
 <div class="moodlist">
-    <%@include file="/static/component/motto/motto.jsp" %>
-    <%@include file="/static/component/mood-list/mood-list.jsp" %>
+    <article>
+        <%@include file="/static/component/motto/motto.jsp" %>
+    </article>
+        <%@include file="/static/component/mood-list/mood-list.jsp" %>
 </div>
 <%@include file="/static/component/login/login.jsp"%>
 <footer>

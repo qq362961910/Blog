@@ -81,7 +81,7 @@ public class UserController extends BaseController {
         }
         Map<String, String> param = new HashMap<>();
         param.put("username", username);
-        return new ModelAndView("moodlist", param);
+        return new ModelAndView("mood-list", param);
     }
 
     /**
@@ -96,7 +96,7 @@ public class UserController extends BaseController {
         }
         Map<String, String> param = new HashMap<>();
         param.put("username", username);
-        return new ModelAndView("templateShare", param);
+        return new ModelAndView("template-share", param);
     }
 
     /**
@@ -141,7 +141,7 @@ public class UserController extends BaseController {
         }
         Map<String, String> param = new HashMap<>();
         param.put("username", username);
-        return new ModelAndView("articleDetail", param);
+        return new ModelAndView("article-detail", param);
     }
 
 
