@@ -276,7 +276,7 @@
                 <sms.password>123456</sms.password>
                 <sms.base_url>http://221.179.180.158:9007/QxtSms/QxtFirewall</sms.base_url>
                 <!-- logging -->
-                <logging.level>ERROR</logging.level>
+                <logging.level>INFO</logging.level>
             </properties>
         </profile>
     </profiles>
