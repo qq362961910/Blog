@@ -23,6 +23,7 @@
 </head>
 <body>
 <header>
+    <%@include file="/static/component/nav-bar/nav-bar.jsp"%>
 </header>
 <article>
     <%@include file="/static/component/motto/motto.jsp"%>
@@ -147,7 +148,7 @@
     <p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-<script type="text/javascript" src="<%=static_file_path%>js/articleDetail.js"></script>
+<script type="text/javascript" src="<%=static_file_path%>js/article-detail.js"></script>
 <script type="text/javascript" src="<%=static_file_path%>component/login/login.js"></script>
 </body>
 </html>
